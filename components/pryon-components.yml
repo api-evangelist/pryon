@@ -1,0 +1,50 @@
+generated: '2026-08-02'
+method: searched
+source: https://docs.pryon.com/docs/embedding-the-conversational-app
+description: |
+  Pryon ships a client-side embedding surface — the App Builder produces a conversational
+  application ("Cadence") that is configured and deployed without code and then embedded into
+  the surfaces users already work in. This is distinct from the server-side API clients
+  catalogued in packages/.
+families:
+- name: Conversational application (App Builder)
+  docs: https://docs.pryon.com/docs/building-your-own-application
+  description: Visual application creation wizard that produces a self-hosted or hosted
+    conversational application over Pryon collections and Symphony workflows. Draft/published
+    lifecycle with cloning and versioning.
+  deployment_modes:
+  - chatbot widget
+  - full-screen experience
+  - embedded application
+  capabilities:
+  - real-time streaming responses
+  - GitHub Flavored Markdown rendering
+  - numbered, clickable source citations
+  - mobile-responsive layout with minimize/maximize
+  - configurable confidence score thresholds
+  - Stop Generation control
+  - branding, theme and colour customization
+  - multi-tenant OAuth2 / OIDC / client-credentials authentication
+- name: Native embedding
+  docs: https://docs.pryon.com/docs/embedding-the-conversational-app
+  description: Embed the Pryon conversational experience directly inside a host application
+    so users reach it from their daily workflow.
+- name: iframe embed
+  docs: https://docs.pryon.com/docs/embedding-with-iframe
+  description: Nest the conversational application's data and browsing context inside any
+    browser via an iframe element.
+- name: Microsoft Teams app
+  docs: https://docs.pryon.com/docs/using-chatbot-with-msteams
+  description: Run the conversational application inside Microsoft Teams meetings.
+- name: Microsoft Word add-in
+  docs: https://docs.pryon.com/docs/creating-a-ms-word-add-in
+  description: Surface the Pryon chatbot as an add-in inside Microsoft Word.
+- name: Compatible workflow contracts
+  docs: https://docs.pryon.com/docs/building-a-compatible-generative-workflow
+  description: Required Symphony workflow shapes (generative and RAG, with conversation
+    history) that a self-hosted conversational application must call to be compatible with
+    the embeddable Pryon experience.
+  related: https://docs.pryon.com/docs/compatible-conversational-rag-workflow
+loader_libraries: []
+notes: Pryon does not publish a public web-component or JS element library on npm; the
+  embeddable surfaces are provisioned from the Pryon platform per deployment.

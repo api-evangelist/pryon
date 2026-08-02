@@ -1,0 +1,1310 @@
+generated: '2026-08-02'
+method: derived
+source: mcp/pryon-mcp.yml + openapi/ (22 harvested Pryon OpenAPI documents)
+notes: |
+  Pryon publishes no MCP server and no GraphQL endpoint. This crosswalk therefore binds the
+  CANDIDATE tool set derived in mcp/pryon-mcp.yml one-to-one back to the OpenAPI operationIds
+  it was generated from, so each proposed tool inherits a real inputSchema (that operation's
+  parameters + requestBody) rather than a guessed one. Confidence is high throughout because
+  the binding is mechanical, not semantic. There are no mcp_only rows: nothing exists that is
+  not backed by a published REST operation. rest_only rows are duplicate operationIds that
+  appear in more than one harvested spec and collapse onto a single tool.
+surfaces:
+  openapi:
+    files: 22
+    operations: 276
+    unique_operation_ids: 184
+    gated: false
+  graphql:
+    endpoint: null
+    note: Pryon publishes no GraphQL surface.
+  mcp:
+    url: null
+    status: candidate
+    gated: true
+    note: No hosted MCP server published as of 2026-08-02; tools/list could not be probed.
+crosswalk:
+- tool: knowledge_collection_create_collection_with_sources
+  category: KnowledgeCollectionService
+  rest: [KnowledgeCollectionService_CreateCollectionWithSources]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-knowledge-collections-may2025-openapi.json#KnowledgeCollectionService_CreateCollectionWithSources
+- tool: knowledge_collection_delete_collection
+  category: KnowledgeCollectionService
+  rest: [KnowledgeCollectionService_DeleteCollection]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeCollectionService_DeleteCollection
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: knowledge_collection_get_collection
+  category: KnowledgeCollectionService
+  rest: [KnowledgeCollectionService_GetCollection]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeCollectionService_GetCollection
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: knowledge_collection_get_collection_active_domain
+  category: KnowledgeCollectionService
+  rest: [KnowledgeCollectionService_GetCollectionActiveDomain]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeCollectionService_GetCollectionActiveDomain
+- tool: knowledge_collection_get_collection_domain
+  category: KnowledgeCollectionService
+  rest: [KnowledgeCollectionService_GetCollectionDomain]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-knowledge-collections-may2025-openapi.json#KnowledgeCollectionService_GetCollectionDomain
+- tool: knowledge_collection_list_active_domains
+  category: KnowledgeCollectionService
+  rest: [KnowledgeCollectionService_ListActiveDomains]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeCollectionService_ListActiveDomains
+- tool: knowledge_collection_list_collections
+  category: KnowledgeCollectionService
+  rest: [KnowledgeCollectionService_ListCollections]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeCollectionService_ListCollections
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: knowledge_collection_list_default_active_domains
+  category: KnowledgeCollectionService
+  rest: [KnowledgeCollectionService_ListDefaultActiveDomains]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeCollectionService_ListDefaultActiveDomains
+- tool: knowledge_collection_restore_collection_active_domain
+  category: KnowledgeCollectionService
+  rest: [KnowledgeCollectionService_RestoreCollectionActiveDomain]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeCollectionService_RestoreCollectionActiveDomain
+- tool: knowledge_collection_update_collection
+  category: KnowledgeCollectionService
+  rest: [KnowledgeCollectionService_UpdateCollection]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeCollectionService_UpdateCollection
+- tool: knowledge_collection_update_collection_active_domain
+  category: KnowledgeCollectionService
+  rest: [KnowledgeCollectionService_UpdateCollectionActiveDomain]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeCollectionService_UpdateCollectionActiveDomain
+- tool: content_cascade_delete_content
+  category: ContentService
+  rest: [ContentService_CascadeDeleteContent]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ContentService_CascadeDeleteContent
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: content_cascade_delete_content_group
+  category: ContentService
+  rest: [ContentService_CascadeDeleteContentGroup]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ContentService_CascadeDeleteContentGroup
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: content_create_content
+  category: ContentService
+  rest: [ContentService_CreateContent]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ContentService_CreateContent
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: content_create_content_group
+  category: ContentService
+  rest: [ContentService_CreateContentGroup]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ContentService_CreateContentGroup
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: content_create_content_group_content
+  category: ContentService
+  rest: [ContentService_CreateContentGroupContent]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ContentService_CreateContentGroupContent
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: content_delete_content
+  category: ContentService
+  rest: [ContentService_DeleteContent]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ContentService_DeleteContent
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: content_delete_content_group
+  category: ContentService
+  rest: [ContentService_DeleteContentGroup]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ContentService_DeleteContentGroup
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: content_delete_content_group_content
+  category: ContentService
+  rest: [ContentService_DeleteContentGroupContent]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ContentService_DeleteContentGroupContent
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: content_delete_content_group_contents
+  category: ContentService
+  rest: [ContentService_DeleteContentGroupContents]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ContentService_DeleteContentGroupContents
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: content_get_content
+  category: ContentService
+  rest: [ContentService_GetContent]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ContentService_GetContent
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: content_get_content_group
+  category: ContentService
+  rest: [ContentService_GetContentGroup]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ContentService_GetContentGroup
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: content_get_content_group_content
+  category: ContentService
+  rest: [ContentService_GetContentGroupContent]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ContentService_GetContentGroupContent
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: content_get_content_image
+  category: ContentService
+  rest: [ContentService_GetContentImage]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ContentService_GetContentImage
+  note: operationId is published in 3 harvested specs; the tool collapses them.
+- tool: content_get_summary
+  category: ContentService
+  rest: [ContentService_GetSummary]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ContentService_GetSummary
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: content_list_content_group_contents
+  category: ContentService
+  rest: [ContentService_ListContentGroupContents]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ContentService_ListContentGroupContents
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: content_list_content_groups
+  category: ContentService
+  rest: [ContentService_ListContentGroups]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ContentService_ListContentGroups
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: content_list_content_subjects
+  category: ContentService
+  rest: [ContentService_ListContentSubjects]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ContentService_ListContentSubjects
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: content_list_contents
+  category: ContentService
+  rest: [ContentService_ListContents]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ContentService_ListContents
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: content_update_content_group
+  category: ContentService
+  rest: [ContentService_UpdateContentGroup]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ContentService_UpdateContentGroup
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: content_get_content_metadata
+  category: Content Service
+  rest: [ContentService_GetContentMetadata]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#ContentService_GetContentMetadata
+- tool: content_list_processed_content_extracts
+  category: Content Service
+  rest: [ContentService_ListProcessedContentExtracts]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#ContentService_ListProcessedContentExtracts
+- tool: content_list_retrieval_content_extracts
+  category: Content Service
+  rest: [ContentService_ListRetrievalContentExtracts]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#ContentService_ListRetrievalContentExtracts
+- tool: retrieval_create_retrieval
+  category: Retrieval
+  rest: [Retrieval_CreateRetrieval]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#Retrieval_CreateRetrieval
+- tool: retrieval_create_ws_retrieval
+  category: Retrieval
+  rest: [Retrieval_CreateWsRetrieval]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#Retrieval_CreateWsRetrieval
+- tool: retrieval_get_retrieval
+  category: Retrieval
+  rest: [Retrieval_GetRetrieval]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#Retrieval_GetRetrieval
+- tool: retrieval_get_retrieval_content_image
+  category: Retrieval
+  rest: [Retrieval_GetRetrievalContentImage]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#Retrieval_GetRetrievalContentImage
+- tool: generative_retrieval_create_generative_retrieval_s_s_e
+  category: GenerativeRetrieval
+  rest: [GenerativeRetrieval_CreateGenerativeRetrievalSSE]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#GenerativeRetrieval_CreateGenerativeRetrievalSSE
+- tool: generative_retrieval_get_generative_retrieval
+  category: GenerativeRetrieval
+  rest: [GenerativeRetrieval_GetGenerativeRetrieval]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#GenerativeRetrieval_GetGenerativeRetrieval
+- tool: exchange_create_exchange
+  category: Exchange
+  rest: [Exchange_CreateExchange]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Exchange_CreateExchange
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: exchange_create_ws_exchange
+  category: Exchange
+  rest: [Exchange_CreateWsExchange]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Exchange_CreateWsExchange
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: exchange_get_exchange
+  category: Exchange
+  rest: [Exchange_GetExchange]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Exchange_GetExchange
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: generative_exchange_create_generative_exchange
+  category: GenerativeExchange
+  rest: [GenerativeExchange_CreateGenerativeExchange]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#GenerativeExchange_CreateGenerativeExchange
+- tool: generative_exchange_create_generative_exchange_s_s_e
+  category: GenerativeExchange
+  rest: [GenerativeExchange_CreateGenerativeExchangeSSE]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#GenerativeExchange_CreateGenerativeExchangeSSE
+- tool: generative_exchange_get_generative_exchange
+  category: GenerativeExchange
+  rest: [GenerativeExchange_GetGenerativeExchange]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#GenerativeExchange_GetGenerativeExchange
+- tool: generative_answer_summarization
+  category: Generative
+  rest: [Generative_AnswerSummarization]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-chat-completion-only-generative-openapi.json#Generative_AnswerSummarization
+  note: operationId is published in 3 harvested specs; the tool collapses them.
+- tool: generative_complete_query
+  category: Generative
+  rest: [Generative_CompleteQuery]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-chat-completion-only-generative-openapi.json#Generative_CompleteQuery
+  note: operationId is published in 10 harvested specs; the tool collapses them.
+- tool: generative_create_chat_completions
+  category: Generative
+  rest: [Generative_CreateChatCompletions]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-chat-completion-only-generative-openapi.json#Generative_CreateChatCompletions
+  note: operationId is published in 9 harvested specs; the tool collapses them.
+- tool: generative_guardrail_query
+  category: Generative
+  rest: [Generative_GuardrailQuery]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-chat-completion-only-generative-openapi.json#Generative_GuardrailQuery
+  note: operationId is published in 6 harvested specs; the tool collapses them.
+- tool: generative_list_chat_completions_models
+  category: Generative
+  rest: [Generative_ListChatCompletionsModels]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-chat-completion-only-generative-openapi.json#Generative_ListChatCompletionsModels
+  note: operationId is published in 8 harvested specs; the tool collapses them.
+- tool: generative_route_query
+  category: Generative
+  rest: [Generative_RouteQuery]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-chat-completion-only-generative-openapi.json#Generative_RouteQuery
+  note: operationId is published in 10 harvested specs; the tool collapses them.
+- tool: user_defined_metadata_create_user_defined_metadata_field
+  category: UserDefinedMetadata
+  rest: [UserDefinedMetadata_CreateUserDefinedMetadataField]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_CreateUserDefinedMetadataField
+- tool: user_defined_metadata_delete_user_defined_metadata_field
+  category: UserDefinedMetadata
+  rest: [UserDefinedMetadata_DeleteUserDefinedMetadataField]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_DeleteUserDefinedMetadataField
+- tool: user_defined_metadata_delete_user_defined_metadata_field_value
+  category: UserDefinedMetadata
+  rest: [UserDefinedMetadata_DeleteUserDefinedMetadataFieldValue]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_DeleteUserDefinedMetadataFieldValue
+- tool: user_defined_metadata_get_user_defined_metadata_field
+  category: UserDefinedMetadata
+  rest: [UserDefinedMetadata_GetUserDefinedMetadataField]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_GetUserDefinedMetadataField
+- tool: user_defined_metadata_get_user_defined_metadata_field_value
+  category: UserDefinedMetadata
+  rest: [UserDefinedMetadata_GetUserDefinedMetadataFieldValue]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_GetUserDefinedMetadataFieldValue
+- tool: user_defined_metadata_list_collections_by_metadata_field
+  category: UserDefinedMetadata
+  rest: [UserDefinedMetadata_ListCollectionsByMetadataField]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_ListCollectionsByMetadataField
+- tool: user_defined_metadata_list_user_defined_metadata_field_values
+  category: UserDefinedMetadata
+  rest: [UserDefinedMetadata_ListUserDefinedMetadataFieldValues]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_ListUserDefinedMetadataFieldValues
+- tool: user_defined_metadata_list_user_defined_metadata_fields
+  category: UserDefinedMetadata
+  rest: [UserDefinedMetadata_ListUserDefinedMetadataFields]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_ListUserDefinedMetadataFields
+- tool: user_defined_metadata_update_user_defined_metadata_field
+  category: UserDefinedMetadata
+  rest: [UserDefinedMetadata_UpdateUserDefinedMetadataField]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_UpdateUserDefinedMetadataField
+- tool: user_defined_metadata_update_user_defined_metadata_field_value
+  category: UserDefinedMetadata
+  rest: [UserDefinedMetadata_UpdateUserDefinedMetadataFieldValue]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_UpdateUserDefinedMetadataFieldValue
+- tool: user_defined_metadata_create_user_defined_metadata_field_values
+  category: UserDefinedMetadata
+  rest: [User_defined_metadata_create_user_defined_metadata_field_values]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-user-defined-metadata-may2025-openapi.json#User_defined_metadata_create_user_defined_metadata_field_values
+- tool: analytics_list_conversation_counts
+  category: Analytics
+  rest: [Analytics_ListConversationCounts]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Analytics_ListConversationCounts
+- tool: analytics_list_conversation_size_categories
+  category: Analytics
+  rest: [Analytics_ListConversationSizeCategories]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Analytics_ListConversationSizeCategories
+- tool: analytics_list_exchange_confidence_categories
+  category: Analytics
+  rest: [Analytics_ListExchangeConfidenceCategories]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Analytics_ListExchangeConfidenceCategories
+- tool: analytics_list_exchange_confidence_scores
+  category: Analytics
+  rest: [Analytics_ListExchangeConfidenceScores]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Analytics_ListExchangeConfidenceScores
+- tool: analytics_list_exchange_counts
+  category: Analytics
+  rest: [Analytics_ListExchangeCounts]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Analytics_ListExchangeCounts
+- tool: analytics_list_exchange_rating_categories
+  category: Analytics
+  rest: [Analytics_ListExchangeRatingCategories]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Analytics_ListExchangeRatingCategories
+- tool: analytics_list_ingest_counts
+  category: Analytics
+  rest: [Analytics_ListIngestCounts]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Analytics_ListIngestCounts
+- tool: analytics_list_sync_counts
+  category: Analytics
+  rest: [Analytics_ListSyncCounts]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Analytics_ListSyncCounts
+- tool: subjects_get_subject
+  category: Subjects
+  rest: [Subjects_GetSubject]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Subjects_GetSubject
+- tool: subjects_get_subject_category
+  category: Subjects
+  rest: [Subjects_GetSubjectCategory]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Subjects_GetSubjectCategory
+- tool: subjects_list_subject_categories
+  category: Subjects
+  rest: [Subjects_ListSubjectCategories]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Subjects_ListSubjectCategories
+- tool: subjects_list_subject_relationship_types
+  category: Subjects
+  rest: [Subjects_ListSubjectRelationshipTypes]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Subjects_ListSubjectRelationshipTypes
+- tool: subjects_list_subject_relationships
+  category: Subjects
+  rest: [Subjects_ListSubjectRelationships]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Subjects_ListSubjectRelationships
+- tool: subjects_list_subjects
+  category: Subjects
+  rest: [Subjects_ListSubjects]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Subjects_ListSubjects
+- tool: knowledge_domain_create_domain_content_group
+  category: KnowledgeDomain
+  rest: [KnowledgeDomain_CreateDomainContentGroup]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeDomain_CreateDomainContentGroup
+- tool: knowledge_domain_create_domain_next_version_with_sources
+  category: KnowledgeDomain
+  rest: [KnowledgeDomain_CreateDomainNextVersionWithSources]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeDomain_CreateDomainNextVersionWithSources
+- tool: knowledge_domain_create_domain_with_sources
+  category: KnowledgeDomain
+  rest: [KnowledgeDomain_CreateDomainWithSources]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeDomain_CreateDomainWithSources
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: knowledge_domain_delete_domain_content_group
+  category: KnowledgeDomain
+  rest: [KnowledgeDomain_DeleteDomainContentGroup]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeDomain_DeleteDomainContentGroup
+- tool: knowledge_domain_delete_domain_content_groups
+  category: KnowledgeDomain
+  rest: [KnowledgeDomain_DeleteDomainContentGroups]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeDomain_DeleteDomainContentGroups
+- tool: knowledge_domain_get_domain
+  category: KnowledgeDomain
+  rest: [KnowledgeDomain_GetDomain]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeDomain_GetDomain
+- tool: knowledge_domain_get_domain_content_group
+  category: KnowledgeDomain
+  rest: [KnowledgeDomain_GetDomainContentGroup]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeDomain_GetDomainContentGroup
+- tool: knowledge_domain_get_domain_content_group_by_content
+  category: KnowledgeDomain
+  rest: [KnowledgeDomain_GetDomainContentGroupByContent]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeDomain_GetDomainContentGroupByContent
+- tool: knowledge_domain_list_content_group_subjects
+  category: KnowledgeDomain
+  rest: [KnowledgeDomain_ListContentGroupSubjects]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeDomain_ListContentGroupSubjects
+- tool: knowledge_domain_list_default_domains
+  category: KnowledgeDomain
+  rest: [KnowledgeDomain_ListDefaultDomains]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeDomain_ListDefaultDomains
+- tool: knowledge_domain_list_domain_content_groups
+  category: KnowledgeDomain
+  rest: [KnowledgeDomain_ListDomainContentGroups]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeDomain_ListDomainContentGroups
+- tool: knowledge_domain_list_domain_subjects
+  category: KnowledgeDomain
+  rest: [KnowledgeDomain_ListDomainSubjects]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeDomain_ListDomainSubjects
+- tool: knowledge_domain_list_domain_tags
+  category: KnowledgeDomain
+  rest: [KnowledgeDomain_ListDomainTags]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeDomain_ListDomainTags
+- tool: knowledge_domain_list_domains
+  category: KnowledgeDomain
+  rest: [KnowledgeDomain_ListDomains]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeDomain_ListDomains
+- tool: knowledge_domain_update_domain
+  category: KnowledgeDomain
+  rest: [KnowledgeDomain_UpdateDomain]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeDomain_UpdateDomain
+- tool: knowledge_domain_update_domain_content_groups_content_permission
+  category: KnowledgeDomain
+  rest: [KnowledgeDomain_UpdateDomainContentGroupsContentPermission]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeDomain_UpdateDomainContentGroupsContentPermission
+- tool: knowledge_domain_update_domain_content_groups_group_permission
+  category: KnowledgeDomain
+  rest: [KnowledgeDomain_UpdateDomainContentGroupsGroupPermission]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#KnowledgeDomain_UpdateDomainContentGroupsGroupPermission
+- tool: feedback_create_approval
+  category: Feedback
+  rest: [Feedback_CreateApproval]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Feedback_CreateApproval
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: feedback_create_exchange_rating
+  category: Feedback
+  rest: [Feedback_CreateExchangeRating]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Feedback_CreateExchangeRating
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: feedback_delete_approval
+  category: Feedback
+  rest: [Feedback_DeleteApproval]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Feedback_DeleteApproval
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: feedback_delete_exchange_rating
+  category: Feedback
+  rest: [Feedback_DeleteExchangeRating]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Feedback_DeleteExchangeRating
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: feedback_get_approval
+  category: Feedback
+  rest: [Feedback_GetApproval]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Feedback_GetApproval
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: feedback_get_exchange_rating
+  category: Feedback
+  rest: [Feedback_GetExchangeRating]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Feedback_GetExchangeRating
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: feedback_get_exchange_rating_review
+  category: Feedback
+  rest: [Feedback_GetExchangeRatingReview]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Feedback_GetExchangeRatingReview
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: feedback_list_approvals
+  category: Feedback
+  rest: [Feedback_ListApprovals]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Feedback_ListApprovals
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: feedback_list_exchange_rating_reviews
+  category: Feedback
+  rest: [Feedback_ListExchangeRatingReviews]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Feedback_ListExchangeRatingReviews
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: feedback_update_approval
+  category: Feedback
+  rest: [Feedback_UpdateApproval]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Feedback_UpdateApproval
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: feedback_update_exchange_rating
+  category: Feedback
+  rest: [Feedback_UpdateExchangeRating]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Feedback_UpdateExchangeRating
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: feedback_update_exchange_rating_review
+  category: Feedback
+  rest: [Feedback_UpdateExchangeRatingReview]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Feedback_UpdateExchangeRatingReview
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: retrieval_feedback_create_retrieval_rating
+  category: RetrievalFeedback
+  rest: [RetrievalFeedback_CreateRetrievalRating]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_CreateRetrievalRating
+- tool: retrieval_feedback_create_verified_answer
+  category: RetrievalFeedback
+  rest: [RetrievalFeedback_CreateVerifiedAnswer]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_CreateVerifiedAnswer
+- tool: retrieval_feedback_delete_retrieval_rating
+  category: RetrievalFeedback
+  rest: [RetrievalFeedback_DeleteRetrievalRating]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_DeleteRetrievalRating
+- tool: retrieval_feedback_delete_verified_answer
+  category: RetrievalFeedback
+  rest: [RetrievalFeedback_DeleteVerifiedAnswer]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_DeleteVerifiedAnswer
+- tool: retrieval_feedback_get_retrieval_rating
+  category: RetrievalFeedback
+  rest: [RetrievalFeedback_GetRetrievalRating]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_GetRetrievalRating
+- tool: retrieval_feedback_get_retrieval_rating_review
+  category: RetrievalFeedback
+  rest: [RetrievalFeedback_GetRetrievalRatingReview]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_GetRetrievalRatingReview
+- tool: retrieval_feedback_get_verified_answer
+  category: RetrievalFeedback
+  rest: [RetrievalFeedback_GetVerifiedAnswer]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_GetVerifiedAnswer
+- tool: retrieval_feedback_list_retrieval_rating_reviews
+  category: RetrievalFeedback
+  rest: [RetrievalFeedback_ListRetrievalRatingReviews]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_ListRetrievalRatingReviews
+- tool: retrieval_feedback_list_verified_answers
+  category: RetrievalFeedback
+  rest: [RetrievalFeedback_ListVerifiedAnswers]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_ListVerifiedAnswers
+- tool: retrieval_feedback_update_retrieval_rating
+  category: RetrievalFeedback
+  rest: [RetrievalFeedback_UpdateRetrievalRating]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_UpdateRetrievalRating
+- tool: retrieval_feedback_update_retrieval_rating_review
+  category: RetrievalFeedback
+  rest: [RetrievalFeedback_UpdateRetrievalRatingReview]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_UpdateRetrievalRatingReview
+- tool: retrieval_feedback_update_verified_answer
+  category: RetrievalFeedback
+  rest: [RetrievalFeedback_UpdateVerifiedAnswer]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_UpdateVerifiedAnswer
+- tool: generative_feedback_create_generative_exchange_rating
+  category: GenerativeFeedback
+  rest: [GenerativeFeedback_CreateGenerativeExchangeRating]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#GenerativeFeedback_CreateGenerativeExchangeRating
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: generative_feedback_delete_generative_exchange_rating
+  category: GenerativeFeedback
+  rest: [GenerativeFeedback_DeleteGenerativeExchangeRating]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#GenerativeFeedback_DeleteGenerativeExchangeRating
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: generative_feedback_get_generative_exchange_rating
+  category: GenerativeFeedback
+  rest: [GenerativeFeedback_GetGenerativeExchangeRating]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#GenerativeFeedback_GetGenerativeExchangeRating
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: generative_feedback_get_generative_exchange_rating_review
+  category: GenerativeFeedback
+  rest: [GenerativeFeedback_GetGenerativeExchangeRatingReview]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#GenerativeFeedback_GetGenerativeExchangeRatingReview
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: generative_feedback_list_generative_exchange_rating_reviews
+  category: GenerativeFeedback
+  rest: [GenerativeFeedback_ListGenerativeExchangeRatingReviews]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#GenerativeFeedback_ListGenerativeExchangeRatingReviews
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: generative_feedback_update_generative_exchange_rating
+  category: GenerativeFeedback
+  rest: [GenerativeFeedback_UpdateGenerativeExchangeRating]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#GenerativeFeedback_UpdateGenerativeExchangeRating
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: generative_feedback_update_generative_exchange_rating_review
+  category: GenerativeFeedback
+  rest: [GenerativeFeedback_UpdateGenerativeExchangeRatingReview]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#GenerativeFeedback_UpdateGenerativeExchangeRatingReview
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: generative_retrieval_feedback_create_generative_retrieval_rating
+  category: GenerativeRetrievalFeedback
+  rest: [GenerativeRetrievalFeedback_CreateGenerativeRetrievalRating]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#GenerativeRetrievalFeedback_CreateGenerativeRetrievalRating
+- tool: generative_retrieval_feedback_delete_generative_retrieval_rating
+  category: GenerativeRetrievalFeedback
+  rest: [GenerativeRetrievalFeedback_DeleteGenerativeRetrievalRating]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#GenerativeRetrievalFeedback_DeleteGenerativeRetrievalRating
+- tool: generative_retrieval_feedback_get_generative_retrieval_rating
+  category: GenerativeRetrievalFeedback
+  rest: [GenerativeRetrievalFeedback_GetGenerativeRetrievalRating]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#GenerativeRetrievalFeedback_GetGenerativeRetrievalRating
+- tool: generative_retrieval_feedback_get_generative_retrieval_rating_review
+  category: GenerativeRetrievalFeedback
+  rest: [GenerativeRetrievalFeedback_GetGenerativeRetrievalRatingReview]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#GenerativeRetrievalFeedback_GetGenerativeRetrievalRatingReview
+- tool: generative_retrieval_feedback_list_generative_retrieval_rating_reviews
+  category: GenerativeRetrievalFeedback
+  rest: [GenerativeRetrievalFeedback_ListGenerativeRetrievalRatingReviews]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#GenerativeRetrievalFeedback_ListGenerativeRetrievalRatingReviews
+- tool: generative_retrieval_feedback_update_generative_retrieval_rating
+  category: GenerativeRetrievalFeedback
+  rest: [GenerativeRetrievalFeedback_UpdateGenerativeRetrievalRating]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#GenerativeRetrievalFeedback_UpdateGenerativeRetrievalRating
+- tool: generative_retrieval_feedback_update_generative_retrieval_rating_review
+  category: GenerativeRetrievalFeedback
+  rest: [GenerativeRetrievalFeedback_UpdateGenerativeRetrievalRatingReview]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-retrieval-may2025-openapi.json#GenerativeRetrievalFeedback_UpdateGenerativeRetrievalRatingReview
+- tool: organization_batch_create_team_user
+  category: OrganizationService
+  rest: [OrganizationService_BatchCreateTeamUser]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_BatchCreateTeamUser
+- tool: organization_batch_create_user
+  category: OrganizationService
+  rest: [OrganizationService_BatchCreateUser]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_BatchCreateUser
+- tool: organization_batch_delete_team_user
+  category: OrganizationService
+  rest: [OrganizationService_BatchDeleteTeamUser]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_BatchDeleteTeamUser
+- tool: organization_batch_delete_user
+  category: OrganizationService
+  rest: [OrganizationService_BatchDeleteUser]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_BatchDeleteUser
+- tool: organization_create_idp_discovery
+  category: OrganizationService
+  rest: [OrganizationService_CreateIdpDiscovery]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_CreateIdpDiscovery
+- tool: organization_create_service
+  category: OrganizationService
+  rest: [OrganizationService_CreateService]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_CreateService
+- tool: organization_create_team
+  category: OrganizationService
+  rest: [OrganizationService_CreateTeam]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_CreateTeam
+- tool: organization_create_team_user
+  category: OrganizationService
+  rest: [OrganizationService_CreateTeamUser]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_CreateTeamUser
+- tool: organization_create_user
+  category: OrganizationService
+  rest: [OrganizationService_CreateUser]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_CreateUser
+- tool: organization_delete_service
+  category: OrganizationService
+  rest: [OrganizationService_DeleteService]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_DeleteService
+- tool: organization_delete_team
+  category: OrganizationService
+  rest: [OrganizationService_DeleteTeam]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_DeleteTeam
+- tool: organization_delete_team_user
+  category: OrganizationService
+  rest: [OrganizationService_DeleteTeamUser]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_DeleteTeamUser
+- tool: organization_get_organization
+  category: OrganizationService
+  rest: [OrganizationService_GetOrganization]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_GetOrganization
+- tool: organization_get_service
+  category: OrganizationService
+  rest: [OrganizationService_GetService]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_GetService
+- tool: organization_get_solution
+  category: OrganizationService
+  rest: [OrganizationService_GetSolution]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_GetSolution
+- tool: organization_get_team
+  category: OrganizationService
+  rest: [OrganizationService_GetTeam]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_GetTeam
+- tool: organization_get_team_user
+  category: OrganizationService
+  rest: [OrganizationService_GetTeamUser]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_GetTeamUser
+- tool: organization_get_user
+  category: OrganizationService
+  rest: [OrganizationService_GetUser]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_GetUser
+- tool: organization_get_user_info
+  category: OrganizationService
+  rest: [OrganizationService_GetUserInfo]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_GetUserInfo
+- tool: organization_list_identity_providers
+  category: OrganizationService
+  rest: [OrganizationService_ListIdentityProviders]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_ListIdentityProviders
+- tool: organization_list_integrations
+  category: OrganizationService
+  rest: [OrganizationService_ListIntegrations]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_ListIntegrations
+- tool: organization_list_services
+  category: OrganizationService
+  rest: [OrganizationService_ListServices]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_ListServices
+- tool: organization_list_solutions
+  category: OrganizationService
+  rest: [OrganizationService_ListSolutions]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_ListSolutions
+- tool: organization_list_team_users
+  category: OrganizationService
+  rest: [OrganizationService_ListTeamUsers]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_ListTeamUsers
+- tool: organization_list_teams
+  category: OrganizationService
+  rest: [OrganizationService_ListTeams]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_ListTeams
+- tool: organization_list_users
+  category: OrganizationService
+  rest: [OrganizationService_ListUsers]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_ListUsers
+- tool: organization_update_organization
+  category: OrganizationService
+  rest: [OrganizationService_UpdateOrganization]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_UpdateOrganization
+- tool: organization_update_service
+  category: OrganizationService
+  rest: [OrganizationService_UpdateService]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_UpdateService
+- tool: organization_update_team
+  category: OrganizationService
+  rest: [OrganizationService_UpdateTeam]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_UpdateTeam
+- tool: organization_update_team_user
+  category: OrganizationService
+  rest: [OrganizationService_UpdateTeamUser]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_UpdateTeamUser
+- tool: organization_update_user
+  category: OrganizationService
+  rest: [OrganizationService_UpdateUser]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#OrganizationService_UpdateUser
+- tool: connector_service_external_download_content_data
+  category: ConnectorServiceExternal
+  rest: [ConnectorServiceExternal_DownloadContentData]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ConnectorServiceExternal_DownloadContentData
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: connector_service_external_get_metadata
+  category: ConnectorServiceExternal
+  rest: [ConnectorServiceExternal_GetMetadata]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-universal-connector-may2025-openapi.json#ConnectorServiceExternal_GetMetadata
+- tool: connector_service_external_get_read_permission
+  category: ConnectorServiceExternal
+  rest: [ConnectorServiceExternal_GetReadPermission]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ConnectorServiceExternal_GetReadPermission
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: connector_service_external_list_group_permission_members
+  category: ConnectorServiceExternal
+  rest: [ConnectorServiceExternal_ListGroupPermissionMembers]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ConnectorServiceExternal_ListGroupPermissionMembers
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: connector_service_external_list_group_permissions
+  category: ConnectorServiceExternal
+  rest: [ConnectorServiceExternal_ListGroupPermissions]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ConnectorServiceExternal_ListGroupPermissions
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: connector_service_external_pull_contents
+  category: ConnectorServiceExternal
+  rest: [ConnectorServiceExternal_PullContents]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ConnectorServiceExternal_PullContents
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+- tool: messages_delete_message
+  category: Messages
+  rest: [Messages_DeleteMessage]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Messages_DeleteMessage
+- tool: messages_get_message
+  category: Messages
+  rest: [Messages_GetMessage]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Messages_GetMessage
+- tool: messages_list_messages
+  category: Messages
+  rest: [Messages_ListMessages]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Messages_ListMessages
+- tool: messages_list_system_events
+  category: Messages
+  rest: [Messages_ListSystemEvents]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#Messages_ListSystemEvents
+- tool: regression_test_create_test
+  category: RegressionTest
+  rest: [RegressionTest_CreateTest]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#RegressionTest_CreateTest
+- tool: regression_test_create_test_question
+  category: RegressionTest
+  rest: [RegressionTest_CreateTestQuestion]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#RegressionTest_CreateTestQuestion
+- tool: regression_test_delete_test
+  category: RegressionTest
+  rest: [RegressionTest_DeleteTest]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#RegressionTest_DeleteTest
+- tool: regression_test_delete_test_question
+  category: RegressionTest
+  rest: [RegressionTest_DeleteTestQuestion]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#RegressionTest_DeleteTestQuestion
+- tool: regression_test_get_test
+  category: RegressionTest
+  rest: [RegressionTest_GetTest]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#RegressionTest_GetTest
+- tool: regression_test_get_test_question
+  category: RegressionTest
+  rest: [RegressionTest_GetTestQuestion]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#RegressionTest_GetTestQuestion
+- tool: regression_test_get_test_result
+  category: RegressionTest
+  rest: [RegressionTest_GetTestResult]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#RegressionTest_GetTestResult
+- tool: regression_test_list_test_questions
+  category: RegressionTest
+  rest: [RegressionTest_ListTestQuestions]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#RegressionTest_ListTestQuestions
+- tool: regression_test_list_test_results
+  category: RegressionTest
+  rest: [RegressionTest_ListTestResults]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#RegressionTest_ListTestResults
+- tool: regression_test_list_tests
+  category: RegressionTest
+  rest: [RegressionTest_ListTests]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#RegressionTest_ListTests
+- tool: text_to_speech_create_synthesis
+  category: TextToSpeech
+  rest: [TextToSpeech_CreateSynthesis]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#TextToSpeech_CreateSynthesis
+- tool: exchange_event_create_exchange_event_s_s_e
+  category: ExchangeEvent
+  rest: [ExchangeEvent_CreateExchangeEventSSE]
+  binding: rest
+  confidence: high
+  source: openapi/pryon-admin-openapi.json#ExchangeEvent_CreateExchangeEventSSE
+  note: operationId is published in 2 harvested specs; the tool collapses them.
+mcp_only: []
+rest_only:
+- operation: ConnectorServiceExternal_DownloadContentData
+  reason: duplicate publication across 2 specs, bound once
+- operation: ConnectorServiceExternal_GetReadPermission
+  reason: duplicate publication across 2 specs, bound once
+- operation: ConnectorServiceExternal_ListGroupPermissionMembers
+  reason: duplicate publication across 2 specs, bound once
+- operation: ConnectorServiceExternal_ListGroupPermissions
+  reason: duplicate publication across 2 specs, bound once
+- operation: ConnectorServiceExternal_PullContents
+  reason: duplicate publication across 2 specs, bound once
+- operation: ContentService_CascadeDeleteContent
+  reason: duplicate publication across 2 specs, bound once
+- operation: ContentService_CascadeDeleteContentGroup
+  reason: duplicate publication across 2 specs, bound once
+- operation: ContentService_CreateContent
+  reason: duplicate publication across 2 specs, bound once
+- operation: ContentService_CreateContentGroup
+  reason: duplicate publication across 2 specs, bound once
+- operation: ContentService_CreateContentGroupContent
+  reason: duplicate publication across 2 specs, bound once
+- operation: ContentService_DeleteContent
+  reason: duplicate publication across 2 specs, bound once
+- operation: ContentService_DeleteContentGroup
+  reason: duplicate publication across 2 specs, bound once
+- operation: ContentService_DeleteContentGroupContent
+  reason: duplicate publication across 2 specs, bound once
+- operation: ContentService_DeleteContentGroupContents
+  reason: duplicate publication across 2 specs, bound once
+- operation: ContentService_GetContent
+  reason: duplicate publication across 2 specs, bound once
+- operation: ContentService_GetContentGroup
+  reason: duplicate publication across 2 specs, bound once
+- operation: ContentService_GetContentGroupContent
+  reason: duplicate publication across 2 specs, bound once
+- operation: ContentService_GetContentImage
+  reason: duplicate publication across 3 specs, bound once
+- operation: ContentService_GetSummary
+  reason: duplicate publication across 2 specs, bound once
+- operation: ContentService_ListContentGroupContents
+  reason: duplicate publication across 2 specs, bound once
+- operation: ContentService_ListContentGroups
+  reason: duplicate publication across 2 specs, bound once
+- operation: ContentService_ListContentSubjects
+  reason: duplicate publication across 2 specs, bound once
+- operation: ContentService_ListContents
+  reason: duplicate publication across 2 specs, bound once
+- operation: ContentService_UpdateContentGroup
+  reason: duplicate publication across 2 specs, bound once
+- operation: ExchangeEvent_CreateExchangeEventSSE
+  reason: duplicate publication across 2 specs, bound once
+- operation: Exchange_CreateExchange
+  reason: duplicate publication across 2 specs, bound once
+- operation: Exchange_CreateWsExchange
+  reason: duplicate publication across 2 specs, bound once
+- operation: Exchange_GetExchange
+  reason: duplicate publication across 2 specs, bound once
+- operation: Feedback_CreateApproval
+  reason: duplicate publication across 2 specs, bound once
+- operation: Feedback_CreateExchangeRating
+  reason: duplicate publication across 2 specs, bound once
+- operation: Feedback_DeleteApproval
+  reason: duplicate publication across 2 specs, bound once
+- operation: Feedback_DeleteExchangeRating
+  reason: duplicate publication across 2 specs, bound once
+- operation: Feedback_GetApproval
+  reason: duplicate publication across 2 specs, bound once
+- operation: Feedback_GetExchangeRating
+  reason: duplicate publication across 2 specs, bound once
+- operation: Feedback_GetExchangeRatingReview
+  reason: duplicate publication across 2 specs, bound once
+- operation: Feedback_ListApprovals
+  reason: duplicate publication across 2 specs, bound once
+- operation: Feedback_ListExchangeRatingReviews
+  reason: duplicate publication across 2 specs, bound once
+- operation: Feedback_UpdateApproval
+  reason: duplicate publication across 2 specs, bound once
+- operation: Feedback_UpdateExchangeRating
+  reason: duplicate publication across 2 specs, bound once
+- operation: Feedback_UpdateExchangeRatingReview
+  reason: duplicate publication across 2 specs, bound once
+- operation: GenerativeFeedback_CreateGenerativeExchangeRating
+  reason: duplicate publication across 2 specs, bound once
+- operation: GenerativeFeedback_DeleteGenerativeExchangeRating
+  reason: duplicate publication across 2 specs, bound once
+- operation: GenerativeFeedback_GetGenerativeExchangeRating
+  reason: duplicate publication across 2 specs, bound once
+- operation: GenerativeFeedback_GetGenerativeExchangeRatingReview
+  reason: duplicate publication across 2 specs, bound once
+- operation: GenerativeFeedback_ListGenerativeExchangeRatingReviews
+  reason: duplicate publication across 2 specs, bound once
+- operation: GenerativeFeedback_UpdateGenerativeExchangeRating
+  reason: duplicate publication across 2 specs, bound once
+- operation: GenerativeFeedback_UpdateGenerativeExchangeRatingReview
+  reason: duplicate publication across 2 specs, bound once
+- operation: Generative_AnswerSummarization
+  reason: duplicate publication across 3 specs, bound once
+- operation: Generative_CompleteQuery
+  reason: duplicate publication across 10 specs, bound once
+- operation: Generative_CreateChatCompletions
+  reason: duplicate publication across 9 specs, bound once
+- operation: Generative_GuardrailQuery
+  reason: duplicate publication across 6 specs, bound once
+- operation: Generative_ListChatCompletionsModels
+  reason: duplicate publication across 8 specs, bound once
+- operation: Generative_RouteQuery
+  reason: duplicate publication across 10 specs, bound once
+- operation: KnowledgeCollectionService_DeleteCollection
+  reason: duplicate publication across 2 specs, bound once
+- operation: KnowledgeCollectionService_GetCollection
+  reason: duplicate publication across 2 specs, bound once
+- operation: KnowledgeCollectionService_ListCollections
+  reason: duplicate publication across 2 specs, bound once
+- operation: KnowledgeDomain_CreateDomainWithSources
+  reason: duplicate publication across 2 specs, bound once
+coverage:
+  tools_named: 184
+  tools_bound: 184
+  mcp_only: 0
+  rest_operations_total: 276
+  rest_unique_operation_ids: 184
+  rest_operation_ids_with_a_tool: 184

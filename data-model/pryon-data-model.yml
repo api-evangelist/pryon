@@ -1,0 +1,149 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/ (22 harvested Pryon OpenAPI documents, 276 operations, 112 paths on the admin spec)
+docs: https://docs.pryon.com/docs/about-pryon-platform
+notes: |
+  Derived from the resource hierarchy of the published paths and from the id-reference fields
+  that recur across component schemas. Pryon's API is generated from Protocol Buffers and
+  follows Google AIP resource naming: an org owns teams, users, solutions and services; a
+  knowledge Collection is the durable customer-facing object and points at a versioned
+  KnowledgeDomain, which is what content is actually ingested into; conversation objects
+  (Exchange, Retrieval, GenerativeRetrieval) reference a collection and produce ratings,
+  reviews, approvals and verified answers.
+domains:
+  access: /api/access/v1 — organizations, teams, users, IdPs, integrations, solutions, services
+  knowledge: /api/knowledge/v1 and /api/knowledge/v1alpha1 — collections, domains, contents, content groups, subjects, metadata fields
+  connector: /api/connector/v1 and /api/connector/v1alpha1 — connectors and the Universal Connector contract
+  conversation: /api/conversation/v1 and /api/conversation/v1alpha1 — exchanges, retrievals, ratings, reviews, approvals, verified answers
+  generative: /api/generative/v1alpha1 — chat completions and generative tasks
+  analytics: /api/analytics/v1 — aggregate counts and confidence/rating category rollups
+  messages: /api/messages/v1 — messages and system events
+  regression: /api/regression/v1 — regression test collections and tests
+  speech: /api/speech/v1 — text-to-speech synthesis
+entities:
+- name: Organization
+  id_field: org_id
+  path: /api/access/v1/org
+  description: The tenant. Federated to an identity provider at login; carried on most requests as the x-pryon-org-id header.
+- name: Team
+  id_field: team_id
+  path: /api/access/v1/teams
+  description: Permission grouping inside an organization; collections are authorized to teams.
+- name: User
+  id_field: user_id
+  path: /api/access/v1/users
+  description: A member of an organization, provisioned via IdP or batch create/delete.
+- name: Solution
+  id_field: solution_id
+  path: /api/access/v1/solutions
+  description: A packaged deployment grouping that scopes collections.
+- name: Collection
+  id_field: collection_id
+  path: /api/knowledge/v1/collections
+  description: The customer-facing knowledge collection — the thing questions are asked of.
+- name: KnowledgeDomain
+  id_field: knowledge_domain_id
+  path: /api/knowledge/v1/domains
+  description: The immutable, versioned index behind a collection. Collections point at an active domain; superseded versions are decommissioned.
+- name: Content
+  id_field: content_id
+  path: /api/knowledge/v1/contents
+  description: An ingested source document, with extracts, summaries, metadata, subjects and image renderings with bounding boxes.
+- name: ContentGroup
+  id_field: content_group_id
+  path: /api/knowledge/v1/content-groups
+  description: A named grouping of content items inside a knowledge domain.
+- name: Subject
+  id_field: subject_id
+  path: /api/knowledge/v1/subjects
+  description: A classification applied to content, organised by subject category.
+- name: UserDefinedMetadataField
+  id_field: metadata_field_id
+  path: /api/knowledge/v1alpha1/metadata-fields
+  description: Customer-defined metadata field (and field values) used to filter retrieval.
+- name: Connector
+  id_field: connector_id
+  path: /api/connector/v1/connectors
+  description: A configured content source (SharePoint, Salesforce, S3, Azure Blob, GCS, NFS, Universal Connector).
+- name: Exchange
+  id_field: exchange_id
+  path: /api/conversation/v1/exchanges
+  description: One extractive question/answer turn against a collection, within a conversation.
+- name: GenerativeExchange
+  id_field: generative_exchange_id
+  path: /api/conversation/v1/generative-exchanges
+  description: One generative question/answer turn against a collection.
+- name: Retrieval
+  id_field: retrieval_id
+  path: /api/conversation/v1alpha1/retrievals
+  description: A retrieval request and its ranked outputs, optionally streamed over WebSocket.
+- name: GenerativeRetrieval
+  id_field: generative_retrieval_id
+  path: /api/conversation/v1alpha1/generative-retrievals
+  description: A retrieval whose outputs are summarized by the Generative Engine, optionally streamed over SSE.
+- name: Rating
+  id_field: rating_id
+  path: /api/conversation/v1/ratings
+  description: Positive or negative feedback left on an exchange, retrieval or generative result.
+- name: RatingReview
+  id_field: conv_review_id
+  path: /api/conversation/v1/rating-reviews
+  description: A reviewer's perspective on a rating — the second stage of the feedback loop.
+- name: Approval
+  id_field: approval_id
+  path: /api/conversation/v1/approvals
+  description: An approval decision recorded by an approver over feedback or a verified answer.
+- name: VerifiedAnswer
+  id_field: verified_answer_id
+  path: /api/conversation/v1alpha1/verified-answers
+  description: A curated answer that is prioritized over retrieval output for a matching query.
+- name: RegressionTest
+  id_field: test_id
+  path: /api/regression/v1/tests
+  description: Test questions run against a collection to validate answers before publishing.
+- name: Message
+  id_field: message_id
+  path: /api/messages/v1/messages
+  description: Platform messages and system events surfaced to administrators.
+relationships:
+- {from: Organization, to: Team, type: has_many, via: org_id}
+- {from: Organization, to: User, type: has_many, via: org_id}
+- {from: Organization, to: Solution, type: has_many, via: org_id}
+- {from: Organization, to: Collection, type: has_many, via: x-pryon-org-id}
+- {from: Solution, to: Collection, type: has_many, via: solution_id}
+- {from: Collection, to: Team, type: has_many, via: team_id}
+- {from: Collection, to: KnowledgeDomain, type: has_one, via: knowledge_domain_id}
+- {from: KnowledgeDomain, to: KnowledgeDomain, type: belongs_to, via: ancestor_knowledge_domain_id}
+- {from: KnowledgeDomain, to: Content, type: has_many, via: knowledge_domain_id}
+- {from: KnowledgeDomain, to: ContentGroup, type: has_many, via: knowledge_domain_id}
+- {from: ContentGroup, to: Content, type: has_many, via: content_id}
+- {from: Content, to: Subject, type: has_many, via: subject_id}
+- {from: Content, to: UserDefinedMetadataField, type: has_many, via: metadata_field_id}
+- {from: Connector, to: Content, type: has_many, via: connector_id}
+- {from: Collection, to: Exchange, type: has_many, via: collection_id}
+- {from: Collection, to: Retrieval, type: has_many, via: collection_id}
+- {from: Exchange, to: Rating, type: has_many, via: exchange_id}
+- {from: Retrieval, to: Rating, type: has_many, via: retrieval_id}
+- {from: GenerativeExchange, to: Rating, type: has_many, via: generative_exchange_id}
+- {from: Rating, to: RatingReview, type: has_many, via: rating_id}
+- {from: Rating, to: Approval, type: has_many, via: approval_id}
+- {from: Collection, to: VerifiedAnswer, type: has_many, via: collection_id}
+- {from: Collection, to: RegressionTest, type: has_many, via: collection_id}
+- {from: Exchange, to: Exchange, type: belongs_to, via: conversation_id}
+id_reference_fields:
+- {field: collection_id, occurrences: 47}
+- {field: knowledge_domain_id, occurrences: 44}
+- {field: conversation_id, occurrences: 21}
+- {field: solution_id, occurrences: 14}
+- {field: exchange_id, occurrences: 14}
+- {field: user_id, occurrences: 13}
+- {field: output_id, occurrences: 12}
+- {field: content_group_id, occurrences: 10}
+- {field: content_id, occurrences: 9}
+- {field: approval_id, occurrences: 9}
+- {field: kd_succession_id, occurrences: 7}
+- {field: rating_id, occurrences: 7}
+- {field: subject_id, occurrences: 5}
+- {field: team_id, occurrences: 5}
+- {field: retrieval_id, occurrences: 5}
+- {field: org_id, occurrences: 4}

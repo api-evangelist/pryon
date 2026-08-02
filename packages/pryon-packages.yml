@@ -1,0 +1,25 @@
+generated: '2026-08-02'
+method: searched
+source: https://www.pryon.com/product/generative-engine
+packages: []
+findings: |
+  Pryon markets client libraries but does not distribute them through public package
+  registries. The Pryon Generative SDK is described as including "API documentation, client
+  libraries (in JavaScript, TypeScript, and Python), sample code, authentication information,
+  and quick start instructions", and the Pryon Ingestion SDK as including Python libraries —
+  both are delivered to customers under an enterprise engagement rather than published.
+sdks_marketed:
+- name: Pryon Generative SDK
+  languages: [javascript, typescript, python]
+  url: https://www.pryon.com/product/generative-engine
+  public_registry: false
+- name: Pryon Ingestion SDK
+  languages: [python]
+  url: https://www.pryon.com/product/ingestion-engine
+  public_registry: false
+registries_probed:
+- {registry: npm, query: pryon, results: 0, date: '2026-08-02'}
+- {registry: pypi, names: [pryon, pryon-sdk, pryon-ingestion, pryon-generative, pryonsdk], results: 0, date: '2026-08-02'}
+- {registry: github, org: 'https://github.com/Pryon-AI', public_repos: 0, date: '2026-08-02'}
+note: No `SDKs` pointer is wired in apis.yml because no first-party client library is
+  publicly obtainable. Re-run this artifact if Pryon publishes to npm or PyPI.

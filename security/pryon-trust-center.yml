@@ -1,0 +1,12 @@
+generated: '2026-08-02'
+method: searched
+probe: true
+source: https://www.pryon.com/about/security
+url: https://www.pryon.com/about/security
+certifications:
+- SOC 2
+evidence:
+- source: https://www.pryon.com/about/security
+  keywords:
+  - soc 2
+  - soc2

@@ -1,0 +1,57 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/ (22 harvested Pryon OpenAPI documents) + https://docs.pryon.com/
+spec_type: none
+asyncapi_published: false
+webhooks_published: false
+summary: |
+  Pryon has a real streaming surface but no asynchronous event surface. There are no
+  outbound webhooks, no event bus, no message broker and no AsyncAPI document — nothing to
+  subscribe to. What Pryon does publish is in-request streaming: two WebSocket operations and
+  three server-sent-event operations that stream the tokens and events of a single
+  conversational turn back to the caller that opened it. This artifact records that surface
+  honestly rather than dressing it up as an event-driven API.
+streams:
+- name: Retrieval over WebSocket
+  transport: websocket
+  operationId: Retrieval_CreateWsRetrieval
+  path: /api/conversation/v1alpha1/retrievals:createWs
+  spec: openapi/pryon-retrieval-may2025-openapi.json
+  docs: https://docs.pryon.com/reference/retrieval_createwsretrieval
+  description: Initiate or continue a conversation with the retrieval service over a
+    WebSocket connection.
+- name: Exchange over WebSocket
+  transport: websocket
+  operationId: Exchange_CreateWsExchange
+  spec: openapi/pryon-exchange-may2025-openapi.json
+  docs: https://docs.pryon.com/reference/exchange_createwsexchange
+  description: Start or continue an existing conversation over a WebSocket connection.
+- name: Exchange events over SSE
+  transport: server-sent-events
+  operationId: ExchangeEvent_CreateExchangeEventSSE
+  spec: openapi/pryon-exchange-event-may2025-openapi.json
+  docs: https://docs.pryon.com/reference/exchangeevent_createexchangeeventsse-1
+  description: Sends ExchangeEventSSEData messages as data-only server-sent events.
+- name: Generative retrieval over SSE
+  transport: server-sent-events
+  operationId: GenerativeRetrieval_CreateGenerativeRetrievalSSE
+  spec: openapi/pryon-retrieval-may2025-openapi.json
+  docs: https://docs.pryon.com/reference/generativeretrieval_creategenerativeretrievalsse
+  description: Create a new generative retrieval streamed as server-sent events.
+- name: Generative exchange over SSE
+  transport: server-sent-events
+  operationId: GenerativeExchange_CreateGenerativeExchangeSSE
+  spec: openapi/pryon-admin-openapi.json
+  description: Stream a generative exchange as server-sent events.
+symphony_streaming:
+  documented: true
+  url: https://docs.pryon.com/docs/what-is-symphony
+  note: The Q1 2026 release made real-time streaming for Symphony orchestration workflows
+    production-ready, and the App Builder chatbot streams responses in real time.
+gaps:
+- No AsyncAPI document is published for the WebSocket or SSE surfaces.
+- No outbound webhooks — a Pryon consumer cannot register a callback URL for ingestion,
+  sync, feedback or approval events. Ingestion and sync progress are polled through the
+  Content and Analytics APIs instead.
+- Because there is no event surface, the asyncapi scoring family is not applicable here;
+  no AsyncAPI or Webhooks pointer is wired in apis.yml.

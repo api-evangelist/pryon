@@ -1,0 +1,204 @@
+# Pryon Documentation
+
+> Documentation for Pryon
+
+## Guides
+- [About Pryon](https://docs.pryon.com/docs/about-pryon.md): Pryon provides a trusted, safe, and proven path to implementing generative AI in enterprises.
+- [Quick Start for Admins](https://docs.pryon.com/docs/getting-started.md): Simplifying the Pryon start up experience for Administrators.
+- [What's Behind the Pryon Platform](https://docs.pryon.com/docs/about-pryon-platform.md): The Pryon Platform manages and provisions your information, offering robust configuration, management, and reporting capabilities using an intuitive interface or configurable APIs, allowing your information to be quickly deployed in the cloud or on-premises.
+- [Setting up Single Sign On](https://docs.pryon.com/docs/single-sign-on.md): Single sign-on (SSO) authenticates users into different applications with a single set of credentials.
+- [Authentication Scenarios](https://docs.pryon.com/docs/authentication-scenarios.md): Your organizational requirements determine which is the correct authentication implementation for your architecture.
+- [Platform Configuration](https://docs.pryon.com/docs/platform-configuration.md): Administrators can configure the Platform to manage the organization, teams, and members, and control permissions
+- [Multi-tenancy](https://docs.pryon.com/docs/multi-tenancy.md): Allow different sets of users to log in using the same email domain and multiple IDPs.
+- [About Connectors](https://docs.pryon.com/docs/connectors.md): Pryon Platform uses connectors to access your content in third-party knowledge managers.
+- [Universal Connector](https://docs.pryon.com/docs/universal-connector.md): Connect to any service without a pre-built connector using the Universal Connector APIs.
+- [Amazon S3](https://docs.pryon.com/docs/amazon-s3.md): Pryon can connect directly to an Amazon S3 bucket to access the contents within.
+- [Azure](https://docs.pryon.com/docs/azure_blob_service.md): Pryon can connect directly to Microsoft's object storage solution for the cloud.
+- [Google Cloud Storage](https://docs.pryon.com/docs/google-cloud-storage.md): Pryon can connect directly to any Google Cloud Storage folder to ingest supported file types.
+- [Network File System](https://docs.pryon.com/docs/nfs.md): Use a network file system to securely provide access to files and directories stored on mounted drives, network shares, or local storage within your infrastructure.
+- [Salesforce](https://docs.pryon.com/docs/salesforce.md): Pryon can connect directly to Salesforce to ingest supported file types.
+- [SharePoint](https://docs.pryon.com/docs/sharepoint.md): Pryon can connect directly to SharePoint to ingest supported file types.
+- [About Collections](https://docs.pryon.com/docs/collections.md): Collections are part of the fundamental architecture of the Pryon Platform that keep your content organized and accessible.
+- [Collections Dashboard](https://docs.pryon.com/docs/collection-dashboard.md): Each collection has a unique dashboard with valuable statistics for determining how your collection is used.
+- [Preparing Source Content](https://docs.pryon.com/docs/preparing-source-content.md): Successful collections require planning. Preparing your content is a key aspect of planning.
+- [URL Formats by Connector](https://docs.pryon.com/docs/url-formats-by-connector.md): Any links for ingestion need to conform with specific URL conventions based on the connector being used.
+- [Creating a Collection](https://docs.pryon.com/docs/creating-a-collection.md): A collection is a compilation of your content into a single knowledge source of truth so that your users can find answers to all their questions.
+- [Configuring Vast Search Capabilities](https://docs.pryon.com/docs/configuring-vast-search-capabilities.md): Vast search can retrieve and rank up to 400 results using advanced ranking capabilities.
+- [Using Key-Value Pairs](https://docs.pryon.com/docs/using-key-value-pairs.md): Setting up a key-value pair allows for fast data retrieval of data.
+- [Adding Teams and Members](https://docs.pryon.com/docs/adding-teams-and-members.md): Choose the specific teams and members who will have permission to access your collections and their level of authority.
+- [Advanced Collection Configuration](https://docs.pryon.com/docs/advanced-collection-configuration.md): Once a collection is built and functional, you can update the configuration to adapt to organizational changes or to meet changing customer needs.
+- [Working with Content](https://docs.pryon.com/docs/content.md): The Content tab shows the content currently active in the collection and any content syncs or re-ingests that may be in progress or ready for review.
+- [Syncing Existing Sources](https://docs.pryon.com/docs/syncing-existing-sources.md): Once your collection is active, you can add, delete, or update sources by syncing new information.
+- [Creating Test Questions](https://docs.pryon.com/docs/creating-test-questions.md): Test questions help you to identify appropriate responses before you publish content.
+- [Updating Source Content](https://docs.pryon.com/docs/updating-source-content.md): Once your collection is published, you can add additional or update content.
+- [Filtering and Sorting Collections](https://docs.pryon.com/docs/filtering-collections.md): Using filters or a sort order allows you to easily and quickly locate the relevant collection.
+- [Working with Verified Answers](https://docs.pryon.com/docs/verified-answers.md): A verified answer prioritizes the most accurate answers within a collection.
+- [Managing Feedback](https://docs.pryon.com/docs/feedback.md): Feedback is an essential part of maintaining and keeping your collections updated and accurate.
+- [Restoring a Previous Collection](https://docs.pryon.com/docs/reverting.md): Occasionally, you may need to abandon your most recent changes and revert to an earlier version of your collection.
+- [Deleting a Collection](https://docs.pryon.com/docs/deleting-a-collection.md): Deleting a collection is permanent. Verify that the collection can and should be deleted prior to moving forward.
+- [Creating Reports](https://docs.pryon.com/docs/creating-reports.md): Using the Pryon platform, you can customize reports detailing how your users interact with your collection.
+- [Troubleshooting Ingestion](https://docs.pryon.com/docs/solving-ingestion-failures.md): How to solve ingestion issues when building or updating a collection.
+- [What is Symphony?](https://docs.pryon.com/docs/what-is-symphony.md): Utilize a low code environment to build custom RAG and Agentic orchestrations.
+- [Node Reference](https://docs.pryon.com/docs/node-reference.md): The power and flexibility of Symphony lies with the components, or nodes, used to build a workflow.
+- [Building a Custom Orchestration](https://docs.pryon.com/docs/how-to-build-a-custom-solution.md): Walk through the modules below to learn how to use our custom RAG and Agentic orchestration builder.
+- [Refining your Custom Solution](https://docs.pryon.com/docs/refining-your-custom-solution.md): Refining your solution with additional configuration settings will help it work more efficiently.
+- [Creating Conditional Branches](https://docs.pryon.com/docs/creating-conditional-branches.md): Add [query classification](https://docs.pryon.com/docs/query-classification#/) and configure conditional routing for your work flow.
+- [Extracting Generative Responses and Custom API Outputs](https://docs.pryon.com/docs/generative-and-custom-api-outputs.md): Learn about common operations to transform your output and call an external API with a custom request node.
+- [Using Subflows](https://docs.pryon.com/docs/working-with-subflows.md): Save time by building reusable, pre-configured common workflows to use in any larger workflow.
+- [Configuring Live Conversation History](https://docs.pryon.com/docs/configuring-live-conversation-history.md): Maintain the context in your conversation to get better answers
+- [Using Multiple Collections](https://docs.pryon.com/docs/workflow-with-multiple-collections.md): Under certain circumstances, building a Symphony workflow that includes multiple [source collections](https://docs.pryon.com/docs/collections) can lead to easier data management.
+- [Using Natural Language Transformations](https://docs.pryon.com/docs/using-natural-language-transformations.md): Since the pre-defined transformations cannot anticipate every need, you can set up your own definitions.
+- [Restoring a Previous Workflow](https://docs.pryon.com/docs/reverting-to-a-previous-version.md): Restoring a previous revision promotes system stability and allow you to remedy issues without requiring manual reconfiguration.
+- [Building a Compatible Generative Workflow](https://docs.pryon.com/docs/building-a-compatible-generative-workflow.md): Build a generative workflow with conversation history to embed the Pryon experience on-prem with your own conversational application.
+- [Building a Compatible RAG Workflow](https://docs.pryon.com/docs/compatible-conversational-rag-workflow.md): Build a workflow to embed the Pryon experience on-prem with your own conversational application.
+- [Configuring the Application](https://docs.pryon.com/docs/building-your-own-application.md): Create, configure and deploy a self-hosted conversational application leveraging the strength of the Pryon engines.
+- [Embedding the Conversational App](https://docs.pryon.com/docs/embedding-the-conversational-app.md): Using native embedding allows your users to access Cadence directly within their daily workflows.
+- [Embedding an iframe Element](https://docs.pryon.com/docs/embedding-with-iframe.md): Use iframe to nest data and browsing context within any browser.
+- [Embedding in MS Teams ](https://docs.pryon.com/docs/using-chatbot-with-msteams.md): Set up the conversational application to use during your Microsoft Teams meetings.
+- [Embedding as a MS Word Add-in](https://docs.pryon.com/docs/creating-a-ms-word-add-in.md): Boost your efficiency by adding a chatbot to Microsoft Word.
+- [About Metadata](https://docs.pryon.com/docs/about-metadata.md): The Pryon Retrieval Engine uses metadata to make answering your questions even more efficient and accurate.
+- [Using Source Metadata](https://docs.pryon.com/docs/using-sor-metadata.md): Metadata data that describes and originates from source content can specify filters to help return more relevant answers.
+- [Adding User-defined Metadata Fields](https://docs.pryon.com/docs/adding-metadata.md): Adding user-defined metadata to your configuration and collections helps make your retrieval process more efficient.
+- [Assigning Metadata to Connectors](https://docs.pryon.com/docs/assigning-metadata-connections.md): Metadata assigned to connectors allows you to use integrate the filters during ingestion.
+- [Assigning Metadata to Collections](https://docs.pryon.com/docs/assigning-metadata-to-collections.md): Assign user-defined metadata to your collections to enhance the answers you receive.
+- [Filtering with Metadata](https://docs.pryon.com/docs/filtering-with-metadata.md): Using metadata filtering enables more specific answers to your questions.
+- [Table Structure Recognition](https://docs.pryon.com/docs/table-structure-recognition.md): Accurately portraying table information can be the most frustrating part of working with data.  The Pryon Ingestion Engine scans and structures tables efficiently using TSR.
+- [Query Canonicalization](https://docs.pryon.com/docs/query-canonicalization.md): The Pryon Retrieval Engine retrieval engine anticipates differences in how sentences may be phrased and returns consistent answers even when the questions asked are not identical.
+- [Query Classification](https://docs.pryon.com/docs/query-classification.md): Set conditions on your queries to determine how they should be answered.
+- [Understanding Tags](https://docs.pryon.com/docs/understanding-tags.md): Pryon uses synonyms and tags to filter potential responses when searching for answers to your queries.
+- [Asking Questions](https://docs.pryon.com/docs/asking-questions.md): Once your [collection](https://docs.pryon.com/docs/collections#/) is built, you can ask questions of your data, [verifying and ranking the answers](https://docs.pryon.com/docs/verified-answers#/) so that they reflect the highest to lowest confidence match.
+- [Activating Generative Mode](https://docs.pryon.com/docs/activating-generative-mode.md): Generative mode overlays the Generative Engine over the Pryon RAG Suite.
+- [Using Conversational Context](https://docs.pryon.com/docs/using-conversational-context.md): Maintain a conversation history between multiple queries.
+- [Submitting Feedback](https://docs.pryon.com/docs/submitting-feedback.md): Providing feedback influences the content of the collection by providing valuable insight into what answers are being returned and whether the answers are good.
+- [Scheduling a Demonstration](https://docs.pryon.com/docs/contact-support.md): Contact Pryon to schedule a demonstration.
+
+## API Reference
+- [API Authentication](https://docs.pryon.com/reference/api-authentication.md): Pryon APIs are authenticated with OAuth2 based JSON Web Token (JWT) based access tokens.
+- [Get Collections](https://docs.pryon.com/reference/knowledgecollectionservice_getcollectiondomain-1.md): Retrieve all knowledge collections for an organization.
+- [List Collections](https://docs.pryon.com/reference/knowledgecollectionservice_listcollections-1.md): List all knowledge collections configured for an organization.
+- [Retrieve Collections](https://docs.pryon.com/reference/knowledgecollectionservice_getcollection-1.md): Retrieve an existing knowledge collection.
+- [Create Collections](https://docs.pryon.com/reference/knowledgecollectionservice_createcollectionwithsources-1.md)
+- [Decommission Knowledge Domain](https://docs.pryon.com/reference/knowledgedomain_createdomainwithsources-1.md)
+- [Delete Collections](https://docs.pryon.com/reference/knowledgecollectionservice_deletecollection-1.md): Delete collections from an organization while also locating and decommissioning all knowledge domain versions associated with the record.
+- [About Retrieval Request and Response](https://docs.pryon.com/reference/retrieval-request-and-response.md): Understanding the request and response process.
+- [Collection Configurations for Retrieval](https://docs.pryon.com/reference/collection-configurations-for-retrieval.md)
+- [Get Content](https://docs.pryon.com/reference/contentservice_getcontent.md)
+- [List Contents](https://docs.pryon.com/reference/contentservice_listcontents.md): List contents associated with a knowledge domain.
+- [Get Content Metadata](https://docs.pryon.com/reference/contentservice_getcontentmetadata.md): List metadata by content ID.
+- [Get Content Group](https://docs.pryon.com/reference/contentservice_getcontentgroup.md): Retrieve a content group using the ID.
+- [List Content Groups](https://docs.pryon.com/reference/contentservice_listcontentgroups.md): Filter content groups by knowledge domain and content.
+- [Get Content Group Content](https://docs.pryon.com/reference/contentservice_getcontentgroupcontent.md): Get content group sources by ID.
+- [List Content Group Contents](https://docs.pryon.com/reference/contentservice_listcontentgroupcontents.md): List content group sources by ID.
+- [Get Content Image](https://docs.pryon.com/reference/contentservice_getcontentimage.md): Return an image representation of the content.
+- [List Content Subjects](https://docs.pryon.com/reference/contentservice_listcontentsubjects.md): List subjects associated with a content item.
+- [Get Summary](https://docs.pryon.com/reference/contentservice_getsummary.md): Get summary information by content ID.
+- [List Retrieval Content Extracts](https://docs.pryon.com/reference/contentservice_listretrievalcontentextracts.md): List of retrieval extracts by content ID.
+- [List Processed Content Extracts](https://docs.pryon.com/reference/contentservice_listprocessedcontentextracts.md): List initial processed extracts by content ID.
+- [Create Content](https://docs.pryon.com/reference/contentservice_createcontent.md): Create methods for contents.
+- [Create Content Group](https://docs.pryon.com/reference/contentservice_createcontentgroup.md)
+- [Create Content Group Content](https://docs.pryon.com/reference/contentservice_createcontentgroupcontent.md): Create content group sources.
+- [Update Content Group](https://docs.pryon.com/reference/contentservice_updatecontentgroup.md): Update the display name for a content group.
+- [Delete Content](https://docs.pryon.com/reference/contentservice_deletecontent.md): Delete the content and all child resources.
+- [Delete Content Group](https://docs.pryon.com/reference/contentservice_deletecontentgroup.md): Delete a content group without altering the content resources.
+- [Delete Content Group Content](https://docs.pryon.com/reference/contentservice_deletecontentgroupcontent.md): Delete content associations within the parent content group.
+- [Delete Content Group Contents](https://docs.pryon.com/reference/contentservice_deletecontentgroupcontents.md): Delete all child content associations with the parent content group.
+- [Cascade Delete Content Group](https://docs.pryon.com/reference/contentservice_cascadedeletecontentgroup.md): Delete content group source associations and remove from knowledge domain.
+- [Cascade Delete Content](https://docs.pryon.com/reference/contentservice_cascadedeletecontent.md): Delete the content and all child resources, and remove from all content groups.
+- [Get User-Defined Metadata Fields](https://docs.pryon.com/reference/userdefinedmetadata_getuserdefinedmetadatafield.md): Get a user-defined metadata field.
+- [Get User-Defined Metadata Field Values](https://docs.pryon.com/reference/userdefinedmetadata_getuserdefinedmetadatafieldvalue.md): Get a user-defined metadata field value.
+- [List User-Defined Metadata Fields](https://docs.pryon.com/reference/userdefinedmetadata_listuserdefinedmetadatafields.md): List user-defined metadata fields.
+- [List Org IDs using Metadata Field](https://docs.pryon.com/reference/userdefinedmetadata_listcollectionsbymetadatafield.md): List collection IDs by org-level user-defined metadata field ID.
+- [List User-Defined Metadata Field Values](https://docs.pryon.com/reference/userdefinedmetadata_listuserdefinedmetadatafieldvalues.md): List user-defined metadata field values.
+- [Create User-Defined Metadata Fields](https://docs.pryon.com/reference/userdefinedmetadata_createuserdefinedmetadatafield.md): Create a new user-defined metadata field for a collection.
+- [Update User-Defined Metadata Fields](https://docs.pryon.com/reference/userdefinedmetadata_updateuserdefinedmetadatafield.md): Update a user-defined metadata field.
+- [Update User-Defined Metadata Field Values](https://docs.pryon.com/reference/userdefinedmetadata_updateuserdefinedmetadatafieldvalue.md): Update a user-defined metadata field value.
+- [Delete User-Defined Metadata Fields](https://docs.pryon.com/reference/userdefinedmetadata_deleteuserdefinedmetadatafield.md): Delete a user-defined metadata field.
+- [Delete User-Defined Metadata Field Values](https://docs.pryon.com/reference/userdefinedmetadata_deleteuserdefinedmetadatafieldvalue.md): Delete a user-defined metadata field value.
+- [Get Retrieval](https://docs.pryon.com/reference/retrieval_getretrieval.md): Retrieve the query and output data for existing retrieval data.
+- [Get Retrieval Content Image](https://docs.pryon.com/reference/retrieval_getretrievalcontentimage.md): Get an image representation of the content with bounding boxes.
+- [Create Retrieval](https://docs.pryon.com/reference/retrieval_createretrieval.md): Initiate or continue a conversation with the retrieval service.
+- [Create Ws Retrieval](https://docs.pryon.com/reference/retrieval_createwsretrieval.md): Initiate or continue a conversation.
+- [Get Retrieval Rating](https://docs.pryon.com/reference/retrievalfeedback_getretrievalrating.md): Get a retrieval rating.
+- [Get Retrieval Rating Review](https://docs.pryon.com/reference/retrievalfeedback_getretrievalratingreview.md): Return the review perspective of a retrieval rating item.
+- [List Retrieval Rating Reviews](https://docs.pryon.com/reference/retrievalfeedback_listretrievalratingreviews.md): Return rating reviews for a resource.
+- [Get Verified Answer](https://docs.pryon.com/reference/retrievalfeedback_getverifiedanswer.md): Get information about a verified answer.
+- [List Verified Answers](https://docs.pryon.com/reference/retrievalfeedback_listverifiedanswers.md): List verified answer entries.
+- [Create Retrieval Rating](https://docs.pryon.com/reference/retrievalfeedback_createretrievalrating.md): Create a retrieval rating.
+- [Create Verified Answer](https://docs.pryon.com/reference/retrievalfeedback_createverifiedanswer.md): Create a verified answer entry.
+- [Update Retrieval Rating](https://docs.pryon.com/reference/retrievalfeedback_updateretrievalrating.md): Modify an existing retrieval rating.
+- [Update Retrieval Rating Review](https://docs.pryon.com/reference/retrievalfeedback_updateretrievalratingreview.md): Update the review perspective of a retrieval rating item.
+- [Update Verified Answer](https://docs.pryon.com/reference/retrievalfeedback_updateverifiedanswer.md): Modify an existing verified answer entry.
+- [Delete Retrieval Rating](https://docs.pryon.com/reference/retrievalfeedback_deleteretrievalrating.md): Delete a retrieval rating.
+- [Delete Verified Answer](https://docs.pryon.com/reference/retrievalfeedback_deleteverifiedanswer.md): Delete a verified answer entry.
+- [About Exchange Request and Response](https://docs.pryon.com/reference/conversation-request-and-response-cycle-overview.md): Understanding the process of conversational exchange requests and responses.
+- [Retrieve Exchange Query and Response](https://docs.pryon.com/reference/exchange_getexchange.md): Retrieve collection information on questions asked and responses returned during the course of an exchange.
+- [Initiate or Continue Exchange](https://docs.pryon.com/reference/exchange_createwsexchange.md): Start or continue an existing conversation.
+- [Review Conversation Response](https://docs.pryon.com/reference/exchange_createexchange.md): Reviews the conversation exchange request and response cycle.
+- [List Models](https://docs.pryon.com/reference/generative_listchatcompletionsmodels-1.md): Lists the models available for our Chat Completions API.
+- [Chat Completions](https://docs.pryon.com/reference/generative_createchatcompletions.md): Generates a model response from the messages in a conversation.
+- [Query Guardrails](https://docs.pryon.com/reference/generative_guardrailquery.md): Return classifications for query toxicity and prompt injection.
+- [Route Query](https://docs.pryon.com/reference/generative_routequery.md): Return classifications to route an incoming query to an appropriate response pathway.
+- [Rewrite Query](https://docs.pryon.com/reference/generative_completequery-2.md): Generates a completed query by replacing references in prior turns of the conversation.
+- [Summarize Answers](https://docs.pryon.com/reference/generative_answersummarization.md): Generates a summarized answer given retrieval outputs and configurations.
+- [Get Read Permission for Content](https://docs.pryon.com/reference/connectorserviceexternal_getreadpermission.md): Get the associated permission group IDs.
+- [Discover Content Source](https://docs.pryon.com/reference/connectorserviceexternal_pullcontents.md): Lists all content to be indexed, with pagination.
+- [Get Content Information](https://docs.pryon.com/reference/connectorserviceexternal_downloadcontentdata.md): Use custom methods to get ContentData to download in multiple parts.
+- [Get Content Metadata](https://docs.pryon.com/reference/connectorserviceexternal_getmetadata.md): Get the actual content metadata.
+- [List Connector Group Permissions](https://docs.pryon.com/reference/connectorserviceexternal_listgrouppermissions.md): List all permission group IDs.
+- [List Connector Group Permissions](https://docs.pryon.com/reference/connectorserviceexternal_listgrouppermissionmembers.md): List all users (emails) associated with the permission group.
+- [Get Information on Approval Entry](https://docs.pryon.com/reference/feedback_getapproval.md)
+- [List Approval Entries](https://docs.pryon.com/reference/feedback_listapprovals.md)
+- [List Exchange Rating Reviews](https://docs.pryon.com/reference/feedback_listexchangeratingreviews.md)
+- [Retrieve Exchange Rating](https://docs.pryon.com/reference/feedback_getexchangerating.md)
+- [Retrieve Exchange Rating Review](https://docs.pryon.com/reference/feedback_getexchangeratingreview.md)
+- [Create Approval Entry](https://docs.pryon.com/reference/feedback_createapproval.md)
+- [Create Exchange Rating](https://docs.pryon.com/reference/feedback_createexchangerating.md)
+- [Modify Approval Entry](https://docs.pryon.com/reference/feedback_updateapproval.md)
+- [Modify Exchange Rating](https://docs.pryon.com/reference/feedback_updateexchangerating.md)
+- [Review Exchange Rating](https://docs.pryon.com/reference/feedback_updateexchangeratingreview.md)
+- [Delete Approval Entry](https://docs.pryon.com/reference/feedback_deleteapproval.md)
+- [Delete Exchange Rating](https://docs.pryon.com/reference/feedback_deleteexchangerating.md)
+- [About Generative Retrieval](https://docs.pryon.com/reference/generative-retrieval-process.md): Generative retrieval includes asking a question, having retrieval find all relevant documents, and returning a generative answer.
+- [Get Generative Retrieval](https://docs.pryon.com/reference/generativeretrieval_getgenerativeretrieval.md): Return a generative retrieval answer.
+- [Create Generative Retrieval SSE](https://docs.pryon.com/reference/generativeretrieval_creategenerativeretrievalsse.md): Create a new generative retrieval using server-sent events (SSE).
+- [Generative Rating Reviews](https://docs.pryon.com/reference/generativefeedback_listgenerativeexchangeratingreviews.md): Review and approve feedback, verified answers, and ratings left for retrieved queries.
+- [Retrieve Generative Ratings](https://docs.pryon.com/reference/generativefeedback_getgenerativeexchangerating.md): Display the ratings left for retrieved queries.
+- [Retrieve Exchange Rating Perspective](https://docs.pryon.com/reference/generativefeedback_getgenerativeexchangeratingreview.md): Explore the reasoning behind reviews and approvals left on feedback, verified answers, and ratings.
+- [Create Generative Exchange Rating](https://docs.pryon.com/reference/generativefeedback_creategenerativeexchangerating.md): Leave positive or negative ratings on retrieved queries.
+- [Generative Ratings](https://docs.pryon.com/reference/generativefeedback_updategenerativeexchangerating.md): Update the ratings left for retrieved queries.
+- [Update Exchange Rating Item](https://docs.pryon.com/reference/generativefeedback_updategenerativeexchangeratingreview.md): Update the reviews and approvals on feedback, verified answers, and ratings.
+- [Delete Generative Ratings](https://docs.pryon.com/reference/generativefeedback_deletegenerativeexchangerating.md): Delete the ratings left for retrieved queries.
+- [Get Generative Retrieval Rating](https://docs.pryon.com/reference/generativeretrievalfeedback_getgenerativeretrievalrating.md): Return a generative retrieval rating.
+- [Get Generative Retrieval Rating Review](https://docs.pryon.com/reference/generativeretrievalfeedback_getgenerativeretrievalratingreview.md): List the review perspective of a retrieval rating item.
+- [List Generative Retrieval Rating Reviews](https://docs.pryon.com/reference/generativeretrievalfeedback_listgenerativeretrievalratingreviews.md): List generative retrieval reviews by rating.
+- [Create Generative Retrieval Rating](https://docs.pryon.com/reference/generativeretrievalfeedback_creategenerativeretrievalrating.md): Create a rating for the generative retrieval.
+- [Update Generative Retrieval Rating](https://docs.pryon.com/reference/generativeretrievalfeedback_updategenerativeretrievalrating.md): Update a generative retrieval rating.
+- [Update Generative Retrieval Rating Review](https://docs.pryon.com/reference/generativeretrievalfeedback_updategenerativeretrievalratingreview.md): Update the review perspective of a retrieval rating item.
+- [Delete Generative Retrieval Rating](https://docs.pryon.com/reference/generativeretrievalfeedback_deletegenerativeretrievalrating.md): Delete a generative retrieval rating.
+- [Create Exchange Event SSE Service](https://docs.pryon.com/reference/exchangeevent_createexchangeeventsse-1.md): Sends ExchangeEventSSEData messages as data-only server-sent events (SSE).
+
+## Recipes
+- [Authenticating to the Pryon APIs](https://docs.pryon.com/recipes/authenticating-to-the-pryon-apis.md)
+- [Generative: Chat completions with function calling](https://docs.pryon.com/recipes/calling-a-chat-completion-function.md)
+- [Generative: Chat completions with structured outputs](https://docs.pryon.com/recipes/chat-completions-with-structured-outputs.md)
+- [Generative: Checking a query against existing conversational guardrails](https://docs.pryon.com/recipes/checking-a-query-against-existing-converational-guardrails.md)
+- [Collections: Creating a collection](https://docs.pryon.com/recipes/create-and-confirm-collection.md)
+- [Retrieval: Using the extractive mode exchange](https://docs.pryon.com/recipes/extractive-mode-exchange.md)
+- [Generative: Non-streaming chat completion](https://docs.pryon.com/recipes/generating-a-traditional-chat-completion.md)
+- [Generative: Streaming chat completion](https://docs.pryon.com/recipes/generative-chat-completion.md)
+- [Collections: Getting content group sources](https://docs.pryon.com/recipes/getting-content-group-details.md)
+- [Collections: Getting details on a single collection ](https://docs.pryon.com/recipes/getting-details-on-a-single-collection.md)
+- [Generative: Getting started](https://docs.pryon.com/recipes/getting-started-with-generative-apis.md)
+- [Generative: List models for chat completion](https://docs.pryon.com/recipes/list-models-for-chat-completion.md)
+- [Collections: Listing contents and metadata for a knowledge domain](https://docs.pryon.com/recipes/listing-the-contents-and-metadata-for-a-collection.md)
+- [Retrieval: Rating a response](https://docs.pryon.com/recipes/rating-an-extractive-response.md)
+- [Collections: Re-syncing failed contents](https://docs.pryon.com/recipes/re-sync-failed-contents.md)
+- [Generative: Replace query references](https://docs.pryon.com/recipes/replace-query-references.md)
+- [Retrieval: Returning a content image](https://docs.pryon.com/recipes/retrieving-a-content-image.md)
+- [Collections: Returning a list of all collections](https://docs.pryon.com/recipes/returing-a-list-of-all-collections-for-an-organization.md)
+- [Generative: Routing a query](https://docs.pryon.com/recipes/routing-a-generative-query.md)
+- [Collections: Syncing and updating sources](https://docs.pryon.com/recipes/syncing-your-collection-sources.md)
+
+## Changelog
+- [Q1 2026 Pryon Platform Release Notes](https://docs.pryon.com/changelog/q1-2026-release-notes.md)
+- [October 17, 2025 On-Prem/VPC Release](https://docs.pryon.com/changelog/october-17-2025-onprem-release.md)

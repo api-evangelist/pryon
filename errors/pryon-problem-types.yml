@@ -1,0 +1,56 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/ (22 harvested Pryon OpenAPI documents, 276 operations)
+format: google-rpc-status
+docs: https://docs.pryon.com/reference/api-authentication
+notes: |
+  Pryon's public REST surface is generated from Protocol Buffers via grpc-gateway. Every
+  operation declares exactly two responses: a 200 with the typed success body, and a
+  `default` error response carrying the google.rpc.Status envelope. There is no
+  RFC 9457 application/problem+json media type and no enumerated per-status error
+  catalogue in the published specs; HTTP status is carried in the envelope's numeric
+  `code` field using the canonical google.rpc.Code enumeration, and machine-readable
+  detail is packed into `details[]` as google.protobuf.Any messages.
+envelope:
+  media_type: application/json
+  schema: google.rpc.Status
+  fields:
+  - {name: code, type: integer, format: int32, description: 'google.rpc.Code status code (not the HTTP status)'}
+  - {name: message, type: string, description: 'Developer-facing error message, English'}
+  - {name: details, type: array, items: google.protobuf.Any, description: 'Typed error detail messages (type_url + base64 value)'}
+  component_names_in_specs: [googlerpcStatus, rpcStatus, Status, filename_googlerpcStatus]
+problems:
+- status: default
+  type: https://cloud.google.com/apis/design/errors
+  title: An unexpected error response
+  schema: google.rpc.Status
+  media_type: application/json
+  operation_count: 276
+  source_specs:
+  - openapi/pryon-admin-openapi.json
+  - openapi/pryon-chat-completion-only-generative-openapi.json
+  - openapi/pryon-chat-completion-openapi.json
+  - openapi/pryon-domains-swagger-may2025-openapi.json
+  - openapi/pryon-exchange-event-may2025-openapi.json
+  - openapi/pryon-exchange-may2025-openapi.json
+  - openapi/pryon-extra-chat-completion-openapi.json
+  - openapi/pryon-feedback-august2025-openapi.json
+  - openapi/pryon-feedback-may2025-openapi.json
+  - openapi/pryon-gen-answer-summary-openapi.json
+  - openapi/pryon-generative-feedback-may2025-openapi.json
+  - openapi/pryon-generative-listmodels-openapi.json
+  - openapi/pryon-generative-openapi.json
+  - openapi/pryon-generative-query-guardrails-openapi.json
+  - openapi/pryon-generative-query-rewrite-openapi.json
+  - openapi/pryon-generative-services-may2025-openapi.json
+  - openapi/pryon-generative-swagger-openapi.json
+  - openapi/pryon-getcontentimage-swagger-openapi.json
+  - openapi/pryon-knowledge-collections-may2025-openapi.json
+  - openapi/pryon-retrieval-may2025-openapi.json
+  - openapi/pryon-universal-connector-may2025-openapi.json
+  - openapi/pryon-user-defined-metadata-may2025-openapi.json
+declared_status_codes: [200, default]
+gaps:
+- No enumerated 4xx/5xx responses are declared in any published Pryon OpenAPI document.
+- No documented error-code registry was found on docs.pryon.com as of the probe date.
+- Errors are not RFC 9457 problem+json; consumers must map google.rpc.Code to HTTP semantics.

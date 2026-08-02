@@ -1,0 +1,92 @@
+generated: '2026-08-02'
+method: searched
+source: https://www.pryon.com/about/security
+derived_from: openapi/ (22 harvested Pryon OpenAPI documents) + https://docs.pryon.com/
+standards:
+- id: oauth2
+  conforms: true
+  evidence: 'OAuth 2.0 client-credentials flow documented at
+    https://docs.pryon.com/reference/api-authentication with token endpoints
+    https://auth.pryon.net/oauth/token and https://auth-us-central-1.pryon.net/oauth/token;
+    RFC 6749 cited directly in the docs.'
+- id: oidc
+  conforms: true
+  evidence: 'End-user tokens are retrieved from an OpenID Connect flow; SSO and multi-tenant
+    IdP federation documented at https://docs.pryon.com/docs/single-sign-on and
+    https://docs.pryon.com/docs/multi-tenancy. Keycloak 26.4 named as the platform identity
+    provider in the Q1 2026 release notes.'
+- id: jwt-rfc7519
+  conforms: true
+  evidence: Access tokens are documented as JSON Web Tokens.
+- id: openapi-3
+  conforms: true
+  evidence: 22 OpenAPI documents published (3.0.0/3.0.1/3.0.3) covering 276 operations at
+    https://docs.pryon.com/openapi/
+- id: grpc
+  conforms: true
+  evidence: All public REST surfaces are generated from Protocol Buffers via grpc-gateway
+    (spec info.title values carry .proto paths; google.rpc.Status error envelope).
+- id: google-aip-resource-naming
+  conforms: true
+  evidence: 'Resource-oriented paths with custom `:verb` methods and page_size/page_token/
+    order_by pagination (AIP-158).'
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use the google.rpc.Status envelope over application/json; no
+    application/problem+json media type appears in any published spec.
+- id: sse-html5
+  conforms: true
+  evidence: 'ExchangeEvent_CreateExchangeEventSSE, GenerativeRetrieval_CreateGenerativeRetrievalSSE
+    and GenerativeExchange_CreateGenerativeExchangeSSE are published as data-only
+    server-sent event streams.'
+- id: websocket-rfc6455
+  conforms: true
+  evidence: Retrieval_CreateWsRetrieval and Exchange_CreateWsExchange are published WebSocket surfaces.
+- id: openai-chat-completions-compatible
+  conforms: true
+  evidence: '/api/generative/v1alpha1/chat/completions plus a models listing endpoint, with
+    function calling and structured outputs (Q1 2026 release notes).'
+- id: asyncapi
+  conforms: false
+  evidence: No AsyncAPI document published for the SSE/WebSocket surfaces.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset or Deprecation header support documented.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: '/.well-known/security.txt returns 404 on www.pryon.com, docs.pryon.com and api.pryon.net.'
+- id: soc2-type-2
+  conforms: true
+  evidence: 'SOC 2 Type 2 compliance stated at https://www.pryon.com/about/security'
+- id: fips-140-2
+  conforms: true
+  evidence: 'Public cloud deployments run on Google Cloud Platform with FIPS 140-2 compliance
+    (https://www.pryon.com/about/security)'
+- id: disa-stig
+  conforms: true
+  evidence: 'DISA STIG compliance stated for all federal deployments
+    (https://www.pryon.com/about/security)'
+- id: nist-ai-rmf
+  conforms: true
+  evidence: 'Pryon publishes documentation on how its GenAI solutions align to the NIST AI
+    Risk Management Framework (https://www.pryon.com/about/security)'
+- id: iso-27001
+  conforms: false
+  evidence: Not claimed on the published security page.
+- id: fedramp
+  conforms: false
+  evidence: Not claimed on the published security page.
+- id: hipaa
+  conforms: false
+  evidence: Not claimed on the published security page.
+compliance_program:
+  url: https://www.pryon.com/about/security
+  certifications: [SOC 2 Type 2, FIPS 140-2, DISA STIG]
+  frameworks: [NIST AI Risk Management Framework]
+  controls:
+  - 256-bit encryption in transit and at rest
+  - Document-level access control lists carried through ingestion
+  - Read-only access to customer content repositories
+  - Database and collection segmentation
+  - Enterprise SSO
+  - Air-gapped and on-premises deployment options

@@ -1,0 +1,36 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Pryon — pryon/api/ext/connector/v1alpha1/connector.proto
+  version: '1.0.0'
+extends: openapi/pryon-universal-connector-may2025-openapi.json
+x-generated: '2026-08-02'
+x-method: generated
+x-source: https://docs.pryon.com/openapi/ (harvested spec) + apis.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: pryon
+    x-apievangelist-apis-json: https://raw.githubusercontent.com/api-evangelist/pryon/refs/heads/main/apis.yml
+    x-apievangelist-documentation: https://docs.pryon.com/
+    x-apievangelist-llms-txt: https://docs.pryon.com/llms.txt
+    x-apievangelist-operations: 6
+- target: $.servers
+  update:
+  - url: https://api.pryon.net
+    description: Pryon Cloud (unified platform). On-premises, VPC and air-gapped deployments substitute their own base URL.
+- target: $.components.securitySchemes
+  update:
+    pryonOAuth2:
+      type: oauth2
+      description: >-
+        Pryon APIs are authenticated with OAuth2 JWT bearer access tokens obtained from the
+        client-credentials endpoint. The published specs model this as an apiKey header,
+        which understates the flow documented at https://docs.pryon.com/reference/api-authentication.
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth-us-central-1.pryon.net/oauth/token
+          scopes: {}
+- target: $.externalDocs
+  update:
+    description: Pryon developer documentation
+    url: https://docs.pryon.com/

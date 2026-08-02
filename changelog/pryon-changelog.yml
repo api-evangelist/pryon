@@ -1,0 +1,61 @@
+generated: '2026-08-02'
+method: searched
+source: https://docs.pryon.com/changelog
+url: https://docs.pryon.com/changelog
+scheme: dated release notes (quarterly platform releases plus dated On-Prem/VPC releases)
+current_release: Q1 2026 Pryon Platform Release
+entries:
+- version: Q1 2026 Pryon Platform Release
+  date: '2026-Q1'
+  url: https://docs.pryon.com/changelog/q1-2026-release-notes
+  breaking: []
+  additions:
+  - System of Record (SOR) metadata — ingest metadata schemas from a system of record and
+    use them for entity extraction and advanced filtering, including boolean user-defined
+    metadata fields and a metadata-content association query API.
+  - Answer summarization with fine-grained attribution for more reliably grounded answers.
+  - Structured outputs and function calling on Pryon models — a building block for agentic
+    workflows on-premises.
+  - Bring your own LLM with custom authentication for air-gapped or offline environments.
+  - Symphony — production-ready real-time streaming for orchestration workflows; tool calling
+    and structured outputs on the Pryon Generative node; natural language transformations
+    generating Common Expression Language (CEL); a Pryon Memory Services node exposing all
+    public Pryon Services API endpoints inside Symphony; Pryon Model Garden; Subflow
+    Inheritance dashboard.
+  - Application manager — single file upload in the chatbot interface, configurable feedback,
+    and multi-collection/multi-workflow application support.
+  - Ingestion — native DOCX and TXT ingestion, and PDF vision-merge performance improvements.
+  - Connectors — SharePoint connector 0.2.10 to 0.4.3 with chunk-based content reads,
+    ListItems support, per-service throttling and Retry-After handling; new File System
+    connector; agentic query reasoning mode; query guardrails externalized as an API endpoint.
+  security:
+  - Read-only filesystems enforced across all major services.
+  - vLLM services run as non-root with temporary directories for writes.
+  - Comprehensive CVE remediation across all platform components.
+  - Keycloak upgraded 26.3.3 to 26.4 with hardened security defaults.
+  - New Content Admin permission model.
+  infrastructure:
+  - {component: YugabyteDB, from: '2024.2', to: '2025.1'}
+  - {component: Keycloak, from: 26.3.3, to: '26.4'}
+  - {component: Istio, from: 1.24.x, to: 1.27.5}
+  - {component: Redis Cluster, from: 7.x, to: 8.6.2}
+  - {component: Go, from: 1.23.x, to: 1.26.1}
+  - {component: Alpine base images, from: null, to: 3.21.5}
+- version: October 17, 2025 On-Prem/VPC Release
+  date: '2025-10-17'
+  url: https://docs.pryon.com/changelog/october-17-2025-onprem-release
+  breaking: []
+  additions:
+  - Symphony Workflow Orchestration platform — low-code visual orchestration for agentic AI
+    workflows with reusable Subflows and workflow templates, secure secret/constant/prompt
+    management, and runtime observability of each component's input and output.
+  - App Builder platform — no-code creation of conversational AI applications with branding
+    and theme customization, multiple deployment modes (widget, full-screen, embedded), and
+    draft/published lifecycle with cloning and versioning.
+  - Enhanced chatbot experience — real-time streaming responses, GitHub Flavored Markdown,
+    numbered clickable source citations, mobile-responsive layout, multi-tenant
+    OAuth2/OIDC/client-grant authentication, configurable confidence thresholds and a
+    Stop Generation control.
+  - Expanded native UCP connector support for on-premises and federal deployments.
+  notes: Release states backward compatibility was maintained for existing customers.
+window: recent releases only — https://docs.pryon.com/changelog is the source of truth

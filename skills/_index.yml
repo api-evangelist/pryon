@@ -1,0 +1,77 @@
+generated: '2026-08-02'
+method: generated
+source: openapi/ (22 harvested Pryon OpenAPI documents, 184 unique operationIds) + https://docs.pryon.com/
+note: |
+  No provider-published agent skills, AGENTS.md or skill files were found on docs.pryon.com,
+  www.pryon.com or github.com/Pryon-AI as of 2026-08-02. These skills are generated from the
+  harvested OpenAPI documents and the published documentation; every operationId named in
+  them exists verbatim in the referenced spec.
+skills:
+- file: pryon-authenticate.md
+  name: Authenticate to the Pryon APIs
+  api: https://api.pryon.net
+  operations: []
+  docs: https://docs.pryon.com/reference/api-authentication
+- file: pryon-build-a-collection.md
+  name: Build and inspect a Pryon knowledge collection
+  api: openapi/pryon-knowledge-collections-may2025-openapi.json
+  operations:
+  - KnowledgeCollectionService_CreateCollectionWithSources
+  - KnowledgeCollectionService_ListCollections
+  - KnowledgeCollectionService_GetCollection
+  - KnowledgeCollectionService_GetCollectionActiveDomain
+  - KnowledgeCollectionService_GetCollectionDomain
+  - ContentService_ListContents
+  - ContentService_GetContent
+  - ContentService_ListContentGroups
+  - ContentService_GetSummary
+  - KnowledgeCollectionService_UpdateCollectionActiveDomain
+  - KnowledgeCollectionService_RestoreCollectionActiveDomain
+  docs: https://docs.pryon.com/docs/creating-a-collection
+- file: pryon-retrieve-an-answer.md
+  name: Retrieve a grounded answer from a Pryon collection
+  api: openapi/pryon-retrieval-may2025-openapi.json
+  operations:
+  - Retrieval_CreateRetrieval
+  - Retrieval_GetRetrieval
+  - Retrieval_CreateWsRetrieval
+  - Retrieval_GetRetrievalContentImage
+  - ContentService_ListRetrievalContentExtracts
+  - ContentService_GetContentMetadata
+  - GenerativeRetrieval_CreateGenerativeRetrievalSSE
+  - GenerativeRetrieval_GetGenerativeRetrieval
+  docs: https://docs.pryon.com/reference/retrieval-request-and-response
+- file: pryon-generative-pipeline.md
+  name: Run the Pryon generative pipeline safely
+  api: openapi/pryon-chat-completion-only-generative-openapi.json
+  operations:
+  - Generative_ListChatCompletionsModels
+  - Generative_GuardrailQuery
+  - Generative_RouteQuery
+  - Generative_CompleteQuery
+  - Generative_CreateChatCompletions
+  - Generative_AnswerSummarization
+  docs: https://docs.pryon.com/recipes/getting-started-with-generative-apis
+- file: pryon-curate-answers.md
+  name: Curate Pryon answers with feedback and verified answers
+  api: openapi/pryon-retrieval-may2025-openapi.json
+  operations:
+  - RetrievalFeedback_CreateRetrievalRating
+  - RetrievalFeedback_CreateVerifiedAnswer
+  - RetrievalFeedback_ListVerifiedAnswers
+  - Feedback_CreateExchangeRating
+  - Feedback_CreateApproval
+  - GenerativeFeedback_CreateGenerativeExchangeRating
+  - GenerativeRetrievalFeedback_CreateGenerativeRetrievalRating
+  docs: https://docs.pryon.com/docs/verified-answers
+- file: pryon-universal-connector.md
+  name: Implement a Pryon Universal Connector
+  api: openapi/pryon-universal-connector-may2025-openapi.json
+  operations:
+  - ConnectorServiceExternal_PullContents
+  - ConnectorServiceExternal_DownloadContentData
+  - ConnectorServiceExternal_GetMetadata
+  - ConnectorServiceExternal_GetReadPermission
+  - ConnectorServiceExternal_ListGroupPermissions
+  - ConnectorServiceExternal_ListGroupPermissionMembers
+  docs: https://docs.pryon.com/docs/universal-connector

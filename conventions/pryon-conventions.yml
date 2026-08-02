@@ -1,0 +1,96 @@
+generated: '2026-08-02'
+method: searched
+source: https://docs.pryon.com/reference/api-authentication
+derived_from: openapi/ (22 harvested Pryon OpenAPI documents, 276 operations)
+docs:
+  authentication: https://docs.pryon.com/reference/api-authentication
+  recipes: https://docs.pryon.com/recipes/authenticating-to-the-pryon-apis
+  retrieval_cycle: https://docs.pryon.com/reference/retrieval-request-and-response
+  exchange_cycle: https://docs.pryon.com/reference/conversation-request-and-response-cycle-overview
+api_style:
+  protocol: REST over HTTPS, plus WebSocket and server-sent events for streaming turns
+  generated_from: Protocol Buffers via grpc-gateway
+  resource_naming: Google AIP style — /api/<domain>/<version>/<collection>/{id}, with custom
+    methods expressed as `:verb` suffixes (e.g. /api/knowledge/v1/domains:createWithSources,
+    /api/knowledge/v1/collections/{collection_id}/domain:setActive)
+  media_type: application/json
+authentication:
+  style: OAuth 2.0 client credentials -> JWT bearer token
+  token_endpoint_classic: https://auth.pryon.net/oauth/token
+  token_endpoint_unified: https://auth-us-central-1.pryon.net/oauth/token
+  grant_type: client_credentials
+  audience: https://pryon/api
+  token_type: Bearer
+  default_lifetime_seconds: 86400
+  guidance: Pryon documents retaining and reusing the server token for its full lifetime
+    rather than requesting a new token per call.
+  user_flows: OpenID Connect implicit/authorization-code for UI applications; SSO and
+    multi-tenancy are configured at the org level.
+  header_note: >-
+    The published specs declare the credential as an apiKey header. Two spellings appear
+    across the harvested specs — "Authorization" (81 operations) and "Authentication"
+    (140 operations) — and the securityScheme parameter name in one spec carries the typo
+    "Authoriation: Bearer". Consumers should send "Authorization: Bearer <token>".
+  see: authentication/pryon-authentication.yml
+tenancy:
+  header: x-pryon-org-id
+  occurrences: 34
+  description: Organization (tenant) identifier carried on multi-tenant admin operations.
+pagination:
+  style: page-token (Google AIP-158)
+  request_params:
+  - {name: page_size, in: query, type: integer, note: 'default and maximum are both 100 on collections'}
+  - {name: page_token, in: query, type: string, note: opaque token returned by the previous page}
+  - {name: order_by, in: query, type: string, note: sort expression, present on 19 operations}
+  response_fields:
+  - next_page_token
+  operations_with_pagination: 38
+idempotency:
+  supported: false
+  evidence: No Idempotency-Key header, idempotency parameter, or idempotency documentation
+    was found in any of the 22 harvested OpenAPI documents or on docs.pryon.com as of 2026-08-02.
+  note: Create operations are POSTs with no client-supplied request key; retry safety is
+    the caller's responsibility.
+filtering_and_expansion:
+  metadata_filtering: User-defined metadata fields and system-of-record metadata can be used
+    as retrieval filters (see data-model/ and https://docs.pryon.com/docs/filtering-with-metadata).
+  common_filters: [collection_id, knowledge_domain_id, solution_id, team_id, status, creator_id,
+    source_location, rank, start_time, end_time, agg_interval]
+  sparse_fields: not supported
+  expansion: not supported
+versioning:
+  scheme: uri-path
+  versions_in_use: [v1, v1alpha1]
+  note: Alpha surfaces (v1alpha1) are published alongside stable v1 surfaces in the same
+    specs — retrievals, generative retrievals, verified answers and metadata fields are alpha.
+  platform_versions: 'Two platforms are documented: the classic platform and the unified
+    platform (portable across Pryon SaaS, VPC, on-prem and air-gapped). They differ in the
+    OAuth token host.'
+  see: lifecycle/pryon-lifecycle.yml
+error_envelope:
+  format: google.rpc.Status
+  media_type: application/json
+  fields: [code, message, details]
+  http_note: Every operation declares only a 200 and a `default` error response; no enumerated
+    4xx/5xx responses are published.
+  see: errors/pryon-problem-types.yml
+rate_limiting:
+  documented: false
+  note: No published rate-limit headers, quotas or plan limits were found on docs.pryon.com
+    or www.pryon.com. Pryon is an enterprise contract product with no self-serve pricing page.
+    The Q1 2026 release notes do document per-service request throttling and Retry-After
+    support inside the SharePoint connector — that is inbound connector behaviour, not an
+    API rate-limit contract for Pryon consumers.
+request_tracing:
+  request_id_header: not documented
+streaming:
+  transports:
+  - {kind: websocket, operations: [Retrieval_CreateWsRetrieval, Exchange_CreateWsExchange]}
+  - {kind: sse, operations: [ExchangeEvent_CreateExchangeEventSSE, GenerativeRetrieval_CreateGenerativeRetrievalSSE, GenerativeExchange_CreateGenerativeExchangeSSE]}
+  see: asyncapi/pryon-events.yml
+cross_links:
+  errors: errors/pryon-problem-types.yml
+  lifecycle: lifecycle/pryon-lifecycle.yml
+  authentication: authentication/pryon-authentication.yml
+  data_model: data-model/pryon-data-model.yml
+  conformance: conformance/pryon-conformance.yml

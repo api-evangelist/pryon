@@ -1,0 +1,50 @@
+generated: '2026-08-02'
+method: searched
+source: https://docs.pryon.com/changelog
+versioning:
+  scheme: uri-path
+  current: v1
+  prerelease: v1alpha1
+  docs: https://docs.pryon.com/docs/about-pryon-platform
+  note: 'Stable (v1) and alpha (v1alpha1) surfaces are published side by side in the same
+    OpenAPI documents. Alpha today: retrievals, generative retrievals, verified answers,
+    generative chat/tasks, user-defined metadata fields and the Universal Connector.'
+platforms:
+- name: classic platform
+  token_endpoint: https://auth.pryon.net/oauth/token
+- name: unified platform
+  token_endpoint: https://auth-us-central-1.pryon.net/oauth/token
+  note: Portable across Pryon SaaS, VPC, on-premises and air-gapped deployments; consolidates
+    the previously distinct product experiences into one standardized API set.
+release_cadence:
+  observed: quarterly platform releases plus dated on-prem/VPC releases
+  recent:
+  - {label: 'Q1 2026 Pryon Platform Release Notes', url: 'https://docs.pryon.com/changelog/q1-2026-release-notes'}
+  - {label: 'October 17, 2025 On-Prem/VPC Release', url: 'https://docs.pryon.com/changelog/october-17-2025-onprem-release'}
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  evidence: >-
+    No deprecation or sunset policy was found on docs.pryon.com or www.pryon.com as of
+    2026-08-02, and no operation in the 22 harvested OpenAPI documents carries the
+    "deprecated" flag.
+  in_product_deprecation: 'Pryon does model resource-level lifecycle in the API itself:
+    knowledge domain versions are decommissioned (KnowledgeDomain_CreateDomainWithSources /
+    collection domain restoreActive + setActive), and collections can be reverted to a
+    previous version (https://docs.pryon.com/docs/reverting).'
+sla:
+  url: null
+  uptime_target: null
+  note: No public SLA or uptime commitment published; Pryon sells enterprise contracts with
+    on-prem, VPC and air-gapped deployment options.
+status_page:
+  url: null
+  probed: [status.pryon.com (NXDOMAIN), status.pryon.net (NXDOMAIN), pryon.statuspage.io (redirects to the Atlassian marketing site — not a Pryon status page)]
+  evidence: No public status page found as of 2026-08-02.
+support:
+  contact: https://www.pryon.com/contact
+  docs: https://docs.pryon.com/docs/contact-support
+  note: Support runs through a named Solutions Manager; API credentials are issued by that
+    Solutions Manager or by the customer's own administrator for on-prem deployments.
+deprecated_operations: []

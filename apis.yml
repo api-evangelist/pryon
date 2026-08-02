@@ -1,23 +1,265 @@
 aid: pryon
 name: Pryon
-description: 'Pryon is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Pryon is a Raleigh, North Carolina enterprise AI company founded in 2017
+  by Igor Jablokov that provides a retrieval-augmented generation (RAG) platform for
+  regulated and security-conscious organizations. The Pryon RAG Suite couples an Ingestion
+  Engine (filetype handling, layout analysis, OCR/HTR, table structure recognition and
+  semantic segmentation), a Retrieval Engine (vast search, query canonicalization, query
+  classification, metadata filtering, verified answers) and a Generative Engine (chat
+  completions, guardrails, query rewriting, answer summarization) behind a single set of
+  REST APIs. Symphony, its low-code orchestration builder, composes those engines into
+  custom RAG and agentic workflows. Content is ingested through prebuilt connectors for
+  SharePoint, Salesforce, Amazon S3, Azure Blob Storage, Google Cloud Storage, NFS and a
+  Universal Connector, and the platform is deployed in Pryon SaaS, customer VPC, on-premises
+  and air-gapped environments. All 276 published operations are documented at docs.pryon.com,
+  which also serves an llms.txt index for agents.'
+image: https://cdn.prod.website-files.com/65cbae0a3956181cf7a74c75/672bde6da9f2a2dc6e54b6fa_fav-icon-pryon-wht-bg.png
 url: https://raw.githubusercontent.com/api-evangelist/pryon/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-02'
 modified: '2026-08-02'
 tags:
+- Artificial Intelligence
+- Retrieval Augmented Generation
+- Enterprise Search
+- Knowledge Management
+- Generative AI
+- Document Ingestion
+- Content Connectors
+- Agents
+- Machine Learning
 - Company
-apis: []
+apis:
+- aid: pryon:pryon-admin-api
+  name: Pryon Admin API
+  description: The Pryon Platform administrative API — organizations, teams, members,
+    knowledge collections and knowledge domains, content and content groups, connectors,
+    subjects, regression tests, messages, analytics and text-to-speech. 136 operations
+    across 112 paths on the unified platform host.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
+  baseURL: https://api.pryon.net
+  tags:
+  - Administration
+  - Organizations
+  - Analytics
+  - Knowledge Domains
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-admin-openapi.json
+  - type: Overlay
+    url: overlays/pryon-admin-overlay.yaml
+- aid: pryon:pryon-retrieval-api
+  name: Pryon Retrieval API
+  description: The Pryon Retrieval Engine API — create and continue retrievals over a
+    knowledge collection (REST, WebSocket and server-sent events), fetch content, content
+    groups, extracts, summaries and content images with bounding boxes, and record
+    retrieval ratings and verified answers.
+  humanURL: https://docs.pryon.com/reference/retrieval-request-and-response
+  baseURL: https://api.pryon.net
+  tags:
+  - Retrieval
+  - Search
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-retrieval-may2025-openapi.json
+  - type: OpenAPI
+    url: openapi/pryon-getcontentimage-swagger-openapi.json
+  - type: Overlay
+    url: overlays/pryon-retrieval-may2025-overlay.yaml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-generative-api
+  name: Pryon Generative API
+  description: The Pryon Generative Engine API — OpenAI-compatible chat completions and
+    model listing, query guardrails (toxicity and prompt-injection classification), query
+    routing, query rewriting for multi-turn conversations, answer summarization over
+    retrieval outputs, and generative retrieval over server-sent events.
+  humanURL: https://docs.pryon.com/reference/generative_createchatcompletions
+  baseURL: https://api.pryon.net
+  tags:
+  - Generative AI
+  - Chat Completions
+  - Guardrails
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-generative-openapi.json
+  - type: OpenAPI
+    url: openapi/pryon-chat-completion-openapi.json
+  - type: OpenAPI
+    url: openapi/pryon-chat-completion-only-generative-openapi.json
+  - type: OpenAPI
+    url: openapi/pryon-extra-chat-completion-openapi.json
+  - type: OpenAPI
+    url: openapi/pryon-generative-listmodels-openapi.json
+  - type: OpenAPI
+    url: openapi/pryon-generative-query-guardrails-openapi.json
+  - type: OpenAPI
+    url: openapi/pryon-generative-query-rewrite-openapi.json
+  - type: OpenAPI
+    url: openapi/pryon-gen-answer-summary-openapi.json
+  - type: OpenAPI
+    url: openapi/pryon-generative-services-may2025-openapi.json
+  - type: OpenAPI
+    url: openapi/pryon-generative-swagger-openapi.json
+  - type: Overlay
+    url: overlays/pryon-generative-overlay.yaml
+- aid: pryon:pryon-knowledge-collections-api
+  name: Pryon Knowledge Collections API
+  description: Create, list, retrieve and delete knowledge collections for an organization,
+    resolve the active knowledge domain behind a collection, and decommission knowledge
+    domain versions.
+  humanURL: https://docs.pryon.com/reference/knowledgecollectionservice_listcollections-1
+  baseURL: https://api.pryon.net
+  tags:
+  - Collections
+  - Knowledge Domains
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-knowledge-collections-may2025-openapi.json
+  - type: OpenAPI
+    url: openapi/pryon-domains-swagger-may2025-openapi.json
+  - type: Overlay
+    url: overlays/pryon-knowledge-collections-may2025-overlay.yaml
+- aid: pryon:pryon-exchange-api
+  name: Pryon Exchange API
+  description: Conversational exchange over a Pryon collection — start or continue a
+    conversation, review the exchange request and response cycle, and stream ExchangeEvent
+    messages as data-only server-sent events.
+  humanURL: https://docs.pryon.com/reference/conversation-request-and-response-cycle-overview
+  baseURL: https://api.pryon.net
+  tags:
+  - Conversation
+  - Streaming
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-exchange-may2025-openapi.json
+  - type: OpenAPI
+    url: openapi/pryon-exchange-event-may2025-openapi.json
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-feedback-api
+  name: Pryon Feedback API
+  description: Ratings, rating reviews, approvals and verified answers across extractive
+    exchanges, generative exchanges and generative retrievals — the human-in-the-loop
+    surface that curates what a Pryon collection answers.
+  humanURL: https://docs.pryon.com/reference/feedback_listapprovals
+  baseURL: https://api.pryon.net
+  tags:
+  - Feedback
+  - Ratings
+  - Verified Answers
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-feedback-august2025-openapi.json
+  - type: OpenAPI
+    url: openapi/pryon-feedback-may2025-openapi.json
+  - type: OpenAPI
+    url: openapi/pryon-generative-feedback-may2025-openapi.json
+  - type: Overlay
+    url: overlays/pryon-feedback-august2025-overlay.yaml
+- aid: pryon:pryon-universal-connector-api
+  name: Pryon Universal Connector API
+  description: The contract a customer implements to connect any content repository that
+    has no prebuilt Pryon connector — discover content sources with pagination, download
+    content data in parts, return content metadata, and expose read permission groups and
+    their members so document-level ACLs survive ingestion.
+  humanURL: https://docs.pryon.com/docs/universal-connector
+  baseURL: https://api.pryon.net
+  tags:
+  - Connectors
+  - Ingestion
+  - Permissions
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-universal-connector-may2025-openapi.json
+  - type: Overlay
+    url: overlays/pryon-universal-connector-may2025-overlay.yaml
+- aid: pryon:pryon-user-defined-metadata-api
+  name: Pryon User-Defined Metadata API
+  description: Define, list, update and delete user-defined metadata fields and field
+    values at the organization and collection level, and list the collections that use a
+    given metadata field — the filters that narrow Pryon retrieval.
+  humanURL: https://docs.pryon.com/docs/adding-metadata
+  baseURL: https://api.pryon.net
+  tags:
+  - Metadata
+  - Filtering
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-user-defined-metadata-may2025-openapi.json
+  - type: Overlay
+    url: overlays/pryon-user-defined-metadata-may2025-overlay.yaml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: TrustCenter
+  url: security/pryon-trust-center.yml
 - type: Website
-  url: https://forgeglobal.com/pryon_stock/
+  url: https://www.pryon.com/
+- type: DeveloperPortal
+  url: https://docs.pryon.com/
+- type: Documentation
+  url: https://docs.pryon.com/docs/about-pryon
+- type: APIReference
+  url: https://docs.pryon.com/reference/api-authentication
+- type: GettingStarted
+  url: https://docs.pryon.com/docs/getting-started
+- type: Authentication
+  url: authentication/pryon-authentication.yml
+- type: Blog
+  url: https://www.pryon.com/resources/blogs
+- type: Support
+  url: https://www.pryon.com/contact
+- type: GitHubOrganization
+  url: https://github.com/Pryon-AI
+- type: TermsOfService
+  url: https://www.pryon.com/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.pryon.com/privacy-policy
+- type: AcceptableUsePolicy
+  url: https://www.pryon.com/acceptable-use
+- type: Compliance
+  url: https://www.pryon.com/about/security
+- type: ChangeLog
+  url: https://docs.pryon.com/changelog
+- type: ChangeLog
+  url: changelog/pryon-changelog.yml
+- type: LLMsTxt
+  url: llms/pryon-llms.txt
+- type: Conformance
+  url: conformance/pryon-conformance.yml
+- type: ErrorCatalog
+  url: errors/pryon-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/pryon-lifecycle.yml
+- type: Conventions
+  url: conventions/pryon-conventions.yml
+- type: DataModel
+  url: data-model/pryon-data-model.yml
+- type: Components
+  url: components/pryon-components.yml
+- type: Packages
+  url: packages/pryon-packages.yml
+- type: DomainSecurity
+  url: security/pryon-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/pryon-agentic-access.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: MCPServer
+  url: mcp/pryon-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/pryon-tool-crosswalk.yml
+- type: Events
+  url: asyncapi/pryon-events.yml
+x-enrichment:
+  date: '2026-08-02'
+  status: enriched
+  artifacts_added: 53
+  pass: local-v1

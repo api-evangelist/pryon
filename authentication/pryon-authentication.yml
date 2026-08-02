@@ -1,0 +1,67 @@
+generated: '2026-08-02'
+method: searched
+source: openapi/ (22 harvested Pryon OpenAPI documents)
+docs: https://docs.pryon.com/reference/api-authentication
+recipes: https://docs.pryon.com/recipes/authenticating-to-the-pryon-apis
+sso_docs: https://docs.pryon.com/docs/single-sign-on
+scenarios_docs: https://docs.pryon.com/docs/authentication-scenarios
+summary:
+  types: [oauth2, apiKey]
+  api_key_in: [header]
+  oauth2_flows: [clientCredentials]
+  identity_provider: Keycloak 26.4 (per the Q1 2026 platform release notes); customer IdPs
+    federated via OIDC for SSO, with multi-tenancy across multiple IdPs on one email domain.
+model: |
+  Every Pryon API is authenticated with an OAuth 2.0 JSON Web Token bearer access token.
+  Server-to-server integrations use the client-credentials grant against the platform's OAuth
+  token endpoint; end-user applications obtain user tokens through an OpenID Connect implicit
+  or authorization-code flow federated to the tenant's identity provider. Client credentials
+  are issued by the customer's Pryon Solutions Manager, or by the organization administrator
+  for on-premises deployments — there is no self-serve key issuance.
+oauth2:
+  grant_type: client_credentials
+  audience: https://pryon/api
+  token_endpoints:
+  - {platform: classic, url: 'https://auth.pryon.net/oauth/token'}
+  - {platform: unified, url: 'https://auth-us-central-1.pryon.net/oauth/token'}
+  request:
+    method: POST
+    content_type: application/json
+    fields: [client_id, client_secret, audience, grant_type]
+  response:
+    fields: [access_token, token_type, expires_in]
+    token_type: Bearer
+    default_expires_in: 86400
+  reuse_guidance: Pryon documents retaining and reusing server tokens for their full lifetime
+    rather than requesting a new token per API call.
+  scopes: []
+  scopes_note: No OAuth scope surface is documented or declared in any published spec; a
+    client-credentials token is bounded by the service account Pryon issues it to. No
+    scopes/ artifact is emitted for this provider.
+  discovery:
+    openid_configuration: null
+    note: The token hosts do not resolve from the public internet, so no RFC 8414 / OIDC
+      discovery document could be retrieved anonymously (see well-known/pryon-well-known.yml).
+  reference: https://tools.ietf.org/html/rfc6749
+schemes:
+- name: oauth2_token
+  type: apiKey
+  in: header
+  parameter: 'Authoriation: Bearer'
+  description: The Pryon APIs are authenicated with an OAuth2 Bearer token.
+  note: >-
+    Declared verbatim in the published spec, including the typo. The working header is
+    "Authorization: Bearer <access_token>".
+  sources:
+  - openapi/pryon-retrieval-may2025-openapi.json
+request_headers:
+- {name: Authorization, operations: 81, note: 'Bearer <access_token>'}
+- {name: Authentication, operations: 140, note: 'Alternate spelling declared across the harvested specs for the same credential.'}
+- {name: x-pryon-org-id, operations: 34, note: 'Organization (tenant) identifier on multi-tenant administrative operations.'}
+gaps:
+- The published specs model an OAuth 2.0 bearer token as an apiKey header, understating the
+  flow the documentation describes. overlays/ adds a correct oauth2 clientCredentials
+  securityScheme without mutating the harvested spec.
+- Two different header names are declared for the same credential across the spec corpus.
+- No securityScheme is applied at the operation or document level in any spec, so the
+  contract does not machine-declare that these operations require authentication.

@@ -1,0 +1,54 @@
+generated: '2026-08-02'
+method: probed
+source: live HTTP GET of the /.well-known/ discovery surface on every Pryon host
+result: none — no /.well-known/ document is served on any Pryon host
+hosts:
+- host: https://www.pryon.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://pryon.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://docs.pryon.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://api.pryon.net
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://auth.pryon.net
+  documents:
+  - {path: /.well-known/openid-configuration, status: null, note: host does not resolve publicly (NXDOMAIN)}
+- host: https://auth-us-central-1.pryon.net
+  documents:
+  - {path: /.well-known/openid-configuration, status: null, note: host does not resolve publicly (NXDOMAIN)}
+notes: |
+  Pryon's OAuth token hosts (auth.pryon.net, auth-us-central-1.pryon.net) are documented in
+  the API reference but do not resolve from the public internet, so no RFC 8414 / OIDC
+  discovery document could be retrieved anonymously. No WellKnown or SecurityTxt pointer is
+  wired in apis.yml because nothing was found — this file records the negative result so a
+  later run does not re-probe blind.
