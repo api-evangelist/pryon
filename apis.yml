@@ -32,172 +32,307 @@ tags:
 - Machine Learning
 - Company
 apis:
-- aid: pryon:pryon-admin-api
-  name: Pryon Admin API
-  description: The Pryon Platform administrative API — organizations, teams, members,
-    knowledge collections and knowledge domains, content and content groups, connectors,
-    subjects, regression tests, messages, analytics and text-to-speech. 136 operations
-    across 112 paths on the unified platform host.
+- aid: pryon:pryon-analytics-api
+  name: Pryon Analytics API
+  description: The Analytics API from Pryon — 8 operation(s) for analytics.
   humanURL: https://docs.pryon.com/docs/about-pryon-platform
   baseURL: https://api.pryon.net
   tags:
-  - Administration
-  - Organizations
   - Analytics
-  - Knowledge Domains
   properties:
   - type: OpenAPI
-    url: openapi/pryon-admin-openapi.json
-  - type: Overlay
-    url: overlays/pryon-admin-overlay.yaml
-- aid: pryon:pryon-retrieval-api
-  name: Pryon Retrieval API
-  description: The Pryon Retrieval Engine API — create and continue retrievals over a
-    knowledge collection (REST, WebSocket and server-sent events), fetch content, content
-    groups, extracts, summaries and content images with bounding boxes, and record
-    retrieval ratings and verified answers.
-  humanURL: https://docs.pryon.com/reference/retrieval-request-and-response
-  baseURL: https://api.pryon.net
-  tags:
-  - Retrieval
-  - Search
-  - Content
-  properties:
-  - type: OpenAPI
-    url: openapi/pryon-retrieval-may2025-openapi.json
-  - type: OpenAPI
-    url: openapi/pryon-getcontentimage-swagger-openapi.json
-  - type: Overlay
-    url: overlays/pryon-retrieval-may2025-overlay.yaml
+    url: openapi/pryon-analytics-api-openapi.yml
   - type: StreamingEndpoint
     url: asyncapi/pryon-events.yml
-- aid: pryon:pryon-generative-api
-  name: Pryon Generative API
-  description: The Pryon Generative Engine API — OpenAI-compatible chat completions and
-    model listing, query guardrails (toxicity and prompt-injection classification), query
-    routing, query rewriting for multi-turn conversations, answer summarization over
-    retrieval outputs, and generative retrieval over server-sent events.
-  humanURL: https://docs.pryon.com/reference/generative_createchatcompletions
+- aid: pryon:pryon-connectorserviceexternal-api
+  name: Pryon Connector Service External API
+  description: >-
+    The ConnectorServiceExternal API from Pryon — 11 operation(s) for connectorserviceexternal.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
   baseURL: https://api.pryon.net
   tags:
-  - Generative AI
-  - Chat Completions
-  - Guardrails
+  - ConnectorServiceExternal
   properties:
   - type: OpenAPI
-    url: openapi/pryon-generative-openapi.json
-  - type: OpenAPI
-    url: openapi/pryon-chat-completion-openapi.json
-  - type: OpenAPI
-    url: openapi/pryon-chat-completion-only-generative-openapi.json
-  - type: OpenAPI
-    url: openapi/pryon-extra-chat-completion-openapi.json
-  - type: OpenAPI
-    url: openapi/pryon-generative-listmodels-openapi.json
-  - type: OpenAPI
-    url: openapi/pryon-generative-query-guardrails-openapi.json
-  - type: OpenAPI
-    url: openapi/pryon-generative-query-rewrite-openapi.json
-  - type: OpenAPI
-    url: openapi/pryon-gen-answer-summary-openapi.json
-  - type: OpenAPI
-    url: openapi/pryon-generative-services-may2025-openapi.json
-  - type: OpenAPI
-    url: openapi/pryon-generative-swagger-openapi.json
-  - type: Overlay
-    url: overlays/pryon-generative-overlay.yaml
-- aid: pryon:pryon-knowledge-collections-api
-  name: Pryon Knowledge Collections API
-  description: Create, list, retrieve and delete knowledge collections for an organization,
-    resolve the active knowledge domain behind a collection, and decommission knowledge
-    domain versions.
-  humanURL: https://docs.pryon.com/reference/knowledgecollectionservice_listcollections-1
+    url: openapi/pryon-connectorserviceexternal-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-content-service-api
+  name: Pryon Content Service API
+  description: The Content Service API from Pryon — 16 operation(s) for content service.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
   baseURL: https://api.pryon.net
   tags:
-  - Collections
-  - Knowledge Domains
+  - Content Service
   properties:
   - type: OpenAPI
-    url: openapi/pryon-knowledge-collections-may2025-openapi.json
+    url: openapi/pryon-content-service-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-contentservice-api
+  name: Pryon Content Service API
+  description: The ContentService API from Pryon — 13 operation(s) for contentservice.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
+  baseURL: https://api.pryon.net
+  tags:
+  - ContentService
+  properties:
   - type: OpenAPI
-    url: openapi/pryon-domains-swagger-may2025-openapi.json
-  - type: Overlay
-    url: overlays/pryon-knowledge-collections-may2025-overlay.yaml
+    url: openapi/pryon-contentservice-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
 - aid: pryon:pryon-exchange-api
   name: Pryon Exchange API
-  description: Conversational exchange over a Pryon collection — start or continue a
-    conversation, review the exchange request and response cycle, and stream ExchangeEvent
-    messages as data-only server-sent events.
-  humanURL: https://docs.pryon.com/reference/conversation-request-and-response-cycle-overview
+  description: The Exchange API from Pryon — 3 operation(s) for exchange.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
   baseURL: https://api.pryon.net
   tags:
-  - Conversation
-  - Streaming
+  - Exchange
   properties:
   - type: OpenAPI
-    url: openapi/pryon-exchange-may2025-openapi.json
+    url: openapi/pryon-exchange-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-exchangeevent-api
+  name: Pryon Exchange Event API
+  description: The ExchangeEvent API from Pryon — 1 operation(s) for exchangeevent.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
+  baseURL: https://api.pryon.net
+  tags:
+  - ExchangeEvent
+  properties:
   - type: OpenAPI
-    url: openapi/pryon-exchange-event-may2025-openapi.json
+    url: openapi/pryon-exchangeevent-api-openapi.yml
   - type: StreamingEndpoint
     url: asyncapi/pryon-events.yml
 - aid: pryon:pryon-feedback-api
   name: Pryon Feedback API
-  description: Ratings, rating reviews, approvals and verified answers across extractive
-    exchanges, generative exchanges and generative retrievals — the human-in-the-loop
-    surface that curates what a Pryon collection answers.
-  humanURL: https://docs.pryon.com/reference/feedback_listapprovals
+  description: The Feedback API from Pryon — 9 operation(s) for feedback.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
   baseURL: https://api.pryon.net
   tags:
   - Feedback
-  - Ratings
-  - Verified Answers
   properties:
   - type: OpenAPI
-    url: openapi/pryon-feedback-august2025-openapi.json
-  - type: OpenAPI
-    url: openapi/pryon-feedback-may2025-openapi.json
-  - type: OpenAPI
-    url: openapi/pryon-generative-feedback-may2025-openapi.json
-  - type: Overlay
-    url: overlays/pryon-feedback-august2025-overlay.yaml
-- aid: pryon:pryon-universal-connector-api
-  name: Pryon Universal Connector API
-  description: The contract a customer implements to connect any content repository that
-    has no prebuilt Pryon connector — discover content sources with pagination, download
-    content data in parts, return content metadata, and expose read permission groups and
-    their members so document-level ACLs survive ingestion.
-  humanURL: https://docs.pryon.com/docs/universal-connector
+    url: openapi/pryon-feedback-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-generative-api
+  name: Pryon Generative API
+  description: The Generative API from Pryon — 6 operation(s) for generative.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
   baseURL: https://api.pryon.net
   tags:
-  - Connectors
-  - Ingestion
-  - Permissions
+  - Generative
   properties:
   - type: OpenAPI
-    url: openapi/pryon-universal-connector-may2025-openapi.json
-  - type: Overlay
-    url: overlays/pryon-universal-connector-may2025-overlay.yaml
-- aid: pryon:pryon-user-defined-metadata-api
-  name: Pryon User-Defined Metadata API
-  description: Define, list, update and delete user-defined metadata fields and field
-    values at the organization and collection level, and list the collections that use a
-    given metadata field — the filters that narrow Pryon retrieval.
-  humanURL: https://docs.pryon.com/docs/adding-metadata
+    url: openapi/pryon-generative-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-generativeexchange-api
+  name: Pryon Generative Exchange API
+  description: The GenerativeExchange API from Pryon — 3 operation(s) for generativeexchange.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
   baseURL: https://api.pryon.net
   tags:
-  - Metadata
-  - Filtering
+  - GenerativeExchange
   properties:
   - type: OpenAPI
-    url: openapi/pryon-user-defined-metadata-may2025-openapi.json
-  - type: Overlay
-    url: overlays/pryon-user-defined-metadata-may2025-overlay.yaml
+    url: openapi/pryon-generativeexchange-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-generativefeedback-api
+  name: Pryon Generative Feedback API
+  description: The GenerativeFeedback API from Pryon — 6 operation(s) for generativefeedback.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
+  baseURL: https://api.pryon.net
+  tags:
+  - GenerativeFeedback
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-generativefeedback-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-generativeretrieval-api
+  name: Pryon Generative Retrieval API
+  description: The GenerativeRetrieval API from Pryon — 2 operation(s) for generativeretrieval.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
+  baseURL: https://api.pryon.net
+  tags:
+  - GenerativeRetrieval
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-generativeretrieval-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-generativeretrievalfeedback-api
+  name: Pryon Generative Retrieval Feedback API
+  description: >-
+    The GenerativeRetrievalFeedback API from Pryon — 6 operation(s) for generativeretrievalfeedback.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
+  baseURL: https://api.pryon.net
+  tags:
+  - GenerativeRetrievalFeedback
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-generativeretrievalfeedback-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-knowledge-collection-service-api
+  name: Pryon Knowledge Collection Service API
+  description: >-
+    The Knowledge Collection Service API from Pryon — 1 operation(s) for knowledge collection service.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
+  baseURL: https://api.pryon.net
+  tags:
+  - Knowledge Collection Service
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-knowledge-collection-service-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-knowledgecollectionservice-api
+  name: Pryon Knowledge Collection Service API
+  description: >-
+    The KnowledgeCollectionService API from Pryon — 11 operation(s) for knowledgecollectionservice.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
+  baseURL: https://api.pryon.net
+  tags:
+  - KnowledgeCollectionService
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-knowledgecollectionservice-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-knowledgedomain-api
+  name: Pryon Knowledge Domain API
+  description: The KnowledgeDomain API from Pryon — 17 operation(s) for knowledgedomain.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
+  baseURL: https://api.pryon.net
+  tags:
+  - KnowledgeDomain
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-knowledgedomain-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-list-knowledge-collections-api
+  name: Pryon List Knowledge Collections API
+  description: >-
+    The List Knowledge Collections API from Pryon — 1 operation(s) for list knowledge collections.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
+  baseURL: https://api.pryon.net
+  tags:
+  - List Knowledge Collections
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-list-knowledge-collections-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-messages-api
+  name: Pryon Messages API
+  description: The Messages API from Pryon — 3 operation(s) for messages.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
+  baseURL: https://api.pryon.net
+  tags:
+  - Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-messages-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-organizationservice-api
+  name: Pryon Organization Service API
+  description: The OrganizationService API from Pryon — 23 operation(s) for organizationservice.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
+  baseURL: https://api.pryon.net
+  tags:
+  - OrganizationService
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-organizationservice-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-regressiontest-api
+  name: Pryon Regression Test API
+  description: The RegressionTest API from Pryon — 7 operation(s) for regressiontest.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
+  baseURL: https://api.pryon.net
+  tags:
+  - RegressionTest
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-regressiontest-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-retrieval-api
+  name: Pryon Retrieval API
+  description: The Retrieval API from Pryon — 4 operation(s) for retrieval.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
+  baseURL: https://api.pryon.net
+  tags:
+  - Retrieval
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-retrieval-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-retrievalfeedback-api
+  name: Pryon Retrieval Feedback API
+  description: The RetrievalFeedback API from Pryon — 9 operation(s) for retrievalfeedback.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
+  baseURL: https://api.pryon.net
+  tags:
+  - RetrievalFeedback
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-retrievalfeedback-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-subjects-api
+  name: Pryon Subjects API
+  description: The Subjects API from Pryon — 6 operation(s) for subjects.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
+  baseURL: https://api.pryon.net
+  tags:
+  - Subjects
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-subjects-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-texttospeech-api
+  name: Pryon Text To Speech API
+  description: The TextToSpeech API from Pryon — 1 operation(s) for texttospeech.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
+  baseURL: https://api.pryon.net
+  tags:
+  - TextToSpeech
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-texttospeech-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-userdefinedmetadata-api
+  name: Pryon User Defined Metadata API
+  description: The UserDefinedMetadata API from Pryon — 9 operation(s) for userdefinedmetadata.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
+  baseURL: https://api.pryon.net
+  tags:
+  - UserDefinedMetadata
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-userdefinedmetadata-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/pryon-admin-overlay.yaml
 - type: TrustCenter
   url: security/pryon-trust-center.yml
 - type: Website
