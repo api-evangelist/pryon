@@ -1,0 +1,828 @@
+{
+  "item": [
+    {
+      "id": "1ae38832-7a4b-40e1-9e53-ad4bad8424e7",
+      "name": "KnowledgeCollectionService",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "adf6ebde-5ca8-4081-8e82-2fca8910c7f9",
+          "name": "Create Knowledge Collections",
+          "request": {
+            "name": "Create Knowledge Collections",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"sources\": [\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"config\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"team_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"solution_id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d2802975-af17-405e-847d-085fbf1a7c8e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"sources\": [\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"config\": {\n      \"key_0\": \"<string>\"\n    },\n    \"team_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"solution_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1959-07-20T14:14:10.488Z\",\n    \"update_time\": \"1961-11-27T09:05:23.008Z\",\n    \"response_time_millis\": 9731\n  },\n  \"data\": {\n    \"collection_id\": \"string\",\n    \"active_domain_id\": \"string\",\n    \"active_domain_history\": [\n      \"string\",\n      \"string\"\n    ],\n    \"team_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"solution_id\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71b990d8-2da9-41e6-a9fc-4e3827e0e644",
+              "name": "Default error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"sources\": [\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"config\": {\n      \"key_0\": \"<string>\"\n    },\n    \"team_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"solution_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 809,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": 2875.370120875601,\n      \"key_1\": 6313.175203994162,\n      \"key_2\": 7884.831283372859\n    },\n    {\n      \"@type\": \"string\",\n      \"key_0\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ee588c5-541f-478f-a5b5-c15c3dc9504d",
+          "name": "Delete Knowledge Collections",
+          "request": {
+            "name": "Delete Knowledge Collections",
+            "description": {
+              "content": "Delete collections from an organization while also locating and decommissioning all knowledge domain versions associated with the record.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "collections",
+                ":collection_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "force",
+                  "value": "<boolean>",
+                  "description": "Flag used to force delete a collection when it is set as an organizational or user default; default is false."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "collection_id",
+                  "description": "(Required) Unique identifier of the knowledge collection."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "91a314cc-6a5e-45dc-bc11-aae9526cc699",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "collections",
+                    ":collection_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection_id",
+                      "description": "(Required) Unique identifier of the knowledge collection."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ac298640-cf5a-4173-91cb-cbfdca824725",
+              "name": "Default error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "collections",
+                    ":collection_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection_id",
+                      "description": "(Required) Unique identifier of the knowledge collection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 809,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": 2875.370120875601,\n      \"key_1\": 6313.175203994162,\n      \"key_2\": 7884.831283372859\n    },\n    {\n      \"@type\": \"string\",\n      \"key_0\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "459074e1-ac7d-4f01-9207-ddad7f55f6cf",
+          "name": "Get Knowledge Collections",
+          "request": {
+            "name": "Get Knowledge Collections",
+            "description": {
+              "content": "Retrieve all knowledge collections for an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "collections",
+                ":collection_id",
+                "domains",
+                ":knowledge_domain_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "collection_id",
+                  "description": "(Required) Unique identifier of the knowledge collection."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "knowledge_domain_id",
+                  "description": "(Required) Unique ID of the knowledge domain."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "19428aa9-ec2a-456c-8b65-452884c7d907",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "collections",
+                    ":collection_id",
+                    "domains",
+                    ":knowledge_domain_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection_id",
+                      "description": "(Required) Unique identifier of the knowledge collection."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) Unique ID of the knowledge domain."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1990-01-28T04:27:56.583Z\",\n    \"update_time\": \"2009-02-11T08:04:31.643Z\",\n    \"response_time_millis\": 9860\n  },\n  \"data\": {\n    \"knowledge_domain_id\": \"string\",\n    \"display_name\": \"string\",\n    \"description\": \"string\",\n    \"status\": \"CONTENT_READY\",\n    \"labels\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"kd_succession_id\": \"string\",\n    \"status_reason\": \"string\",\n    \"team_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"created_by\": \"string\",\n    \"collection_id\": \"string\",\n    \"config\": {\n      \"key_0\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05c77a49-cbd7-4486-a7fa-8f8260b39eae",
+              "name": "Default error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "collections",
+                    ":collection_id",
+                    "domains",
+                    ":knowledge_domain_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection_id",
+                      "description": "(Required) Unique identifier of the knowledge collection."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) Unique ID of the knowledge domain."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 809,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": 2875.370120875601,\n      \"key_1\": 6313.175203994162,\n      \"key_2\": 7884.831283372859\n    },\n    {\n      \"@type\": \"string\",\n      \"key_0\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "25f85a6f-9001-477c-9091-02c755ea390e",
+      "name": "List Knowledge Collections",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9990e2b8-1784-4d38-b4a2-ebf0243041d4",
+          "name": "List Knowledge Collections",
+          "request": {
+            "name": "List Knowledge Collections",
+            "description": {
+              "content": "List all knowledge collections configured for an organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "team_id",
+                  "value": "<string>",
+                  "description": "Unique identifiers of the teams authorized to the knowledge collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Requested page size; default and maximum value are both 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "Returned for multiple pages; must be specified in each request for two pages per sheet using the page token parameter."
+                },
+                {
+                  "disabled": false,
+                  "key": "solution_id",
+                  "value": "<string>",
+                  "description": "Licensed solution for the collection; if not provided, the organizational default solution is automatically assigned."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7c19f729-68cd-4dae-9807-5cdcc3c24031",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "team_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "solution_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 2599\n  },\n  \"items\": [\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"2017-11-09T01:27:21.454Z\",\n        \"update_time\": \"1992-05-25T00:06:24.881Z\",\n        \"response_time_millis\": 7886\n      },\n      \"data\": {\n        \"collection_id\": \"string\",\n        \"active_domain_id\": \"string\",\n        \"active_domain_history\": [\n          \"string\",\n          \"string\"\n        ],\n        \"team_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"solution_id\": \"string\"\n      }\n    },\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1985-11-26T17:34:40.571Z\",\n        \"update_time\": \"1997-09-23T16:06:04.018Z\",\n        \"response_time_millis\": 3824\n      },\n      \"data\": {\n        \"collection_id\": \"string\",\n        \"active_domain_id\": \"string\",\n        \"active_domain_history\": [\n          \"string\",\n          \"string\"\n        ],\n        \"team_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"solution_id\": \"string\"\n      }\n    }\n  ],\n  \"next_page_token\": \"string\",\n  \"total_size\": 2633,\n  \"page_size\": 2489\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "965585bd-57d4-4ac3-a0ed-d14476342620",
+              "name": "Default error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "team_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "solution_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 809,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": 2875.370120875601,\n      \"key_1\": 6313.175203994162,\n      \"key_2\": 7884.831283372859\n    },\n    {\n      \"@type\": \"string\",\n      \"key_0\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "393457f5-72f0-4c2a-adba-3a70be05953a",
+      "name": "Knowledge Collection Service",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6b9020d9-bcee-4026-a1f4-8e512a536fe8",
+          "name": "Retrieve Knowledge Collections",
+          "request": {
+            "name": "Retrieve Knowledge Collections",
+            "description": {
+              "content": "Retrieve an existing knowledge collection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "collections",
+                ":collection_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "collection_id",
+                  "description": "(Required) Unique identifier of the knowledge collection."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5244b95-3b1b-4b51-b742-04258c6292a0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "collections",
+                    ":collection_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection_id",
+                      "description": "(Required) Unique identifier of the knowledge collection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1950-10-31T06:04:02.615Z\",\n    \"update_time\": \"1985-11-18T03:47:26.269Z\",\n    \"response_time_millis\": 9152\n  },\n  \"data\": {\n    \"collection_id\": \"string\",\n    \"active_domain_id\": \"string\",\n    \"active_domain_history\": [\n      \"string\",\n      \"string\"\n    ],\n    \"team_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"solution_id\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6ae5e9d-5e93-4f66-b1d8-babf67f1ce52",
+              "name": "Default error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "collections",
+                    ":collection_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection_id",
+                      "description": "(Required) Unique identifier of the knowledge collection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1310,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": 8134,\n      \"key_1\": 1568.9112909033176\n    },\n    {\n      \"@type\": \"string\",\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": 4466\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f2359e1e-718f-4f66-a114-7be25f9e888f",
+    "name": "Knowledge Collection Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

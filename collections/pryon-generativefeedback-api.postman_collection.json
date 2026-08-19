@@ -1,0 +1,1329 @@
+{
+  "item": [
+    {
+      "id": "be1019c5-4a7f-41d9-9a99-08d686136eea",
+      "name": "GenerativeFeedback",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "591cc396-de1e-4ecc-a866-92fb17ef16c1",
+          "name": "ListGenerativeExchangeRatingReviews",
+          "request": {
+            "name": "ListGenerativeExchangeRatingReviews",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "generative-rating-reviews"
+              ],
+              "host": [
+                "{{api-conversation-v1-generative-rating-reviews-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "collection_id",
+                  "value": "<string>",
+                  "description": "Required. Filter list output to only include ratings for a knowledge collection. In REST form the parameter is expressed as 'collection_id'."
+                },
+                {
+                  "disabled": false,
+                  "key": "generative_exchange_id",
+                  "value": "<string>",
+                  "description": "Filter list output to only include ratings for a particular exchange. Overrides the collection_id filter value if supplied. Defaults to empty which disables this filter. In REST form the parameter is expressed as 'exchange_id'."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "UNSPECIFIED",
+                  "description": "Filter list output to only include ratings that are in requested review status. Defaults to UNSPECIFIED which disables this filter. In REST form the parameter is expressed as 'status' with valid values PENDING and COMPLETE.\n\n - UNSPECIFIED: Not a valid exchange rating value\n - PENDING: This exchange rating is waiting to be inspected for approval or rejection (default).\n - COMPLETE: This exchange rating has been inspected and acted upon. No further action will be taken."
+                },
+                {
+                  "disabled": false,
+                  "key": "creator_id",
+                  "value": "<string>",
+                  "description": "Filter list output to only include ratings made by a given user. In REST form the parameter is expressed as 'creator_id'."
+                },
+                {
+                  "disabled": false,
+                  "key": "rank",
+                  "value": "<integer>",
+                  "description": "Filter list output to only include ratings that match a given rank value. In REST form the parameter is expressed as 'rank' with valid values 1-5."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Default page size is 100 when omitted. The maximum page size is 100.\nThe REST query parameter is \"page_size\".\nSee https://cloud.google.com/apis/design/design_patterns#list_pagination for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nSee https://cloud.google.com/apis/design/design_patterns#list_pagination for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "If the sort order parameter is provided with a multi page request, it must be provided on all subsequent page requests.\nFor exchange requests the valid options are: rank, rank desc, create_time, create_time desc.\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c25e7bf5-7982-4a2f-ac62-c6ac119ed49a",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "generative-rating-reviews"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-generative-rating-reviews-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "generative_exchange_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "creator_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rank",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 1613\n  },\n  \"items\": [\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1991-06-16T14:32:23.377Z\",\n        \"update_time\": \"1960-01-12T18:28:43.287Z\",\n        \"response_time_millis\": 6353\n      },\n      \"data\": {\n        \"rating\": {\n          \"rating_id\": \"string\",\n          \"generative_exchange_id\": \"string\",\n          \"exchange_id\": \"string\",\n          \"exchange_output_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"creator_id\": \"string\",\n          \"question\": \"string\",\n          \"rank\": 7640,\n          \"message\": \"string\",\n          \"freeform_text\": \"string\"\n        },\n        \"collection_id\": \"string\",\n        \"knowledge_domain_id\": \"string\",\n        \"reviewer_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"flagged\": true,\n        \"approval_id\": \"string\",\n        \"status\": \"UNSPECIFIED\"\n      }\n    },\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"2026-08-13T17:17:27.968Z\",\n        \"update_time\": \"1987-02-28T11:44:09.229Z\",\n        \"response_time_millis\": 9523\n      },\n      \"data\": {\n        \"rating\": {\n          \"rating_id\": \"string\",\n          \"generative_exchange_id\": \"string\",\n          \"exchange_id\": \"string\",\n          \"exchange_output_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"creator_id\": \"string\",\n          \"question\": \"string\",\n          \"rank\": 2302,\n          \"message\": \"string\",\n          \"freeform_text\": \"string\"\n        },\n        \"collection_id\": \"string\",\n        \"knowledge_domain_id\": \"string\",\n        \"reviewer_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"flagged\": false,\n        \"approval_id\": \"string\",\n        \"status\": \"UNSPECIFIED\"\n      }\n    }\n  ],\n  \"next_page_token\": \"string\",\n  \"total_size\": 875,\n  \"page_size\": 879,\n  \"order_by\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8563be3e-d823-4aa7-bb14-b251ed77ff21",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "generative-rating-reviews"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-generative-rating-reviews-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "generative_exchange_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "creator_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rank",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2597,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4Srj1P1VWaFsT7MiA778xDO8Z8==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8827c82a-2d87-4e7a-855e-fb6cb2935d34",
+          "name": "CreateGenerativeExchangeRating",
+          "request": {
+            "name": "CreateGenerativeExchangeRating",
+            "description": {
+              "content": "Create a generative exchange rating.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "generative-ratings"
+              ],
+              "host": [
+                "{{api-conversation-v1-generative-ratings-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"generative_exchange_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"exchange_output_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5dada65e-9307-492e-889f-9ebde959034d",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "generative-ratings"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-generative-ratings-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"generative_exchange_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"exchange_output_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1976-03-08T23:44:02.753Z\",\n    \"update_time\": \"1988-03-04T17:40:37.121Z\",\n    \"response_time_millis\": 9274\n  },\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"generative_exchange_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"exchange_output_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1e91da6-56ce-4028-a1eb-35e3929841cf",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "generative-ratings"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-generative-ratings-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"generative_exchange_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"exchange_output_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7091,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4ABiEK4UVsSvxFriXm2IT6XLs/==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8bbe046b-8462-40b3-b14a-090239caa603",
+          "name": "UpdateGenerativeExchangeRatingReview",
+          "request": {
+            "name": "UpdateGenerativeExchangeRatingReview",
+            "description": {
+              "content": "A reviewing authority can update the review perspective of an exchange rating item. This includes review information not available to un-privileged users.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "generative-ratings",
+                ":data.rating.rating_id",
+                "review"
+              ],
+              "host": [
+                "{{api-conversation-v1-generative-ratings-data.rating.rating_id-review-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "data.rating.rating_id",
+                  "description": "(Required) UUID that uniquely identifies a particular exchange rating. Automatically generated on create."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"rating\": {\n      \"rating_id\": \"<string>\",\n      \"generative_exchange_id\": \"<string>\",\n      \"exchange_id\": \"<string>\",\n      \"exchange_output_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"creator_id\": \"<string>\",\n      \"question\": \"<string>\",\n      \"rank\": \"<integer>\",\n      \"message\": \"<string>\",\n      \"freeform_text\": \"<string>\"\n    },\n    \"collection_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"reviewer_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"flagged\": \"<boolean>\",\n    \"approval_id\": \"<string>\",\n    \"status\": \"UNSPECIFIED\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6d7dfaf0-cf48-4136-8233-f2634e9d7ae6",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "generative-ratings",
+                    ":data.rating.rating_id",
+                    "review"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-generative-ratings-data.rating.rating_id-review-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.rating.rating_id",
+                      "description": "(Required) UUID that uniquely identifies a particular exchange rating. Automatically generated on create."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"rating\": {\n      \"rating_id\": \"<string>\",\n      \"generative_exchange_id\": \"<string>\",\n      \"exchange_id\": \"<string>\",\n      \"exchange_output_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"creator_id\": \"<string>\",\n      \"question\": \"<string>\",\n      \"rank\": \"<integer>\",\n      \"message\": \"<string>\",\n      \"freeform_text\": \"<string>\"\n    },\n    \"collection_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"reviewer_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"flagged\": \"<boolean>\",\n    \"approval_id\": \"<string>\",\n    \"status\": \"UNSPECIFIED\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1972-04-27T09:57:47.524Z\",\n    \"update_time\": \"1954-05-26T05:54:10.960Z\",\n    \"response_time_millis\": 4811\n  },\n  \"data\": {\n    \"rating\": {\n      \"rating_id\": \"<string>\",\n      \"generative_exchange_id\": \"<string>\",\n      \"exchange_id\": \"<string>\",\n      \"exchange_output_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"creator_id\": \"<string>\",\n      \"question\": \"<string>\",\n      \"rank\": \"<integer>\",\n      \"message\": \"<string>\",\n      \"freeform_text\": \"<string>\"\n    },\n    \"collection_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"reviewer_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"flagged\": \"<boolean>\",\n    \"approval_id\": \"<string>\",\n    \"status\": \"UNSPECIFIED\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b31e3ed8-2143-436c-97ef-980e46fbe527",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "generative-ratings",
+                    ":data.rating.rating_id",
+                    "review"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-generative-ratings-data.rating.rating_id-review-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.rating.rating_id",
+                      "description": "(Required) UUID that uniquely identifies a particular exchange rating. Automatically generated on create."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"rating\": {\n      \"rating_id\": \"<string>\",\n      \"generative_exchange_id\": \"<string>\",\n      \"exchange_id\": \"<string>\",\n      \"exchange_output_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"creator_id\": \"<string>\",\n      \"question\": \"<string>\",\n      \"rank\": \"<integer>\",\n      \"message\": \"<string>\",\n      \"freeform_text\": \"<string>\"\n    },\n    \"collection_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"reviewer_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"flagged\": \"<boolean>\",\n    \"approval_id\": \"<string>\",\n    \"status\": \"UNSPECIFIED\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7091,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4ABiEK4UVsSvxFriXm2IT6XLs/==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac166f48-ff86-4d24-aa68-44ec792c117d",
+          "name": "UpdateGenerativeExchangeRating",
+          "request": {
+            "name": "UpdateGenerativeExchangeRating",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "generative-ratings",
+                ":data.rating_id"
+              ],
+              "host": [
+                "{{api-conversation-v1-generative-ratings-data.rating_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "data.rating_id",
+                  "description": "(Required) UUID that uniquely identifies a particular exchange rating. Automatically generated on create."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"generative_exchange_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"exchange_output_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bd7264a6-1a7b-45d4-a0cc-e26179f27988",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "generative-ratings",
+                    ":data.rating_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-generative-ratings-data.rating_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.rating_id",
+                      "description": "(Required) UUID that uniquely identifies a particular exchange rating. Automatically generated on create."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"generative_exchange_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"exchange_output_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1976-03-08T23:44:02.753Z\",\n    \"update_time\": \"1988-03-04T17:40:37.121Z\",\n    \"response_time_millis\": 9274\n  },\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"generative_exchange_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"exchange_output_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e063428-83a8-4621-ab1d-34fc08236d02",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "generative-ratings",
+                    ":data.rating_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-generative-ratings-data.rating_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.rating_id",
+                      "description": "(Required) UUID that uniquely identifies a particular exchange rating. Automatically generated on create."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"generative_exchange_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"exchange_output_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7091,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4ABiEK4UVsSvxFriXm2IT6XLs/==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b69687d-68da-492c-9fca-ac1109437ec4",
+          "name": "DeleteGenerativeExchangeRating",
+          "request": {
+            "name": "DeleteGenerativeExchangeRating",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "generative-ratings",
+                ":rating_id"
+              ],
+              "host": [
+                "{{api-conversation-v1-generative-ratings-rating_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rating_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0c53213d-1464-4ae0-818a-8bfe2a3ac8ce",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "generative-ratings",
+                    ":rating_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-generative-ratings-rating_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rating_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "676e8c31-0478-4607-9862-fe629fc3d50e",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "generative-ratings",
+                    ":rating_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-generative-ratings-rating_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rating_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7091,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4ABiEK4UVsSvxFriXm2IT6XLs/==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0edab71-144c-4e3f-9df8-39f712a3d43f",
+          "name": "GetGenerativeExchangeRating",
+          "request": {
+            "name": "GetGenerativeExchangeRating",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "generative-ratings",
+                ":rating_id"
+              ],
+              "host": [
+                "{{api-conversation-v1-generative-ratings-rating_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rating_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84677bd1-3c0f-4291-b934-7b9ea77fa9c7",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "generative-ratings",
+                    ":rating_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-generative-ratings-rating_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rating_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1976-03-08T23:44:02.753Z\",\n    \"update_time\": \"1988-03-04T17:40:37.121Z\",\n    \"response_time_millis\": 9274\n  },\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"generative_exchange_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"exchange_output_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36933f24-4460-4a54-b3c8-5193b6e70ae3",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "generative-ratings",
+                    ":rating_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-generative-ratings-rating_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rating_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7091,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4ABiEK4UVsSvxFriXm2IT6XLs/==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f267b611-6d61-43b5-a9a9-45bba3e9bf1a",
+          "name": "GetGenerativeExchangeRatingReview",
+          "request": {
+            "name": "GetGenerativeExchangeRatingReview",
+            "description": {
+              "content": "A reviewing authority can retrieve the review perspective of an exchange rating item. This includes review information not available to un-privileged users.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "generative-ratings",
+                ":rating_id",
+                "review"
+              ],
+              "host": [
+                "{{api-conversation-v1-generative-ratings-rating_id-review-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rating_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f66dc473-8edd-4878-b0ba-be01026a260d",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "generative-ratings",
+                    ":rating_id",
+                    "review"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-generative-ratings-rating_id-review-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rating_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1972-04-27T09:57:47.524Z\",\n    \"update_time\": \"1954-05-26T05:54:10.960Z\",\n    \"response_time_millis\": 4811\n  },\n  \"data\": {\n    \"rating\": {\n      \"rating_id\": \"<string>\",\n      \"generative_exchange_id\": \"<string>\",\n      \"exchange_id\": \"<string>\",\n      \"exchange_output_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"creator_id\": \"<string>\",\n      \"question\": \"<string>\",\n      \"rank\": \"<integer>\",\n      \"message\": \"<string>\",\n      \"freeform_text\": \"<string>\"\n    },\n    \"collection_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"reviewer_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"flagged\": \"<boolean>\",\n    \"approval_id\": \"<string>\",\n    \"status\": \"UNSPECIFIED\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91df5859-75b5-42e0-9ae6-de11b221c391",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "generative-ratings",
+                    ":rating_id",
+                    "review"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-generative-ratings-rating_id-review-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rating_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7091,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4ABiEK4UVsSvxFriXm2IT6XLs/==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-conversation-v1-generative-rating-reviews-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-conversation-v1-generative-ratings-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-conversation-v1-generative-ratings-data.rating.rating_id-review-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-conversation-v1-generative-ratings-data.rating_id-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-conversation-v1-generative-ratings-rating_id-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-conversation-v1-generative-ratings-rating_id-review-Url"
+    }
+  ],
+  "info": {
+    "_postman_id": "634ffb70-a6aa-43f7-bd71-393e4261fd76",
+    "name": "Pryon Generative Feedback API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged GenerativeFeedback across 2 of this provider's published API definitions: pryon-admin-openapi.json, pryon-generative-feedback-may2025-openapi.json. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

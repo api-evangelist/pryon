@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Decommission Knowledge Domain",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "KnowledgeDomain",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Decommission Knowledge Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/knowledge/v1alpha1/domains:createWithSources",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Decommission Knowledge Domain"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

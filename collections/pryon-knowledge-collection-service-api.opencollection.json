@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Knowledge Collection Service API",
+    "version": "1.0.0-alpha"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Knowledge Collection Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Knowledge Collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/knowledge/v1alpha1/collections/:collection_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the knowledge collection."
+              }
+            ]
+          },
+          "docs": "Retrieve an existing knowledge collection."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,236 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pryon Generative Feedback API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GenerativeFeedback",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListGenerativeExchangeRatingReviews",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1/generative-rating-reviews",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Required. Filter list output to only include ratings for a knowledge collection. In REST form the parameter is expressed as 'collection_id'."
+              },
+              {
+                "name": "generative_exchange_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter list output to only include ratings for a particular exchange. Overrides the collection_id filter value if supplied. Defaults to empty which disables this filter. In REST form the parameter is expressed as 'exchange_id'."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter list output to only include ratings that are in requested review status. Defaults to UNSPECIFIED which disables this filter. In REST form the parameter is expressed as 'status' with valid values PENDING and COMPLETE.\n\n - UNSPECIFIED: Not a valid exchange rating value\n - PENDING: This exchange rating is waiting to be inspected for approval or rejection (default).\n - COMPLETE: This exchange rating has been inspected and acted upon. No further action will be taken."
+              },
+              {
+                "name": "creator_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter list output to only include ratings made by a given user. In REST form the parameter is expressed as 'creator_id'."
+              },
+              {
+                "name": "rank",
+                "value": "",
+                "type": "query",
+                "description": "Filter list output to only include ratings that match a given rank value. In REST form the parameter is expressed as 'rank' with valid values 1-5."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Default page size is 100 when omitted. The maximum page size is 100.\nThe REST query parameter is \"page_size\".\nSee https://cloud.google.com/apis/design/design_patterns#list_pagination for details."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nSee https://cloud.google.com/apis/design/design_patterns#list_pagination for details."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If the sort order parameter is provided with a multi page request, it must be provided on all subsequent page requests.\nFor exchange requests the valid options are: rank, rank desc, create_time, create_time desc.\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              }
+            ]
+          },
+          "docs": "ListGenerativeExchangeRatingReviews"
+        },
+        {
+          "info": {
+            "name": "CreateGenerativeExchangeRating",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/conversation/v1/generative-ratings",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a generative exchange rating."
+        },
+        {
+          "info": {
+            "name": "UpdateGenerativeExchangeRatingReview",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/conversation/v1/generative-ratings/:data.rating.rating_id/review",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.rating.rating_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID that uniquely identifies a particular exchange rating. Automatically generated on create."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A reviewing authority can update the review perspective of an exchange rating item. This includes review information not available to un-privileged users."
+        },
+        {
+          "info": {
+            "name": "UpdateGenerativeExchangeRating",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/conversation/v1/generative-ratings/:data.rating_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.rating_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID that uniquely identifies a particular exchange rating. Automatically generated on create."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "UpdateGenerativeExchangeRating"
+        },
+        {
+          "info": {
+            "name": "GetGenerativeExchangeRating",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1/generative-ratings/:rating_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "rating_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "GetGenerativeExchangeRating"
+        },
+        {
+          "info": {
+            "name": "DeleteGenerativeExchangeRating",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/conversation/v1/generative-ratings/:rating_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "rating_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "DeleteGenerativeExchangeRating"
+        },
+        {
+          "info": {
+            "name": "GetGenerativeExchangeRatingReview",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1/generative-ratings/:rating_id/review",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "rating_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "A reviewing authority can retrieve the review perspective of an exchange rating item. This includes review information not available to un-privileged users."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

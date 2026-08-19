@@ -1,0 +1,368 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pryon Knowledge Collection Service API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "KnowledgeCollectionService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListActiveDomains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/active-domains",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "roles",
+                "value": "",
+                "type": "query",
+                "description": "Optionally, filter Active Domains where the calling user has one of these team roles, otherwise return the full set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page_size is set to the default, this param can be omitted; otherwise, it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              }
+            ]
+          },
+          "docs": "An ORG_ADMIN can list all active domains corresponding to the collections in their Org.\nAn ORG_WORKER can list the active domains their team memberships allow."
+        },
+        {
+          "info": {
+            "name": "ListCollections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/collections",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "query",
+                "description": "Filters output to only include the collections authorized to the given team_id. The REST query parameter is 'team_id'."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page_size is set to the default, this param can be omitted; otherwise, it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "query",
+                "description": "Filters output to only include the collections assigned to the given solution_id. The REST query parameter is 'solution_id'. Cannot be combined with the 'team_id' filter which it disables when both specified."
+              }
+            ]
+          },
+          "docs": "List all Knowledge Collections configured for an Org"
+        },
+        {
+          "info": {
+            "name": "GetCollection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/collections/:collection_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. Id of a valid Knowledge Collection."
+              }
+            ]
+          },
+          "docs": "Retrieve an existing Knowledge Collection.\nCollections cannot be user created but are automatically generated with Knowledge Domains."
+        },
+        {
+          "info": {
+            "name": "DeleteCollection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/knowledge/v1/collections/:collection_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. Id of a valid Knowledge Collection."
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "Use this flag to force delete the collection when it is set as an Org or User Default. The default value is false.\nIn REST it is expressed as a query parameter \"force=true\"."
+              }
+            ]
+          },
+          "docs": "Deleting a Collection removes the item from the system. It will also locate and decommission all Knowledge Domain versions still associated with this record.\nIf a collection is already set as an Org or User default the delete operation will fail. ORG_ADMIN may use the force flag to delete anyway."
+        },
+        {
+          "info": {
+            "name": "GetCollectionActiveDomain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/collections/:collection_id/domain",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. Id of a valid Knowledge Collection."
+              }
+            ]
+          },
+          "docs": "Retrieve a Knowledge Collection's active domain. A Collection always has an active domain.\nAn ORG_ADMIN can always get an active domain.\nAn ORG_WORKER can only get an active domain if their team memberships allow it."
+        },
+        {
+          "info": {
+            "name": "RestoreCollectionActiveDomain",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/knowledge/v1/collections/:collection_id/domain:restoreActive",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. Id of a valid Knowledge Collection."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Revert the collection to its previous version. Reverting is immediate. The active version will not be automatically removed from the system. The ORG_ADMIN may decommission it via the Knowledge Domain API."
+        },
+        {
+          "info": {
+            "name": "UpdateCollectionActiveDomain",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/knowledge/v1/collections/:collection_id/domain:setActive",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. Id of a valid Knowledge Collection."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updating a collection's active domain triggers the collection versioning process. The collection will remember its former version id and can return to its previous version on demand. Before promoting a Knowledge Domain to the active version, the ORG_ADMIN should ensure that the Knowledge Domain functions to their expectations. Once set, the active version becomes immediately available to Org users for exchange and feedback operations."
+        },
+        {
+          "info": {
+            "name": "UpdateCollection",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/knowledge/v1/collections/:data.collection_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.collection_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. The Knowledge Collection unique identifier. Immutable after create."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updating a collection allows for changing of team assignments."
+        },
+        {
+          "info": {
+            "name": "ListDefaultActiveDomains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/default-domains",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "roles",
+                "value": "",
+                "type": "query",
+                "description": "Optionally, filter Active Domains where the calling user has one of these team roles, otherwise return the full set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page_size is set to the default, this param can be omitted; otherwise, it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              }
+            ]
+          },
+          "docs": "List the Active Domains an authorized user can implicitly access in absence of any team assignments(defaults)."
+        },
+        {
+          "info": {
+            "name": "Create Knowledge Collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/collections",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Knowledge Collections"
+        },
+        {
+          "info": {
+            "name": "Delete Knowledge Collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/collections/:collection_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the knowledge collection."
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "Flag used to force delete a collection when it is set as an organizational or user default; default is false."
+              }
+            ]
+          },
+          "docs": "Delete collections from an organization while also locating and decommissioning all knowledge domain versions associated with the record."
+        },
+        {
+          "info": {
+            "name": "Get Knowledge Collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/collections/:collection_id/domains/:knowledge_domain_id",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the knowledge collection."
+              },
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique ID of the knowledge domain."
+              }
+            ]
+          },
+          "docs": "Retrieve all knowledge collections for an organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

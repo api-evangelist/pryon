@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pryon Exchange API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Exchange",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CreateExchange",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/conversation/v1/exchange",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates or continues a conversation with the conversation exchange service.\nEach call performs one synchronous round-trip by sending a text or audio request to the service and receiving the text and optional audio response."
+        },
+        {
+          "info": {
+            "name": "CreateWsExchange",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/conversation/v1/exchange/wss",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates or continues a conversation with the conversation exchange service.\nThe conversation exchange request and response cycle has the following steps.\n\n1. Open a connection.\n\nThe conversation exchange service uses the secure WebSocket protocol (wss) at the following endpoint:\nwss://{hostname}/api/conversation/v1/exchange/wss\n\nAfter the connection is established, the client defines the event listeners (onOpen, onMessage, onClose, etc) to respond to events from the server.\n\n2. Initiate an exc"
+        },
+        {
+          "info": {
+            "name": "GetExchange",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1/exchanges/:exchange_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "exchange_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. Valid Unique ID of the exchange item from /api/knowledge/v1/exchanges"
+              },
+              {
+                "name": "output_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional. The ranking of the answer and answer_in_context chunk, represented as best_1, best_2, etc."
+              }
+            ]
+          },
+          "docs": "Retrieves the query and output data for an existing exchange data when supplied with an exchange_id and optional output_id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

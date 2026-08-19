@@ -1,0 +1,3821 @@
+{
+  "item": [
+    {
+      "id": "cda3adc4-4592-4bc6-864e-82382472b341",
+      "name": "Content Service",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e11e8f5f-5829-48d9-918d-45952282a86f",
+          "name": "List Content Groups",
+          "request": {
+            "name": "List Content Groups",
+            "description": {
+              "content": "Filter content groups by knowledge domain and content.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "content-groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "knowledge_domain_id",
+                  "value": "<string>",
+                  "description": "Unique identifier of the knowledge domain that supplied the exchange response."
+                },
+                {
+                  "disabled": false,
+                  "key": "content_id",
+                  "value": "<string>",
+                  "description": "Unique identifier for the content within the matching content groups."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "58c75339-6960-4d8c-9f6c-9f75d790f050",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "knowledge_domain_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "content_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 4409\n  },\n  \"items\": {\n    \"key_0\": {\n      \"data\": {\n        \"content_group_id\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\",\n        \"source_location\": \"string\",\n        \"content_statuses\": [\n          3550,\n          1347\n        ],\n        \"service_id\": \"string\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"2013-04-09T10:04:52.339Z\",\n        \"update_time\": \"2003-06-18T09:39:09.087Z\",\n        \"response_time_millis\": 6375\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3c7617f-aec8-4809-b07c-bdca707e828d",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "knowledge_domain_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "content_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3912,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"3TWgcUZMUuqqZU38uBVDCbogc3LN+dlE4tVZoiR=\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"9KRoxKmSphL+gaol82GRUO295/b98Mc9O4MVPzvo\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c69599c6-ca18-4827-abc6-53c8f6cf21b7",
+          "name": "Create Content Group",
+          "request": {
+            "name": "Create Content Group",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "content-groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"content_statuses\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"service_id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a12ba56f-fafb-430e-a994-85e64bd4d280",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"content_statuses\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"service_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1965-07-09T23:45:05.788Z\",\n    \"update_time\": \"1973-05-17T04:24:54.321Z\",\n    \"response_time_millis\": 1618\n  },\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"content_statuses\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"service_id\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78fbd8c4-6ab8-4fbf-b2c5-25dc3efa8a05",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"content_statuses\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"service_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "afdf9627-e348-4f86-b798-1306387279c6",
+          "name": "Delete Content Group",
+          "request": {
+            "name": "Delete Content Group",
+            "description": {
+              "content": "Delete a content group without altering the content resources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "content-groups",
+                ":content_group_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_group_id",
+                  "description": "(Required) Unique identifier for the content group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "445f8904-2c85-41b9-b66b-3eab8ff776aa",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups",
+                    ":content_group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Unique identifier for the content group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12187daf-f8d5-4112-9a55-2b30880fff75",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups",
+                    ":content_group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Unique identifier for the content group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19e003f7-c322-4012-8865-a7dc91606dad",
+          "name": "Get Content Group",
+          "request": {
+            "name": "Get Content Group",
+            "description": {
+              "content": "Retrieve a content group using the ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "content-groups",
+                ":content_group_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_group_id",
+                  "description": "(Required) Unique identifier for the content group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d1654438-f4b9-454b-9ef6-c609a1cc43c1",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups",
+                    ":content_group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Unique identifier for the content group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1965-07-09T23:45:05.788Z\",\n    \"update_time\": \"1973-05-17T04:24:54.321Z\",\n    \"response_time_millis\": 1618\n  },\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"content_statuses\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"service_id\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8749a23-b5bd-4daa-b266-664ea75c4248",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups",
+                    ":content_group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Unique identifier for the content group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "caa4fc6f-2e0b-43ca-acd7-2ebf44e2c06c",
+          "name": "Delete Content Group Contents",
+          "request": {
+            "name": "Delete Content Group Contents",
+            "description": {
+              "content": "Delete all child content associations with the parent content group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "content-groups",
+                ":content_group_id",
+                "contents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_group_id",
+                  "description": "(Required) Unique identifier for the content group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69985bca-7289-4b06-beff-c67f749405ff",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups",
+                    ":content_group_id",
+                    "contents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Unique identifier for the content group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "871cfbc2-75cb-42d9-84cb-7244050ae3b6",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups",
+                    ":content_group_id",
+                    "contents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Unique identifier for the content group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de47a0e8-f48e-49d7-a46b-46b2afdbc353",
+          "name": "List Content Group Contents",
+          "request": {
+            "name": "List Content Group Contents",
+            "description": {
+              "content": "List content group sources by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "content-groups",
+                ":content_group_id",
+                "contents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Maximum page size is 100; default is 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "For multiple pages; must be specified in each request for two pages per sheet."
+                },
+                {
+                  "disabled": false,
+                  "key": "return_only_id",
+                  "value": "<boolean>",
+                  "description": "If set to True will only return item IDs."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_group_id",
+                  "description": "(Required) Unique identifier for the content group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a988738a-5a47-44a1-abb7-0ebfb4fbba96",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups",
+                    ":content_group_id",
+                    "contents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "return_only_id",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Unique identifier for the content group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 6915\n  },\n  \"items\": [\n    {\n      \"data\": {\n        \"content_id\": \"string\",\n        \"content_group_id\": \"string\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"2022-03-22T23:11:06.310Z\",\n        \"update_time\": \"1988-02-03T11:52:02.846Z\",\n        \"response_time_millis\": 8430\n      }\n    },\n    {\n      \"data\": {\n        \"content_id\": \"string\",\n        \"content_group_id\": \"string\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"2021-07-28T03:46:33.344Z\",\n        \"update_time\": \"2012-01-30T06:55:42.981Z\",\n        \"response_time_millis\": 9566\n      }\n    }\n  ],\n  \"next_page_token\": \"string\",\n  \"total_size\": 5712,\n  \"page_size\": 242\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d15c3c9-6ba5-4b72-9bae-83527e61bb4f",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups",
+                    ":content_group_id",
+                    "contents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "return_only_id",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Unique identifier for the content group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22c8694c-7e0c-45c3-877b-db204cc23193",
+          "name": "Delete Content Group Content",
+          "request": {
+            "name": "Delete Content Group Content",
+            "description": {
+              "content": "Delete content associations within the parent content group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "content-groups",
+                ":content_group_id",
+                "contents",
+                ":content_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_group_id",
+                  "description": "(Required) Unique identifier for the content group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_id",
+                  "description": "(Required) Unique identifier for the content within the matching content groups."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee18ea9c-0f79-4f5d-94c8-99f6929b15a7",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups",
+                    ":content_group_id",
+                    "contents",
+                    ":content_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Unique identifier for the content group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content within the matching content groups."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6980e60-a83c-4cfd-8656-f07aa3b94191",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups",
+                    ":content_group_id",
+                    "contents",
+                    ":content_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Unique identifier for the content group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content within the matching content groups."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c69dcf77-49a6-43e5-9882-0503b890b324",
+          "name": "Get Content Group Content",
+          "request": {
+            "name": "Get Content Group Content",
+            "description": {
+              "content": "Get content group sources by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "content-groups",
+                ":content_group_id",
+                "contents",
+                ":content_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_group_id",
+                  "description": "(Required) Unique identifier for the content group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_id",
+                  "description": "(Required) Unique identifier for the content within the matching content groups."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88de5ad4-81c5-4f5c-86aa-c29a5b93a578",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups",
+                    ":content_group_id",
+                    "contents",
+                    ":content_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Unique identifier for the content group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content within the matching content groups."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1959-10-24T02:44:26.922Z\",\n    \"update_time\": \"1976-10-13T21:03:17.316Z\",\n    \"response_time_millis\": 8648\n  },\n  \"data\": {\n    \"content_id\": \"string\",\n    \"content_group_id\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c20bf8f-fd91-477b-948a-f520d5131f32",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups",
+                    ":content_group_id",
+                    "contents",
+                    ":content_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Unique identifier for the content group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content within the matching content groups."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "214e49f3-1be2-4038-8b6f-40dd5d7c5d91",
+          "name": "Cascade Delete Content Group",
+          "request": {
+            "name": "Cascade Delete Content Group",
+            "description": {
+              "content": "Delete content group source associations and remove from knowledge domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "content-groups",
+                "{{content_group_id}}:cascade"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9c90ccdd-b14f-4608-8c07-81e4bce6bfb2",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups",
+                    "{{content_group_id}}:cascade"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02ff1b4e-b3d5-409c-bfeb-4e46b0e20e7b",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups",
+                    "{{content_group_id}}:cascade"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7521fad-f321-4df9-857e-521ef5caa918",
+          "name": "Update Content Group",
+          "request": {
+            "name": "Update Content Group",
+            "description": {
+              "content": "Update the display name for a content group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "content-groups",
+                ":data.content_group_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "data.content_group_id",
+                  "description": "(Required) Unique identifier for the content group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9a6863d0-22a3-4f91-9832-dad3336038c4",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups",
+                    ":data.content_group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.content_group_id",
+                      "description": "(Required) Unique identifier for the content group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1965-07-09T23:45:05.788Z\",\n    \"update_time\": \"1973-05-17T04:24:54.321Z\",\n    \"response_time_millis\": 1618\n  },\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"content_statuses\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"service_id\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83b6fbc3-6249-440c-a07b-c2aa0dc9c2f6",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups",
+                    ":data.content_group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.content_group_id",
+                      "description": "(Required) Unique identifier for the content group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "336373f5-f2a1-4896-a1ba-51ae5e2fb45d",
+          "name": "Create Content Group Content",
+          "request": {
+            "name": "Create Content Group Content",
+            "description": {
+              "content": "Create content group sources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "content-groups",
+                ":data.content_group_id",
+                "contents",
+                ":data.content_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "data.content_group_id",
+                  "description": "(Required) Unique identifier for the content group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "data.content_id",
+                  "description": "(Required) Unique identifier for the content within the matching content groups."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"content_id\": \"<string>\",\n    \"content_group_id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "84ebfa93-0de2-42ba-8643-43b75dc428b8",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups",
+                    ":data.content_group_id",
+                    "contents",
+                    ":data.content_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.content_group_id",
+                      "description": "(Required) Unique identifier for the content group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.content_id",
+                      "description": "(Required) Unique identifier for the content within the matching content groups."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content_id\": \"<string>\",\n    \"content_group_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"2019-01-12T15:35:59.234Z\",\n    \"update_time\": \"1946-08-16T02:18:05.708Z\",\n    \"response_time_millis\": 3753\n  },\n  \"data\": {\n    \"content_id\": \"<string>\",\n    \"content_group_id\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d84f71f6-aa9b-43be-8be3-28907b44c1b5",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "content-groups",
+                    ":data.content_group_id",
+                    "contents",
+                    ":data.content_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.content_group_id",
+                      "description": "(Required) Unique identifier for the content group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.content_id",
+                      "description": "(Required) Unique identifier for the content within the matching content groups."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content_id\": \"<string>\",\n    \"content_group_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8ba574a-a6b2-49d5-bb5a-aa8dd24f1bfb",
+          "name": "List Contents",
+          "request": {
+            "name": "List Contents",
+            "description": {
+              "content": "List contents associated with a knowledge domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "contents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "knowledge_domain_id",
+                  "value": "<string>",
+                  "description": "Unique identifier of the knowledge domain that supplied the exchange response."
+                },
+                {
+                  "disabled": false,
+                  "key": "content_group_id",
+                  "value": "<string>",
+                  "description": "Unique identifier for the content within the matching content groups."
+                },
+                {
+                  "disabled": false,
+                  "key": "source_location",
+                  "value": "<string>",
+                  "description": "Precise location of the source material."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Maximum page size is 100; default is 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "For multiple pages; must be specified in each request for two pages per sheet."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4c4acacf-e095-4d31-8c49-89c8295a60c7",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "knowledge_domain_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "content_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source_location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 9202\n  },\n  \"items\": [\n    {\n      \"data\": {\n        \"content_id\": \"string\",\n        \"content_type_id\": \"string\",\n        \"source_location\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\",\n        \"status\": \"UNKNOWN\",\n        \"source_owner\": \"string\",\n        \"revision\": \"string\",\n        \"status_reason\": \"string\",\n        \"labels\": {\n          \"key_0\": \"string\"\n        }\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"2021-07-22T14:17:54.810Z\",\n        \"update_time\": \"1955-07-09T05:33:04.589Z\",\n        \"response_time_millis\": 8126\n      }\n    },\n    {\n      \"data\": {\n        \"content_id\": \"string\",\n        \"content_type_id\": \"string\",\n        \"source_location\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\",\n        \"status\": \"UNKNOWN\",\n        \"source_owner\": \"string\",\n        \"revision\": \"string\",\n        \"status_reason\": \"string\",\n        \"labels\": {\n          \"key_0\": \"string\"\n        }\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1985-04-09T03:47:19.618Z\",\n        \"update_time\": \"1950-06-08T07:49:48.774Z\",\n        \"response_time_millis\": 3106\n      }\n    }\n  ],\n  \"next_page_token\": \"string\",\n  \"page_size\": 8484\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3763299-fa10-4a35-9632-399ca97d8aa3",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "knowledge_domain_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "content_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source_location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18ef7f68-b86c-45ac-b61e-662c83e49c14",
+          "name": "Create Content",
+          "request": {
+            "name": "Create Content",
+            "description": {
+              "content": "Create methods for contents.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "contents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"content_id\": \"<string>\",\n    \"content_type_id\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"source_owner\": \"<string>\",\n    \"revision\": \"<string>\",\n    \"status_reason\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "29d6f459-4e1a-4cc9-92af-cf98cf9a933d",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content_id\": \"<string>\",\n    \"content_type_id\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"source_owner\": \"<string>\",\n    \"revision\": \"<string>\",\n    \"status_reason\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"2019-08-17T14:08:47.720Z\",\n    \"update_time\": \"1965-04-01T06:37:16.310Z\",\n    \"response_time_millis\": 1531\n  },\n  \"data\": {\n    \"content_id\": \"<string>\",\n    \"content_type_id\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"source_owner\": \"<string>\",\n    \"revision\": \"<string>\",\n    \"status_reason\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c79ee2ff-7564-4788-9f05-b52923405a61",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content_id\": \"<string>\",\n    \"content_type_id\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"source_owner\": \"<string>\",\n    \"revision\": \"<string>\",\n    \"status_reason\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4045e2b8-3e32-4904-a275-d0c4cc40aff1",
+          "name": "Delete Content",
+          "request": {
+            "name": "Delete Content",
+            "description": {
+              "content": "Delete the content and all child resources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "contents",
+                ":content_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_id",
+                  "description": "(Required) Unique identifier for the content to be deleted."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3f081ea0-635b-46cb-9e99-8e72fc7cf7f6",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents",
+                    ":content_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content to be deleted."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eec9bd00-a7a6-4849-98ad-3bdfc64644ae",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents",
+                    ":content_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content to be deleted."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "164e7d3e-416b-467d-b376-e6011df18535",
+          "name": "Get Content",
+          "request": {
+            "name": "Get Content",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "contents",
+                ":content_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_id",
+                  "description": "(Required) Unique identifier for the content to be returned."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "569bc176-6578-4c19-a44e-740587d61533",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents",
+                    ":content_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"2019-08-17T14:08:47.720Z\",\n    \"update_time\": \"1965-04-01T06:37:16.310Z\",\n    \"response_time_millis\": 1531\n  },\n  \"data\": {\n    \"content_id\": \"<string>\",\n    \"content_type_id\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"source_owner\": \"<string>\",\n    \"revision\": \"<string>\",\n    \"status_reason\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f718414d-7e2c-4efc-a082-307acbe83e17",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents",
+                    ":content_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4add51b-6824-4029-8a91-fa7559966cdc",
+          "name": "Get Content Image",
+          "request": {
+            "name": "Get Content Image",
+            "description": {
+              "content": "Return an image representation of the content.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "contents",
+                ":content_id",
+                "image"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Page number in the content."
+                },
+                {
+                  "disabled": false,
+                  "key": "uncompressed",
+                  "value": "<boolean>",
+                  "description": "True does not compress the image data; default is false (compressed)."
+                },
+                {
+                  "disabled": false,
+                  "key": "debug",
+                  "value": "<boolean>",
+                  "description": "True returns a debug image."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_id",
+                  "description": "(Required) Unique identifier for the content within the matching content groups."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "065eb49f-9dd7-4a26-b812-f330aa97f3fa",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents",
+                    ":content_id",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "uncompressed",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "debug",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content within the matching content groups."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03696839-5ffa-46e6-b1d7-799aa5de9daa",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents",
+                    ":content_id",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "uncompressed",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "debug",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content within the matching content groups."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "339c02d4-54c4-4981-aaff-b841ed907cef",
+          "name": "List Processed Content Extracts",
+          "request": {
+            "name": "List Processed Content Extracts",
+            "description": {
+              "content": "List initial processed extracts by content ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "contents",
+                ":content_id",
+                "processed-extracts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "knowledge_domain_id",
+                  "value": "<string>",
+                  "description": "Unique identifier of the knowledge domain that contains the exchange response."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Maximum page size is 100; default is 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "For multiple pages; must be specified in each request for two pages per sheet."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_id",
+                  "description": "(Required) Unique identifier for the content within the matching content groups."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "629275b1-86d8-4bc9-9b40-6bef57d4c8c6",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents",
+                    ":content_id",
+                    "processed-extracts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "knowledge_domain_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content within the matching content groups."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 5955\n  },\n  \"items\": [\n    {\n      \"data\": {\n        \"text\": \"string\",\n        \"textbox_text_separator\": \"string\",\n        \"pages\": [\n          {\n            \"text_boxes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"page_number\": \"string\",\n            \"page_bbox\": \"string\",\n            \"anchor_char_offsets\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"text_boxes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"page_number\": \"string\",\n            \"page_bbox\": \"string\",\n            \"anchor_char_offsets\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"display_text\": \"string\",\n        \"read_permission\": {\n          \"allow_emails\": [\n            \"string\",\n            \"string\"\n          ],\n          \"allow_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"deny_emails\": [\n            \"string\",\n            \"string\"\n          ],\n          \"deny_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"any_required_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"all_required_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"is_public\": true,\n          \"unrestricted_emails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"tags\": [\n          \"string\",\n          \"string\"\n        ],\n        \"extract_index\": 2206,\n        \"data_source_metadata\": {\n          \"key_0\": {\n            \"display_field_name\": \"string\",\n            \"value\": {},\n            \"data_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_1\": {\n            \"display_field_name\": \"string\",\n            \"value\": {},\n            \"data_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_2\": {\n            \"display_field_name\": \"string\",\n            \"value\": {},\n            \"data_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    },\n    {\n      \"data\": {\n        \"text\": \"string\",\n        \"textbox_text_separator\": \"string\",\n        \"pages\": [\n          {\n            \"text_boxes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"page_number\": \"string\",\n            \"page_bbox\": \"string\",\n            \"anchor_char_offsets\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"text_boxes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"page_number\": \"string\",\n            \"page_bbox\": \"string\",\n            \"anchor_char_offsets\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"display_text\": \"string\",\n        \"read_permission\": {\n          \"allow_emails\": [\n            \"string\",\n            \"string\"\n          ],\n          \"allow_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"deny_emails\": [\n            \"string\",\n            \"string\"\n          ],\n          \"deny_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"any_required_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"all_required_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"is_public\": false,\n          \"unrestricted_emails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"tags\": [\n          \"string\",\n          \"string\"\n        ],\n        \"extract_index\": 7337,\n        \"data_source_metadata\": {\n          \"key_0\": {\n            \"display_field_name\": \"string\",\n            \"value\": {},\n            \"data_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_1\": {\n            \"display_field_name\": \"string\",\n            \"value\": {},\n            \"data_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    }\n  ],\n  \"next_page_token\": \"string\",\n  \"page_size\": 4953\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "419f0c4c-a271-4c29-9dd1-f5cb621f008d",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents",
+                    ":content_id",
+                    "processed-extracts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "knowledge_domain_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content within the matching content groups."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b77d7d1-66c0-4207-8afe-a9a0ce843f3d",
+          "name": "List Retrieval Content Extracts",
+          "request": {
+            "name": "List Retrieval Content Extracts",
+            "description": {
+              "content": "List of retrieval extracts by content ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "contents",
+                ":content_id",
+                "retrieval-extracts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "knowledge_domain_id",
+                  "value": "<string>",
+                  "description": "Unique identifier of the knowledge domain that supplied the exchange response."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Maximum page size is 100; default is 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "For multiple pages; must be specified in each request for two pages per sheet."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_id",
+                  "description": "(Required) Unique identifier for the content within the matching content groups."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6c8f8f52-5c66-4abb-b587-0e2e496c953a",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents",
+                    ":content_id",
+                    "retrieval-extracts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "knowledge_domain_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content within the matching content groups."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 3828\n  },\n  \"items\": [\n    {\n      \"data\": {\n        \"text\": \"string\",\n        \"textbox_text_separator\": \"string\",\n        \"pages\": [\n          {\n            \"text_boxes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"page_number\": \"string\",\n            \"page_bbox\": \"string\",\n            \"anchor_char_offsets\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"text_boxes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"page_number\": \"string\",\n            \"page_bbox\": \"string\",\n            \"anchor_char_offsets\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"display_text\": \"string\",\n        \"read_permission\": {\n          \"allow_emails\": [\n            \"string\",\n            \"string\"\n          ],\n          \"allow_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"deny_emails\": [\n            \"string\",\n            \"string\"\n          ],\n          \"deny_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"any_required_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"all_required_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"is_public\": false,\n          \"unrestricted_emails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"tags\": [\n          \"string\",\n          \"string\"\n        ],\n        \"extract_index\": 6216,\n        \"data_source_metadata\": {\n          \"key_0\": {\n            \"display_field_name\": \"string\",\n            \"value\": {},\n            \"data_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_1\": {\n            \"display_field_name\": \"string\",\n            \"value\": {},\n            \"data_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_2\": {\n            \"display_field_name\": \"string\",\n            \"value\": {},\n            \"data_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_3\": {\n            \"display_field_name\": \"string\",\n            \"value\": {},\n            \"data_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    },\n    {\n      \"data\": {\n        \"text\": \"string\",\n        \"textbox_text_separator\": \"string\",\n        \"pages\": [\n          {\n            \"text_boxes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"page_number\": \"string\",\n            \"page_bbox\": \"string\",\n            \"anchor_char_offsets\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"text_boxes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"page_number\": \"string\",\n            \"page_bbox\": \"string\",\n            \"anchor_char_offsets\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"display_text\": \"string\",\n        \"read_permission\": {\n          \"allow_emails\": [\n            \"string\",\n            \"string\"\n          ],\n          \"allow_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"deny_emails\": [\n            \"string\",\n            \"string\"\n          ],\n          \"deny_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"any_required_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"all_required_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"is_public\": false,\n          \"unrestricted_emails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"tags\": [\n          \"string\",\n          \"string\"\n        ],\n        \"extract_index\": 9240,\n        \"data_source_metadata\": {\n          \"key_0\": {\n            \"display_field_name\": \"string\",\n            \"value\": {},\n            \"data_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_1\": {\n            \"display_field_name\": \"string\",\n            \"value\": {},\n            \"data_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    }\n  ],\n  \"next_page_token\": \"string\",\n  \"page_size\": 6686\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40780106-cb51-4347-9e96-4b83fb3db353",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents",
+                    ":content_id",
+                    "retrieval-extracts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "knowledge_domain_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content within the matching content groups."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d3f64a00-6145-4101-a51b-8c042ac43a0d",
+          "name": "List Content Subjects",
+          "request": {
+            "name": "List Content Subjects",
+            "description": {
+              "content": "List subjects associated with a content item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "contents",
+                ":content_id",
+                "subjects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Maximum page size is 100; default is 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "IFor multiple pages; must be specified in each request for two pages per sheet."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "Sort order for multi page requests; valid options are rank, rank desc, create_time, create_time desc."
+                },
+                {
+                  "disabled": false,
+                  "key": "subject_category_id",
+                  "value": "<string>",
+                  "description": "Unique identifier for the grouping of specific topics."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_id",
+                  "description": "(Required) Unique identifier for the content within the matching content groups."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "887fca91-59d4-4e8e-8d37-304b8f68f10b",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents",
+                    ":content_id",
+                    "subjects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subject_category_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content within the matching content groups."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 4545\n  },\n  \"items\": [\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1981-11-23T02:25:51.145Z\",\n        \"update_time\": \"2013-04-18T21:03:34.128Z\",\n        \"response_time_millis\": 5514\n      },\n      \"data\": {\n        \"subject_id\": \"string\",\n        \"term\": \"string\",\n        \"subject_category_id\": \"string\",\n        \"definition\": \"string\",\n        \"reference_count\": \"string\",\n        \"content_count\": \"string\"\n      }\n    },\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1972-01-29T22:28:26.959Z\",\n        \"update_time\": \"1958-04-02T05:25:24.890Z\",\n        \"response_time_millis\": 8122\n      },\n      \"data\": {\n        \"subject_id\": \"string\",\n        \"term\": \"string\",\n        \"subject_category_id\": \"string\",\n        \"definition\": \"string\",\n        \"reference_count\": \"string\",\n        \"content_count\": \"string\"\n      }\n    }\n  ],\n  \"next_page_token\": \"string\",\n  \"page_size\": 9105,\n  \"order_by\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "abc74eca-379e-4fa6-bc9c-b746d3a0b6c5",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents",
+                    ":content_id",
+                    "subjects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subject_category_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content within the matching content groups."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8cf1865-17ec-4ef7-95e8-93ea7a2109c4",
+          "name": "Get Summary",
+          "request": {
+            "name": "Get Summary",
+            "description": {
+              "content": "Get summary information by content ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "contents",
+                ":content_id",
+                "summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_id",
+                  "description": "(Required) Unique identifier for the content within the matching content groups."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8f5d1ab8-7f6b-4215-82cd-119b4e1407e1",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents",
+                    ":content_id",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content within the matching content groups."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1965-04-18T01:51:37.277Z\",\n    \"update_time\": \"2010-04-30T02:55:13.405Z\",\n    \"response_time_millis\": 9199\n  },\n  \"data\": {\n    \"text\": \"string\",\n    \"html\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72ac6cdc-340d-46a0-a5b6-7de44dd70be3",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents",
+                    ":content_id",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content within the matching content groups."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "799ea792-945c-4fc1-b7f4-7abdb323278d",
+          "name": "Cascade Delete Content",
+          "request": {
+            "name": "Cascade Delete Content",
+            "description": {
+              "content": "Delete the content and all child resources, and remove from all content groups.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "contents",
+                "{{content_id}}:cascade"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7214ca3b-7918-4ed7-93c1-a456d419eace",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents",
+                    "{{content_id}}:cascade"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47860c2c-5443-478b-979d-903622d473b4",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "contents",
+                    "{{content_id}}:cascade"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b04c4ce5-90b9-4cdc-8a00-c51d5c2391d0",
+          "name": "Get Content Metadata",
+          "request": {
+            "name": "Get Content Metadata",
+            "description": {
+              "content": "List metadata by content ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "domains",
+                ":knowledge_domain_id",
+                "contents",
+                ":content_id",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "knowledge_domain_id",
+                  "description": "(Required) Unique identifier of the knowledge domain containing the requested metadata"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_id",
+                  "description": "(Required) Unique identifier for the content within the matching content groups."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dfe8dbf8-8937-40ff-a9d0-53ebaf9771ca",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "domains",
+                    ":knowledge_domain_id",
+                    "contents",
+                    ":content_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) Unique identifier of the knowledge domain containing the requested metadata"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content within the matching content groups."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"2005-01-31T02:20:56.493Z\",\n    \"update_time\": \"1996-02-01T07:54:28.336Z\",\n    \"response_time_millis\": 6305\n  },\n  \"data_source_metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0d0d3fa-1e82-4d5b-bc77-96d3c060482d",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "domains",
+                    ":knowledge_domain_id",
+                    "contents",
+                    ":content_id",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) Unique identifier of the knowledge domain containing the requested metadata"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Unique identifier for the content within the matching content groups."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1110,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"4y==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"11fN9L8a+GppSsHD4u5oPQlyu6ZmdUF5ztwrGeaQ\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Unique identifier for the content group.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "content_group_id"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Unique identifier for the content to be deleted.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "content_id"
+    }
+  ],
+  "info": {
+    "_postman_id": "8677f580-4059-4eea-9536-1a101ec0d829",
+    "name": "Retrieval Content Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: Pryon Product Support\n Email: support@pryon.zendesk.com",
+      "type": "text/plain"
+    }
+  }
+}

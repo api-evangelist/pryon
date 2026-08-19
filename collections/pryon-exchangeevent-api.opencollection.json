@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pryon Exchange Event API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ExchangeEvent",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CreateExchangeEventSSE",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/conversation/v1/exchange-events/sse",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CreateExchangeEventSSE Service:\nThis service sends ExchangeEventSSEData messages as \"Data-Only\" Server-Sent Events (SSE). The stream terminates with a ExchangeEventSSEData message containing the GENERATIVE_EXCHANGE_RESPONSE_COMPLETE state.\nEach message is sent approximately within a second or less of each other. If clients do not receive a message within their specified timeout, they should assume the connection is lost and attempt to reconnect.\nReference:\nhttps://html.spec.whatwg.org/multipage/"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1264 @@
+openapi: 3.2.0
+info:
+  title: Pryon Connector Service External API
+  version: '1.0'
+  description: 'Operations tagged ConnectorServiceExternal across 2 of this provider''s published API definitions: pryon-admin-openapi.json, pryon-universal-connector-may2025-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.pryon.net
+  description: Pryon Cloud
+- url: /
+tags:
+- name: ConnectorServiceExternal
+paths:
+  /api/connector/v1/connectors/{connector_id}/content-data:download:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      description: 'Custom methods to get ContentData
+
+        Download Content Data in multiple parts
+
+        HTTP Request:
+
+        GET https://{host}/api/connector/v1/connectors/{connector_id}/content-data:download?source_location=<source_location>&opaque_data=<opaque_data> HTTP/1.1
+
+        HOST: {host}
+
+        Range: bytes=<range-start>-<range-end>
+
+
+        HTTP Response:
+
+        HTTP/1.1 206 Partial Content
+
+        Content-Range: bytes <range-start>-<range-end>/<total_size>
+
+        Content-Length: <bytes-length>
+
+        Content-Type: application/octet-stream
+
+
+        <bytes-data>
+
+
+        This is a proxy through the content source.
+
+        To be implemented by the the universal connector and invoked by Pryon Ingestion Platform to pull content data from the connector.
+
+        This is called by each individual file content workflow (in Pryon''s Ingestion logic) when we have identified the content
+
+        and need to fetch the data we want to index for searching/Retrieval Views.'
+      operationId: ConnectorServiceExternal_DownloadContentData
+      parameters:
+      - description: Required. The identifier of the associated connector for the content download request.
+        in: path
+        name: connector_id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: range_header.range_start
+        schema:
+          format: int64
+          type: string
+      - in: query
+        name: range_header.range_end
+        schema:
+          format: int64
+          type: string
+      - in: query
+        name: range_header.total_size
+        schema:
+          format: int64
+          type: string
+      - description: The opaque_data is an opaque string contains additonal information that can be used to by the PULL API to retreive the content data from underlying content source along with the source_location. (e.g. drinve_id + item_id in SharePoint).
+        in: query
+        name: opaque_data
+        schema:
+          type: string
+      - description: The content source URI.
+        in: query
+        name: source_location
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ContentDataResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: DownloadContentData
+      tags:
+      - ConnectorServiceExternal
+  /api/connector/v1/connectors/{connector_id}/content/read-permission:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: ConnectorServiceExternal_GetReadPermission
+      parameters:
+      - description: Required. The identifier for the connector associated with the Read Permission request.
+        in: path
+        name: connector_id
+        required: true
+        schema:
+          type: string
+      - description: The opaque_data is an opaque string contains additonal information that can be used to by the PULL API to retreive the content data from underlying content source along with the source_location. (e.g. drinve_id + item_id in SharePoint).
+        in: query
+        name: opaque_data
+        schema:
+          type: string
+      - description: The content source URI.
+        in: query
+        name: source_location
+        schema:
+          type: string
+      - description: Pryon content id for the content to be used for logging purposes.
+        in: query
+        name: content_id
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetReadPermissionResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: GetReadPermission
+      tags:
+      - ConnectorServiceExternal
+      description: 'Get read permission for a content.
+
+        To be implemented by the universal connector and invoked by Pryon Ingestion and Retrieval Platform to pull most to date read permission for a content.
+
+        This is called on an interval in the Pryon Ingestion system to update each individual Content item''s specific
+
+        permissions in the index.'
+  /api/connector/v1/connectors/{connector_id}/contents:pull:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: ConnectorServiceExternal_PullContents
+      parameters:
+      - description: Required. The identifer of the connector for the current Pull Contents request.
+        in: path
+        name: connector_id
+        required: true
+        schema:
+          type: string
+      - description: 'Required. The URI to be used for content discovery. The URI''s query parameters can contain information about the content to be discovered such as filters, sorting, etc.
+
+          For Pryon Knowledge Platform, this is the KnowledgeDomain''s ContentGroup''s source location.'
+        in: query
+        name: seed_source_location
+        schema:
+          type: string
+      - description: The default page size is the maximum page size specified for each Connector.
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: 'An opaque token that the server can interpret to determine the starting point for the next set of results.
+
+          If not given, the server fetches from the first record.
+
+          If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page''s response.'
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ListContentsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: PullContents
+      tags:
+      - ConnectorServiceExternal
+      description: 'Content source discovery custom method.
+
+        This is a proxy through the content source.
+
+        To be implemented by the universal connector and invoked by Pryon Ingestion Platform to list contents from the connector.
+
+        This is where we list all the content available in the remote API.'
+  /api/connector/v1/connectors/{connector_id}/group-permission/members:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: ConnectorServiceExternal_ListGroupPermissionMembers
+      parameters:
+      - description: Required.  The identifier of the connector associated with the group permission member list request.
+        in: path
+        name: connector_id
+        required: true
+        schema:
+          type: string
+      - description: Required. Identifier for the group.
+        in: query
+        name: group_id
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ListGroupPermissionMembersResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListGroupPermissionMembers
+      tags:
+      - ConnectorServiceExternal
+      description: 'List members of the connector''s group permission.
+
+        To be implemented by the universal connector and invoked by Pryon Ingestion Platform to pull most to date members of the connector''s group permission.
+
+        The individual memberships related to each Group identified from ListGroupPermissions. This allows specific userIds (or emails) to belong
+
+        to particular groups in Pryon given the remote account''s setup.'
+  /api/connector/v1/connectors/{connector_id}/group-permissions:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: ConnectorServiceExternal_ListGroupPermissions
+      parameters:
+      - description: Required. The identifier of the connector associated with the request.
+        in: path
+        name: connector_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ListGroupPermissionsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListGroupPermissions
+      tags:
+      - ConnectorServiceExternal
+      description: 'List group permissions of the connector.
+
+        To be implemented by the universal connector and invoked by Pryon Ingestion Platform to pull most to date group permissions of the connector.
+
+        This should fetch all the groups in the remote API that any user can belong to. It''s important that these groups
+
+        are accessible properties in either our Pryon User records, or in the JWT claims for a particular login.'
+  /api/connector/v1alpha1/connectors/{connector_id}/content-data:download:
+    servers:
+    - url: /
+    get:
+      description: Use custom methods to get ContentData to download in multiple parts.
+      operationId: ConnectorServiceExternal_DownloadContentData
+      parameters:
+      - description: Unique identifier for the connector associated with the request.
+        in: path
+        name: connector_id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: range_header.range_start
+        schema:
+          format: int64
+          type: string
+          description: 'Beginning byte range that allows for resuming interrupted downloads and retrieving specific parts of a file; format is range: unit=range-start.'
+      - in: query
+        name: range_header.range_end
+        schema:
+          format: int64
+          type: string
+          description: 'Ending byte range that allows for resuming interrupted downloads and retrieving specific parts of a file; format is range: unit=range-end.'
+      - in: query
+        name: range_header.total_size
+        schema:
+          format: int64
+          description: Total range size.
+          type: string
+      - description: Hidden string with additional information the PULL API uses to retrieve the content data and source location from the underlying content; for example, drinve_id + item_id in SharePoint.
+        in: query
+        name: opaque_data
+        schema:
+          type: string
+      - description: Unique identifier for the content source.
+        in: query
+        name: source_location
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1alpha1ContentDataResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: Get Content Information
+      tags:
+      - ConnectorServiceExternal
+  /api/connector/v1alpha1/connectors/{connector_id}/content/metadata:
+    servers:
+    - url: /
+    get:
+      operationId: ConnectorServiceExternal_GetMetadata
+      parameters:
+      - description: Unique identifier of the connector associated with the metadata request.
+        in: path
+        name: connector_id
+        required: true
+        schema:
+          type: string
+      - description: Hidden string with additional information the PULL API uses to retrieve the content data and source location from the underlying content; for example, drinve_id + item_id in SharePoint.
+        in: query
+        name: opaque_data
+        schema:
+          type: string
+      - description: Unique identifier for the content source.
+        in: query
+        name: source_location
+        schema:
+          type: string
+      - description: Unique identifier for the content.
+        in: query
+        name: content_id
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1alpha1GetMetadataResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: Get Content Metadata
+      tags:
+      - ConnectorServiceExternal
+  /api/connector/v1alpha1/connectors/{connector_id}/content/read-permission:
+    servers:
+    - url: /
+    get:
+      operationId: ConnectorServiceExternal_GetReadPermission
+      parameters:
+      - description: Unique identifier for the connector associated with the request.
+        in: path
+        name: connector_id
+        required: true
+        schema:
+          type: string
+      - description: Hidden string with additonal information the PULL API uses to retrieve the content data and source location from the underlying content; for example, drinve_id + item_id in SharePoint.
+        in: query
+        name: opaque_data
+        schema:
+          type: string
+      - description: Unique identifier for the content source.
+        in: query
+        name: source_location
+        schema:
+          type: string
+      - description: Unique identifier for the content.
+        in: query
+        name: content_id
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1alpha1GetReadPermissionResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: Get Read Permission for Content
+      tags:
+      - ConnectorServiceExternal
+  /api/connector/v1alpha1/connectors/{connector_id}/contents:pull:
+    servers:
+    - url: /
+    get:
+      operationId: ConnectorServiceExternal_PullContents
+      parameters:
+      - description: Unique identifier of the connector associated with the request.
+        in: path
+        name: connector_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier for the content.
+        in: query
+        name: seed_source_location
+        schema:
+          type: string
+      - description: Maximum page size is 100; default is 100.
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: Hidden token that determines the starting point for the next set of results; if not specified, the server fetches from the first record; if there are multiple pages, specify this value in pages 2-N using the value of next_page_token.
+        in: query
+        name: page_token
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1alpha1ListContentsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: Discover Content Source
+      tags:
+      - ConnectorServiceExternal
+  /api/connector/v1alpha1/connectors/{connector_id}/group-permission/members:
+    servers:
+    - url: /
+    get:
+      operationId: ConnectorServiceExternal_ListGroupPermissionMembers
+      parameters:
+      - description: Unique identifier for the connector associated with the request.
+        in: path
+        name: connector_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier for the group.
+        in: query
+        name: group_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1alpha1ListGroupPermissionMembersResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: List Connector Group Permissions
+      tags:
+      - ConnectorServiceExternal
+  /api/connector/v1alpha1/connectors/{connector_id}/group-permissions:
+    servers:
+    - url: /
+    get:
+      operationId: ConnectorServiceExternal_ListGroupPermissions
+      parameters:
+      - description: Unique identifier of the connector associated with the request.
+        in: path
+        name: connector_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1alpha1ListGroupPermissionsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: List Connector Group Permissions
+      tags:
+      - ConnectorServiceExternal
+components:
+  schemas:
+    v1alpha1CollectionMetadata:
+      properties:
+        uuid:
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          type: string
+        response_time_millis:
+          description: Response time (in milliseconds).
+          format: int64
+          type: integer
+      title: Metadata that will be returned with each collection-level GET
+      type: object
+    ContentTaskValue_2:
+      default: UNSPECIFIED
+      description: Optional for Proxy connectors.
+      type: string
+    v1GroupPermission:
+      properties:
+        group_id:
+          description: Required. A group id.
+          type: string
+        group_name:
+          description: A group name.
+          type: string
+        group_email:
+          description: A group email.
+          type: string
+      type: object
+    ContentTaskValue:
+      default: UNSPECIFIED
+      description: Optional for Proxy connectors.
+      enum:
+      - UNSPECIFIED
+      - LOWEST
+      - LOW
+      - MEDIUM
+      - HIGH
+      - CRITICAL
+      - IMMEDIATE
+      - NEW
+      - IN_PROGRESS
+      - RESOLVED
+      - VERIFIED
+      - CLOSED
+      - OPEN
+      - ON_HOLD
+      - BLOCKED
+      - CANCELLED
+      type: string
+    v1alpha1ListContentItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/v1alpha1Content'
+        metadata:
+          $ref: '#/components/schemas/v1alpha1ResourceMetadata'
+      type: object
+    v1alpha1ListContentsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1alpha1CollectionMetadata'
+        items:
+          description: Array of contents that match the request.
+          items:
+            $ref: '#/components/schemas/v1alpha1ListContentItem'
+          type: array
+        next_page_token:
+          description: For multiple pages; must be specified in each request for two pages per sheet.
+          type: string
+      type: object
+    v1ContentStatus:
+      default: UNKNOWN
+      description: "The Connector's Content's system status will only be updated by the server.\nDo not set on proxy integrations.\n\n - INITIATED: The content has been identified for processing but has not yet been processed.\nIndicates that the content has been identified and is ready to start the uploading and downloading content data steps.\n - UPLOADING: Indicates that the content is currently being uploaded in parts. This status is useful if you want to track the progress of the upload before all parts are complete.\n - UPLOAD_COMPLETE: Indicates that all parts of the content have been successfully uploaded and the content is ready to be processed.\n - DOWNLOADING: Indicates that the content is currently being downloaded in parts. This status can be used if there's a need to track the progress of the download before all parts are complete.\n - DOWNLOAD_COMPLETE: Indicates that all parts of the content have been successfully downloaded and the content is ready to be processed.\n - PROCESSED: The content has been successfully processed and is ready for ETL and indexing steps.\n - FAILED: There was an error while processing this piece of content. The error could be due to various reasons, such as format issues or communication problems with the source.\n - DELETED: The content has been removed, either because it was deleted from the source and was detected and propagated during the synchronization process."
+      enum:
+      - UNKNOWN
+      - INITIATED
+      - UPLOADING
+      - UPLOAD_COMPLETE
+      - DOWNLOADING
+      - DOWNLOAD_COMPLETE
+      - PROCESSED
+      - FAILED
+      - DELETED
+      type: string
+    googlerpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+      type: object
+    v1ListContentsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          description: Array of Contents that match the request.
+          items:
+            $ref: '#/components/schemas/v1ListContentItem'
+          type: array
+        next_page_token:
+          description: 'An opaque token that the server can interpret to determine the starting point for the next set of results.
+
+            If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.'
+          type: string
+      type: object
+    v1ListGroupPermissionMembersResponse:
+      properties:
+        emails:
+          items:
+            type: string
+          type: array
+      type: object
+    v1ResourceMetadata:
+      properties:
+        uuid:
+          description: UUID returned in the resource response, which represents the unique interaction with the API, that is, the response id.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: 'Time of the last update.
+
+            A value of 0 indicates it has never been updated.'
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          title: Time difference in milliseconds between when the request was received and when the response was generated
+          type: integer
+      type: object
+    v1ReadPermission:
+      properties:
+        allow_emails:
+          description: A list of emails that have read permission for the content.
+          items:
+            type: string
+          type: array
+        allow_group_ids:
+          description: 'A list of group ids that have read permission for the content. This will
+
+            be different for each remote API. It does not need to follow any preset
+
+            pattern, but should be consistent across the particular remote API.'
+          items:
+            type: string
+          type: array
+        deny_emails:
+          description: A list of emails that do not have read permission for the content.
+          items:
+            type: string
+          type: array
+        deny_group_ids:
+          description: "A list of group ids that have read permission for the content. This will\n // be different for each remote API. It does not need to follow any preset\n // pattern, but should be consistent across the particular remote API."
+          items:
+            type: string
+          type: array
+        any_required_group_ids:
+          description: 'A list of group ids where a user needs to a part of AT LEAST ONE of them in order to access the content.
+
+            Even if a user exists in one of these groups, ''read'' permission could still be restricted.'
+          items:
+            type: string
+          type: array
+        all_required_group_ids:
+          description: 'A list group ids where a user needs to be a part of ALL of them in order to access the object.
+
+            Even if a user exists in all of these groups, ''read'' permission could still be restricted.'
+          items:
+            type: string
+          type: array
+        is_public:
+          description: A flag to indicate if the content is public.
+          type: boolean
+        unrestricted_emails:
+          description: A list of emails that always have read permission for the content.
+          items:
+            type: string
+          type: array
+      type: object
+    v1alpha1ListGroupPermissionMembersResponse:
+      properties:
+        emails:
+          items:
+            description: List of emails and associated content permissions.
+            type: string
+          description: List of emails and associated content permissions.
+          type: array
+      type: object
+    v1CollectionMetadata:
+      properties:
+        uuid:
+          description: Random UUID returned in the resource response to represent the unique interaction with the API.  This can be thought of as a response id.
+          type: string
+        response_time_millis:
+          description: Time difference in milliseconds between when the request was received and when the response was generated, that is, the latency.
+          format: int64
+          type: integer
+      title: Metadata that will be returned with each collection-level GET
+      type: object
+    v1alpha1ReadPermission:
+      properties:
+        allow_emails:
+          description: List of emails with read permission for the content.
+          items:
+            type: string
+          type: array
+        allow_group_ids:
+          description: List of group IDs with read permission for the content.
+          items:
+            type: string
+          type: array
+        deny_emails:
+          description: List of emails without read permission for the content.
+          items:
+            type: string
+          type: array
+        deny_group_ids:
+          description: List of group IDs without read permission for the content.
+          items:
+            type: string
+          type: array
+        any_required_group_ids:
+          description: User must belong to at least one of the listed groups in order to access the content; read permission can still be restricted for users of the group.
+          items:
+            type: string
+          type: array
+        all_required_group_ids:
+          description: User must belong to all of the listed groups in order to access the content; read permission can still be restricted for users of the group.
+          items:
+            type: string
+          type: array
+        is_public:
+          description: Public content flag.
+          type: boolean
+        unrestricted_emails:
+          description: List of emails that are always allowed read permission for the content.
+          items:
+            type: string
+          type: array
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      type: object
+    v1ContentDataResponse:
+      description: <bytes-data>
+      properties:
+        content_range_header:
+          $ref: '#/components/schemas/v1Range'
+        bytes_data:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      title: 'The response contains the Content-Range header and the content data.
+
+        HTTP/1.1 206 Partial Content
+
+        Content-Range: bytes <range-start>-<range-end>/<total_size>
+
+        Content-Length: <bytes-length>
+
+        Content-Type: application/octet-stream'
+      type: object
+    v1CustomAttributeType:
+      default: UNKNOWN
+      enum:
+      - UNKNOWN
+      - STRING
+      - LONG
+      - DOUBLE
+      - DATETIME
+      - BOOLEAN
+      type: string
+    v1alpha1ListGroupPermissionsResponse:
+      properties:
+        items:
+          additionalProperties:
+            $ref: '#/components/schemas/v1alpha1GroupPermission'
+          description: Maps group IDs to group permissions.
+          type: object
+      type: object
+    v1alpha1ContentStatus:
+      default: UNKNOWN
+      description: "The Connector Content system status is only updated by the server.\nDo not set on proxy integrations.\n\n - INITIATED: The content has been identified for processing but has not yet been processed.\nIndicates that the content has been identified and is ready to start the uploading and downloading content data steps.\n - UPLOADING: Indicates that the content is currently being uploaded in parts. This status is useful if you want to track the progress of the upload before all parts are complete.\n - UPLOAD_COMPLETE: Indicates that all parts of the content have been successfully uploaded and the content is ready to be processed.\n - DOWNLOADING: Indicates that the content is currently being downloaded in parts. This status can be used if there's a need to track the progress of the download before all parts are complete.\n - DOWNLOAD_COMPLETE: Indicates that all parts of the content have been successfully downloaded and the content is ready to be processed.\n - PROCESSED: The content has been successfully processed and is ready for ETL and indexing steps.\n - FAILED: There was an error while processing this piece of content. The error could be due to various reasons, such as format issues or communication problems with the source.\n - DELETED: The content has been removed, either because it was deleted from the source and was detected and propagated during the synchronization process."
+      type: string
+    v1ListContentItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/v1Content'
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+      type: object
+    v1ListGroupPermissionsResponse:
+      properties:
+        items:
+          additionalProperties:
+            $ref: '#/components/schemas/v1GroupPermission'
+          description: Required. A map of group id to group permission.
+          type: object
+      type: object
+    v1alpha1ContentDataResponse:
+      description: <bytes-data>
+      properties:
+        content_range_header:
+          $ref: '#/components/schemas/v1alpha1Range'
+        bytes_data:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      title: 'The response contains the Content-Range header and the content data.
+
+        HTTP/1.1 206 Partial Content
+
+        Content-Range: bytes <range-start>-<range-end>/<total_size>
+
+        Content-Length: <bytes-length>
+
+        Content-Type: application/octet-stream'
+      type: object
+    v1alpha1CustomAttributeType:
+      default: UNKNOWN
+      enum:
+      - UNKNOWN
+      - STRING
+      - LONG
+      - DOUBLE
+      - DATETIME
+      - BOOLEAN
+      type: string
+    v1alpha1Content:
+      properties:
+        content_id:
+          description: Unique identifier for the entity; only required for GetContentResponse.
+          type: string
+        connector_id:
+          description: Unique identifier of the connector; only required for GetContentResponse.
+          type: string
+        seed_source_location:
+          description: Unique identifier used for content discovery; the Content Group source location for the collection domain.
+          type: string
+        source_location:
+          description: Unique identifier for the content.
+          type: string
+        display_source_location:
+          description: User-facing source location if different from original source location.
+          type: string
+        is_folder:
+          description: Indicates if content is a folder; a folder is not ingested, but recursively discovers other contents.
+          type: boolean
+        parent_id:
+          description: 'Indicates if content is embedded in another content source: links related content items when previewing, for example, a record that has related attachments to be processed separately in different pipelines.'
+          type: string
+        read_permission:
+          $ref: '#/components/schemas/v1alpha1ReadPermission'
+        version:
+          description: Content version.
+          type: string
+        created_at:
+          description: Date and time the content was originally created.
+          format: int64
+          type: string
+        updated_at:
+          description: Date and time the content was last updated.
+          format: int64
+          type: string
+        title:
+          description: Content title.
+          type: string
+        description:
+          description: Brief description, summary or abstract of the content.
+          type: string
+        comment:
+          description: Comments or annotations associated with the content.
+          type: string
+        body:
+          description: Body of the content for non-files, for example, articles or reports; maximum is 1MB.
+          type: string
+        mime_type:
+          description: MIME type for file content.
+          type: string
+        file_extension:
+          description: File extension (.pdf, .docx, .html, etc.)
+          type: string
+        path:
+          description: File path or location within a file system.
+          type: string
+        size:
+          description: Size of the file in bytes.
+          format: int64
+          type: string
+        opaque_data:
+          description: Hidden string with additional information the PULL API uses to retrieve the content data and source location from the underlying content; for example, drinve_id + item_id in SharePoint; only when the universal connector pushes content to the Pryon Ingestion Platform.
+          type: string
+        data:
+          description: Base64 encoded data for files less than 4 MB; only when the universal connector pushes content to the Pryon Ingestion Platform.
+          type: string
+        created_by:
+          description: Content creator or author in connected platform.
+          type: string
+        updated_by:
+          description: Unique identifier for user who last updated the content in connected platform.
+          type: string
+        assigned_to:
+          description: Unique identifier for user assigned a task or content.
+          type: string
+        impact:
+          $ref: '#/components/schemas/ContentTaskValue_2'
+        priority:
+          $ref: '#/components/schemas/ContentTaskValue_2'
+        urgency:
+          $ref: '#/components/schemas/ContentTaskValue_2'
+        state:
+          $ref: '#/components/schemas/ContentTaskValue_2'
+        status:
+          $ref: '#/components/schemas/ContentTaskValue_2'
+        custom_attributes:
+          additionalProperties:
+            $ref: '#/components/schemas/v1alpha1CustomAttribute'
+          description: Custom attributes that are not part of the recommended set; used for fields that do not match another field in the content message type.
+          type: object
+        system_status:
+          $ref: '#/components/schemas/v1alpha1ContentStatus'
+        system_status_reason:
+          description: Detailed reason for the system status.
+          type: string
+      type: object
+    v1alpha1GetReadPermissionResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/v1alpha1ReadPermission'
+      type: object
+    v1alpha1CustomAttribute:
+      properties:
+        name:
+          description: The name of the attribute.
+          type: string
+        value:
+          description: The value of the attribute.
+          type: string
+        value_type:
+          $ref: '#/components/schemas/v1alpha1CustomAttributeType'
+      type: object
+    v1alpha1Range:
+      properties:
+        range_start:
+          format: int64
+          type: string
+        range_end:
+          format: int64
+          type: string
+        total_size:
+          format: int64
+          type: string
+      type: object
+    v1CustomAttribute:
+      properties:
+        name:
+          description: The name of the attribute.
+          type: string
+        value:
+          description: The value of the attribute.
+          type: string
+        value_type:
+          $ref: '#/components/schemas/v1CustomAttributeType'
+      type: object
+    v1Range:
+      properties:
+        range_start:
+          format: int64
+          type: string
+        range_end:
+          format: int64
+          type: string
+        total_size:
+          format: int64
+          type: string
+      type: object
+    v1alpha1GetMetadataResponse:
+      properties:
+        data_source_metadata:
+          properties: {}
+          description: The raw JSON blob of the metadata from the data source or system of record (SOR).
+          type: object
+      type: object
+    v1GetReadPermissionResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/v1ReadPermission'
+      type: object
+    v1alpha1ResourceMetadata:
+      properties:
+        uuid:
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: Time of the last update; 0 indicates updates have never been made.
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          description: Response time (in milliseconds).
+          type: integer
+      type: object
+    v1Content:
+      properties:
+        content_id:
+          description: Required. ID of this entity (Required only for GetContentResponse).
+          type: string
+        connector_id:
+          title: Required. ID of the connector that created this content. (Required only for GetContentResponse)
+          type: string
+        seed_source_location:
+          description: Required. The URI used for content discovery. For Pryon Knowledge Platform, this is the KnowledgeDomain's ContentGroup's source location.
+          type: string
+        source_location:
+          description: Required. The content URI. This should be the location of this specific item in the remote API.
+          type: string
+        display_source_location:
+          description: 'User facing source location to display if different from source_location. This is used if the preview link should
+
+            be different than the original location. Useful for when modifications need to be made just for ingestion.'
+          type: string
+        is_folder:
+          description: Indicates whether this Content is a folder or not. If it is a folder, it will not be ingested, but will be used to recursively discover other Contents.
+          type: boolean
+        parent_id:
+          description: 'Indicates whether this Content is embedded in another Content (i.e. parent_id will be set). This should be used
+
+            in the case of related Content items that one would want to be linked when previewing. E.g. a record that has related
+
+            attachments that all need to be processed separately (e.g. Imgs and PDFs) in different pipelines.'
+          type: string
+        read_permission:
+          $ref: '#/components/schemas/v1ReadPermission'
+        version:
+          description: 'Content version. This should follow the pattern in the remote API and be used consistently across
+
+            all Content items with that particular API.'
+          type: string
+        created_at:
+          description: Date and time when the content was originally created in connected platform, in epoch millis.
+          format: int64
+          type: string
+        updated_at:
+          description: Date and time when the content was last updated in connected platform, in epoch millis.
+          format: int64
+          type: string
+        title:
+          description: Content title.
+          type: string
+        description:
+          description: Brief description, summary or abstract of the content.
+          type: string
+        comment:
+          description: Comments or annotations associated with the content.
+          type: string
+        body:
+          description: 'For non-file contents such as articles, reports, etc.
+
+            This field is used to store the body of the content.
+
+            This can be a maximum of 1MB.'
+          type: string
+        mime_type:
+          description: 'Required. MIME type for file content.
+
+            Standard way to indicate the nature and format of a content.'
+          type: string
+        file_extension:
+          title: File extension (.pdf, .docx, .html, etc.)
+          type: string
+        path:
+          description: File path or location within a file system.
+          type: string
+        size:
+          description: Size of the file in bytes.
+          format: int64
+          type: string
+        opaque_data:
+          description: '*** Only when the universal connector pushes a content to Pryon''s Ingestion Platform ***
+
+            The opaque_data is an opaque string that can be used to by the PULL API to retreive the content data from underlying content source along with the source_location. For example, the opaque_data can be the drive_id + item_id in SharePoint.'
+          type: string
+        data:
+          description: '*** Only when the universal connector pushes a content to Pryon''s Ingestion Platform ***
+
+            If content is a file and the data size is less than 4 MB.
+
+            This field can be set to the base64 encoded data of the file.
+
+            If the data is larger than 4 MB, uploadPart custom API should be used to upload the data.
+
+            Optional for Proxy connectors.'
+          type: string
+        created_by:
+          description: Content creator or author in connected platform.
+          type: string
+        updated_by:
+          description: Identity who last updated the content in connected platform.
+          type: string
+        assigned_to:
+          description: Identity to whom a task or content is assigned.
+          type: string
+        impact:
+          $ref: '#/components/schemas/ContentTaskValue'
+        priority:
+          $ref: '#/components/schemas/ContentTaskValue'
+        urgency:
+          $ref: '#/components/schemas/ContentTaskValue'
+        state:
+          $ref: '#/components/schemas/ContentTaskValue'
+        status:
+          $ref: '#/components/schemas/ContentTaskValue'
+        custom_attributes:
+          additionalProperties:
+            $ref: '#/components/schemas/v1CustomAttribute'
+          description: 'Custom attributes that are not part of the recommended set.
+
+            The key is the CustomAttribute''s name.
+
+            This is used when there is a particular field in the remote API that does not fit
+
+            into another field on the Content message type. This allows for all primitives
+
+            and should be used for any metadata required for filtering, retrieval or ingestion that
+
+            do not exist directly in the file data.'
+          type: object
+        system_status:
+          $ref: '#/components/schemas/v1ContentStatus'
+        system_status_reason:
+          type: string
+      type: object
+    v1alpha1GroupPermission:
+      properties:
+        group_id:
+          description: Unique identifier for a group.
+          type: string
+        group_name:
+          description: The group name.
+          type: string
+        group_email:
+          description: The group email.
+          type: string
+      type: object
+x-refined-from:
+- pryon-admin-openapi.json
+- pryon-universal-connector-may2025-openapi.json
+x-original-swagger-version: '2.0'
+x-tagGroups:
+- name: Retrieval
+  tags:
+  - Exchange
+  - ExchangeEvent
+  - Feedback
+  - GenerativeExchange
+  - GenerativeFeedback
+  - TextToSpeech
+- name: Reporting
+  tags:
+  - Analytics
+  - Reports
+  - Usage
+- name: Collection Management
+  tags:
+  - KnowledgeCollectionService
+  - KnowledgeDomain
+  - ContentService
+  - RegressionTest
+  - Subjects
+- name: Organization Management
+  tags:
+  - ConnectorServiceExternal
+  - OrganizationService
+  - Messages
+- name: Ops Console
+  tags:
+  - Operations

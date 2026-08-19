@@ -1,0 +1,325 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Feedback",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Feedback",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Approval Entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/conversation/v1/approvals",
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the knowledge domain that list approval items."
+              },
+              {
+                "name": "kd_succession_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the knowledge domain succession ID of the approved review."
+              },
+              {
+                "name": "approval_status",
+                "value": "",
+                "type": "query",
+                "description": "Filters items by a specific approval status.\n\n - PENDING_REVIEW: Item is pending review.\n - REJECTED: Item has been rejected.\n - APPROVED: Item has been approved."
+              },
+              {
+                "name": "return_only_item_keys",
+                "value": "",
+                "type": "query",
+                "description": "When set to True, returns only the item keys."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size is 100; default is 100."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "For multiple pages; must be specified in each request for two pages per sheet."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for multi page requests; valid options are rank, rank desc, create_time, create_time desc."
+              }
+            ]
+          },
+          "docs": "List Approval Entries"
+        },
+        {
+          "info": {
+            "name": "Create Approval Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/conversation/v1/approvals",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Approval Entry"
+        },
+        {
+          "info": {
+            "name": "Get Information on Approval Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/conversation/v1/approvals/:approval_id",
+            "params": [
+              {
+                "name": "approval_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of approval item."
+              }
+            ]
+          },
+          "docs": "Get Information on Approval Entry"
+        },
+        {
+          "info": {
+            "name": "Delete Approval Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/conversation/v1/approvals/:approval_id",
+            "params": [
+              {
+                "name": "approval_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of item to be deleted."
+              }
+            ]
+          },
+          "docs": "Delete Approval Entry"
+        },
+        {
+          "info": {
+            "name": "Modify Approval Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/conversation/v1/approvals/:data.approval_id",
+            "params": [
+              {
+                "name": "data.approval_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of approval item."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify Approval Entry"
+        },
+        {
+          "info": {
+            "name": "List Exchange Rating Reviews",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/conversation/v1/rating-reviews",
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "The collection, or index, that the exchange is performed against."
+              },
+              {
+                "name": "exchange_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique ID of the exchange item; overrides the collection_id filter value if supplied; defaults to empty, which disables this filter."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filters the list for ratings in a specific review status; the default of UNSPECIFIED disables the filter.\n\n - UNSPECIFIED: Not a valid exchange rating value.\n - PENDING: Exchange rating is waiting to be inspected for approval or rejection.\n - COMPLETE: Exchange rating has been inspected and acted upon; no further action taken."
+              },
+              {
+                "name": "creator_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the user who provided feedback; output field, automatically populated."
+              },
+              {
+                "name": "rank",
+                "value": "",
+                "type": "query",
+                "description": "Rank value given by the user; valid responses are 1 (negative) and 5 (positive)."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size is 100; default is 100."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "For multiple pages; must be specified in each request for two pages per sheet."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for multi page requests; valid options are rank, rank desc, create_time, create_time desc."
+              }
+            ]
+          },
+          "docs": "List Exchange Rating Reviews"
+        },
+        {
+          "info": {
+            "name": "Create Exchange Rating",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/conversation/v1/ratings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Exchange Rating"
+        },
+        {
+          "info": {
+            "name": "Review Exchange Rating",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/conversation/v1/ratings/:data.rating.rating_id/review",
+            "params": [
+              {
+                "name": "data.rating.rating_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the exchange rating; automatically generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Review Exchange Rating"
+        },
+        {
+          "info": {
+            "name": "Modify Exchange Rating",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/conversation/v1/ratings/:data.rating_id",
+            "params": [
+              {
+                "name": "data.rating_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the exchange rating; automatically generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify Exchange Rating"
+        },
+        {
+          "info": {
+            "name": "Retrieve Exchange Rating",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/conversation/v1/ratings/:rating_id",
+            "params": [
+              {
+                "name": "rating_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Exchange Rating"
+        },
+        {
+          "info": {
+            "name": "Delete Exchange Rating",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/conversation/v1/ratings/:rating_id",
+            "params": [
+              {
+                "name": "rating_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Exchange Rating"
+        },
+        {
+          "info": {
+            "name": "Retrieve Exchange Rating Review",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/conversation/v1/ratings/:rating_id/review",
+            "params": [
+              {
+                "name": "rating_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Exchange Rating Review"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,173 @@
+{
+  "item": [
+    {
+      "id": "a13545e7-f2ab-4f2b-91d8-2e1dd0a2f010",
+      "name": "Knowledge Collection Service",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cedf4c93-2496-4b3c-9d1b-bfb2792c070e",
+          "name": "Retrieve Knowledge Collections",
+          "request": {
+            "name": "Retrieve Knowledge Collections",
+            "description": {
+              "content": "Retrieve an existing knowledge collection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "collections",
+                ":collection_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "collection_id",
+                  "description": "(Required) Unique identifier of the knowledge collection."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "56e68c92-4060-48ff-8649-e39511f2ce7e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "collections",
+                    ":collection_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection_id",
+                      "description": "(Required) Unique identifier of the knowledge collection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"2007-06-05T21:50:49.712Z\",\n    \"update_time\": \"2019-05-25T13:55:17.792Z\",\n    \"response_time_millis\": 2583\n  },\n  \"data\": {\n    \"collection_id\": \"string\",\n    \"active_domain_id\": \"string\",\n    \"active_domain_history\": [\n      \"string\",\n      \"string\"\n    ],\n    \"team_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"solution_id\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c616735-eb8c-457d-93df-79e8bdaba6ad",
+              "name": "Default error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "collections",
+                    ":collection_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collection_id",
+                      "description": "(Required) Unique identifier of the knowledge collection."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7220,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": \"string\"\n    },\n    {\n      \"@type\": \"string\",\n      \"key_0\": 7394.240737957497,\n      \"key_1\": true,\n      \"key_2\": false,\n      \"key_3\": \"string\",\n      \"key_4\": 7014\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fbf176d6-64da-4635-b49e-7a43bdc05f2d",
+    "name": "Knowledge Collection Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

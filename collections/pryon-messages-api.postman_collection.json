@@ -1,0 +1,614 @@
+{
+  "item": [
+    {
+      "id": "8646b129-5d00-4c32-a5a0-6d2870d8bf71",
+      "name": "Messages",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a6b8e600-fc7c-4bb1-9372-9fa5a8a2e3ff",
+          "name": "ListMessages",
+          "request": {
+            "name": "ListMessages",
+            "description": {
+              "content": "List messages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "messages",
+                "v1",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47b512e8-7411-440c-9e6d-9f078ceeb1b9",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "messages",
+                    "v1",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 9739\n  },\n  \"items\": [\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"2008-07-09T21:13:01.028Z\",\n        \"update_time\": \"1979-02-11T17:58:03.458Z\",\n        \"response_time_millis\": 1000\n      },\n      \"data\": {\n        \"message_id\": \"string\",\n        \"msg_type\": \"MESSAGE_TYPE_UNKNOWN\",\n        \"from\": \"string\",\n        \"recipient\": \"string\",\n        \"subject\": \"string\",\n        \"body\": \"string\",\n        \"labels\": {\n          \"key_0\": \"string\"\n        }\n      }\n    },\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1975-01-01T12:00:12.821Z\",\n        \"update_time\": \"1973-08-06T23:21:03.248Z\",\n        \"response_time_millis\": 6973\n      },\n      \"data\": {\n        \"message_id\": \"string\",\n        \"msg_type\": \"MESSAGE_TYPE_UNKNOWN\",\n        \"from\": \"string\",\n        \"recipient\": \"string\",\n        \"subject\": \"string\",\n        \"body\": \"string\",\n        \"labels\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9625f9c3-2585-4d20-abca-740465b4267c",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "messages",
+                    "v1",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9543,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"GBLllWbDzInkfdEY8TAzOKQGyW==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"om8tgJBMddR39xhGxySoh/Za\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "11029def-3ff2-4216-b1df-1e8bfbbad4a9",
+          "name": "DeleteMessage",
+          "request": {
+            "name": "DeleteMessage",
+            "description": {
+              "content": "Delete a message.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "messages",
+                "v1",
+                "messages",
+                ":message_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "message_id",
+                  "description": "(Required) The id of the message to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1a670206-6781-4750-8d82-974aa1365ca6",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "messages",
+                    "v1",
+                    "messages",
+                    ":message_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "message_id",
+                      "description": "(Required) The id of the message to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8739fe0f-d7e3-48d5-bef9-ae7794946881",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "messages",
+                    "v1",
+                    "messages",
+                    ":message_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "message_id",
+                      "description": "(Required) The id of the message to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2952,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"J50cq4qD0/hNczx=\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"DQBo1EkvdF1hDh792Yfb02R+pt==\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb37c08e-a5bb-438e-8866-26dc3fe691ae",
+          "name": "GetMessage",
+          "request": {
+            "name": "GetMessage",
+            "description": {
+              "content": "Get a message.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "messages",
+                "v1",
+                "messages",
+                ":message_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "message_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "89bc00be-5274-43ec-970f-4ee78955e51f",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "messages",
+                    "v1",
+                    "messages",
+                    ":message_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "message_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1964-03-21T14:34:03.125Z\",\n    \"update_time\": \"2015-03-20T05:59:45.547Z\",\n    \"response_time_millis\": 9540\n  },\n  \"data\": {\n    \"message_id\": \"string\",\n    \"msg_type\": \"MESSAGE_TYPE_UNKNOWN\",\n    \"from\": \"string\",\n    \"recipient\": \"string\",\n    \"subject\": \"string\",\n    \"body\": \"string\",\n    \"labels\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dee44312-74ab-486e-bad3-e0cd2f2e00a4",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "messages",
+                    "v1",
+                    "messages",
+                    ":message_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "message_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2952,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"J50cq4qD0/hNczx=\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"DQBo1EkvdF1hDh792Yfb02R+pt==\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d02613fd-a089-45a8-a4fc-0d08d0ffb81c",
+          "name": "ListSystemEvents",
+          "request": {
+            "name": "ListSystemEvents",
+            "description": {
+              "content": "ListSystemEvents returns all system events for the user's organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "messages",
+                "v1",
+                "system-events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bcd6627e-a17d-45e6-9e4e-056bd0ad2142",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "messages",
+                    "v1",
+                    "system-events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 4058\n  },\n  \"items\": [\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"2023-05-08T00:44:03.984Z\",\n        \"update_time\": \"2006-11-05T19:35:27.602Z\",\n        \"response_time_millis\": 7786\n      },\n      \"data\": {\n        \"event_id\": \"string\",\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"notify_time\": \"1997-03-29T21:44:27.518Z\",\n        \"start_time\": \"1949-05-28T03:27:17.649Z\",\n        \"end_time\": \"2019-06-04T18:35:01.326Z\",\n        \"severity\": \"UNSPECIFIED\"\n      }\n    },\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1964-06-01T22:19:31.347Z\",\n        \"update_time\": \"1964-05-09T04:48:50.597Z\",\n        \"response_time_millis\": 3500\n      },\n      \"data\": {\n        \"event_id\": \"string\",\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"notify_time\": \"1979-06-05T14:25:18.154Z\",\n        \"start_time\": \"1995-04-03T20:49:57.323Z\",\n        \"end_time\": \"2025-01-18T11:23:11.667Z\",\n        \"severity\": \"UNSPECIFIED\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08cc5063-ddc4-42d3-a0a3-ac4de00e13c8",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "messages",
+                    "v1",
+                    "system-events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2952,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"J50cq4qD0/hNczx=\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"DQBo1EkvdF1hDh792Yfb02R+pt==\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cda510f0-2183-421f-babd-bbd40d0648ac",
+    "name": "pryon/api/ext/analytics/v1/analytics.proto Messages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# Introduction\nThe Pryon API blah blah blah.\n\n# Authentication\nWhen you sign up for an account, you are given your set of API credentials.\n\n\nPryon supports authentication in the form of JSON Web Tokens.\n- JWT: authenticates each request by the http header: Authorization\n\nFor all API requests, you will have to include the Authorization header in the following form:\n\n```javascript\nAuthorization: Bearer {encoded token}\n```\n\n\nContact Support:\n Name: Pryon Product Support\n Email: support@pryoninc.com",
+      "type": "text/plain"
+    }
+  }
+}

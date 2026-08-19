@@ -1,0 +1,933 @@
+openapi: 3.2.0
+info:
+  title: Pryon Feedback API
+  version: '1.0'
+  description: 'Operations tagged Feedback across 2 of this provider''s published API definitions: pryon-admin-openapi.json, pryon-feedback-august2025-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.pryon.net
+  description: Pryon Cloud
+- url: /
+tags:
+- name: Feedback
+paths:
+  /api/conversation/v1/approvals:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: Feedback_ListApprovals
+      parameters:
+      - description: Required. Knowledge Domain under which approval items are listed.
+        in: query
+        name: knowledge_domain_id
+        schema:
+          type: string
+      - description: 'Optional. Collection ID for KD, if present.
+
+          If request contains kd_succession_id, filter on it instead of knowledge_domain_id.'
+        in: query
+        name: kd_succession_id
+        schema:
+          type: string
+      - description: "Optional. Filter only items with this Approval status.\n\n - PENDING_REVIEW: PENDING_REVIEW: This approval item is pending review\n - REJECTED: REJECTED: This approval item has been rejected\n - APPROVED: APPROVED: This approval item has been approved"
+        in: query
+        name: approval_status
+        schema:
+          default: UNSPECIFIED
+          enum:
+          - UNSPECIFIED
+          - PENDING_REVIEW
+          - REJECTED
+          - APPROVED
+          type: string
+      - description: Optional. Return only the item keys when set to True.
+        in: query
+        name: return_only_item_keys
+        schema:
+          type: boolean
+      - description: 'Default page size is 100 when omitted. The maximum page size is 100.
+
+          The REST query parameter is "page_size".
+
+          See https://cloud.google.com/apis/design/design_patterns#list_pagination for details.'
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: 'If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page''s response. The REST query parameter is "page_token".
+
+          See https://cloud.google.com/apis/design/design_patterns#list_pagination for details.'
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - description: 'If there are multiple pages, a sort order can be used and is applicable to the pages but not to the items in a page.
+
+          If the sort order parameter is provided with a multi-page request, it must be provided on all subsequent page requests.
+
+          Supported options are: "update_time desc" and "update_time asc".
+
+          See https://cloud.google.com/apis/design/design_patterns#sorting_order for details.'
+        in: query
+        name: order_by
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ListApprovalsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListApprovals
+      tags:
+      - Feedback
+      description: 'List Approval entries based on filters.
+
+        For a REST call filtering, params need to be passed in the request query string
+
+        Supported filters:
+
+        knowledge_domain_id (required)
+
+        kd_succession_id (optional)
+
+        approval_status (optional)'
+    post:
+      operationId: Feedback_CreateApproval
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1CreateApprovalRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1CreateApprovalResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: CreateApproval
+      tags:
+      - Feedback
+      x-codegen-request-body-name: body
+      description: Create an Approval entry.
+      parameters:
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+  /api/conversation/v1/approvals/{approval_id}:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    delete:
+      operationId: Feedback_DeleteApproval
+      parameters:
+      - description: Required. approval_id of item to be deleted.
+        in: path
+        name: approval_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: DeleteApproval
+      tags:
+      - Feedback
+      description: Delete an Approval entry.
+    get:
+      operationId: Feedback_GetApproval
+      parameters:
+      - description: Required. Must be a valid UUID.
+        in: path
+        name: approval_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetApprovalResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: GetApproval
+      tags:
+      - Feedback
+      description: Get information about an Approval entry.
+  /api/conversation/v1/approvals/{data.approval_id}:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    patch:
+      operationId: Feedback_UpdateApproval
+      parameters:
+      - description: Optional. Random UUID generated on a CreateApproval request.
+        in: path
+        name: data.approval_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1UpdateApprovalRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1UpdateApprovalResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: UpdateApproval
+      tags:
+      - Feedback
+      x-codegen-request-body-name: body
+      description: Modify an existing Approval entry.
+  /api/conversation/v1/rating-reviews:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: Feedback_ListExchangeRatingReviews
+      parameters:
+      - description: Required. Filter list output to only include ratings for a knowledge collection. In REST form the parameter is expressed as 'collection_id'.
+        in: query
+        name: collection_id
+        schema:
+          type: string
+      - description: Filter list output to only include ratings for a particular exchange. Overrides the collection_id filter value if supplied. Defaults to empty which disables this filter. In REST form the parameter is expressed as 'exchange_id'.
+        in: query
+        name: exchange_id
+        schema:
+          type: string
+      - description: "Filter list output to only include ratings that are in requested review status. Defaults to UNSPECIFIED which disables this filter. In REST form the parameter is expressed as 'status' with valid values PENDING and COMPLETE.\n\n - UNSPECIFIED: Not a valid exchange rating value\n - PENDING: This exchange rating is waiting to be inspected for approval or rejection (default).\n - COMPLETE: This exchange rating has been inspected and acted upon. No further action will be taken."
+        in: query
+        name: status
+        schema:
+          default: UNSPECIFIED
+          enum:
+          - UNSPECIFIED
+          - PENDING
+          - COMPLETE
+          type: string
+      - description: Filter list output to only include ratings made by a given user. In REST form the parameter is expressed as 'creator_id'.
+        in: query
+        name: creator_id
+        schema:
+          type: string
+      - description: Filter list output to only include ratings that match a given rank value. In REST form the parameter is expressed as 'rank' with valid values 1-5.
+        in: query
+        name: rank
+        schema:
+          format: int32
+          type: integer
+      - description: 'Default page size is 100 when omitted. The maximum page size is 100.
+
+          The REST query parameter is "page_size".
+
+          See https://cloud.google.com/apis/design/design_patterns#list_pagination for details.'
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: 'If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page''s response. The REST query parameter is "page_token".
+
+          See https://cloud.google.com/apis/design/design_patterns#list_pagination for details.'
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - description: 'If the sort order parameter is provided with a multi page request, it must be provided on all subsequent page requests.
+
+          For exchange requests the valid options are: rank, rank desc, create_time, create_time desc.
+
+          see https://cloud.google.com/apis/design/design_patterns#sorting_order.'
+        in: query
+        name: order_by
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ListExchangeRatingReviewsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListExchangeRatingReviews
+      tags:
+      - Feedback
+      description: 'List exchange rating reviews.
+
+        Accepted REST filter parameters:
+
+        collection_id (required)
+
+        exchange_id (optional)
+
+        creator_id (optional)
+
+        rank (optional)
+
+        status (optional)'
+  /api/conversation/v1/ratings:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    post:
+      operationId: Feedback_CreateExchangeRating
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1CreateExchangeRatingRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetExchangeRatingResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: CreateExchangeRating
+      tags:
+      - Feedback
+      x-codegen-request-body-name: body
+      description: Create an exchange rating.
+      parameters:
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+  /api/conversation/v1/ratings/{data.rating.rating_id}/review:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    patch:
+      operationId: Feedback_UpdateExchangeRatingReview
+      parameters:
+      - description: UUID that uniquely identifies a particular exchange rating. Automatically generated on create.
+        in: path
+        name: data.rating.rating_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1UpdateExchangeRatingReviewRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetExchangeRatingReviewResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: UpdateExchangeRatingReview
+      tags:
+      - Feedback
+      x-codegen-request-body-name: body
+      description: A reviewing authority can update the review perspective of an exchange rating item. This includes review information not available to un-privileged users.
+  /api/conversation/v1/ratings/{data.rating_id}:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    patch:
+      operationId: Feedback_UpdateExchangeRating
+      parameters:
+      - description: UUID that uniquely identifies a particular exchange rating. Automatically generated on create.
+        in: path
+        name: data.rating_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1UpdateExchangeRatingRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetExchangeRatingResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: UpdateExchangeRating
+      tags:
+      - Feedback
+      x-codegen-request-body-name: body
+      description: Modify an existing exchange rating.
+  /api/conversation/v1/ratings/{rating_id}:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    delete:
+      operationId: Feedback_DeleteExchangeRating
+      parameters:
+      - in: path
+        name: rating_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: DeleteExchangeRating
+      tags:
+      - Feedback
+      description: Delete an exchange rating.
+    get:
+      operationId: Feedback_GetExchangeRating
+      parameters:
+      - in: path
+        name: rating_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetExchangeRatingResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: GetExchangeRating
+      tags:
+      - Feedback
+      description: Retrieve an exchange rating.
+  /api/conversation/v1/ratings/{rating_id}/review:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: Feedback_GetExchangeRatingReview
+      parameters:
+      - in: path
+        name: rating_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetExchangeRatingReviewResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: GetExchangeRatingReview
+      tags:
+      - Feedback
+      description: A reviewing authority can retrieve the review perspective of an exchange rating item. This includes review information not available to un-privileged users.
+components:
+  schemas:
+    v1UpdateApprovalRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/v1ApprovalItem'
+      type: object
+    v1ExchangeRatingReviewStatus:
+      default: UNSPECIFIED
+      description: " - UNSPECIFIED: Not a valid exchange rating value\n - PENDING: This exchange rating is waiting to be inspected for approval or rejection (default).\n - COMPLETE: This exchange rating has been inspected and acted upon. No further action will be taken."
+      enum:
+      - UNSPECIFIED
+      - PENDING
+      - COMPLETE
+      type: string
+    v1ListExchangeRatingReviewsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/v1GetExchangeRatingReviewResponse'
+          type: array
+        next_page_token:
+          description: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+
+            See https://cloud.google.com/apis/design/design_patterns#list_pagination for details.'
+          type: string
+        total_size:
+          description: 'This is the total number of items in the collection across all the pages matching the given list filter.
+
+            It is returned with every page and may change during page traversal.
+
+            See https://cloud.google.com/apis/design/design_patterns#list_pagination for more details.'
+          format: int32
+          type: integer
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
+        order_by:
+          description: Returned for convenience and clarity - same as order_by in request.
+          type: string
+      type: object
+    ApprovalItemApprovalStatus:
+      default: UNSPECIFIED
+      enum:
+      - UNSPECIFIED
+      - PENDING_REVIEW
+      - REJECTED
+      - APPROVED
+      title: "- PENDING_REVIEW: PENDING_REVIEW: This approval item is pending review\n - REJECTED: REJECTED: This approval item has been rejected\n - APPROVED: APPROVED: This approval item has been approved"
+      type: string
+    v1UpdateExchangeRatingReviewRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/v1ExchangeRatingReview'
+        update_mask:
+          items:
+            type: string
+          title: "Required. The data path corresponding to the fields being updated in this request.\nExchange Rating Reviewer can update the following fields:\n   data.flagged\n   data.status\nExample mask declaration in JSON format:\n   updateMask: \"data.flagged\"\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
+          type: array
+      type: object
+    googlerpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+      type: object
+    v1UpdateApprovalResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/v1ApprovalItem'
+      type: object
+    v1ResourceMetadata:
+      properties:
+        uuid:
+          description: UUID returned in the resource response, which represents the unique interaction with the API, that is, the response id.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: 'Time of the last update.
+
+            A value of 0 indicates it has never been updated.'
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          title: Time difference in milliseconds between when the request was received and when the response was generated
+          type: integer
+      type: object
+    v1ExchangeRatingReview:
+      properties:
+        rating:
+          $ref: '#/components/schemas/v1ExchangeRating'
+        collection_id:
+          description: UUID of the knowledge collection from which the exchange being rated came. Automatically populated on create. Immutable.
+          type: string
+        knowledge_domain_id:
+          description: UUID of the knowledge domain from which the exchange being rated came. Automatically populated on create. Immutable.
+          type: string
+        reviewer_ids:
+          description: Output field only, automatically populated. IDs of the reviewing authorities that viewed/inspected this item.
+          items:
+            type: string
+          type: array
+        flagged:
+          description: Reviewing authorities can flag this rating item upon inspection. The exact meaning of flagging is intentionally vague and is left to the API to use as necessary.
+          type: boolean
+        approval_id:
+          description: Output field only, automatically populated. The approval item related to this exchange rating. May be empty.
+          type: string
+        status:
+          $ref: '#/components/schemas/v1ExchangeRatingReviewStatus'
+      title: Authority perspective of an ExchangeRating
+      type: object
+    v1ExchangeRating:
+      properties:
+        rating_id:
+          description: UUID that uniquely identifies a particular exchange rating. Automatically generated on create.
+          type: string
+        exchange_id:
+          description: 'Required. This is an ExchangeResponseData''s exchange_id from Exchange API''s response.
+
+            ExchangeRatings can only be created for exchanges matching active domains.'
+          type: string
+        output_id:
+          description: Required. The ID of the output that this feedback is for. Relevant to n-best exchange responses. Defaults to "best_1".
+          type: string
+        creator_id:
+          description: Output field only, automatically populated. User ID (e.g. email address) that provided this feedback.
+          type: string
+        question:
+          description: Output field only, automatically populated. The question that was recorded for the exchange that is being rated.
+          type: string
+        rank:
+          description: Required. The rank value given by the user. Range from 1 to 5 with 5 being the most positive rating.
+          format: int32
+          type: integer
+        message:
+          description: Optional user comment. Provides additional context on the rating. For example, a rating of 5 means "The answer was on topic and helpful".
+          type: string
+        freeform_text:
+          description: Optional freeform text for feedback provider.
+          type: string
+      type: object
+    v1CollectionMetadata:
+      properties:
+        uuid:
+          description: Random UUID returned in the resource response to represent the unique interaction with the API.  This can be thought of as a response id.
+          type: string
+        response_time_millis:
+          description: Time difference in milliseconds between when the request was received and when the response was generated, that is, the latency.
+          format: int64
+          type: integer
+      title: Metadata that will be returned with each collection-level GET
+      type: object
+    v1UpdateExchangeRatingRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/v1ExchangeRating'
+        update_mask:
+          items:
+            type: string
+          title: "Required. The data path corresponding to the fields being updated in this request.\nExchange Rating Creator can update the following fields:\n   data.rank\n   data.message\n   data.freeform_text\nExample mask declaration in JSON format:\n   updateMask: \"data.freeformText\"\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
+          type: array
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      type: object
+    v1GetExchangeRatingResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/v1ExchangeRating'
+      type: object
+    v1CreateApprovalRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/v1ApprovalItem'
+      type: object
+    v1Attachment:
+      properties:
+        content_type:
+          description: "The content type of the additional information. Format of each type field is application/vnd.pryon.**{content_type}**. Commonly occurring types are:\n- **text** - The answer snippet or the text corresponding to detected short spans within the answer_in_context. Best_n will be the same string as the ‘text’ field and represents the ranking of the sentence within the AIC/chunk.\n- **answer_in_context** - Chunk of text identified as most relevant to the input query. The smaller text answer/reply is extracted from this larger text.\n- **answer_type** - Answer type or classification. Answer types include:\n   - **TEXT_EXCERPT**: Default.\n   - **FAQ**: An answer derived from the frequently asked questions.\n   - **OUT_OF_DOMAIN**: A query that is out of domain.\n   - **NON_ASCII_OUT_OF_SCOPE**: A query that is out of scope due to non ascii characters.\n   - **BELOW_THRESHOLD**: The best answer scored below the minimum specified score.\n   - **NO_ANSWER**: No suitably scored answer was found.\n- **answer_approval_id** - Approval ID of matching verified answer - valid UUID v4 string.\n- **score** - An approximation of the strength of the returned answer and answer_in_context chunk, or the float score returned from a model.\n- **level** - Configurable answer confidence levels to categorize outputs.\n- **content_id** - content_id of the knowledge domain content where the answer is located. A client application may use the content API to get more information about the content.\n- **content_display_name** - Display name of the source file that includes the best sentence answer.\n- **content_source_location** - URL of the source content where the answer and chunk are located.\n- **index** - Index into a custom data source.\n- **followup_choice** - Indicates a multiple-choice question is being returned to the user as a reply to their request.  Each of the choices will be an attachment with this value.\n- **related_questions** - Questions related to the input question. e.g. key: rq_best_<ix>, value: {content_type:application/vnd.pryon.related_questions, content: <string>}, where ix is the index from 1 onwards.\n- **related_questions_score** - Score of a Related Question, e.g. key: rq_score_best_<ix>, value: {content_type:application/vnd.pryon.related_questions_score, content: <string>}, where ix is the index from 1 onwards.\n- **followup_questions** - Followup Question to the input question. e.g. key: fq_best_<ix>, value: {content_type:application/vnd.pryon.followup_questions, content: <string>}, where ix is the index from 1 onwards.\n- **followup_questions_score** - Followup Question score. e.g. key: fq_score_best_<ix>, value: {content_type:application/vnd.pryon.followup_questions_score, content: <string>}.\n- **start_page** - Page number where the answer_in_context or the chunk starts in a PDF.\n- **start_page_bbox** - Bounding box of the entire page on which the answer is found.\n- **end_page** - Page number where the answer_in_context ends in a PDF.\n- **start_char_index** - Index of the first occurrence of the best_sentence or answer substring within the surrounding answer_in_context chunk.\n- **end_char_index** - Index of the last occurrence of the best_sentence or answer substring within the surrounding answer_in_context chunk.\n- **bbox** - Bounding box coordinates returned as a list of four floating point numbers representing the top-left and bottom-right corners of the box for the answer snippet on the source document image.\n- **flag** - Boolean flag with either true or false values.\n- **texttrack_cue** - relative time offset from the beginning of the video associated with the short answer. e.g. key: \"texttrack_cue\", value: {content_type: application/vnd.pryon.texttrack_cue, content: <HH:MM:SS>}."
+          type: string
+        content:
+          description: The content of the additional information.
+          type: string
+      type: object
+    v1ApprovalItem:
+      properties:
+        approval_status:
+          $ref: '#/components/schemas/ApprovalItemApprovalStatus'
+        approval_id:
+          description: Optional. Random UUID generated on a CreateApproval request.
+          type: string
+        conv_review_id:
+          description: Optional. Refers to the conversation review UUID for the approved exchange output.
+          type: string
+        exchange_id:
+          description: Optional. Refers to the parent exchange that the approved review is a part of.
+          type: string
+        knowledge_domain_id:
+          description: Required. Refers to the knowledge domain of the approved review.
+          type: string
+        kd_succession_id:
+          title: 'Optional. Refers to kd_succession_id of the approved review.
+
+            If kd_succession_id is not passed (first KD in lineage) this is set to the knowledge_domain_id'
+          type: string
+        input_understood_text:
+          description: Required. Normalized input text of Exchange Question.
+          type: string
+        output_text:
+          description: Required. Answer output text displayed to the user.
+          type: string
+        approver_id:
+          readOnly: true
+          title: Output only. User ID of the Org Administrator who approved the review
+          type: string
+        uri:
+          description: Optional. Link to further information.
+          type: string
+        uri_display_name:
+          description: Optional. Display name for above link.
+          type: string
+        contact_info:
+          $ref: '#/components/schemas/v1ContactInfo'
+        attachments:
+          additionalProperties:
+            $ref: '#/components/schemas/v1Attachment'
+          description: Optional. Attachments from the associated exchange output, keyed by a UUIDv4 string.
+          type: object
+      type: object
+    v1GetApprovalResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/v1ApprovalItem'
+      type: object
+    v1ListApprovalItem:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/v1ApprovalItem'
+      type: object
+    v1ContactInfo:
+      properties:
+        contact_name:
+          description: Name of the person to contact.
+          type: string
+        contact_email:
+          description: Email of the above person.
+          type: string
+      type: object
+    v1CreateApprovalResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/v1ApprovalItem'
+      type: object
+    v1GetExchangeRatingReviewResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/v1ExchangeRatingReview'
+      type: object
+    v1CreateExchangeRatingRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/v1ExchangeRating'
+      type: object
+    v1ListApprovalsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          description: Approval Items meeting the list filter/ordering criteria.
+          items:
+            $ref: '#/components/schemas/v1ListApprovalItem'
+          type: array
+        next_page_token:
+          description: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+
+            See https://cloud.google.com/apis/design/design_patterns#list_pagination for details.'
+          type: string
+        total_size:
+          description: 'This is the total number of items in the collection across all the pages.
+
+            It is returned with every page and may change during page traversal.
+
+            See https://cloud.google.com/apis/design/design_patterns#list_pagination for more details.'
+          format: int32
+          type: integer
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
+        order_by:
+          description: Returned for convenience and clarity - same as order_by in request.
+          type: string
+      type: object
+x-refined-from:
+- pryon-admin-openapi.json
+- pryon-feedback-august2025-openapi.json
+x-original-swagger-version: '2.0'
+x-tagGroups:
+- name: Retrieval
+  tags:
+  - Exchange
+  - ExchangeEvent
+  - Feedback
+  - GenerativeExchange
+  - GenerativeFeedback
+  - TextToSpeech
+- name: Reporting
+  tags:
+  - Analytics
+  - Reports
+  - Usage
+- name: Collection Management
+  tags:
+  - KnowledgeCollectionService
+  - KnowledgeDomain
+  - ContentService
+  - RegressionTest
+  - Subjects
+- name: Organization Management
+  tags:
+  - ConnectorServiceExternal
+  - OrganizationService
+  - Messages
+- name: Ops Console
+  tags:
+  - Operations

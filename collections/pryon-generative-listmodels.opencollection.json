@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Generative API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Generative",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CreateChatCompletions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/generative/v1alpha1/chat/completions",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\nA generic text-generation interface to external LLM providers and Pryon-hosted LLMs.\n implements a subset of the OpenAI /v1/chat/completions API specification\n as defined here: https://platform.openai.com/docs/api-reference/chat\n Using the official OpenAI client SDK for your language is recommended.\n The following providers are supported currently:\n - pryon\n - openai\n - anthropic\n - vertex ai\n Please check the respective provider's documentation\n for supported text-generation models and accepte"
+        },
+        {
+          "info": {
+            "name": "List Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/generative/v1alpha1/chat/completions/models",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\nLists the models available for our Chat Completions API"
+        },
+        {
+          "info": {
+            "name": "CompleteQuery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/generative/v1alpha1/tasks/complete-query",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\nGenerates a completed query by replacing references to entities / information\n in prior turns of the conversation."
+        },
+        {
+          "info": {
+            "name": "RouteQuery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/generative/v1alpha1/tasks/route-query",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\nReturn query out-of-domain classifications given a query"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

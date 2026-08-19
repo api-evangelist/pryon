@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "pryon/api/ext/generative/v1alpha1/generative.proto",
+    "version": "version not set"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Generative",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Chat Completions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/generative/v1alpha1/chat/completions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a model response from a list of messages comprising a conversation."
+        },
+        {
+          "info": {
+            "name": "Pryon Query Rewrite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/generative/v1alpha1/tasks/complete-query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a completed query by replacing references to entities or information in prior turns of the conversation."
+        },
+        {
+          "info": {
+            "name": "Pryon Query Routing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/generative/v1alpha1/tasks/route-query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return query out-of-domain classifications."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exchange Event",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ExchangeEvent",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Exchange Event SSE Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/conversation/v1/exchange-events/sse",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends ExchangeEventSSEData messages as data-only server-sent events (SSE)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

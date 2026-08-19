@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Knowledge Collection Service List Knowledge Collections API",
+    "version": "1.0.0-alpha"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "List Knowledge Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Knowledge Collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/knowledge/v1alpha1/collections",
+            "params": [
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifiers of the teams authorized to the knowledge collection."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Requested page size; default and maximum value are both 100."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "Returned for multiple pages; must be specified in each request for two pages per sheet using the page token parameter."
+              },
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "query",
+                "description": "Licensed solution for the collection; if not provided, the organizational default solution is automatically assigned."
+              }
+            ]
+          },
+          "docs": "List all knowledge collections configured for an organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

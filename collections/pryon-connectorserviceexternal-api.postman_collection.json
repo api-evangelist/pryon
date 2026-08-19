@@ -1,0 +1,2160 @@
+{
+  "item": [
+    {
+      "id": "7418b99b-ea35-4ac1-be57-c98449da1aab",
+      "name": "ConnectorServiceExternal",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "94de63bf-0a2c-4b04-90f8-5972780d36c9",
+          "name": "DownloadContentData",
+          "request": {
+            "name": "DownloadContentData",
+            "description": {
+              "content": "Custom methods to get ContentData\nDownload Content Data in multiple parts\nHTTP Request:\nGET https://{host}/api/connector/v1/connectors/{connector_id}/content-data:download?source_location=<source_location>&opaque_data=<opaque_data> HTTP/1.1\nHOST: {host}\nRange: bytes=<range-start>-<range-end>\n\nHTTP Response:\nHTTP/1.1 206 Partial Content\nContent-Range: bytes <range-start>-<range-end>/<total_size>\nContent-Length: <bytes-length>\nContent-Type: application/octet-stream\n\n<bytes-data>\n\nThis is a proxy through the content source.\nTo be implemented by the the universal connector and invoked by Pryon Ingestion Platform to pull content data from the connector.\nThis is called by each individual file content workflow (in Pryon's Ingestion logic) when we have identified the content\nand need to fetch the data we want to index for searching/Retrieval Views.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "connector",
+                "v1",
+                "connectors",
+                ":connector_id",
+                "content-data:download"
+              ],
+              "host": [
+                "{{api-connector-v1-connectors-connector_id-content-data:download-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "range_header.range_start",
+                  "value": "<int64>"
+                },
+                {
+                  "disabled": false,
+                  "key": "range_header.range_end",
+                  "value": "<int64>"
+                },
+                {
+                  "disabled": false,
+                  "key": "range_header.total_size",
+                  "value": "<int64>"
+                },
+                {
+                  "disabled": false,
+                  "key": "opaque_data",
+                  "value": "<string>",
+                  "description": "The opaque_data is an opaque string contains additonal information that can be used to by the PULL API to retreive the content data from underlying content source along with the source_location. (e.g. drinve_id + item_id in SharePoint)."
+                },
+                {
+                  "disabled": false,
+                  "key": "source_location",
+                  "value": "<string>",
+                  "description": "The content source URI."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connector_id",
+                  "description": "(Required) Required. The identifier of the associated connector for the content download request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24bbb3c3-2831-4559-b54d-e4d66e8632e1",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1",
+                    "connectors",
+                    ":connector_id",
+                    "content-data:download"
+                  ],
+                  "host": [
+                    "{{api-connector-v1-connectors-connector_id-content-data:download-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "range_header.range_start",
+                      "value": "<int64>"
+                    },
+                    {
+                      "key": "range_header.range_end",
+                      "value": "<int64>"
+                    },
+                    {
+                      "key": "range_header.total_size",
+                      "value": "<int64>"
+                    },
+                    {
+                      "key": "opaque_data",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source_location",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Required. The identifier of the associated connector for the content download request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"content_range_header\": {\n    \"range_start\": \"string\",\n    \"range_end\": \"string\",\n    \"total_size\": \"string\"\n  },\n  \"bytes_data\": \"Yr8e5eEh\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f08c1d0-ebb5-4789-a3aa-fdf5136ce253",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1",
+                    "connectors",
+                    ":connector_id",
+                    "content-data:download"
+                  ],
+                  "host": [
+                    "{{api-connector-v1-connectors-connector_id-content-data:download-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "range_header.range_start",
+                      "value": "<int64>"
+                    },
+                    {
+                      "key": "range_header.range_end",
+                      "value": "<int64>"
+                    },
+                    {
+                      "key": "range_header.total_size",
+                      "value": "<int64>"
+                    },
+                    {
+                      "key": "opaque_data",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source_location",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Required. The identifier of the associated connector for the content download request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9882,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"laDKFVjJCb8i5Y5QMzTuJcOfFgxOGia=\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"qLiB47FdSBQvjg==\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09a6881d-1670-492b-aea8-99f4943b457f",
+          "name": "GetReadPermission",
+          "request": {
+            "name": "GetReadPermission",
+            "description": {
+              "content": "Get read permission for a content.\nTo be implemented by the universal connector and invoked by Pryon Ingestion and Retrieval Platform to pull most to date read permission for a content.\nThis is called on an interval in the Pryon Ingestion system to update each individual Content item's specific\npermissions in the index.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "connector",
+                "v1",
+                "connectors",
+                ":connector_id",
+                "content",
+                "read-permission"
+              ],
+              "host": [
+                "{{api-connector-v1-connectors-connector_id-content-read-permission-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "opaque_data",
+                  "value": "<string>",
+                  "description": "The opaque_data is an opaque string contains additonal information that can be used to by the PULL API to retreive the content data from underlying content source along with the source_location. (e.g. drinve_id + item_id in SharePoint)."
+                },
+                {
+                  "disabled": false,
+                  "key": "source_location",
+                  "value": "<string>",
+                  "description": "The content source URI."
+                },
+                {
+                  "disabled": false,
+                  "key": "content_id",
+                  "value": "<string>",
+                  "description": "Pryon content id for the content to be used for logging purposes."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connector_id",
+                  "description": "(Required) Required. The identifier for the connector associated with the Read Permission request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5e3f046-a3d3-412a-8bec-c0fc19ec1e06",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1",
+                    "connectors",
+                    ":connector_id",
+                    "content",
+                    "read-permission"
+                  ],
+                  "host": [
+                    "{{api-connector-v1-connectors-connector_id-content-read-permission-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "opaque_data",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source_location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "content_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Required. The identifier for the connector associated with the Read Permission request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"2002-10-19T14:29:16.382Z\",\n    \"update_time\": \"1986-02-27T21:19:41.767Z\",\n    \"response_time_millis\": 2763\n  },\n  \"data\": {\n    \"allow_emails\": [\n      \"string\",\n      \"string\"\n    ],\n    \"allow_group_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"deny_emails\": [\n      \"string\",\n      \"string\"\n    ],\n    \"deny_group_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"any_required_group_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"all_required_group_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"is_public\": true,\n    \"unrestricted_emails\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "157322e3-cb67-41a8-9233-6620b64ced34",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1",
+                    "connectors",
+                    ":connector_id",
+                    "content",
+                    "read-permission"
+                  ],
+                  "host": [
+                    "{{api-connector-v1-connectors-connector_id-content-read-permission-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "opaque_data",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source_location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "content_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Required. The identifier for the connector associated with the Read Permission request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 778,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"v6up1XZaHPZow/cBW2U73k22ahJ1h7xQ57AnhsWB\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"pA7fjicaRzKny6SLP2pBBoPDnZB3XfAaVxff\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1cd8b3fe-4a94-4d21-84b0-1ecd030f82d8",
+          "name": "PullContents",
+          "request": {
+            "name": "PullContents",
+            "description": {
+              "content": "Content source discovery custom method.\nThis is a proxy through the content source.\nTo be implemented by the universal connector and invoked by Pryon Ingestion Platform to list contents from the connector.\nThis is where we list all the content available in the remote API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "connector",
+                "v1",
+                "connectors",
+                ":connector_id",
+                "contents:pull"
+              ],
+              "host": [
+                "{{api-connector-v1-connectors-connector_id-contents:pull-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "seed_source_location",
+                  "value": "<string>",
+                  "description": "Required. The URI to be used for content discovery. The URI's query parameters can contain information about the content to be discovered such as filters, sorting, etc.\nFor Pryon Knowledge Platform, this is the KnowledgeDomain's ContentGroup's source location."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "The default page size is the maximum page size specified for each Connector."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "An opaque token that the server can interpret to determine the starting point for the next set of results.\nIf not given, the server fetches from the first record.\nIf there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connector_id",
+                  "description": "(Required) Required. The identifer of the connector for the current Pull Contents request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e76e219c-5c15-49c5-9415-6e6aa5050665",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1",
+                    "connectors",
+                    ":connector_id",
+                    "contents:pull"
+                  ],
+                  "host": [
+                    "{{api-connector-v1-connectors-connector_id-contents:pull-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "seed_source_location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Required. The identifer of the connector for the current Pull Contents request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 4638\n  },\n  \"items\": [\n    {\n      \"data\": {\n        \"content_id\": \"string\",\n        \"connector_id\": \"string\",\n        \"seed_source_location\": \"string\",\n        \"source_location\": \"string\",\n        \"display_source_location\": \"string\",\n        \"is_folder\": false,\n        \"parent_id\": \"string\",\n        \"read_permission\": {\n          \"allow_emails\": [\n            \"string\",\n            \"string\"\n          ],\n          \"allow_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"deny_emails\": [\n            \"string\",\n            \"string\"\n          ],\n          \"deny_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"any_required_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"all_required_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"is_public\": true,\n          \"unrestricted_emails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"version\": \"string\",\n        \"created_at\": \"string\",\n        \"updated_at\": \"string\",\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"comment\": \"string\",\n        \"body\": \"string\",\n        \"mime_type\": \"string\",\n        \"file_extension\": \"string\",\n        \"path\": \"string\",\n        \"size\": \"string\",\n        \"opaque_data\": \"string\",\n        \"data\": \"string\",\n        \"created_by\": \"string\",\n        \"updated_by\": \"string\",\n        \"assigned_to\": \"string\",\n        \"impact\": \"UNSPECIFIED\",\n        \"priority\": \"UNSPECIFIED\",\n        \"urgency\": \"UNSPECIFIED\",\n        \"state\": \"UNSPECIFIED\",\n        \"status\": \"UNSPECIFIED\",\n        \"custom_attributes\": {\n          \"key_0\": {\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"value_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_1\": {\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"value_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_2\": {\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"value_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_3\": {\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"value_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"system_status\": \"UNKNOWN\",\n        \"system_status_reason\": \"string\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1969-07-23T07:28:35.539Z\",\n        \"update_time\": \"2017-01-14T02:08:06.926Z\",\n        \"response_time_millis\": 3889\n      }\n    },\n    {\n      \"data\": {\n        \"content_id\": \"string\",\n        \"connector_id\": \"string\",\n        \"seed_source_location\": \"string\",\n        \"source_location\": \"string\",\n        \"display_source_location\": \"string\",\n        \"is_folder\": false,\n        \"parent_id\": \"string\",\n        \"read_permission\": {\n          \"allow_emails\": [\n            \"string\",\n            \"string\"\n          ],\n          \"allow_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"deny_emails\": [\n            \"string\",\n            \"string\"\n          ],\n          \"deny_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"any_required_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"all_required_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"is_public\": false,\n          \"unrestricted_emails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"version\": \"string\",\n        \"created_at\": \"string\",\n        \"updated_at\": \"string\",\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"comment\": \"string\",\n        \"body\": \"string\",\n        \"mime_type\": \"string\",\n        \"file_extension\": \"string\",\n        \"path\": \"string\",\n        \"size\": \"string\",\n        \"opaque_data\": \"string\",\n        \"data\": \"string\",\n        \"created_by\": \"string\",\n        \"updated_by\": \"string\",\n        \"assigned_to\": \"string\",\n        \"impact\": \"UNSPECIFIED\",\n        \"priority\": \"UNSPECIFIED\",\n        \"urgency\": \"UNSPECIFIED\",\n        \"state\": \"UNSPECIFIED\",\n        \"status\": \"UNSPECIFIED\",\n        \"custom_attributes\": {\n          \"key_0\": {\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"value_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"system_status\": \"UNKNOWN\",\n        \"system_status_reason\": \"string\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1997-08-12T11:56:46.941Z\",\n        \"update_time\": \"1984-01-09T03:35:09.606Z\",\n        \"response_time_millis\": 5010\n      }\n    }\n  ],\n  \"next_page_token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2fcc1885-597c-4315-9c31-0eb979872540",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1",
+                    "connectors",
+                    ":connector_id",
+                    "contents:pull"
+                  ],
+                  "host": [
+                    "{{api-connector-v1-connectors-connector_id-contents:pull-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "seed_source_location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Required. The identifer of the connector for the current Pull Contents request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 778,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"v6up1XZaHPZow/cBW2U73k22ahJ1h7xQ57AnhsWB\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"pA7fjicaRzKny6SLP2pBBoPDnZB3XfAaVxff\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76127299-b099-4483-af08-488177b8bcc4",
+          "name": "ListGroupPermissionMembers",
+          "request": {
+            "name": "ListGroupPermissionMembers",
+            "description": {
+              "content": "List members of the connector's group permission.\nTo be implemented by the universal connector and invoked by Pryon Ingestion Platform to pull most to date members of the connector's group permission.\nThe individual memberships related to each Group identified from ListGroupPermissions. This allows specific userIds (or emails) to belong\nto particular groups in Pryon given the remote account's setup.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "connector",
+                "v1",
+                "connectors",
+                ":connector_id",
+                "group-permission",
+                "members"
+              ],
+              "host": [
+                "{{api-connector-v1-connectors-connector_id-group-permission-members-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "group_id",
+                  "value": "<string>",
+                  "description": "Required. Identifier for the group."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connector_id",
+                  "description": "(Required) Required.  The identifier of the connector associated with the group permission member list request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "527fc6c4-008a-4070-98d1-5456ae128951",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1",
+                    "connectors",
+                    ":connector_id",
+                    "group-permission",
+                    "members"
+                  ],
+                  "host": [
+                    "{{api-connector-v1-connectors-connector_id-group-permission-members-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "group_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Required.  The identifier of the connector associated with the group permission member list request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"emails\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb95a908-8873-4e5b-9494-e68e120eb4af",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1",
+                    "connectors",
+                    ":connector_id",
+                    "group-permission",
+                    "members"
+                  ],
+                  "host": [
+                    "{{api-connector-v1-connectors-connector_id-group-permission-members-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "group_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Required.  The identifier of the connector associated with the group permission member list request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 778,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"v6up1XZaHPZow/cBW2U73k22ahJ1h7xQ57AnhsWB\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"pA7fjicaRzKny6SLP2pBBoPDnZB3XfAaVxff\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cca03b3a-fa63-4151-a4cf-68deb37234f6",
+          "name": "ListGroupPermissions",
+          "request": {
+            "name": "ListGroupPermissions",
+            "description": {
+              "content": "List group permissions of the connector.\nTo be implemented by the universal connector and invoked by Pryon Ingestion Platform to pull most to date group permissions of the connector.\nThis should fetch all the groups in the remote API that any user can belong to. It's important that these groups\nare accessible properties in either our Pryon User records, or in the JWT claims for a particular login.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "connector",
+                "v1",
+                "connectors",
+                ":connector_id",
+                "group-permissions"
+              ],
+              "host": [
+                "{{api-connector-v1-connectors-connector_id-group-permissions-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connector_id",
+                  "description": "(Required) Required. The identifier of the connector associated with the request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5cc0c48a-9a9c-4c22-9ca9-8f4b768a9438",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1",
+                    "connectors",
+                    ":connector_id",
+                    "group-permissions"
+                  ],
+                  "host": [
+                    "{{api-connector-v1-connectors-connector_id-group-permissions-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Required. The identifier of the connector associated with the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": {\n    \"key_0\": {\n      \"group_id\": \"string\",\n      \"group_name\": \"string\",\n      \"group_email\": \"string\"\n    },\n    \"key_1\": {\n      \"group_id\": \"string\",\n      \"group_name\": \"string\",\n      \"group_email\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f89ba11-c8c1-4e5c-8981-0cbcf9a7c741",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1",
+                    "connectors",
+                    ":connector_id",
+                    "group-permissions"
+                  ],
+                  "host": [
+                    "{{api-connector-v1-connectors-connector_id-group-permissions-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Required. The identifier of the connector associated with the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 778,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"v6up1XZaHPZow/cBW2U73k22ahJ1h7xQ57AnhsWB\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"pA7fjicaRzKny6SLP2pBBoPDnZB3XfAaVxff\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "edc53695-45d5-4b0b-95b4-fb2469a78be9",
+          "name": "Get Content Information",
+          "request": {
+            "name": "Get Content Information",
+            "description": {
+              "content": "Use custom methods to get ContentData to download in multiple parts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "connector",
+                "v1alpha1",
+                "connectors",
+                ":connector_id",
+                "content-data:download"
+              ],
+              "host": [
+                "{{api-connector-v1alpha1-connectors-connector_id-content-data:download-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "range_header.range_start",
+                  "value": "<int64>"
+                },
+                {
+                  "disabled": false,
+                  "key": "range_header.range_end",
+                  "value": "<int64>"
+                },
+                {
+                  "disabled": false,
+                  "key": "range_header.total_size",
+                  "value": "<int64>"
+                },
+                {
+                  "disabled": false,
+                  "key": "opaque_data",
+                  "value": "<string>",
+                  "description": "Hidden string with additional information the PULL API uses to retrieve the content data and source location from the underlying content; for example, drinve_id + item_id in SharePoint."
+                },
+                {
+                  "disabled": false,
+                  "key": "source_location",
+                  "value": "<string>",
+                  "description": "Unique identifier for the content source."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connector_id",
+                  "description": "(Required) Unique identifier for the connector associated with the request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f490659f-0da7-4a63-b518-12dbfd1296e8",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1alpha1",
+                    "connectors",
+                    ":connector_id",
+                    "content-data:download"
+                  ],
+                  "host": [
+                    "{{api-connector-v1alpha1-connectors-connector_id-content-data:download-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "range_header.range_start",
+                      "value": "<int64>"
+                    },
+                    {
+                      "key": "range_header.range_end",
+                      "value": "<int64>"
+                    },
+                    {
+                      "key": "range_header.total_size",
+                      "value": "<int64>"
+                    },
+                    {
+                      "key": "opaque_data",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source_location",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier for the connector associated with the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"content_range_header\": {\n    \"range_start\": \"string\",\n    \"range_end\": \"string\",\n    \"total_size\": \"string\"\n  },\n  \"bytes_data\": \"Yr8e5eEh\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4f3094e-2f8a-4f12-95af-9a624d195e58",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1alpha1",
+                    "connectors",
+                    ":connector_id",
+                    "content-data:download"
+                  ],
+                  "host": [
+                    "{{api-connector-v1alpha1-connectors-connector_id-content-data:download-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "range_header.range_start",
+                      "value": "<int64>"
+                    },
+                    {
+                      "key": "range_header.range_end",
+                      "value": "<int64>"
+                    },
+                    {
+                      "key": "range_header.total_size",
+                      "value": "<int64>"
+                    },
+                    {
+                      "key": "opaque_data",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source_location",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier for the connector associated with the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 778,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"v6up1XZaHPZow/cBW2U73k22ahJ1h7xQ57AnhsWB\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"pA7fjicaRzKny6SLP2pBBoPDnZB3XfAaVxff\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab08f65d-ed5d-4220-8d9c-038caf1f20ad",
+          "name": "Get Content Metadata",
+          "request": {
+            "name": "Get Content Metadata",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "connector",
+                "v1alpha1",
+                "connectors",
+                ":connector_id",
+                "content",
+                "metadata"
+              ],
+              "host": [
+                "{{api-connector-v1alpha1-connectors-connector_id-content-metadata-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "opaque_data",
+                  "value": "<string>",
+                  "description": "Hidden string with additional information the PULL API uses to retrieve the content data and source location from the underlying content; for example, drinve_id + item_id in SharePoint."
+                },
+                {
+                  "disabled": false,
+                  "key": "source_location",
+                  "value": "<string>",
+                  "description": "Unique identifier for the content source."
+                },
+                {
+                  "disabled": false,
+                  "key": "content_id",
+                  "value": "<string>",
+                  "description": "Unique identifier for the content."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connector_id",
+                  "description": "(Required) Unique identifier of the connector associated with the metadata request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "118583c2-ac15-402b-909d-e01f3b00eddb",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1alpha1",
+                    "connectors",
+                    ":connector_id",
+                    "content",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{api-connector-v1alpha1-connectors-connector_id-content-metadata-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "opaque_data",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source_location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "content_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier of the connector associated with the metadata request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data_source_metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6e83b11-951b-4e18-8e93-553de5514e26",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1alpha1",
+                    "connectors",
+                    ":connector_id",
+                    "content",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{api-connector-v1alpha1-connectors-connector_id-content-metadata-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "opaque_data",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source_location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "content_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier of the connector associated with the metadata request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 778,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"v6up1XZaHPZow/cBW2U73k22ahJ1h7xQ57AnhsWB\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"pA7fjicaRzKny6SLP2pBBoPDnZB3XfAaVxff\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ff0d17f-d5b4-4060-ab7b-3ba8f8868678",
+          "name": "Get Read Permission for Content",
+          "request": {
+            "name": "Get Read Permission for Content",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "connector",
+                "v1alpha1",
+                "connectors",
+                ":connector_id",
+                "content",
+                "read-permission"
+              ],
+              "host": [
+                "{{api-connector-v1alpha1-connectors-connector_id-content-read-permission-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "opaque_data",
+                  "value": "<string>",
+                  "description": "Hidden string with additonal information the PULL API uses to retrieve the content data and source location from the underlying content; for example, drinve_id + item_id in SharePoint."
+                },
+                {
+                  "disabled": false,
+                  "key": "source_location",
+                  "value": "<string>",
+                  "description": "Unique identifier for the content source."
+                },
+                {
+                  "disabled": false,
+                  "key": "content_id",
+                  "value": "<string>",
+                  "description": "Unique identifier for the content."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connector_id",
+                  "description": "(Required) Unique identifier for the connector associated with the request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b1734dc-cca1-468e-8a84-9d3096ffb920",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1alpha1",
+                    "connectors",
+                    ":connector_id",
+                    "content",
+                    "read-permission"
+                  ],
+                  "host": [
+                    "{{api-connector-v1alpha1-connectors-connector_id-content-read-permission-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "opaque_data",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source_location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "content_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier for the connector associated with the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1984-10-09T12:01:05.176Z\",\n    \"update_time\": \"2017-12-26T18:52:50.100Z\",\n    \"response_time_millis\": 2518\n  },\n  \"data\": {\n    \"allow_emails\": [\n      \"string\",\n      \"string\"\n    ],\n    \"allow_group_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"deny_emails\": [\n      \"string\",\n      \"string\"\n    ],\n    \"deny_group_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"any_required_group_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"all_required_group_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"is_public\": false,\n    \"unrestricted_emails\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48d62166-f3ad-4903-94f3-c6ad37469e6c",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1alpha1",
+                    "connectors",
+                    ":connector_id",
+                    "content",
+                    "read-permission"
+                  ],
+                  "host": [
+                    "{{api-connector-v1alpha1-connectors-connector_id-content-read-permission-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "opaque_data",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source_location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "content_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier for the connector associated with the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 778,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"v6up1XZaHPZow/cBW2U73k22ahJ1h7xQ57AnhsWB\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"pA7fjicaRzKny6SLP2pBBoPDnZB3XfAaVxff\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc7148eb-d916-4d07-9503-8f1ecb008655",
+          "name": "Discover Content Source",
+          "request": {
+            "name": "Discover Content Source",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "connector",
+                "v1alpha1",
+                "connectors",
+                ":connector_id",
+                "contents:pull"
+              ],
+              "host": [
+                "{{api-connector-v1alpha1-connectors-connector_id-contents:pull-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "seed_source_location",
+                  "value": "<string>",
+                  "description": "Unique identifier for the content."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Maximum page size is 100; default is 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "Hidden token that determines the starting point for the next set of results; if not specified, the server fetches from the first record; if there are multiple pages, specify this value in pages 2-N using the value of next_page_token."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connector_id",
+                  "description": "(Required) Unique identifier of the connector associated with the request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "74d0156e-7bbc-4baa-8a0f-4c4c2382ed44",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1alpha1",
+                    "connectors",
+                    ":connector_id",
+                    "contents:pull"
+                  ],
+                  "host": [
+                    "{{api-connector-v1alpha1-connectors-connector_id-contents:pull-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "seed_source_location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier of the connector associated with the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 7745\n  },\n  \"items\": [\n    {\n      \"data\": {\n        \"content_id\": \"string\",\n        \"connector_id\": \"string\",\n        \"seed_source_location\": \"string\",\n        \"source_location\": \"string\",\n        \"display_source_location\": \"string\",\n        \"is_folder\": false,\n        \"parent_id\": \"string\",\n        \"read_permission\": {\n          \"allow_emails\": [\n            \"string\",\n            \"string\"\n          ],\n          \"allow_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"deny_emails\": [\n            \"string\",\n            \"string\"\n          ],\n          \"deny_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"any_required_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"all_required_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"is_public\": false,\n          \"unrestricted_emails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"version\": \"string\",\n        \"created_at\": \"string\",\n        \"updated_at\": \"string\",\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"comment\": \"string\",\n        \"body\": \"string\",\n        \"mime_type\": \"string\",\n        \"file_extension\": \"string\",\n        \"path\": \"string\",\n        \"size\": \"string\",\n        \"opaque_data\": \"string\",\n        \"data\": \"string\",\n        \"created_by\": \"string\",\n        \"updated_by\": \"string\",\n        \"assigned_to\": \"string\",\n        \"impact\": \"UNSPECIFIED\",\n        \"priority\": \"UNSPECIFIED\",\n        \"urgency\": \"UNSPECIFIED\",\n        \"state\": \"UNSPECIFIED\",\n        \"status\": \"UNSPECIFIED\",\n        \"custom_attributes\": {\n          \"key_0\": {\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"value_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_1\": {\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"value_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"system_status\": \"UNKNOWN\",\n        \"system_status_reason\": \"string\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1979-04-27T02:10:26.809Z\",\n        \"update_time\": \"1998-11-08T01:14:25.710Z\",\n        \"response_time_millis\": 6406\n      }\n    },\n    {\n      \"data\": {\n        \"content_id\": \"string\",\n        \"connector_id\": \"string\",\n        \"seed_source_location\": \"string\",\n        \"source_location\": \"string\",\n        \"display_source_location\": \"string\",\n        \"is_folder\": false,\n        \"parent_id\": \"string\",\n        \"read_permission\": {\n          \"allow_emails\": [\n            \"string\",\n            \"string\"\n          ],\n          \"allow_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"deny_emails\": [\n            \"string\",\n            \"string\"\n          ],\n          \"deny_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"any_required_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"all_required_group_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"is_public\": false,\n          \"unrestricted_emails\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"version\": \"string\",\n        \"created_at\": \"string\",\n        \"updated_at\": \"string\",\n        \"title\": \"string\",\n        \"description\": \"string\",\n        \"comment\": \"string\",\n        \"body\": \"string\",\n        \"mime_type\": \"string\",\n        \"file_extension\": \"string\",\n        \"path\": \"string\",\n        \"size\": \"string\",\n        \"opaque_data\": \"string\",\n        \"data\": \"string\",\n        \"created_by\": \"string\",\n        \"updated_by\": \"string\",\n        \"assigned_to\": \"string\",\n        \"impact\": \"UNSPECIFIED\",\n        \"priority\": \"UNSPECIFIED\",\n        \"urgency\": \"UNSPECIFIED\",\n        \"state\": \"UNSPECIFIED\",\n        \"status\": \"UNSPECIFIED\",\n        \"custom_attributes\": {\n          \"key_0\": {\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"value_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_1\": {\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"value_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_2\": {\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"value_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_3\": {\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"value_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_4\": {\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"value_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"system_status\": \"UNKNOWN\",\n        \"system_status_reason\": \"string\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1957-02-01T00:29:35.460Z\",\n        \"update_time\": \"2002-08-08T03:55:44.476Z\",\n        \"response_time_millis\": 7203\n      }\n    }\n  ],\n  \"next_page_token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9cbfa543-3ab6-435b-b446-d20e6fa89bd9",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1alpha1",
+                    "connectors",
+                    ":connector_id",
+                    "contents:pull"
+                  ],
+                  "host": [
+                    "{{api-connector-v1alpha1-connectors-connector_id-contents:pull-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "seed_source_location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier of the connector associated with the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 778,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"v6up1XZaHPZow/cBW2U73k22ahJ1h7xQ57AnhsWB\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"pA7fjicaRzKny6SLP2pBBoPDnZB3XfAaVxff\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e27c7cd-e09e-4ff1-9b6b-d09363f19316",
+          "name": "List Connector Group Permissions",
+          "request": {
+            "name": "List Connector Group Permissions",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "connector",
+                "v1alpha1",
+                "connectors",
+                ":connector_id",
+                "group-permission",
+                "members"
+              ],
+              "host": [
+                "{{api-connector-v1alpha1-connectors-connector_id-group-permission-members-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "group_id",
+                  "value": "<string>",
+                  "description": "(Required) Unique identifier for the group."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connector_id",
+                  "description": "(Required) Unique identifier for the connector associated with the request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "397ae585-d234-425b-a962-b7aeacc9745a",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1alpha1",
+                    "connectors",
+                    ":connector_id",
+                    "group-permission",
+                    "members"
+                  ],
+                  "host": [
+                    "{{api-connector-v1alpha1-connectors-connector_id-group-permission-members-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "group_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier for the connector associated with the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"emails\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef7e268b-717b-4aad-9c94-9d37b8fe2eb3",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1alpha1",
+                    "connectors",
+                    ":connector_id",
+                    "group-permission",
+                    "members"
+                  ],
+                  "host": [
+                    "{{api-connector-v1alpha1-connectors-connector_id-group-permission-members-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "group_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier for the connector associated with the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 778,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"v6up1XZaHPZow/cBW2U73k22ahJ1h7xQ57AnhsWB\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"pA7fjicaRzKny6SLP2pBBoPDnZB3XfAaVxff\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1293fdd8-1c57-4a98-a77b-694a3202279f",
+          "name": "List Connector Group Permissions",
+          "request": {
+            "name": "List Connector Group Permissions",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "connector",
+                "v1alpha1",
+                "connectors",
+                ":connector_id",
+                "group-permissions"
+              ],
+              "host": [
+                "{{api-connector-v1alpha1-connectors-connector_id-group-permissions-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connector_id",
+                  "description": "(Required) Unique identifier of the connector associated with the request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a29085cc-3266-411d-8019-c730ef800a4b",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1alpha1",
+                    "connectors",
+                    ":connector_id",
+                    "group-permissions"
+                  ],
+                  "host": [
+                    "{{api-connector-v1alpha1-connectors-connector_id-group-permissions-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier of the connector associated with the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": {\n    \"key_0\": {\n      \"group_id\": \"string\",\n      \"group_name\": \"string\",\n      \"group_email\": \"string\"\n    },\n    \"key_1\": {\n      \"group_id\": \"string\",\n      \"group_name\": \"string\",\n      \"group_email\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce30ca6b-06ee-4ba2-96e4-5fad3a31cb00",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    "v1alpha1",
+                    "connectors",
+                    ":connector_id",
+                    "group-permissions"
+                  ],
+                  "host": [
+                    "{{api-connector-v1alpha1-connectors-connector_id-group-permissions-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connector_id",
+                      "description": "(Required) Unique identifier of the connector associated with the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 778,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"v6up1XZaHPZow/cBW2U73k22ahJ1h7xQ57AnhsWB\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"pA7fjicaRzKny6SLP2pBBoPDnZB3XfAaVxff\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-connector-v1-connectors-connector_id-content-data:download-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-connector-v1-connectors-connector_id-content-read-permission-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-connector-v1-connectors-connector_id-contents:pull-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-connector-v1-connectors-connector_id-group-permission-members-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-connector-v1-connectors-connector_id-group-permissions-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "api-connector-v1alpha1-connectors-connector_id-content-data:download-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "api-connector-v1alpha1-connectors-connector_id-content-metadata-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "api-connector-v1alpha1-connectors-connector_id-content-read-permission-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "api-connector-v1alpha1-connectors-connector_id-contents:pull-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "api-connector-v1alpha1-connectors-connector_id-group-permission-members-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "api-connector-v1alpha1-connectors-connector_id-group-permissions-Url"
+    }
+  ],
+  "info": {
+    "_postman_id": "aff15dfc-08ac-4eae-be36-a19d061dfb2a",
+    "name": "Pryon Connector Service External API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged ConnectorServiceExternal across 2 of this provider's published API definitions: pryon-admin-openapi.json, pryon-universal-connector-may2025-openapi.json. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

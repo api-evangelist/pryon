@@ -1,0 +1,301 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "pryon/api/ext/analytics/v1/analytics.proto Regression Test API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "RegressionTest",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListTestQuestions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/regression/v1/collections/:collection_id/questions",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to be returned. Valid values are 1-100. Default is 100. The REST query parameter is \"page_size\"."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              }
+            ]
+          },
+          "docs": "List test questions associated with a given collection."
+        },
+        {
+          "info": {
+            "name": "GetTestQuestion",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/regression/v1/collections/:collection_id/questions/:question_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "question_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a test question associated with a given collection."
+        },
+        {
+          "info": {
+            "name": "DeleteTestQuestion",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/regression/v1/collections/:collection_id/questions/:question_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "question_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a test question associated with a given collection."
+        },
+        {
+          "info": {
+            "name": "CreateTestQuestion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/regression/v1/collections/:data.collection_id/questions",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.collection_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. Immutable after question creation. Must match an existing collection id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new test question associate with an existing collection. The question will be included in future regression test runs.\nThe number of test questions for a given collection is limited to a maximum capacity. The operation will fail if capacity is met."
+        },
+        {
+          "info": {
+            "name": "ListTests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/regression/v1/tests",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "base_collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Required. The parent collection the tests are associated with. The REST query parameter is base_collection_id."
+              }
+            ]
+          },
+          "docs": "List tests associated with a given collection."
+        },
+        {
+          "info": {
+            "name": "CreateTest",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/regression/v1/tests",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a test comparing two existing knowledge domains, aka collection versions. A single test may be created for a collection draft-domain pair."
+        },
+        {
+          "info": {
+            "name": "GetTest",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/regression/v1/tests/:test_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "test_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a test by id."
+        },
+        {
+          "info": {
+            "name": "DeleteTest",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/regression/v1/tests/:test_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "test_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a test and all its associated test results"
+        },
+        {
+          "info": {
+            "name": "ListTestResults",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/regression/v1/tests/:test_id/results",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "test_id",
+                "value": "",
+                "type": "path",
+                "description": "Required."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to be returned. Valid values are 1-100. Default is 100. The REST query parameter is \"page_size\"."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              }
+            ]
+          },
+          "docs": "Retrieves the result set associated with this test from storage. The output will only include test results already executed prior to list time."
+        },
+        {
+          "info": {
+            "name": "GetTestResult",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/regression/v1/tests/:test_id/results/:question_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "test_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "question_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves the test result corresponding to a given question id from storage. The question entity must already have been declared within the scope of the test collection. If the test result does not already exist on the server, such as on a first retrieval operation, it will be generated on the fly."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

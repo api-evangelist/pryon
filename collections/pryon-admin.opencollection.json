@@ -1,0 +1,4306 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "pryon/api/ext/analytics/v1/analytics.proto",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Analytics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListConversationCounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/analytics/v1/conversation-counts",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "agg_interval",
+                "value": "",
+                "type": "query",
+                "description": "Required. Aggregate conversation counts in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+              },
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter conversation counts by collection_id. REST query parameter is \"collection_id\". The conversation counts must be filtered by either collection or solution."
+              },
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter conversation counts by solution_id. REST query parameter is \"solution_id\". The conversation counts must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+              }
+            ]
+          },
+          "docs": "ListConversationCounts retrieves a time-series of the unique conversation counts."
+        },
+        {
+          "info": {
+            "name": "ListConversationSizeCategories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/analytics/v1/conversation-size-categories",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "agg_interval",
+                "value": "",
+                "type": "query",
+                "description": "Required. Aggregate conversation size categories in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+              },
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter conversation size categories by collection_id. REST query parameter is \"collection_id\". The conversation size categories must be filtered by either collection or solution."
+              },
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter conversation size categories by solution_id. REST query parameter is \"solution_id\". The conversation size categories must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+              }
+            ]
+          },
+          "docs": "ListConversationSizeCategories retrieves a time-series of the conversation size counts. The size of a conversation is the number of exchanges that occurred."
+        },
+        {
+          "info": {
+            "name": "ListExchangeConfidenceCategories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/analytics/v1/exchange-confidence-categories",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "agg_interval",
+                "value": "",
+                "type": "query",
+                "description": "Required. Aggregate exchange confidence categories in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+              },
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter exchange confidence categories by collection_id. REST query parameter is \"collection_id\". The exchange confidence categories must be filtered by either collection or solution."
+              },
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter exchange confidence categories by solution_id. REST query parameter is \"solution_id\". The exchange confidence categories must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+              }
+            ]
+          },
+          "docs": "List the exchange confidence counts in well defined categories in time interval buckets by collection."
+        },
+        {
+          "info": {
+            "name": "ListExchangeConfidenceScores",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/analytics/v1/exchange-confidence-scores",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "agg_interval",
+                "value": "",
+                "type": "query",
+                "description": "Required. Aggregate exchange confidence scores in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+              },
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter exchange confidence scores by collection_id. REST query parameter is \"collection_id\". The exchange confidence scores must be filtered by either collection or solution."
+              },
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter exchange confidence scores by solution_id. REST query parameter is \"solution_id\". The exchange confidence scores must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+              }
+            ]
+          },
+          "docs": "List the exchange confidence average as a numeric score in time interval buckets by collection."
+        },
+        {
+          "info": {
+            "name": "ListExchangeCounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/analytics/v1/exchange-counts",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "agg_interval",
+                "value": "",
+                "type": "query",
+                "description": "Required. Aggregate exchange counts in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+              },
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter exchange counts by collection_id. REST query parameter is \"collection_id\". The exchange counts must be filtered by either collection or solution."
+              },
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter exchange counts by solution_id. REST query parameter is \"solution_id\". The exchange counts must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+              }
+            ]
+          },
+          "docs": "List the exchange count in time interval buckets by collection."
+        },
+        {
+          "info": {
+            "name": "ListExchangeRatingCategories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/analytics/v1/exchange-rating-categories",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "agg_interval",
+                "value": "",
+                "type": "query",
+                "description": "Required. Aggregate exchange rating categories in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+              },
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter exchange rating categories by collection_id. REST query parameter is \"collection_id\". The exchange rating categories must be filtered by either collection or solution."
+              },
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter exchange rating categories by solution_id. REST query parameter is \"solution_id\". The exchange rating categories must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+              }
+            ]
+          },
+          "docs": "List the exchange rating counts in time interval buckets by collection."
+        },
+        {
+          "info": {
+            "name": "ListIngestCounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/analytics/v1/ingest-counts",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "agg_interval",
+                "value": "",
+                "type": "query",
+                "description": "Required. Aggregate ingest counts in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+              },
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter ingest counts by collection_id. REST query parameter is \"collection_id\". The ingest counts must be filtered by either collection or solution."
+              },
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter ingest counts by solution_id. REST query parameter is \"solution_id\". The ingest counts must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+              }
+            ]
+          },
+          "docs": "List the total ingestion count by collection."
+        },
+        {
+          "info": {
+            "name": "ListSyncCounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/analytics/v1/sync-counts",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "agg_interval",
+                "value": "",
+                "type": "query",
+                "description": "Required. Aggregate sync counts in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+              },
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter sync counts by collection_id. REST query parameter is \"collection_id\". The sync counts must be filtered by either collection or solution."
+              },
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter sync counts by solution_id. REST query parameter is \"solution_id\". The sync counts must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+              }
+            ]
+          },
+          "docs": "List the total collection sync count by collection. Includes the initial collection creation and subsequent collection updates (versioning) events. A collection is versioned by promoting a new knowledge domain to serve as its active domain."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "KnowledgeCollectionService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListActiveDomains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/active-domains",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "roles",
+                "value": "",
+                "type": "query",
+                "description": "Optionally, filter Active Domains where the calling user has one of these team roles, otherwise return the full set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page_size is set to the default, this param can be omitted; otherwise, it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              }
+            ]
+          },
+          "docs": "An ORG_ADMIN can list all active domains corresponding to the collections in their Org.\nAn ORG_WORKER can list the active domains their team memberships allow."
+        },
+        {
+          "info": {
+            "name": "ListCollections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/collections",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "query",
+                "description": "Filters output to only include the collections authorized to the given team_id. The REST query parameter is 'team_id'."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page_size is set to the default, this param can be omitted; otherwise, it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "query",
+                "description": "Filters output to only include the collections assigned to the given solution_id. The REST query parameter is 'solution_id'. Cannot be combined with the 'team_id' filter which it disables when both specified."
+              }
+            ]
+          },
+          "docs": "List all Knowledge Collections configured for an Org"
+        },
+        {
+          "info": {
+            "name": "GetCollection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/collections/:collection_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. Id of a valid Knowledge Collection."
+              }
+            ]
+          },
+          "docs": "Retrieve an existing Knowledge Collection.\nCollections cannot be user created but are automatically generated with Knowledge Domains."
+        },
+        {
+          "info": {
+            "name": "DeleteCollection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/knowledge/v1/collections/:collection_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. Id of a valid Knowledge Collection."
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "Use this flag to force delete the collection when it is set as an Org or User Default. The default value is false.\nIn REST it is expressed as a query parameter \"force=true\"."
+              }
+            ]
+          },
+          "docs": "Deleting a Collection removes the item from the system. It will also locate and decommission all Knowledge Domain versions still associated with this record.\nIf a collection is already set as an Org or User default the delete operation will fail. ORG_ADMIN may use the force flag to delete anyway."
+        },
+        {
+          "info": {
+            "name": "GetCollectionActiveDomain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/collections/:collection_id/domain",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. Id of a valid Knowledge Collection."
+              }
+            ]
+          },
+          "docs": "Retrieve a Knowledge Collection's active domain. A Collection always has an active domain.\nAn ORG_ADMIN can always get an active domain.\nAn ORG_WORKER can only get an active domain if their team memberships allow it."
+        },
+        {
+          "info": {
+            "name": "RestoreCollectionActiveDomain",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/knowledge/v1/collections/:collection_id/domain:restoreActive",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. Id of a valid Knowledge Collection."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Revert the collection to its previous version. Reverting is immediate. The active version will not be automatically removed from the system. The ORG_ADMIN may decommission it via the Knowledge Domain API."
+        },
+        {
+          "info": {
+            "name": "UpdateCollectionActiveDomain",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/knowledge/v1/collections/:collection_id/domain:setActive",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. Id of a valid Knowledge Collection."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updating a collection's active domain triggers the collection versioning process. The collection will remember its former version id and can return to its previous version on demand. Before promoting a Knowledge Domain to the active version, the ORG_ADMIN should ensure that the Knowledge Domain functions to their expectations. Once set, the active version becomes immediately available to Org users for exchange and feedback operations."
+        },
+        {
+          "info": {
+            "name": "UpdateCollection",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/knowledge/v1/collections/:data.collection_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.collection_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. The Knowledge Collection unique identifier. Immutable after create."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updating a collection allows for changing of team assignments."
+        },
+        {
+          "info": {
+            "name": "ListDefaultActiveDomains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/default-domains",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "roles",
+                "value": "",
+                "type": "query",
+                "description": "Optionally, filter Active Domains where the calling user has one of these team roles, otherwise return the full set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page_size is set to the default, this param can be omitted; otherwise, it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              }
+            ]
+          },
+          "docs": "List the Active Domains an authorized user can implicitly access in absence of any team assignments(defaults)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ConnectorServiceExternal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DownloadContentData",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/connector/v1/connectors/:connector_id/content-data:download",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. The identifier of the associated connector for the content download request."
+              },
+              {
+                "name": "range_header.range_start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "range_header.range_end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "range_header.total_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "opaque_data",
+                "value": "",
+                "type": "query",
+                "description": "The opaque_data is an opaque string contains additonal information that can be used to by the PULL API to retreive the content data from underlying content source along with the source_location. (e.g. drinve_id + item_id in SharePoint)."
+              },
+              {
+                "name": "source_location",
+                "value": "",
+                "type": "query",
+                "description": "The content source URI."
+              }
+            ]
+          },
+          "docs": "Custom methods to get ContentData\nDownload Content Data in multiple parts\nHTTP Request:\nGET https://{host}/api/connector/v1/connectors/{connector_id}/content-data:download?source_location=<source_location>&opaque_data=<opaque_data> HTTP/1.1\nHOST: {host}\nRange: bytes=<range-start>-<range-end>\n\nHTTP Response:\nHTTP/1.1 206 Partial Content\nContent-Range: bytes <range-start>-<range-end>/<total_size>\nContent-Length: <bytes-length>\nContent-Type: application/octet-stream\n\n<bytes-data>\n\nThis is a proxy t"
+        },
+        {
+          "info": {
+            "name": "GetReadPermission",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/connector/v1/connectors/:connector_id/content/read-permission",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. The identifier for the connector associated with the Read Permission request."
+              },
+              {
+                "name": "opaque_data",
+                "value": "",
+                "type": "query",
+                "description": "The opaque_data is an opaque string contains additonal information that can be used to by the PULL API to retreive the content data from underlying content source along with the source_location. (e.g. drinve_id + item_id in SharePoint)."
+              },
+              {
+                "name": "source_location",
+                "value": "",
+                "type": "query",
+                "description": "The content source URI."
+              },
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "query",
+                "description": "Pryon content id for the content to be used for logging purposes."
+              }
+            ]
+          },
+          "docs": "Get read permission for a content.\nTo be implemented by the universal connector and invoked by Pryon Ingestion and Retrieval Platform to pull most to date read permission for a content.\nThis is called on an interval in the Pryon Ingestion system to update each individual Content item's specific\npermissions in the index."
+        },
+        {
+          "info": {
+            "name": "PullContents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/connector/v1/connectors/:connector_id/contents:pull",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. The identifer of the connector for the current Pull Contents request."
+              },
+              {
+                "name": "seed_source_location",
+                "value": "",
+                "type": "query",
+                "description": "Required. The URI to be used for content discovery. The URI's query parameters can contain information about the content to be discovered such as filters, sorting, etc.\nFor Pryon Knowledge Platform, this is the KnowledgeDomain's ContentGroup's source location."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The default page size is the maximum page size specified for each Connector."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "An opaque token that the server can interpret to determine the starting point for the next set of results.\nIf not given, the server fetches from the first record.\nIf there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response."
+              }
+            ]
+          },
+          "docs": "Content source discovery custom method.\nThis is a proxy through the content source.\nTo be implemented by the universal connector and invoked by Pryon Ingestion Platform to list contents from the connector.\nThis is where we list all the content available in the remote API."
+        },
+        {
+          "info": {
+            "name": "ListGroupPermissionMembers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/connector/v1/connectors/:connector_id/group-permission/members",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Required.  The identifier of the connector associated with the group permission member list request."
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "query",
+                "description": "Required. Identifier for the group."
+              }
+            ]
+          },
+          "docs": "List members of the connector's group permission.\nTo be implemented by the universal connector and invoked by Pryon Ingestion Platform to pull most to date members of the connector's group permission.\nThe individual memberships related to each Group identified from ListGroupPermissions. This allows specific userIds (or emails) to belong\nto particular groups in Pryon given the remote account's setup."
+        },
+        {
+          "info": {
+            "name": "ListGroupPermissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/connector/v1/connectors/:connector_id/group-permissions",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. The identifier of the connector associated with the request."
+              }
+            ]
+          },
+          "docs": "List group permissions of the connector.\nTo be implemented by the universal connector and invoked by Pryon Ingestion Platform to pull most to date group permissions of the connector.\nThis should fetch all the groups in the remote API that any user can belong to. It's important that these groups\nare accessible properties in either our Pryon User records, or in the JWT claims for a particular login."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ContentService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListContentGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/content-groups",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional: ID for Knowledge Domain under which to search for ContentGroups."
+              },
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional: ID for Content which is contained by matching Content Groups."
+              }
+            ]
+          },
+          "docs": "Get a list of all the Content Groups.  The filters supported are knowledge_domain_id and content_id"
+        },
+        {
+          "info": {
+            "name": "CreateContentGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/knowledge/v1/content-groups",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CRD methods for a ContentGroup"
+        },
+        {
+          "info": {
+            "name": "GetContentGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/content-groups/:content_group_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of ContentGroup to return"
+              }
+            ]
+          },
+          "docs": "Get a Content Group by id"
+        },
+        {
+          "info": {
+            "name": "DeleteContentGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/knowledge/v1/content-groups/:content_group_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of ContentGroup to delete"
+              }
+            ]
+          },
+          "docs": "Delete a Content Group and all its associations with Contents.  This will not alter the Content resources.  This request will be rejected if the Content Group is a member of any Knowledge Domain."
+        },
+        {
+          "info": {
+            "name": "ListContentGroupContents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/content-groups/:content_group_id/contents",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Required: id of a valid Content Group from /api/knowledge/v1/content-groups"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The default page size is 500, which is also the maximum page size. The REST query parameter is \"page_size\". If page size is the default, this param can be omitted; otherwise, it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, any pages after the first must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "return_only_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional: if caller only needs the item ID's then set this to true."
+              }
+            ]
+          },
+          "docs": "List Content Group Contents, by content_group_id"
+        },
+        {
+          "info": {
+            "name": "DeleteContentGroupContents",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/knowledge/v1/content-groups/:content_group_id/contents",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of ContentGroup to return"
+              }
+            ]
+          },
+          "docs": "Delete all child Content associations with the parent Content Group.  The Content resources are not altered."
+        },
+        {
+          "info": {
+            "name": "GetContentGroupContent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/content-groups/:content_group_id/contents/:content_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Required: ID of the ContentGroup"
+              },
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "Required: ID of the Content"
+              }
+            ]
+          },
+          "docs": "Get Content Group Content, by content_id"
+        },
+        {
+          "info": {
+            "name": "DeleteContentGroupContent",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/knowledge/v1/content-groups/:content_group_id/contents/:content_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Required: ID of the ContentGroup"
+              },
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "Required: ID of the Content"
+              }
+            ]
+          },
+          "docs": "Delete Content association with the parent Content Group.  The Content resource is not altered."
+        },
+        {
+          "info": {
+            "name": "CascadeDeleteContentGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/knowledge/v1/content-groups/:content_group_id:cascade",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of ContentGroup to delete"
+              }
+            ]
+          },
+          "docs": "Delete Content Group and all its associations with Contents.  This will not alter the Content resources.  This request will remove the Content Group from any Knowledge Domains it is member of."
+        },
+        {
+          "info": {
+            "name": "UpdateContentGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/knowledge/v1/content-groups/:data.content_group_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Required: ID of this entity"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Content Group. This can only currently be used to update the display_name field."
+        },
+        {
+          "info": {
+            "name": "CreateContentGroupContent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/knowledge/v1/content-groups/:data.content_group_id/contents/:data.content_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Required: ID of the ContentGroup"
+              },
+              {
+                "name": "data.content_id",
+                "value": "",
+                "type": "path",
+                "description": "Required: ID of the Content"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CRD methods for ContentGroupContent, a join of a ContentGroup with Content"
+        },
+        {
+          "info": {
+            "name": "ListContents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/contents",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional: ID for KnowledgeDomain to filter search. The REST query parameter is \"knowledge_domain_id\"."
+              },
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional: ID for ContentGroup to filter search. The REST query parameter is \"content_group_id\"."
+              },
+              {
+                "name": "source_location",
+                "value": "",
+                "type": "query",
+                "description": "Optional: SourceLocation string to filter search. The REST query parameter is \"source_location\"."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The default page size is 500, which is also the maximum page size. The REST query parameter is \"page_size\". If page size is default, this param can be omitted; otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              }
+            ]
+          },
+          "docs": "Get the list of Contents associated with a Knowledge Domain"
+        },
+        {
+          "info": {
+            "name": "CreateContent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/knowledge/v1/contents",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CRD methods for Contents"
+        },
+        {
+          "info": {
+            "name": "GetContent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/contents/:content_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "Required: ID of Content to return"
+              }
+            ]
+          },
+          "docs": "GetContent"
+        },
+        {
+          "info": {
+            "name": "DeleteContent",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/knowledge/v1/contents/:content_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "Required ID of Content to delete"
+              }
+            ]
+          },
+          "docs": "Delete the Content and all its constituent child resources.  This request will be rejected if Content is a member of any Content Groups."
+        },
+        {
+          "info": {
+            "name": "GetContentImage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/contents/:content_id/image",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "Required: ID of Content (e.g. application/vnd.pryon.content.id attachment from Exchange API)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Required: The page number within the content_id (e.g. application/vnd.pryon.start_page attachment from Exchange API)."
+              },
+              {
+                "name": "uncompressed",
+                "value": "",
+                "type": "query",
+                "description": "Optional: A value of true indicates the image data should not be compressed (Default is compressed)."
+              }
+            ]
+          },
+          "docs": "This is an EXPERIMENTAL REST API to get an image representation of the content\nThe HTTP GET returns bytes data of image/jpeg Content-Type.\nQuery parameters:\npage - Required. A page number within the content_id (e.g. application/vnd.pryon.start_page attachment from Exchange API)\nuncompressed - Optional. A value of 1 indicates the image data should not be compressed. Default value is 0 (compressed). If compressed image data is not found, the API will return uncompressed image data."
+        },
+        {
+          "info": {
+            "name": "ListContentSubjects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/contents/:content_id/subjects",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "Content that subject must be found in"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page size is default, this param can be omitted; otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, any pages after the first must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, a sort order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests. Supported options are: \"reference_count desc\" (default) and \"reference_count asc\".\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              },
+              {
+                "name": "subject_category_id",
+                "value": "",
+                "type": "query",
+                "description": "If specified, the list will be filtered to subjects of the specified category."
+              }
+            ]
+          },
+          "docs": "List subjects associated with a content item"
+        },
+        {
+          "info": {
+            "name": "GetSummary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/contents/:content_id/summary",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "Required: ID of the content whose summary should be returned"
+              }
+            ]
+          },
+          "docs": "Get summary associated with a Content ID"
+        },
+        {
+          "info": {
+            "name": "CascadeDeleteContent",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/knowledge/v1/contents/:content_id:cascade",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "Required ID of Content to delete"
+              }
+            ]
+          },
+          "docs": "Delete the Content and all its constituent child resources.  This will also remove the Content from all Content Groups it is a member of - this has the effect of removing it from the relevant Knowledge Domains as well."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "KnowledgeDomain",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListContentGroupSubjects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/content-groups/:content_group_id/subjects",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Content Group that subjects must be found in"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page size is default, this param can be omitted; otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests.  Supported options are: \"reference_count desc\" (default) and \"reference_count asc\".\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              },
+              {
+                "name": "subject_category_id",
+                "value": "",
+                "type": "query",
+                "description": "If specified, the list will be filtered to subjects of the specified category."
+              }
+            ]
+          },
+          "docs": "List subjects associated with a Content Group."
+        },
+        {
+          "info": {
+            "name": "ListDomains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "display_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned knowledge domains to those that match this Display Name. The REST query parameter is \"display_name\"."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned knowledge domains to those that match this Status. The REST query parameter is \"status\" and the value can be a string or integer representation. The only way to see DECOMMISSIONED KD's is to specify that status value here - please be aware that those KD's can and will disappear so do not expect them to be there on subsequent requests.\n\n - CONTENT_AWAIT: CONTENT_AWAIT: Initial value for a newly created KD.  If KD was created with data.uri or data.contents then asynchronous status transition will occur to CONTENT_IDENTIFIED after constituent Content Group and Contents are created.  If KD was created without either of these then it will remain in this status until an explicit PATCH with CONTENT_IDENTIFIED status is received.\n - CONTENT_IDENTIFIED: CONTENT_IDENTIFIED: When a KD enters this state, our automation will begin the process of readying the content for Conversation Exchanges by ingesting each constituent Content.\n - CONTENT_READY: CONTENT_READY: The KD's content is ready and able to support conversation exchanges.  Each Content in the KD's Content Groups has been successfully ingested.\n - CONTENT_NOT_SUPPORTED: CONTENT_NOT_SUPPORTED: Unable to support conversation exchanges on this KD's content due to some problem readying its Contents.  You can look for constituent Contents that have INGESTION_FAILED status to find out more details.  To retry, update KD status to CONTENT_IDENTIFIED using PATCH.  If the problem persists then remove the INGESTION_FAILED contents from the KD's Content Group(s) and try again.\n - DECOMMISSIONED: DECOMMISSIONED: KD is no longer needed, is not going to be used for conversation exchanges, and should be removed from the system.  The KD is going to be removed from the system ASAP by ongoing housekeeping operations.  Any KD can transition to DECOMMISSIONED status."
+              },
+              {
+                "name": "kd_succession_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter list to all KD's that are in a line of succession. A versioned Collection represents such a KD succession where some of the KDs may have served as the active version. If this list is sorted by metadata.create_time then it shows the succession history."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page_size is set to the default, this param can be omitted; otherwise, it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests. Supported options are: \"status asc, update_time desc\" (default), \"status asc, update_time asc\" and \"status asc, create_time desc\".\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              },
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter list to all KD's that are associated with a team. The REST query parameter is \"team\" and the value is the unique id of a team to filter on. Filtering is subject to internal authorization rules."
+              }
+            ]
+          },
+          "docs": "List all Knowledge Domains that the user has access to and which do not have a status of DECOMMISSIONED.  To see KD's that are DECOMMISSIONED, use a status filter.\nORG_WORKER users can list the domains that their team assignments allow."
+        },
+        {
+          "info": {
+            "name": "UpdateDomain",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:data.knowledge_domain_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "Optional.  When specified, it must be a UUID that is unique in the system.  When not specified, a UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a single Knowledge Domain (KD) that the user has access to. This is primarily used to mark a KD for decommissioning when it is no longer needed. Decommissioning a KD that serves as the Active Domain of a Knowledge Collection isn't allowed. Please use the collection API to either promote/demote an active domain or delete the parent collection first."
+        },
+        {
+          "info": {
+            "name": "CreateDomainContentGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:data.knowledge_domain_id/content-groups",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Knowledge Domain (KD) to Content Group (CG) relationship."
+        },
+        {
+          "info": {
+            "name": "GetDomainContentGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:data.knowledge_domain_id/content-groups/:data.content_group_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+              },
+              {
+                "name": "data.content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "id of a valid Content Group from /api/knowledge/v1/content-groups"
+              }
+            ]
+          },
+          "docs": "Get a single Content Group associated with a Knowledge Domain that the user has access to."
+        },
+        {
+          "info": {
+            "name": "GetDomain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:knowledge_domain_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+              }
+            ]
+          },
+          "docs": "Get a single Knowledge Domain (KD) that the user has access to.  This API can be used to monitor the status transitions of a KD being prepared for Q&A exchanges."
+        },
+        {
+          "info": {
+            "name": "GetDomainContentGroupByContent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:knowledge_domain_id/content-group",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. Knowledge Domain associated with the Content Group version."
+              },
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "query",
+                "description": "Required. Content ID to retrieve Content Group for."
+              }
+            ]
+          },
+          "docs": "Get a single Content Group associated with a Knowledge Domain and a for a specific Content Item."
+        },
+        {
+          "info": {
+            "name": "ListDomainContentGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:knowledge_domain_id/content-groups",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "Required: the identifier of a valid Knowledge Domain to retrieve the domain content groups from."
+              },
+              {
+                "name": "return_only_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional: if caller only needs the item ID's, set this to true."
+              }
+            ]
+          },
+          "docs": "List all Content Groups associated with a Knowledge Domain that the user has access to."
+        },
+        {
+          "info": {
+            "name": "DeleteDomainContentGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:knowledge_domain_id/content-groups",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+              }
+            ]
+          },
+          "docs": "Delete all child Content Group associations with the parent Knowledge Domain.  This does not alter the Content Groups resources."
+        },
+        {
+          "info": {
+            "name": "DeleteDomainContentGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:knowledge_domain_id/content-groups/:content_group_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+              },
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "id of a valid Content Group from /api/knowledge/v1/content-groups"
+              }
+            ]
+          },
+          "docs": "Delete a Knowledge Domain to Content Group relationship that the user has access to remove.  This does not alter the Content Group resource."
+        },
+        {
+          "info": {
+            "name": "UpdateDomainContentGroupsContentPermission",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:knowledge_domain_id/content-groups:updateContentPermission",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. The identifier of the knowledge domain asscociated with this update method."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This utility POST method is used to update the content permission of content groups in the knowledge domain."
+        },
+        {
+          "info": {
+            "name": "UpdateDomainContentGroupsGroupPermission",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:knowledge_domain_id/content-groups:updateGroupPermission",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. The identifier of the knowledge domain asscociated with this update method."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This utility POST method is used to update the group permission of content groups in the knowledge domain."
+        },
+        {
+          "info": {
+            "name": "ListDomainSubjects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:knowledge_domain_id/subjects",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "Knowledge Domain that subjects must be found in"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page size is default, this param can be omitted; otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests.  Supported options are: \"reference_count desc\" (default) and \"reference_count asc\".\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              },
+              {
+                "name": "subject_category_id",
+                "value": "",
+                "type": "query",
+                "description": "If specified, the list will be filtered to subjects of the specified category."
+              }
+            ]
+          },
+          "docs": "List subjects associated with a Knowledge Domain."
+        },
+        {
+          "info": {
+            "name": "ListDomainTags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:knowledge_domain_id/tags",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. Knowledge Domain to list tags for."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page size is default, this param can be omitted; otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests.  Supported options are: \"reference_count desc\" (default) and \"reference_count asc\".\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              },
+              {
+                "name": "tag_source_type",
+                "value": "",
+                "type": "query",
+                "description": "Required. Filter on tag source.\nIf TAG_SOURCE_TYPE_UNSPECIFIED, an error response will be returned.\n\n - TAG_SOURCE_TYPE_UNSPECIFIED: Default. No tags can be created with this source.\n - SYSTEM_DEFINED: Tags created by the Pryon Cloud Services system.\n - USER_DEFINED: Tags defined by users if the system and created via user input.\n - QUERY_ATTRIBUTE: Tags associated to a content which can be used to improve Exchange response ranking quality based on the context specified in ExchangeInputOption.\nSee \"documentation about improving ranking quality\" link for more details."
+              },
+              {
+                "name": "include_counts",
+                "value": "",
+                "type": "query",
+                "description": "Include counts for every tag of a given type.\nCounts are calculated over contents belonging to the KD."
+              }
+            ]
+          },
+          "docs": "List tags for the Knowledge Domain."
+        },
+        {
+          "info": {
+            "name": "CreateDomainNextVersionWithSources",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains:createNextVersionWithSources",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new version of a Knowledge Domain (KD) with Sources\nIf TeamIds are not specified with the request, the team assignments will carry forward from the previous domain version."
+        },
+        {
+          "info": {
+            "name": "CreateDomainWithSources",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains:createWithSources",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Knowledge Domain (KD)\nWhen data.sources are specified KD create will inspect them and determine if they are supported.  If any of the sources are invalid, an error response will be returned with a 400\nHTTP status code.  If there are supported Contents, a KD will be created with status a of CONTENT_AWAIT and a success response will be returned with a 200 http status code.\nAsynchronously, a single Content Group with the appropriate number of Contents will be created with each Content stat"
+        },
+        {
+          "info": {
+            "name": "ListDefaultDomains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains:default",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ]
+          },
+          "docs": "List the Knowledge Domains the authorized user can implicitly access in the absence of any team assignments (defaults)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Exchange",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CreateExchange",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/conversation/v1/exchange",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates or continues a conversation with the conversation exchange service.\nEach call performs one synchronous round-trip by sending a text or audio request to the service and receiving the text and optional audio response."
+        },
+        {
+          "info": {
+            "name": "CreateWsExchange",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/conversation/v1/exchange/wss",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates or continues a conversation with the conversation exchange service.\nThe conversation exchange request and response cycle has the following steps.\n\n1. Open a connection.\n\nThe conversation exchange service uses the secure WebSocket protocol (wss) at the following endpoint:\nwss://{hostname}/api/conversation/v1/exchange/wss\n\nAfter the connection is established, the client defines the event listeners (onOpen, onMessage, onClose, etc) to respond to events from the server.\n\n2. Initiate an exc"
+        },
+        {
+          "info": {
+            "name": "GetExchange",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1/exchanges/:exchange_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "exchange_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. Valid Unique ID of the exchange item from /api/knowledge/v1/exchanges"
+              },
+              {
+                "name": "output_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional. The ranking of the answer and answer_in_context chunk, represented as best_1, best_2, etc."
+              }
+            ]
+          },
+          "docs": "Retrieves the query and output data for an existing exchange data when supplied with an exchange_id and optional output_id."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ExchangeEvent",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CreateExchangeEventSSE",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/conversation/v1/exchange-events/sse",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CreateExchangeEventSSE Service:\nThis service sends ExchangeEventSSEData messages as \"Data-Only\" Server-Sent Events (SSE). The stream terminates with a ExchangeEventSSEData message containing the GENERATIVE_EXCHANGE_RESPONSE_COMPLETE state.\nEach message is sent approximately within a second or less of each other. If clients do not receive a message within their specified timeout, they should assume the connection is lost and attempt to reconnect.\nReference:\nhttps://html.spec.whatwg.org/multipage/"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Feedback",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListApprovals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1/approvals",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "query",
+                "description": "Required. Knowledge Domain under which approval items are listed."
+              },
+              {
+                "name": "kd_succession_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Collection ID for KD, if present.\nIf request contains kd_succession_id, filter on it instead of knowledge_domain_id."
+              },
+              {
+                "name": "approval_status",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Filter only items with this Approval status.\n\n - PENDING_REVIEW: PENDING_REVIEW: This approval item is pending review\n - REJECTED: REJECTED: This approval item has been rejected\n - APPROVED: APPROVED: This approval item has been approved"
+              },
+              {
+                "name": "return_only_item_keys",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Return only the item keys when set to True."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Default page size is 100 when omitted. The maximum page size is 100.\nThe REST query parameter is \"page_size\".\nSee https://cloud.google.com/apis/design/design_patterns#list_pagination for details."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nSee https://cloud.google.com/apis/design/design_patterns#list_pagination for details."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, a sort order can be used and is applicable to the pages but not to the items in a page.\nIf the sort order parameter is provided with a multi-page request, it must be provided on all subsequent page requests.\nSupported options are: \"update_time desc\" and \"update_time asc\".\nSee https://cloud.google.com/apis/design/design_patterns#sorting_order for details."
+              }
+            ]
+          },
+          "docs": "List Approval entries based on filters.\nFor a REST call filtering, params need to be passed in the request query string\nSupported filters:\nknowledge_domain_id (required)\nkd_succession_id (optional)\napproval_status (optional)"
+        },
+        {
+          "info": {
+            "name": "CreateApproval",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/conversation/v1/approvals",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an Approval entry."
+        },
+        {
+          "info": {
+            "name": "GetApproval",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1/approvals/:approval_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "approval_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. Must be a valid UUID."
+              }
+            ]
+          },
+          "docs": "Get information about an Approval entry."
+        },
+        {
+          "info": {
+            "name": "DeleteApproval",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/conversation/v1/approvals/:approval_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "approval_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. approval_id of item to be deleted."
+              }
+            ]
+          },
+          "docs": "Delete an Approval entry."
+        },
+        {
+          "info": {
+            "name": "UpdateApproval",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/conversation/v1/approvals/:data.approval_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.approval_id",
+                "value": "",
+                "type": "path",
+                "description": "Optional. Random UUID generated on a CreateApproval request."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify an existing Approval entry."
+        },
+        {
+          "info": {
+            "name": "ListExchangeRatingReviews",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1/rating-reviews",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Required. Filter list output to only include ratings for a knowledge collection. In REST form the parameter is expressed as 'collection_id'."
+              },
+              {
+                "name": "exchange_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter list output to only include ratings for a particular exchange. Overrides the collection_id filter value if supplied. Defaults to empty which disables this filter. In REST form the parameter is expressed as 'exchange_id'."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter list output to only include ratings that are in requested review status. Defaults to UNSPECIFIED which disables this filter. In REST form the parameter is expressed as 'status' with valid values PENDING and COMPLETE.\n\n - UNSPECIFIED: Not a valid exchange rating value\n - PENDING: This exchange rating is waiting to be inspected for approval or rejection (default).\n - COMPLETE: This exchange rating has been inspected and acted upon. No further action will be taken."
+              },
+              {
+                "name": "creator_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter list output to only include ratings made by a given user. In REST form the parameter is expressed as 'creator_id'."
+              },
+              {
+                "name": "rank",
+                "value": "",
+                "type": "query",
+                "description": "Filter list output to only include ratings that match a given rank value. In REST form the parameter is expressed as 'rank' with valid values 1-5."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Default page size is 100 when omitted. The maximum page size is 100.\nThe REST query parameter is \"page_size\".\nSee https://cloud.google.com/apis/design/design_patterns#list_pagination for details."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nSee https://cloud.google.com/apis/design/design_patterns#list_pagination for details."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If the sort order parameter is provided with a multi page request, it must be provided on all subsequent page requests.\nFor exchange requests the valid options are: rank, rank desc, create_time, create_time desc.\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              }
+            ]
+          },
+          "docs": "List exchange rating reviews.\nAccepted REST filter parameters:\ncollection_id (required)\nexchange_id (optional)\ncreator_id (optional)\nrank (optional)\nstatus (optional)"
+        },
+        {
+          "info": {
+            "name": "CreateExchangeRating",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/conversation/v1/ratings",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an exchange rating."
+        },
+        {
+          "info": {
+            "name": "UpdateExchangeRatingReview",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/conversation/v1/ratings/:data.rating.rating_id/review",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.rating.rating_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID that uniquely identifies a particular exchange rating. Automatically generated on create."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A reviewing authority can update the review perspective of an exchange rating item. This includes review information not available to un-privileged users."
+        },
+        {
+          "info": {
+            "name": "UpdateExchangeRating",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/conversation/v1/ratings/:data.rating_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.rating_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID that uniquely identifies a particular exchange rating. Automatically generated on create."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify an existing exchange rating."
+        },
+        {
+          "info": {
+            "name": "GetExchangeRating",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1/ratings/:rating_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "rating_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve an exchange rating."
+        },
+        {
+          "info": {
+            "name": "DeleteExchangeRating",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/conversation/v1/ratings/:rating_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "rating_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an exchange rating."
+        },
+        {
+          "info": {
+            "name": "GetExchangeRatingReview",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1/ratings/:rating_id/review",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "rating_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "A reviewing authority can retrieve the review perspective of an exchange rating item. This includes review information not available to un-privileged users."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "GenerativeExchange",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CreateGenerativeExchange",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/conversation/v1/generative-exchanges",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CreateGenerativeExchange"
+        },
+        {
+          "info": {
+            "name": "CreateGenerativeExchangeSSE",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/conversation/v1/generative-exchanges/sse",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CreateGenerativeExchangeSSE Service:\nThis service sends GenerativeExchangeSSEData messages with DELTA state as \"Data-Only\" Server-Sent Events (SSE) when available. The stream terminates with a GenerativeExchangeSSEData message containing the COMPLETE state.\nEach message is sent approximately within a second or less of each other. If clients do not receive a message within their specified timeout, they should assume the connection is lost and attempt to reconnect.\nReference:\nhttps://html.spec.wha"
+        },
+        {
+          "info": {
+            "name": "GetGenerativeExchange",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1/generative-exchanges/:generative_exchange_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "generative_exchange_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. An ID representing the generative_exchange_id associated with this response object generated by the LLM."
+              },
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "query",
+                "description": "Required. A string representing the ID of the knowledge domain associated with the generative exchange being created."
+              }
+            ]
+          },
+          "docs": "GetGenerativeExchange"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "GenerativeFeedback",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListGenerativeExchangeRatingReviews",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1/generative-rating-reviews",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Required. Filter list output to only include ratings for a knowledge collection. In REST form the parameter is expressed as 'collection_id'."
+              },
+              {
+                "name": "generative_exchange_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter list output to only include ratings for a particular exchange. Overrides the collection_id filter value if supplied. Defaults to empty which disables this filter. In REST form the parameter is expressed as 'exchange_id'."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter list output to only include ratings that are in requested review status. Defaults to UNSPECIFIED which disables this filter. In REST form the parameter is expressed as 'status' with valid values PENDING and COMPLETE.\n\n - UNSPECIFIED: Not a valid exchange rating value\n - PENDING: This exchange rating is waiting to be inspected for approval or rejection (default).\n - COMPLETE: This exchange rating has been inspected and acted upon. No further action will be taken."
+              },
+              {
+                "name": "creator_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter list output to only include ratings made by a given user. In REST form the parameter is expressed as 'creator_id'."
+              },
+              {
+                "name": "rank",
+                "value": "",
+                "type": "query",
+                "description": "Filter list output to only include ratings that match a given rank value. In REST form the parameter is expressed as 'rank' with valid values 1-5."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Default page size is 100 when omitted. The maximum page size is 100.\nThe REST query parameter is \"page_size\".\nSee https://cloud.google.com/apis/design/design_patterns#list_pagination for details."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nSee https://cloud.google.com/apis/design/design_patterns#list_pagination for details."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If the sort order parameter is provided with a multi page request, it must be provided on all subsequent page requests.\nFor exchange requests the valid options are: rank, rank desc, create_time, create_time desc.\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              }
+            ]
+          },
+          "docs": "ListGenerativeExchangeRatingReviews"
+        },
+        {
+          "info": {
+            "name": "CreateGenerativeExchangeRating",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/conversation/v1/generative-ratings",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a generative exchange rating."
+        },
+        {
+          "info": {
+            "name": "UpdateGenerativeExchangeRatingReview",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/conversation/v1/generative-ratings/:data.rating.rating_id/review",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.rating.rating_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID that uniquely identifies a particular exchange rating. Automatically generated on create."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A reviewing authority can update the review perspective of an exchange rating item. This includes review information not available to un-privileged users."
+        },
+        {
+          "info": {
+            "name": "UpdateGenerativeExchangeRating",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/conversation/v1/generative-ratings/:data.rating_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.rating_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID that uniquely identifies a particular exchange rating. Automatically generated on create."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "UpdateGenerativeExchangeRating"
+        },
+        {
+          "info": {
+            "name": "GetGenerativeExchangeRating",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1/generative-ratings/:rating_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "rating_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "GetGenerativeExchangeRating"
+        },
+        {
+          "info": {
+            "name": "DeleteGenerativeExchangeRating",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/conversation/v1/generative-ratings/:rating_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "rating_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "DeleteGenerativeExchangeRating"
+        },
+        {
+          "info": {
+            "name": "GetGenerativeExchangeRatingReview",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1/generative-ratings/:rating_id/review",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "rating_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "A reviewing authority can retrieve the review perspective of an exchange rating item. This includes review information not available to un-privileged users."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListMessages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/messages/v1/messages",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ]
+          },
+          "docs": "List messages."
+        },
+        {
+          "info": {
+            "name": "GetMessage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/messages/v1/messages/:message_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "message_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a message."
+        },
+        {
+          "info": {
+            "name": "DeleteMessage",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/messages/v1/messages/:message_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "message_id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the message to delete."
+              }
+            ]
+          },
+          "docs": "Delete a message."
+        },
+        {
+          "info": {
+            "name": "ListSystemEvents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/messages/v1/system-events",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ]
+          },
+          "docs": "ListSystemEvents returns all system events for the user's organization."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OrganizationService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CreateIdpDiscovery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/access/v1/idp/discover",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ]
+          },
+          "docs": "Anonymous can discover the Identity Provider associated with an email domain or user identified by email address."
+        },
+        {
+          "info": {
+            "name": "ListIdentityProviders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/access/v1/idps",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ]
+          },
+          "docs": "List the organization identity provider configuration"
+        },
+        {
+          "info": {
+            "name": "ListIntegrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/access/v1/integrations",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ]
+          },
+          "docs": "ListIntegrations"
+        },
+        {
+          "info": {
+            "name": "GetOrganization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/access/v1/org",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "org_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "GetOrganization"
+        },
+        {
+          "info": {
+            "name": "UpdateOrganization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/access/v1/org",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ]
+          },
+          "docs": "Use this API to update the following organization properties"
+        },
+        {
+          "info": {
+            "name": "ListServices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/access/v1/services",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "authority",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Filter the response to only include services matching this authority."
+              }
+            ]
+          },
+          "docs": "ListServices"
+        },
+        {
+          "info": {
+            "name": "CreateService",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/access/v1/services",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CreateService"
+        },
+        {
+          "info": {
+            "name": "UpdateService",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/access/v1/services/:data.service_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.service_id",
+                "value": "",
+                "type": "path",
+                "description": "A unique identifier for this service connect.\nRandomly generated uuid by server. Immutable after creation."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "UpdateService"
+        },
+        {
+          "info": {
+            "name": "GetService",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/access/v1/services/:service_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "service_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "GetService"
+        },
+        {
+          "info": {
+            "name": "DeleteService",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/access/v1/services/:service_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "service_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "DeleteService"
+        },
+        {
+          "info": {
+            "name": "ListSolutions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/access/v1/solutions",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to be returned. Valid values are 1-100. Default is 100. The REST query parameter is \"page_size\"."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              }
+            ]
+          },
+          "docs": "List all solutions configured for this organization"
+        },
+        {
+          "info": {
+            "name": "GetSolution",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/access/v1/solutions/:solution_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. The solution id to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieve existing solution by id"
+        },
+        {
+          "info": {
+            "name": "ListTeams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/access/v1/teams",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ]
+          },
+          "docs": "List an Organization's teams"
+        },
+        {
+          "info": {
+            "name": "CreateTeam",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/access/v1/teams",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an empty team"
+        },
+        {
+          "info": {
+            "name": "UpdateTeam",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/access/v1/teams/:data.team_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.team_id",
+                "value": "",
+                "type": "path",
+                "description": "Required.\nA unique identifier for this team in UUID format.\nAssigned by server if not supplied during creation.\nImmutable after creation."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a team's basic information"
+        },
+        {
+          "info": {
+            "name": "GetTeam",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/access/v1/teams/:team_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a team"
+        },
+        {
+          "info": {
+            "name": "DeleteTeam",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/access/v1/teams/:team_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a team including all its members"
+        },
+        {
+          "info": {
+            "name": "ListTeamUsers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/access/v1/teams/:team_id/users",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all the members of an existing team"
+        },
+        {
+          "info": {
+            "name": "CreateTeamUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/access/v1/teams/:team_id/users",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a member to an existing team"
+        },
+        {
+          "info": {
+            "name": "UpdateTeamUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/access/v1/teams/:team_id/users/:data.user_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "path",
+                "description": "The containing team's id"
+              },
+              {
+                "name": "data.user_id",
+                "value": "",
+                "type": "path",
+                "description": "Required.\nMust correspond to a valid Org user capable of logging into the Pryon system\nImmutable after creation."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing team member"
+        },
+        {
+          "info": {
+            "name": "GetTeamUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/access/v1/teams/:team_id/users/:user_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "path",
+                "description": "The containing team's id"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a member of an existing team"
+        },
+        {
+          "info": {
+            "name": "DeleteTeamUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/access/v1/teams/:team_id/users/:user_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "path",
+                "description": "The containing team's id"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a team member"
+        },
+        {
+          "info": {
+            "name": "BatchCreateTeamUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/access/v1/teams/:team_id/users:batchCreate",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "path",
+                "description": "The containing team's id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add multiple members to an existing team via JSON data structure supplied in input"
+        },
+        {
+          "info": {
+            "name": "BatchDeleteTeamUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/access/v1/teams/:team_id/users:batchDelete",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "path",
+                "description": "The containing team's id"
+              }
+            ]
+          },
+          "docs": "Remove multiple team members via JSON data structure supplied in input"
+        },
+        {
+          "info": {
+            "name": "GetUserInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/access/v1/user/current",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ]
+          },
+          "docs": "A user authenticated with Pryon can request their authorization information.\nIf the Pryon platform cannot validate the user's access grant it will respond with HTTP Unauthorized status.\nIf the Pryon platform does not accept the user's access grant it will respond with HTTP Forbidden status."
+        },
+        {
+          "info": {
+            "name": "ListUsers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/access/v1/users",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter list outputs to only include users that match this status. Defaults to UNSPECIFIED which disables this filter.\nThe REST query parameter is \"status\" and value can be the string or integer representation.\n\n - UNSPECIFIED: UNSPECIFIED: Default value that will never be used by the API as it is indistinguishable from unspecified status.\n - PENDING: PENDING: Waiting to be enabled by an organization admin.\nUseful to organization admins in gradually rolling out Pryon Platform access to organization users (e.g. bulk adding users and then enabling them in batches).\n - DISABLED_BY_ADMIN: DISABLED_BY_ADMIN: Administratively disabled by the organization admin (e.g. due to compromised credentials).\n - DISABLED_BY_SERVICE_OPERATOR: DISABLED_BY_SERVICE_OPERATOR: Disabled by a Pryon Service Operator (e.g. due to abuse).\nOnly a Pryon Service Operator can transition a user into and out of this state.\n - ACTIVE: ACTIVE: The user is in a functionally operational state"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter list outputs to only include users of this type. Defaults to UNSPECIFIED which disables this filter.\nThe REST query parameter is \"type\" and value can be the string or integer representation.\n\n - UNSPECIFIED: UNSPECIFIED: Default value not used to characterize users internally.\n - HUMAN: HUMAN: A human user identified by a valid email address.\n - MACHINE: MACHINE: A machine user operating without human interaction and identified by its client id."
+              },
+              {
+                "name": "default_collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter list outputs to only include the users that use this knowledge collection as their default.\nThe REST questy parameter is \"default_collection_id\"."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to be returned. Valid values are 1-100. Default is 100.\nREST query parameter is \"page_size\"."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "In case of multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in response for previous page.\nREST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              }
+            ]
+          },
+          "docs": "List Organization Users"
+        },
+        {
+          "info": {
+            "name": "CreateUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/access/v1/users",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a User"
+        },
+        {
+          "info": {
+            "name": "UpdateUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/access/v1/users/:data.user_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.user_id",
+                "value": "",
+                "type": "path",
+                "description": "Required on create and is immutable after creation.\nA unique identifier for this user within its Organization.\nThe id value is an email address for human users and a client id for machine users. On user create operations email addresses will automatically be converted to lower case, and this value will be reflected in the REST uris for such email identified users."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update User"
+        },
+        {
+          "info": {
+            "name": "GetUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/access/v1/users/:user_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get User by user_id"
+        },
+        {
+          "info": {
+            "name": "BatchCreateUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/access/v1/users:batchCreate",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "BatchCreateUser adds multiple users to an organization and returns a list of users that were created."
+        },
+        {
+          "info": {
+            "name": "BatchDeleteUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/access/v1/users:batchDelete",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ]
+          },
+          "docs": "BatchDeleteUser removes multiple users from an organization."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Subjects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListSubjectCategories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/subject-categories",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Default page size is 100 which is also the maximum page size.  Query param is \"page_size\".  If page size is default than this param can be omitted otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests. Supported options are: \"display_name asc\" (default).\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "To filter on a specific source then specify a value here.\n\n - UNSPECIFIED: Unspecified - an important option for filtering use cases when no preference is desired.  This is not a valid option when creating a subject category\n - SYSTEM_DEFINED: Category is defined by Pryon Cloud Services system\n - USER_DEFINED: Category is defined by users of the system and created via user input\n - QUERY_ATTRIBUTE: A category associated to a content which can be used to improve Exchange response ranking quality based on the context specified in ExchangeInputOption\nSee \"documentation about improving ranking quality\" link for more details."
+              }
+            ]
+          },
+          "docs": "List subject categories"
+        },
+        {
+          "info": {
+            "name": "GetSubjectCategory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/subject-categories/:subject_category_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "subject_category_id",
+                "value": "",
+                "type": "path",
+                "description": "Required."
+              }
+            ]
+          },
+          "docs": "Get subject category by subject_category_id"
+        },
+        {
+          "info": {
+            "name": "ListSubjectRelationshipTypes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/subject/relationship/types",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Default page size is 100 which is also the maximum page size.  Query param is \"page_size\".  If page size is default than this param can be omitted otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests. Supported options are: \"display_name asc\" (default).\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Filter by relationships having a specific direction.\n\n - UNSPECIFIED: Unspecified - an important option for filtering use cases when no preference is desired.\nThis is not a valid option when creating a subject relationship type.\n - UNIDIRECTIONAL: Indicates a one-way relationship from the subject specified by the from_subject_id,\nto the subject specified by the to_subject_id.\n - BIDIRECTIONAL: Indicates a two-way relationship between the subject specified by the from_subject_id,\nand the subject specified by the to_subject_id."
+              }
+            ]
+          },
+          "docs": "List subject relationship types"
+        },
+        {
+          "info": {
+            "name": "ListSubjectRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/subject/relationships",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Default page size is 100 which is also the maximum page size.  Query param is \"page_size\".  If page size is default than this param can be omitted otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests. Supported options are: \"to_subject_id asc\" (default) or \"from_subject_id asc\".\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              },
+              {
+                "name": "from_subject_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to_subject_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "relationship_type_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List subject relationships"
+        },
+        {
+          "info": {
+            "name": "ListSubjects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/subjects",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Default page size is 100 which is also the maximum page size.  Query param is \"page_size\".  If page size is default than this param can be omitted otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests. Supported options are: \"display_name asc\" (default).\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              },
+              {
+                "name": "term",
+                "value": "",
+                "type": "query",
+                "description": "If specified then the list will be filtered to the subject term with regard to term_is_prefix and term_is_case_sensitive."
+              },
+              {
+                "name": "term_is_prefix",
+                "value": "",
+                "type": "query",
+                "description": "If specified alongside term then list subjects whose term starts with the string provided."
+              },
+              {
+                "name": "term_is_case_insensitive",
+                "value": "",
+                "type": "query",
+                "description": "If specified alongside term then filter to those that match regardless of lowercase or uppercase."
+              },
+              {
+                "name": "subject_category_id",
+                "value": "",
+                "type": "query",
+                "description": "If specified then the list will be filtered to subjects of the specified category."
+              }
+            ]
+          },
+          "docs": "List subjects"
+        },
+        {
+          "info": {
+            "name": "GetSubject",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/subjects/:subject_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "subject_id",
+                "value": "",
+                "type": "path",
+                "description": "Required."
+              }
+            ]
+          },
+          "docs": "Get subject by subject_id"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "RegressionTest",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListTestQuestions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/regression/v1/collections/:collection_id/questions",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to be returned. Valid values are 1-100. Default is 100. The REST query parameter is \"page_size\"."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              }
+            ]
+          },
+          "docs": "List test questions associated with a given collection."
+        },
+        {
+          "info": {
+            "name": "GetTestQuestion",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/regression/v1/collections/:collection_id/questions/:question_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "question_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a test question associated with a given collection."
+        },
+        {
+          "info": {
+            "name": "DeleteTestQuestion",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/regression/v1/collections/:collection_id/questions/:question_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "question_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a test question associated with a given collection."
+        },
+        {
+          "info": {
+            "name": "CreateTestQuestion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/regression/v1/collections/:data.collection_id/questions",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.collection_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. Immutable after question creation. Must match an existing collection id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new test question associate with an existing collection. The question will be included in future regression test runs.\nThe number of test questions for a given collection is limited to a maximum capacity. The operation will fail if capacity is met."
+        },
+        {
+          "info": {
+            "name": "ListTests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/regression/v1/tests",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "base_collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Required. The parent collection the tests are associated with. The REST query parameter is base_collection_id."
+              }
+            ]
+          },
+          "docs": "List tests associated with a given collection."
+        },
+        {
+          "info": {
+            "name": "CreateTest",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/regression/v1/tests",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a test comparing two existing knowledge domains, aka collection versions. A single test may be created for a collection draft-domain pair."
+        },
+        {
+          "info": {
+            "name": "GetTest",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/regression/v1/tests/:test_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "test_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a test by id."
+        },
+        {
+          "info": {
+            "name": "DeleteTest",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/regression/v1/tests/:test_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "test_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a test and all its associated test results"
+        },
+        {
+          "info": {
+            "name": "ListTestResults",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/regression/v1/tests/:test_id/results",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "test_id",
+                "value": "",
+                "type": "path",
+                "description": "Required."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to be returned. Valid values are 1-100. Default is 100. The REST query parameter is \"page_size\"."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              }
+            ]
+          },
+          "docs": "Retrieves the result set associated with this test from storage. The output will only include test results already executed prior to list time."
+        },
+        {
+          "info": {
+            "name": "GetTestResult",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/regression/v1/tests/:test_id/results/:question_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "test_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "question_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves the test result corresponding to a given question id from storage. The question entity must already have been declared within the scope of the test collection. If the test result does not already exist on the server, such as on a first retrieval operation, it will be generated on the fly."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "TextToSpeech",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CreateSynthesis",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/speech/v1/synthesis",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Synthesizes speech synchronously according to the text input and settings."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

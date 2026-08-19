@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "pryon/api/ext/knowledge/v1/content/content.proto",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ContentService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Content Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/knowledge/v1/contents/:content_id/image",
+            "params": [
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of Content, for example, the application/vnd.pryon.content.id attachment from the Exchange API."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number within the content ID, for example, the application/vnd.pryon.start_page attachment from the Exchange API."
+              },
+              {
+                "name": "uncompressed",
+                "value": "",
+                "type": "query",
+                "description": "The default of False indicates the image data is compressed; True indicates the image data should not be compressed."
+              }
+            ]
+          },
+          "docs": "Get Content Image"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

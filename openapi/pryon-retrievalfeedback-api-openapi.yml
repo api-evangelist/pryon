@@ -1,0 +1,806 @@
+openapi: 3.2.0
+info:
+  title: Retrieval Retrieval Feedback API
+  version: '1.0'
+  contact:
+    name: Pryon Product Support
+    url: https://pryon.zendesk.com
+    email: support@pryon.zendesk.com
+  description: ''
+  x-logo:
+    altText: Pryon APIs
+servers:
+- url: https://api.pryon.net
+  description: Pryon Cloud
+tags:
+- name: RetrievalFeedback
+paths:
+  /api/conversation/v1alpha1/retrievals/rating-reviews:
+    get:
+      operationId: RetrievalFeedback_ListRetrievalRatingReviews
+      parameters:
+      - description: Filter list output  with ratings for a knowledge collection.
+        in: query
+        name: collection_id
+        schema:
+          type: string
+      - description: Unique ID of the exchange item; if supplied, overrides the collection ID as a filter item; default is no entry.
+        in: query
+        name: retrieval_id
+        schema:
+          type: string
+      - description: "Ratings included in requested review status; defaults to UNSPECIFIED.\n\n - UNSPECIFIED: Not a valid retrieval rating value.\n - PENDING: Waiting to be inspected for approval or rejection.\n - COMPLETE: Inspected and acted upon; no further action taken."
+        in: query
+        name: status
+        schema:
+          type: string
+      - description: Filter list output to only include ratings made by a given user.
+        in: query
+        name: creator_id
+        schema:
+          type: string
+      - description: Rank value given by the user; valid responses are 1 (negative) and 5 (positive).
+        in: query
+        name: rank
+        schema:
+          format: int32
+          type: integer
+      - description: Maximum page size is 100; default is 100.
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: For multiple pages; must be specified in each request for two pages per sheet.
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - description: Sort order for multi page requests; valid options are rank, rank desc, create_time, create_time desc.
+        in: query
+        name: order_by
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1ListRetrievalRatingReviewsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: List Retrieval Rating Reviews
+      tags:
+      - RetrievalFeedback
+      description: Return rating reviews for a resource.
+  /api/conversation/v1alpha1/retrievals/ratings:
+    post:
+      operationId: RetrievalFeedback_CreateRetrievalRating
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/filename_v1alpha1CreateRetrievalRatingRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetRetrievalRatingResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Create Retrieval Rating
+      tags:
+      - RetrievalFeedback
+      x-codegen-request-body-name: body
+      description: Create a retrieval rating.
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+  /api/conversation/v1alpha1/retrievals/ratings/{data.rating.rating_id}/review:
+    patch:
+      operationId: RetrievalFeedback_UpdateRetrievalRatingReview
+      parameters:
+      - description: Unique identifier for the exchange rating; automatically generated.
+        in: path
+        name: data.rating.rating_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/filename_v1alpha1UpdateRetrievalRatingReviewRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetRetrievalRatingReviewResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Update Retrieval Rating Review
+      tags:
+      - RetrievalFeedback
+      x-codegen-request-body-name: body
+      description: Update the review perspective of a retrieval rating item.
+  /api/conversation/v1alpha1/retrievals/ratings/{data.rating_id}:
+    patch:
+      operationId: RetrievalFeedback_UpdateRetrievalRating
+      parameters:
+      - description: Unique identifier for the exchange rating; automatically generated.
+        in: path
+        name: data.rating_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/filename_v1alpha1UpdateRetrievalRatingRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetRetrievalRatingResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Update Retrieval Rating
+      tags:
+      - RetrievalFeedback
+      x-codegen-request-body-name: body
+      description: Modify an existing retrieval rating.
+  /api/conversation/v1alpha1/retrievals/ratings/{rating_id}:
+    delete:
+      operationId: RetrievalFeedback_DeleteRetrievalRating
+      parameters:
+      - in: path
+        name: rating_id
+        description: Unique identifier for the exchange rating; automatically generated.
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Delete Retrieval Rating
+      tags:
+      - RetrievalFeedback
+      description: Delete a retrieval rating.
+    get:
+      operationId: RetrievalFeedback_GetRetrievalRating
+      parameters:
+      - in: path
+        name: rating_id
+        description: Unique identifier for the exchange rating; automatically generated.
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetRetrievalRatingResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Get Retrieval Rating
+      tags:
+      - RetrievalFeedback
+      description: Get a retrieval rating.
+  /api/conversation/v1alpha1/retrievals/ratings/{rating_id}/review:
+    get:
+      operationId: RetrievalFeedback_GetRetrievalRatingReview
+      parameters:
+      - in: path
+        name: rating_id
+        description: Unique identifier for the exchange rating; automatically generated.
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetRetrievalRatingReviewResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Get Retrieval Rating Review
+      tags:
+      - RetrievalFeedback
+      description: Return the review perspective of a retrieval rating item.
+  /api/conversation/v1alpha1/verified-answers:
+    get:
+      operationId: RetrievalFeedback_ListVerifiedAnswers
+      parameters:
+      - description: Unique identifier of the knowledge domain that lists the verified answers.
+        in: query
+        name: knowledge_domain_id
+        schema:
+          type: string
+      - description: If request contains the collection_id, use it as the filter instead of the knowledge_domain_id.
+        in: query
+        name: collection_id
+        schema:
+          type: string
+      - description: "Verified answer status.\n\n - PENDING_REVIEW: Answer under review.\n - APPROVED: Answer verified and approved."
+        in: query
+        name: verified_answer_status
+        schema:
+          default: UNSPECIFIED
+          type: string
+      - description: If set to True will only return item IDs.
+        in: query
+        name: return_only_item_keys
+        schema:
+          type: boolean
+      - description: Maximum page size is 100; default is 100.
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: For multiple pages; must be specified in each request for two pages per sheet.
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - description: Sort order for multi page requests; valid options are update_time desc and update_time asc.
+        in: query
+        name: order_by
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1ListVerifiedAnswersResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: List Verified Answers
+      tags:
+      - RetrievalFeedback
+      description: List verified answer entries.
+    post:
+      operationId: RetrievalFeedback_CreateVerifiedAnswer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/filename_v1alpha1CreateVerifiedAnswerRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1CreateVerifiedAnswerResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Create Verified Answer
+      tags:
+      - RetrievalFeedback
+      x-codegen-request-body-name: body
+      description: Create a verified answer entry.
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+  /api/conversation/v1alpha1/verified-answers/{data.verified_answer_id}:
+    patch:
+      operationId: RetrievalFeedback_UpdateVerifiedAnswer
+      parameters:
+      - description: Unique identifier generated on a create verified answer request.
+        in: path
+        name: data.verified_answer_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/filename_v1alpha1UpdateVerifiedAnswerRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1UpdateVerifiedAnswerResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Update Verified Answer
+      tags:
+      - RetrievalFeedback
+      x-codegen-request-body-name: body
+      description: Modify an existing verified answer entry.
+  /api/conversation/v1alpha1/verified-answers/{verified_answer_id}:
+    delete:
+      operationId: RetrievalFeedback_DeleteVerifiedAnswer
+      parameters:
+      - description: Unique identifier of the verified answer; if the answer isn't verified this is unset.
+        in: path
+        name: verified_answer_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Delete Verified Answer
+      tags:
+      - RetrievalFeedback
+      description: Delete a verified answer entry.
+    get:
+      operationId: RetrievalFeedback_GetVerifiedAnswer
+      parameters:
+      - description: Unique identifier of the verified answer; if the answer isn't verified this is unset.
+        in: path
+        name: verified_answer_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetVerifiedAnswerResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Get Verified Answer
+      tags:
+      - RetrievalFeedback
+      description: Get information about a verified answer.
+components:
+  schemas:
+    filename_v1alpha1CollectionMetadata:
+      properties:
+        uuid:
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          type: string
+        response_time_millis:
+          description: Response time (in milliseconds).
+          format: int64
+          type: integer
+      title: Metadata that will be returned with each collection-level GET
+      type: object
+    filename_v1alpha1GetRetrievalRatingResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalRating'
+      type: object
+    filename_v1alpha1RetrievalRating:
+      properties:
+        rating_id:
+          description: Unique identifier for the exchange rating; automatically generated.
+          type: string
+        retrieval_id:
+          description: Unique ID of the generative retrieval item; only for retrievals matching active domains.
+          type: string
+        output_id:
+          description: Unique identifier for the output related to the feedback; relevant to n-best exchange responses; defaults to best_1.
+          type: string
+        creator_id:
+          description: Unique identifier for the user who provided feedback; output field, automatically populated.
+          type: string
+        question:
+          description: Question asked for the rated exchange; output only, automatically populated.
+          type: string
+        rank:
+          description: Rank value given by the user; valid responses are 1 (negative) and 5 (positive).
+          format: int32
+          type: integer
+        message:
+          description: User comment that provides additional context on the rating.
+          type: string
+        freeform_text:
+          description: Freeform text for feedback provider.
+          type: string
+      type: object
+    filename_protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      type: object
+    filename_v1alpha1UpdateVerifiedAnswerRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1VerifiedAnswerItem'
+      type: object
+    filename_VerifiedAnswerItemVerifiedAnswerStatus:
+      default: UNSPECIFIED
+      title: "- PENDING_REVIEW: PENDING_REVIEW: This verified answer is pending review\n - APPROVED: APPROVED: This verified answer has been approved"
+      type: string
+    filename_v1alpha1UpdateRetrievalRatingRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalRating'
+        update_mask:
+          items:
+            type: string
+          title: "The data path corresponding to the fields being updated in this request.\nRetrieval Rating Creator can update the following fields:\n   data.rank\n   data.message\n   data.freeform_text\nExample mask declaration in JSON format:\n   updateMask: \"data.freeformText\"\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
+          type: array
+      type: object
+    filename_v1alpha1RetrievalRatingReview:
+      properties:
+        rating:
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalRating'
+        collection_id:
+          description: Parent collection for the knowledge domain; autogenerated and not editable.
+          type: string
+        knowledge_domain_id:
+          description: Unique identifier of the knowledge domain that supplied the exchange response.
+          type: string
+        reviewer_ids:
+          description: Unique identifiers of the reviewing authorities that viewed/inspected the item; output only, automatically populated.
+          items:
+            type: string
+          type: array
+        flagged:
+          description: Item noted by reviewing authorities upon inspection; intentionally vague and left to the API to use as necessary.
+          type: boolean
+        verified_answer_id:
+          description: Verified answer item related to this retrieval rating; output only, automatically populated.
+          type: string
+        status:
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalRatingReviewStatus'
+      title: Authority perspective of a Retrieval Rating
+      type: object
+    filename_v1alpha1ResourceMetadata:
+      properties:
+        uuid:
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: Time of the last update; 0 indicates updates have never been made.
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          description: Response time (in milliseconds).
+          type: integer
+      type: object
+    filename_v1alpha1RetrievalRatingReviewStatus:
+      description: " - UNSPECIFIED: Not a valid retrieval rating value.\n - PENDING: This retrieval rating is waiting to be inspected for approval or rejection (default).\n - COMPLETE: This retrieval rating has been inspected and acted upon. No further action will be taken."
+      type: string
+    filename_v1alpha1ContactInfo:
+      properties:
+        contact_name:
+          description: Name of the contact person.
+          type: string
+        contact_email:
+          description: Email of the contact person.
+          type: string
+      type: object
+    filename_v1alpha1UpdateRetrievalRatingReviewRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalRatingReview'
+        update_mask:
+          items:
+            type: string
+          title: "The data path corresponding to the fields being updated in this request.\nRetrieval Rating Reviewer can update the following fields:\n   data.flagged\n   data.status\nExample mask declaration in JSON format:\n   updateMask: \"data.flagged\"\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
+          type: array
+      type: object
+    filename_v1alpha1GetVerifiedAnswerResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1VerifiedAnswerItem'
+      type: object
+    filename_v1alpha1CreateVerifiedAnswerRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1VerifiedAnswerItem'
+      type: object
+    filename_v1alpha1CreateVerifiedAnswerResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1VerifiedAnswerItem'
+      type: object
+    filename_v1alpha1GetRetrievalRatingReviewResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalRatingReview'
+      type: object
+    filename_v1alpha1VerifiedAnswerItem:
+      properties:
+        verified_answer_status:
+          $ref: '#/components/schemas/filename_VerifiedAnswerItemVerifiedAnswerStatus'
+        verified_answer_id:
+          description: Verified answer item related to this retrieval rating; output only, automatically populated.
+          type: string
+        conv_review_id:
+          description: Unique identifier for the conversation review of the approved exchange output.
+          type: string
+        retrieval_id:
+          description: Unique identifier for the parent retrieval that includes the approved review; exchange ID.
+          type: string
+        output_id:
+          description: Unique identifier for the retrieval output being promoted to a verified answer.
+          type: string
+        knowledge_domain_id:
+          description: Unique identifier of the knowledge domain that contains the approved review.
+          type: string
+        collection_id:
+          description: The collection, or index, that the exchange is performed against.
+          type: string
+        input_understood_text:
+          description: Normalized input text of Retrieval Question.
+          type: string
+        output_text:
+          description: Answer output text displayed to the user.
+          type: string
+        approver_id:
+          description: Unique identifier for the administrator who approved the review.
+          readOnly: true
+          type: string
+        uri:
+          description: Link to further information.
+          type: string
+        uri_display_name:
+          description: Display name for link to additional information.
+          type: string
+        contact_info:
+          $ref: '#/components/schemas/filename_v1alpha1ContactInfo'
+        answer_rich_text:
+          description: Answer created by the user that supports styling.
+          type: string
+        answer_hyperlinks:
+          description: Any links added by the user when creating a verified answer.
+          items:
+            type: string
+          type: array
+      type: object
+    filename_v1alpha1UpdateVerifiedAnswerResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1VerifiedAnswerItem'
+      type: object
+    filename_googlerpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/filename_protobufAny'
+          type: array
+      type: object
+    filename_v1alpha1CreateRetrievalRatingRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalRating'
+      type: object
+    filename_v1alpha1ListRetrievalRatingReviewsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/filename_v1alpha1GetRetrievalRatingReviewResponse'
+          type: array
+        next_page_token:
+          description: For multiple pages; must be specified in each request for two pages per sheet.
+          type: string
+        total_size:
+          description: Total number of items in the collection across all pages.
+          format: int32
+          type: integer
+        page_size:
+          description: Same as page size in request.
+          format: int32
+          type: integer
+        order_by:
+          description: Same as order by in request.
+          type: string
+      type: object
+    filename_v1alpha1ListVerifiedAnswersResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
+        items:
+          description: VerifiedAnswer Items meeting the list filter/ordering criteria.
+          items:
+            $ref: '#/components/schemas/filename_v1alpha1ListVerifiedAnswerItem'
+          type: array
+        next_page_token:
+          description: For multiple pages; must be specified in each request for two pages per sheet.
+          type: string
+        total_size:
+          description: Total number of items in the collection across all pages.
+          format: int32
+          type: integer
+        page_size:
+          description: Same as page size in request.
+          format: int32
+          type: integer
+        order_by:
+          description: Same as order by in request.
+          type: string
+      type: object
+    filename_v1alpha1ListVerifiedAnswerItem:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1VerifiedAnswerItem'
+      type: object
+  securitySchemes:
+    oauth2_token:
+      description: The Pryon APIs are authenicated with an OAuth2 Bearer token.
+      type: apiKey
+      name: 'Authoriation: Bearer'
+      in: header
+x-tagGroups:
+- name: Retrieval APIs
+  tags:
+  - Content Service
+  - Exchange
+  - Glossary

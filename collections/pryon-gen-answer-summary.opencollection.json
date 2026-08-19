@@ -1,0 +1,168 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Generative API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Generative",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generative_CreateChatCompletions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{pryon_base_url}/api/generative/v1alpha1/chat/completions",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              },
+              {
+                "name": "x-pryon-org-id",
+                "value": "pryoninc.com"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A generic text-generation interface to external LLM providers and Pryon-hosted LLMs.\n implements a subset of the OpenAI /v1/chat/completions API specification\n as defined here: https://platform.openai.com/docs/api-reference/chat\n Using the official OpenAI client SDK for your language is recommended.\n The following providers are supported currently:\n - pryon\n - openai\n - anthropic\n - vertex ai\n Please check the respective provider's documentation\n for supported text-generation models and accepted"
+        },
+        {
+          "info": {
+            "name": "Generative_ListChatCompletionsModels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{pryon_base_url}/api/generative/v1alpha1/chat/completions/models",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              },
+              {
+                "name": "x-pryon-org-id",
+                "value": "pryoninc.com"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lists the models available for our Chat Completions API"
+        },
+        {
+          "info": {
+            "name": "Generative_CompleteQuery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{pryon_base_url}/api/generative/v1alpha1/tasks/complete-query",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              },
+              {
+                "name": "x-pryon-org-id",
+                "value": "pryoninc.com"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a completed query by replacing references to entities / information\n in prior turns of the conversation."
+        },
+        {
+          "info": {
+            "name": "Generative_GuardrailQuery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{pryon_base_url}/api/generative/v1alpha1/tasks/guardrail-query",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              },
+              {
+                "name": "x-pryon-org-id",
+                "value": "pryoninc.com"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return query toxicity and prompt injection classifications given a query"
+        },
+        {
+          "info": {
+            "name": "Generative_RouteQuery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{pryon_base_url}/api/generative/v1alpha1/tasks/route-query",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              },
+              {
+                "name": "x-pryon-org-id",
+                "value": "pryoninc.com"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return query out-of-domain classifications given a query"
+        },
+        {
+          "info": {
+            "name": "Summarize Answers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{pryon_base_url}/api/generative/v1alpha1/tasks/summarize-answer",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              },
+              {
+                "name": "x-pryon-org-id",
+                "value": "pryoninc.com"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a summarized answer given retrieval outputs and configurations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

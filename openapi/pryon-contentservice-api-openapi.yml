@@ -1,0 +1,1182 @@
+openapi: 3.2.0
+info:
+  title: Pryon Content Service API
+  version: '1.0'
+  description: 'Operations tagged ContentService across 2 of this provider''s published API definitions: pryon-admin-openapi.json, pryon-getcontentimage-swagger-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.pryon.net
+  description: Pryon Cloud
+- url: /
+tags:
+- name: ContentService
+paths:
+  /api/knowledge/v1/content-groups:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: ContentService_ListContentGroups
+      parameters:
+      - description: 'Optional: ID for Knowledge Domain under which to search for ContentGroups.'
+        in: query
+        name: knowledge_domain_id
+        schema:
+          type: string
+      - description: 'Optional: ID for Content which is contained by matching Content Groups.'
+        in: query
+        name: content_id
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contentListContentGroupsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListContentGroups
+      tags:
+      - ContentService
+      description: Get a list of all the Content Groups.  The filters supported are knowledge_domain_id and content_id
+    post:
+      operationId: ContentService_CreateContentGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/contentCreateContentGroupRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contentGetContentGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: CreateContentGroup
+      tags:
+      - ContentService
+      x-codegen-request-body-name: body
+      description: CRD methods for a ContentGroup
+      parameters:
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+  /api/knowledge/v1/content-groups/{content_group_id}:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    delete:
+      operationId: ContentService_DeleteContentGroup
+      parameters:
+      - description: ID of ContentGroup to delete
+        in: path
+        name: content_group_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: DeleteContentGroup
+      tags:
+      - ContentService
+      description: Delete a Content Group and all its associations with Contents.  This will not alter the Content resources.  This request will be rejected if the Content Group is a member of any Knowledge Domain.
+    get:
+      operationId: ContentService_GetContentGroup
+      parameters:
+      - description: ID of ContentGroup to return
+        in: path
+        name: content_group_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contentGetContentGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: GetContentGroup
+      tags:
+      - ContentService
+      description: Get a Content Group by id
+  /api/knowledge/v1/content-groups/{content_group_id}/contents:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    delete:
+      operationId: ContentService_DeleteContentGroupContents
+      parameters:
+      - description: ID of ContentGroup to return
+        in: path
+        name: content_group_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: DeleteContentGroupContents
+      tags:
+      - ContentService
+      description: Delete all child Content associations with the parent Content Group.  The Content resources are not altered.
+    get:
+      operationId: ContentService_ListContentGroupContents
+      parameters:
+      - description: 'Required: id of a valid Content Group from /api/knowledge/v1/content-groups'
+        in: path
+        name: content_group_id
+        required: true
+        schema:
+          type: string
+      - description: 'The default page size is 500, which is also the maximum page size. The REST query parameter is "page_size". If page size is the default, this param can be omitted; otherwise, it must be specified on every page request.
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: 'If there are multiple pages, any pages after the first must specify this parameter using the value of next_page_token provided in the previous page''s response. The REST query parameter is "page_token".
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - description: 'Optional: if caller only needs the item ID''s then set this to true.'
+        in: query
+        name: return_only_id
+        schema:
+          type: boolean
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contentListContentGroupContentsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListContentGroupContents
+      tags:
+      - ContentService
+      description: List Content Group Contents, by content_group_id
+  /api/knowledge/v1/content-groups/{content_group_id}/contents/{content_id}:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    delete:
+      operationId: ContentService_DeleteContentGroupContent
+      parameters:
+      - description: 'Required: ID of the ContentGroup'
+        in: path
+        name: content_group_id
+        required: true
+        schema:
+          type: string
+      - description: 'Required: ID of the Content'
+        in: path
+        name: content_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: DeleteContentGroupContent
+      tags:
+      - ContentService
+      description: Delete Content association with the parent Content Group.  The Content resource is not altered.
+    get:
+      operationId: ContentService_GetContentGroupContent
+      parameters:
+      - description: 'Required: ID of the ContentGroup'
+        in: path
+        name: content_group_id
+        required: true
+        schema:
+          type: string
+      - description: 'Required: ID of the Content'
+        in: path
+        name: content_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contentGetContentGroupContentResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: GetContentGroupContent
+      tags:
+      - ContentService
+      description: Get Content Group Content, by content_id
+  /api/knowledge/v1/content-groups/{content_group_id}:cascade:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    delete:
+      operationId: ContentService_CascadeDeleteContentGroup
+      parameters:
+      - description: ID of ContentGroup to delete
+        in: path
+        name: content_group_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: CascadeDeleteContentGroup
+      tags:
+      - ContentService
+      description: Delete Content Group and all its associations with Contents.  This will not alter the Content resources.  This request will remove the Content Group from any Knowledge Domains it is member of.
+  /api/knowledge/v1/content-groups/{data.content_group_id}:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    patch:
+      operationId: ContentService_UpdateContentGroup
+      parameters:
+      - description: 'Required: ID of this entity'
+        in: path
+        name: data.content_group_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/contentUpdateContentGroupRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contentGetContentGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: UpdateContentGroup
+      tags:
+      - ContentService
+      x-codegen-request-body-name: body
+      description: Update a Content Group. This can only currently be used to update the display_name field.
+  /api/knowledge/v1/content-groups/{data.content_group_id}/contents/{data.content_id}:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    post:
+      operationId: ContentService_CreateContentGroupContent
+      parameters:
+      - description: 'Required: ID of the ContentGroup'
+        in: path
+        name: data.content_group_id
+        required: true
+        schema:
+          type: string
+      - description: 'Required: ID of the Content'
+        in: path
+        name: data.content_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/contentContentGroupContentRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contentGetContentGroupContentResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: CreateContentGroupContent
+      tags:
+      - ContentService
+      x-codegen-request-body-name: body
+      description: CRD methods for ContentGroupContent, a join of a ContentGroup with Content
+  /api/knowledge/v1/contents:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: ContentService_ListContents
+      parameters:
+      - description: 'Optional: ID for KnowledgeDomain to filter search. The REST query parameter is "knowledge_domain_id".'
+        in: query
+        name: knowledge_domain_id
+        schema:
+          type: string
+      - description: 'Optional: ID for ContentGroup to filter search. The REST query parameter is "content_group_id".'
+        in: query
+        name: content_group_id
+        schema:
+          type: string
+      - description: 'Optional: SourceLocation string to filter search. The REST query parameter is "source_location".'
+        in: query
+        name: source_location
+        schema:
+          type: string
+      - description: 'The default page size is 500, which is also the maximum page size. The REST query parameter is "page_size". If page size is default, this param can be omitted; otherwise it must be specified on every page request.
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: 'If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page''s response. The REST query parameter is "page_token".
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contentListContentsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListContents
+      tags:
+      - ContentService
+      description: Get the list of Contents associated with a Knowledge Domain
+    post:
+      operationId: ContentService_CreateContent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/contentCreateContentRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contentGetContentResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: CreateContent
+      tags:
+      - ContentService
+      x-codegen-request-body-name: body
+      description: CRD methods for Contents
+      parameters:
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+  /api/knowledge/v1/contents/{content_id}:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    delete:
+      operationId: ContentService_DeleteContent
+      parameters:
+      - description: Required ID of Content to delete
+        in: path
+        name: content_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: DeleteContent
+      tags:
+      - ContentService
+      description: Delete the Content and all its constituent child resources.  This request will be rejected if Content is a member of any Content Groups.
+    get:
+      operationId: ContentService_GetContent
+      parameters:
+      - description: 'Required: ID of Content to return'
+        in: path
+        name: content_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contentGetContentResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - ContentService
+      summary: GetContent
+      description: ''
+  /api/knowledge/v1/contents/{content_id}/image:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: ContentService_GetContentImage
+      parameters:
+      - description: 'Required: ID of Content (e.g. application/vnd.pryon.content.id attachment from Exchange API)'
+        in: path
+        name: content_id
+        required: true
+        schema:
+          type: string
+      - description: 'Required: The page number within the content_id (e.g. application/vnd.pryon.start_page attachment from Exchange API).'
+        in: query
+        name: page
+        schema:
+          format: int32
+          type: integer
+      - description: 'Optional: A value of true indicates the image data should not be compressed (Default is compressed).'
+        in: query
+        name: uncompressed
+        schema:
+          type: boolean
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: GetContentImage
+      tags:
+      - ContentService
+      description: 'This is an EXPERIMENTAL REST API to get an image representation of the content
+
+        The HTTP GET returns bytes data of image/jpeg Content-Type.
+
+        Query parameters:
+
+        page - Required. A page number within the content_id (e.g. application/vnd.pryon.start_page attachment from Exchange API)
+
+        uncompressed - Optional. A value of 1 indicates the image data should not be compressed. Default value is 0 (compressed). If compressed image data is not found, the API will return uncompressed image data.'
+  /api/knowledge/v1/contents/{content_id}/subjects:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: ContentService_ListContentSubjects
+      parameters:
+      - description: Content that subject must be found in
+        in: path
+        name: content_id
+        required: true
+        schema:
+          type: string
+      - description: 'The default page size is 100, which is also the maximum page size. The REST query parameter is "page_size". If page size is default, this param can be omitted; otherwise it must be specified on every page request.
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: 'If there are multiple pages, any pages after the first must specify this parameter using the value of next_page_token provided in the previous page''s response. The REST query parameter is "page_token".
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - description: 'If there are multiple pages, a sort order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests. Supported options are: "reference_count desc" (default) and "reference_count asc".
+
+          see https://cloud.google.com/apis/design/design_patterns#sorting_order.'
+        in: query
+        name: order_by
+        schema:
+          type: string
+      - description: If specified, the list will be filtered to subjects of the specified category.
+        in: query
+        name: subject_category_id
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/subjectsListSubjectsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListContentSubjects
+      tags:
+      - ContentService
+      description: List subjects associated with a content item
+  /api/knowledge/v1/contents/{content_id}/summary:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: ContentService_GetSummary
+      parameters:
+      - description: 'Required: ID of the content whose summary should be returned'
+        in: path
+        name: content_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contentGetSummaryResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: GetSummary
+      tags:
+      - ContentService
+      description: Get summary associated with a Content ID
+  /api/knowledge/v1/contents/{content_id}:cascade:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    delete:
+      operationId: ContentService_CascadeDeleteContent
+      parameters:
+      - description: Required ID of Content to delete
+        in: path
+        name: content_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: CascadeDeleteContent
+      tags:
+      - ContentService
+      description: Delete the Content and all its constituent child resources.  This will also remove the Content from all Content Groups it is a member of - this has the effect of removing it from the relevant Knowledge Domains as well.
+components:
+  schemas:
+    subjectsGetSubjectResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/subjectsSubjectEntity'
+      type: object
+    contentGetContentGroupContentResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/contentContentGroupContent'
+      type: object
+    contentContent:
+      description: A Content object is a single content source and is an element of a Content Group. Source location currently must be a remote file (for example a PDF document, a Google Doc, or the HTML file associated with a single web page). The Content object describes the content, while the actual data is stored in Captures with the Content as its parent.
+      properties:
+        content_id:
+          title: 'Required: ID of this entity'
+          type: string
+        content_type_id:
+          title: 'Required: ID of the ContentType for this Content'
+          type: string
+        source_location:
+          title: String describing the location, typically a URI
+          type: string
+        display_name:
+          title: 'Required: Displayed name'
+          type: string
+        description:
+          title: 'Optional: Description of the ContentGroup'
+          type: string
+        status:
+          $ref: '#/components/schemas/contentContentStatus'
+        source_owner:
+          title: Optional.  When a content source requires knowledge of the content owner, this field is used to record the identifier of the owner
+          type: string
+        revision:
+          description: The specific revision that is being referenced. If no revision is specified, the latest revision at the time of ingestion will be used, and the Content will be updated with that revision number.
+          type: string
+        status_reason:
+          description: 'The reason that the Content was transitioned to its current status value.  Generally only relevant when the status is INGESTION_FAILED.
+
+            This field will be set by the service on status transition, and cannot be set in a CreateContent request.'
+          type: string
+        labels:
+          additionalProperties:
+            type: string
+          description: 'Optional. Content key/value pair labels.
+
+            Labels can be used to identify characteristics of the Content.'
+          type: object
+      type: object
+    contentListContentGroupItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/contentContentGroup'
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+      type: object
+    contentGetContentResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/contentContent'
+      type: object
+    subjectsSubjectEntity:
+      properties:
+        subject_id:
+          title: hash of subject_category_id and term
+          type: string
+        term:
+          description: Required.  A case-insensitive natural language term that represents the subject.
+          type: string
+        subject_category_id:
+          title: Required.  Subject category
+          type: string
+        definition:
+          description: Optional.  Natural language definition of the subject.  This is provided by an expert.
+          type: string
+        reference_count:
+          format: uint64
+          title: "!Deprecation Warning!: This field will no longer be kept up to date and must be considered inaccurate. To view subject reference counts \nplease see ListDomainSubjects.\nOptional.  Number of references to the subject found in the content.  This is provided if known and will otherwise be zero.\nReference count at different levels:\nContent - occurrences in content (0 for Prior Knowledge content subjects)\nContent Group - occurrences in all contents in CG\nKnowledge Domain - occurrences in all contents in KD"
+          type: string
+        content_count:
+          format: uint64
+          title: 'Optional.  The number of contents that refer to the subject.  This is provided if known and will otherwise be zero.
+
+            Content - 1
+
+            Content Group - count of all contents it occurs in, in the CG
+
+            Knowledge Domain - count of all contents it occurs in, in the KD'
+          type: string
+      title: A subject is an unique tuple of term and category
+      type: object
+    contentGetSummaryResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/contentSummaryItem'
+      type: object
+    googlerpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+      type: object
+    contentListContentItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/contentContent'
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+      type: object
+    contentListContentGroupContentItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/contentContentGroupContent'
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+      type: object
+    v1ResourceMetadata:
+      properties:
+        uuid:
+          description: UUID returned in the resource response, which represents the unique interaction with the API, that is, the response id.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: 'Time of the last update.
+
+            A value of 0 indicates it has never been updated.'
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          title: Time difference in milliseconds between when the request was received and when the response was generated
+          type: integer
+      type: object
+    contentContentGroup:
+      properties:
+        content_group_id:
+          title: 'Required: ID of this entity'
+          type: string
+        display_name:
+          title: 'Required: Displayed name'
+          type: string
+        description:
+          title: 'Optional: Description of the ContentGroup'
+          type: string
+        source_location:
+          description: 'Optional: URI for the source location for this Content Group. This field should not be specified by the client and will be filled in by the server when a KD is created using the custom verb createWithSources.'
+          type: string
+        content_statuses:
+          description: 'The status breakdown of the contents in the content group
+
+            The index corresponds to the Content Status and the value at the index
+
+            is the number of contents in the content group with that status.
+
+            For example, if the content group has 5 contents all in the ingesting phase,
+
+            then this would be [0, 0, 5, 0, 0, 0].
+
+            If a content group has 8 contents 2 configured, 1 ingesting, 2 ingested and 3 failed,
+
+            then this would be [0, 2, 1, 2, 3, 0].'
+          items:
+            format: int32
+            type: integer
+          type: array
+        service_id:
+          description: Optional. The third-party service connect. If not specified, the oldest service connect with an authority and type matching the source_location will be assigned.
+          type: string
+      title: 'A ContentGroup is a parent collection of Contents
+
+        It can be joined with many Knowledge Domains
+
+        It can be joined with many Contents'
+      type: object
+    contentUpdateContentGroupRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/contentContentGroup'
+        update_mask:
+          items:
+            type: string
+          title: "The data path corresponding to the fields being updated in this request.\nOnly the following fields are updatable:\n data.display_name\n data.description\nNote: if no update_mask is supplied, both the display_name and description will be updated.\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
+          type: array
+      type: object
+    contentListContentsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/contentListContentItem'
+          title: Array of Contents that match the request
+          type: array
+        next_page_token:
+          title: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: string
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
+      type: object
+    v1CollectionMetadata:
+      properties:
+        uuid:
+          description: Random UUID returned in the resource response to represent the unique interaction with the API.  This can be thought of as a response id.
+          type: string
+        response_time_millis:
+          description: Time difference in milliseconds between when the request was received and when the response was generated, that is, the latency.
+          format: int64
+          type: integer
+      title: Metadata that will be returned with each collection-level GET
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      type: object
+    contentSummaryItem:
+      properties:
+        text:
+          type: string
+        html:
+          type: string
+      type: object
+    contentContentGroupContent:
+      properties:
+        content_id:
+          title: 'Required: ID of the Content'
+          type: string
+        content_group_id:
+          title: 'Required: ID of the ContentGroup'
+          type: string
+      title: A ContentGroupContent joins Content to a ContentGroup
+      type: object
+    contentContentGroupContentRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/contentContentGroupContent'
+      type: object
+    contentGetContentGroupResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/contentContentGroup'
+      type: object
+    contentListContentGroupsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          additionalProperties:
+            $ref: '#/components/schemas/contentListContentGroupItem'
+          description: Map of ContentGroups that match the request, keyed by content_group_id.
+          type: object
+      type: object
+    contentListContentGroupContentsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/contentListContentGroupContentItem'
+          title: Map of all ContentGroup Content joins that match the request, keyed off of content_id
+          type: array
+        next_page_token:
+          title: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: string
+        total_size:
+          format: int32
+          title: 'This is the total number of items in the collection across all the pages.  It is returned with every page and may change during page traversal.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: integer
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
+      type: object
+    contentCreateContentGroupRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/contentContentGroup'
+      type: object
+    subjectsListSubjectsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          description: Subjects that match request criteria.
+          items:
+            $ref: '#/components/schemas/subjectsGetSubjectResponse'
+          type: array
+        next_page_token:
+          title: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: string
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
+        order_by:
+          description: Returned for convenience and clarity - same as order_by in request.
+          type: string
+      type: object
+    contentContentStatus:
+      default: UNKNOWN
+      description: "The Content status will only be updated by the server.\n\n - CONFIGURED: CONFIGURED: This is the initial status, indicating the Content is configured. Should be transitioned to INGESTING when the ingestion process starts.\n - UNSUPPORTED: UNSUPPORTED: This Content was found during the listing phase, but we do not support it for ingestion.\n - INGESTING: INGESTING: The Content is currently being ingested. Should be transitioned to INGESTED upon successful ingestion, or INGESTION_FAILED upon ingestion failure.\n - INGESTED: INGESTED: Ingestion for this Content has succeeded. Content cannot be transitioned from this state.\n - INGESTION_FAILED: INGESTION_FAILED: Ingestion for this Content failed. Content can be transitioned to INGESTING upon re-try of the ingestion process."
+      enum:
+      - UNKNOWN
+      - CONFIGURED
+      - UNSUPPORTED
+      - INGESTING
+      - INGESTED
+      - INGESTION_FAILED
+      type: string
+    contentCreateContentRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/contentContent'
+      type: object
+x-refined-from:
+- pryon-admin-openapi.json
+- pryon-getcontentimage-swagger-openapi.json
+x-original-swagger-version: '2.0'
+x-tagGroups:
+- name: Retrieval
+  tags:
+  - Exchange
+  - ExchangeEvent
+  - Feedback
+  - GenerativeExchange
+  - GenerativeFeedback
+  - TextToSpeech
+- name: Reporting
+  tags:
+  - Analytics
+  - Reports
+  - Usage
+- name: Collection Management
+  tags:
+  - KnowledgeCollectionService
+  - KnowledgeDomain
+  - ContentService
+  - RegressionTest
+  - Subjects
+- name: Organization Management
+  tags:
+  - ConnectorServiceExternal
+  - OrganizationService
+  - Messages
+- name: Ops Console
+  tags:
+  - Operations

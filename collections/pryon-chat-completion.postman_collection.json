@@ -1,0 +1,749 @@
+{
+  "item": [
+    {
+      "id": "72cfbbd5-aa21-43b6-aa2a-99d578a26d12",
+      "name": "Chat Completion",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    },
+    {
+      "id": "f6e24acb-e991-4e6b-bf5a-a2e1cefd59e4",
+      "name": "Generative",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "78f36142-73d8-4103-b683-eae013ee744c",
+          "name": "Generative List Chat Completions Models",
+          "request": {
+            "name": "Generative List Chat Completions Models",
+            "description": {
+              "content": "Lists the models available for our Chat Completions API",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "generative",
+                "v1alpha1",
+                "chat",
+                "completions",
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Organization ID; only required for organizations with multiple tenants.",
+                "key": "x-pryon-org-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"function_calling\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9d6b74a3-4edd-438c-9ef3-0cb89e5dd584",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "chat",
+                    "completions",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"function_calling\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": {\n    \"key_0\": {\n      \"models\": [\n        {\n          \"id\": \"string\",\n          \"display_name\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"display_name\": \"string\"\n        }\n      ]\n    },\n    \"key_1\": {\n      \"models\": [\n        {\n          \"id\": \"string\",\n          \"display_name\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"display_name\": \"string\"\n        }\n      ]\n    },\n    \"key_2\": {\n      \"models\": [\n        {\n          \"id\": \"string\",\n          \"display_name\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"display_name\": \"string\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "725b8a59-4c5b-4d66-a630-0a0141fd0599",
+              "name": "Default error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "chat",
+                    "completions",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"function_calling\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7147,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": 591,\n      \"key_1\": 6792\n    },\n    {\n      \"@type\": \"string\",\n      \"key_0\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17bb4739-97d4-4604-ba45-73a6e2fc78ad",
+          "name": "Generative Complete Query",
+          "request": {
+            "name": "Generative Complete Query",
+            "description": {
+              "content": "Generates a completed query by replacing references to entities / information\n in prior turns of the conversation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "generative",
+                "v1alpha1",
+                "tasks",
+                "complete-query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Organization ID; only required for organizations with multiple tenants.",
+                "key": "x-pryon-org-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"conversation_context\": \"<string>\",\n  \"conversation_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3701a6d5-4b59-495d-a02e-0294e80839e6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "tasks",
+                    "complete-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"conversation_context\": \"<string>\",\n  \"conversation_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"completed_query\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba7f0db7-7375-49e8-9fe4-d546c7547b7f",
+              "name": "Default error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "tasks",
+                    "complete-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"conversation_context\": \"<string>\",\n  \"conversation_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5980,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": \"string\",\n      \"key_1\": 4924\n    },\n    {\n      \"@type\": \"string\",\n      \"key_0\": 5941.4236137548905,\n      \"key_1\": 8636,\n      \"key_2\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f64e9d3f-02e7-48d7-a9ba-cb7a58a75da5",
+          "name": "Generative Guardrail Query",
+          "request": {
+            "name": "Generative Guardrail Query",
+            "description": {
+              "content": "Return query toxicity and prompt injection classifications given a query",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "generative",
+                "v1alpha1",
+                "tasks",
+                "guardrail-query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Organization ID; only required for organizations with multiple tenants.",
+                "key": "x-pryon-org-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "28bafa14-9cbb-496f-b1e3-d7c8780b59ac",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "tasks",
+                    "guardrail-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"is_toxic\": true,\n  \"is_prompt_injection_attack\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fdf9076-8ef0-4d28-867a-08629a700d7b",
+              "name": "Default error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "tasks",
+                    "guardrail-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5980,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": \"string\",\n      \"key_1\": 4924\n    },\n    {\n      \"@type\": \"string\",\n      \"key_0\": 5941.4236137548905,\n      \"key_1\": 8636,\n      \"key_2\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e60e7b8-6e08-403e-8923-73aeda3eee58",
+          "name": "Generative Route Query",
+          "request": {
+            "name": "Generative Route Query",
+            "description": {
+              "content": "Return query out-of-domain classifications given a query",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "generative",
+                "v1alpha1",
+                "tasks",
+                "route-query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Organization ID; only required for organizations with multiple tenants.",
+                "key": "x-pryon-org-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"domain\": \"<string>\",\n  \"enable_generative_conversational_response\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "80d88e46-80fd-414b-ada2-b903c4b669d7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "tasks",
+                    "route-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"domain\": \"<string>\",\n  \"enable_generative_conversational_response\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"is_intelligible\": false,\n  \"is_english\": false,\n  \"is_conversational\": true,\n  \"conversational_response\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c3a10c0-bb94-4659-8f81-8147b0eb5338",
+              "name": "Default error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "tasks",
+                    "route-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"domain\": \"<string>\",\n  \"enable_generative_conversational_response\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5980,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": \"string\",\n      \"key_1\": 4924\n    },\n    {\n      \"@type\": \"string\",\n      \"key_0\": 5941.4236137548905,\n      \"key_1\": 8636,\n      \"key_2\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "{{pryon_base_url}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5c6e98ec-47f9-42d2-b944-c639883c269d",
+    "name": "Chat Completion",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Chat Completion",
+      "type": "text/plain"
+    }
+  }
+}

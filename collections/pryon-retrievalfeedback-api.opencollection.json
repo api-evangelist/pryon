@@ -1,0 +1,400 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Retrieval Retrieval Feedback API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "RetrievalFeedback",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Retrieval Rating Reviews",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/retrievals/rating-reviews",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter list output  with ratings for a knowledge collection."
+              },
+              {
+                "name": "retrieval_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique ID of the exchange item; if supplied, overrides the collection ID as a filter item; default is no entry."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Ratings included in requested review status; defaults to UNSPECIFIED.\n\n - UNSPECIFIED: Not a valid retrieval rating value.\n - PENDING: Waiting to be inspected for approval or rejection.\n - COMPLETE: Inspected and acted upon; no further action taken."
+              },
+              {
+                "name": "creator_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter list output to only include ratings made by a given user."
+              },
+              {
+                "name": "rank",
+                "value": "",
+                "type": "query",
+                "description": "Rank value given by the user; valid responses are 1 (negative) and 5 (positive)."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size is 100; default is 100."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "For multiple pages; must be specified in each request for two pages per sheet."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for multi page requests; valid options are rank, rank desc, create_time, create_time desc."
+              }
+            ]
+          },
+          "docs": "Return rating reviews for a resource."
+        },
+        {
+          "info": {
+            "name": "Create Retrieval Rating",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/retrievals/ratings",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a retrieval rating."
+        },
+        {
+          "info": {
+            "name": "Update Retrieval Rating Review",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/retrievals/ratings/:data.rating.rating_id/review",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.rating.rating_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the exchange rating; automatically generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the review perspective of a retrieval rating item."
+        },
+        {
+          "info": {
+            "name": "Update Retrieval Rating",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/retrievals/ratings/:data.rating_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.rating_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the exchange rating; automatically generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify an existing retrieval rating."
+        },
+        {
+          "info": {
+            "name": "Get Retrieval Rating",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/retrievals/ratings/:rating_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "rating_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the exchange rating; automatically generated."
+              }
+            ]
+          },
+          "docs": "Get a retrieval rating."
+        },
+        {
+          "info": {
+            "name": "Delete Retrieval Rating",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/retrievals/ratings/:rating_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "rating_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the exchange rating; automatically generated."
+              }
+            ]
+          },
+          "docs": "Delete a retrieval rating."
+        },
+        {
+          "info": {
+            "name": "Get Retrieval Rating Review",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/retrievals/ratings/:rating_id/review",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "rating_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the exchange rating; automatically generated."
+              }
+            ]
+          },
+          "docs": "Return the review perspective of a retrieval rating item."
+        },
+        {
+          "info": {
+            "name": "List Verified Answers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/verified-answers",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier of the knowledge domain that lists the verified answers."
+              },
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "If request contains the collection_id, use it as the filter instead of the knowledge_domain_id."
+              },
+              {
+                "name": "verified_answer_status",
+                "value": "",
+                "type": "query",
+                "description": "Verified answer status.\n\n - PENDING_REVIEW: Answer under review.\n - APPROVED: Answer verified and approved."
+              },
+              {
+                "name": "return_only_item_keys",
+                "value": "",
+                "type": "query",
+                "description": "If set to True will only return item IDs."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size is 100; default is 100."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "For multiple pages; must be specified in each request for two pages per sheet."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for multi page requests; valid options are update_time desc and update_time asc."
+              }
+            ]
+          },
+          "docs": "List verified answer entries."
+        },
+        {
+          "info": {
+            "name": "Create Verified Answer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/verified-answers",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a verified answer entry."
+        },
+        {
+          "info": {
+            "name": "Update Verified Answer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/verified-answers/:data.verified_answer_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.verified_answer_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier generated on a create verified answer request."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify an existing verified answer entry."
+        },
+        {
+          "info": {
+            "name": "Get Verified Answer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/verified-answers/:verified_answer_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "verified_answer_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the verified answer; if the answer isn't verified this is unset."
+              }
+            ]
+          },
+          "docs": "Get information about a verified answer."
+        },
+        {
+          "info": {
+            "name": "Delete Verified Answer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/verified-answers/:verified_answer_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "verified_answer_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the verified answer; if the answer isn't verified this is unset."
+              }
+            ]
+          },
+          "docs": "Delete a verified answer entry."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

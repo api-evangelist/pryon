@@ -1,0 +1,714 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Retrieval Content Service API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Content Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Content Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/content-groups",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier of the knowledge domain that supplied the exchange response."
+              },
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the content within the matching content groups."
+              }
+            ]
+          },
+          "docs": "Filter content groups by knowledge domain and content."
+        },
+        {
+          "info": {
+            "name": "Create Content Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/content-groups",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Content Group"
+        },
+        {
+          "info": {
+            "name": "Get Content Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/content-groups/:content_group_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content group."
+              }
+            ]
+          },
+          "docs": "Retrieve a content group using the ID."
+        },
+        {
+          "info": {
+            "name": "Delete Content Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/content-groups/:content_group_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content group."
+              }
+            ]
+          },
+          "docs": "Delete a content group without altering the content resources."
+        },
+        {
+          "info": {
+            "name": "List Content Group Contents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/content-groups/:content_group_id/contents",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content group."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size is 100; default is 100."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "For multiple pages; must be specified in each request for two pages per sheet."
+              },
+              {
+                "name": "return_only_id",
+                "value": "",
+                "type": "query",
+                "description": "If set to True will only return item IDs."
+              }
+            ]
+          },
+          "docs": "List content group sources by ID."
+        },
+        {
+          "info": {
+            "name": "Delete Content Group Contents",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/content-groups/:content_group_id/contents",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content group."
+              }
+            ]
+          },
+          "docs": "Delete all child content associations with the parent content group."
+        },
+        {
+          "info": {
+            "name": "Get Content Group Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/content-groups/:content_group_id/contents/:content_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content group."
+              },
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content within the matching content groups."
+              }
+            ]
+          },
+          "docs": "Get content group sources by ID."
+        },
+        {
+          "info": {
+            "name": "Delete Content Group Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/content-groups/:content_group_id/contents/:content_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content group."
+              },
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content within the matching content groups."
+              }
+            ]
+          },
+          "docs": "Delete content associations within the parent content group."
+        },
+        {
+          "info": {
+            "name": "Cascade Delete Content Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/content-groups/:content_group_id:cascade",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content group."
+              }
+            ]
+          },
+          "docs": "Delete content group source associations and remove from knowledge domain."
+        },
+        {
+          "info": {
+            "name": "Update Content Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/content-groups/:data.content_group_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content group."
+              }
+            ]
+          },
+          "docs": "Update the display name for a content group."
+        },
+        {
+          "info": {
+            "name": "Create Content Group Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/content-groups/:data.content_group_id/contents/:data.content_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content group."
+              },
+              {
+                "name": "data.content_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content within the matching content groups."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create content group sources."
+        },
+        {
+          "info": {
+            "name": "List Contents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/contents",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier of the knowledge domain that supplied the exchange response."
+              },
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the content within the matching content groups."
+              },
+              {
+                "name": "source_location",
+                "value": "",
+                "type": "query",
+                "description": "Precise location of the source material."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size is 100; default is 100."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "For multiple pages; must be specified in each request for two pages per sheet."
+              }
+            ]
+          },
+          "docs": "List contents associated with a knowledge domain."
+        },
+        {
+          "info": {
+            "name": "Create Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/contents",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create methods for contents."
+        },
+        {
+          "info": {
+            "name": "Get Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/contents/:content_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content to be returned."
+              }
+            ]
+          },
+          "docs": "Get Content"
+        },
+        {
+          "info": {
+            "name": "Delete Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/contents/:content_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content to be deleted."
+              }
+            ]
+          },
+          "docs": "Delete the content and all child resources."
+        },
+        {
+          "info": {
+            "name": "Get Content Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/contents/:content_id/image",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content within the matching content groups."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number in the content."
+              },
+              {
+                "name": "uncompressed",
+                "value": "",
+                "type": "query",
+                "description": "True does not compress the image data; default is false (compressed)."
+              },
+              {
+                "name": "debug",
+                "value": "",
+                "type": "query",
+                "description": "True returns a debug image."
+              }
+            ]
+          },
+          "docs": "Return an image representation of the content."
+        },
+        {
+          "info": {
+            "name": "List Processed Content Extracts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/contents/:content_id/processed-extracts",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content within the matching content groups."
+              },
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier of the knowledge domain that contains the exchange response."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size is 100; default is 100."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "For multiple pages; must be specified in each request for two pages per sheet."
+              }
+            ]
+          },
+          "docs": "List initial processed extracts by content ID."
+        },
+        {
+          "info": {
+            "name": "List Retrieval Content Extracts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/contents/:content_id/retrieval-extracts",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content within the matching content groups."
+              },
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier of the knowledge domain that supplied the exchange response."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size is 100; default is 100."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "For multiple pages; must be specified in each request for two pages per sheet."
+              }
+            ]
+          },
+          "docs": "List of retrieval extracts by content ID."
+        },
+        {
+          "info": {
+            "name": "List Content Subjects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/contents/:content_id/subjects",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content within the matching content groups."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size is 100; default is 100."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "IFor multiple pages; must be specified in each request for two pages per sheet."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for multi page requests; valid options are rank, rank desc, create_time, create_time desc."
+              },
+              {
+                "name": "subject_category_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the grouping of specific topics."
+              }
+            ]
+          },
+          "docs": "List subjects associated with a content item."
+        },
+        {
+          "info": {
+            "name": "Get Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/contents/:content_id/summary",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content within the matching content groups."
+              }
+            ]
+          },
+          "docs": "Get summary information by content ID."
+        },
+        {
+          "info": {
+            "name": "Cascade Delete Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/contents/:content_id:cascade",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content to be deleted."
+              }
+            ]
+          },
+          "docs": "Delete the content and all child resources, and remove from all content groups."
+        },
+        {
+          "info": {
+            "name": "Get Content Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/domains/:knowledge_domain_id/contents/:content_id/metadata",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the knowledge domain containing the requested metadata"
+              },
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the content within the matching content groups."
+              }
+            ]
+          },
+          "docs": "List metadata by content ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

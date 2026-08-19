@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Generative API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Generative",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Chat Completions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{pryon_base_url}/api/generative/v1alpha1/chat/completions",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              },
+              {
+                "name": "x-pryon-org-id",
+                "value": "pryoninc.com"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a model response from a list of messages comprising a conversation."
+        },
+        {
+          "info": {
+            "name": "List Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{pryon_base_url}/api/generative/v1alpha1/chat/completions/models",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              },
+              {
+                "name": "x-pryon-org-id",
+                "value": "pryoninc.com"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lists the models available for our Chat Completions API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

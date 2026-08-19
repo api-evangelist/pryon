@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Exchange",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Exchange",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Review Conversation Response",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/conversation/v1/exchange",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reviews the conversation exchange request and response cycle."
+        },
+        {
+          "info": {
+            "name": "Initiate or Continue Exchange",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/conversation/v1/exchange/wss",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start or continue an existing conversation."
+        },
+        {
+          "info": {
+            "name": "Retrieve Exchange Query and Response",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/conversation/v1/exchanges/:exchange_id",
+            "params": [
+              {
+                "name": "exchange_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique ID of the exchange item."
+              },
+              {
+                "name": "output_id",
+                "value": "",
+                "type": "query",
+                "description": "Ranking of answers and answer_in_context chunks, in rank order, for example, best_1, best_2."
+              }
+            ]
+          },
+          "docs": "Retrieve collection information on questions asked and responses returned during the course of an exchange."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

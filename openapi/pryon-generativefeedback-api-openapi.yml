@@ -1,0 +1,550 @@
+openapi: 3.2.0
+info:
+  title: Pryon Generative Feedback API
+  version: '1.0'
+  description: 'Operations tagged GenerativeFeedback across 2 of this provider''s published API definitions: pryon-admin-openapi.json, pryon-generative-feedback-may2025-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.pryon.net
+  description: Pryon Cloud
+- url: /
+tags:
+- name: GenerativeFeedback
+paths:
+  /api/conversation/v1/generative-rating-reviews:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: GenerativeFeedback_ListGenerativeExchangeRatingReviews
+      parameters:
+      - description: Required. Filter list output to only include ratings for a knowledge collection. In REST form the parameter is expressed as 'collection_id'.
+        in: query
+        name: collection_id
+        schema:
+          type: string
+      - description: Filter list output to only include ratings for a particular exchange. Overrides the collection_id filter value if supplied. Defaults to empty which disables this filter. In REST form the parameter is expressed as 'exchange_id'.
+        in: query
+        name: generative_exchange_id
+        schema:
+          type: string
+      - description: "Filter list output to only include ratings that are in requested review status. Defaults to UNSPECIFIED which disables this filter. In REST form the parameter is expressed as 'status' with valid values PENDING and COMPLETE.\n\n - UNSPECIFIED: Not a valid exchange rating value\n - PENDING: This exchange rating is waiting to be inspected for approval or rejection (default).\n - COMPLETE: This exchange rating has been inspected and acted upon. No further action will be taken."
+        in: query
+        name: status
+        schema:
+          default: UNSPECIFIED
+          enum:
+          - UNSPECIFIED
+          - PENDING
+          - COMPLETE
+          type: string
+      - description: Filter list output to only include ratings made by a given user. In REST form the parameter is expressed as 'creator_id'.
+        in: query
+        name: creator_id
+        schema:
+          type: string
+      - description: Filter list output to only include ratings that match a given rank value. In REST form the parameter is expressed as 'rank' with valid values 1-5.
+        in: query
+        name: rank
+        schema:
+          format: int32
+          type: integer
+      - description: 'Default page size is 100 when omitted. The maximum page size is 100.
+
+          The REST query parameter is "page_size".
+
+          See https://cloud.google.com/apis/design/design_patterns#list_pagination for details.'
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: 'If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page''s response. The REST query parameter is "page_token".
+
+          See https://cloud.google.com/apis/design/design_patterns#list_pagination for details.'
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - description: 'If the sort order parameter is provided with a multi page request, it must be provided on all subsequent page requests.
+
+          For exchange requests the valid options are: rank, rank desc, create_time, create_time desc.
+
+          see https://cloud.google.com/apis/design/design_patterns#sorting_order.'
+        in: query
+        name: order_by
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1ListGenerativeExchangeRatingReviewsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - GenerativeFeedback
+      summary: ListGenerativeExchangeRatingReviews
+      description: ''
+  /api/conversation/v1/generative-ratings:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    post:
+      operationId: GenerativeFeedback_CreateGenerativeExchangeRating
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1CreateGenerativeExchangeRatingRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetGenerativeExchangeRatingResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: CreateGenerativeExchangeRating
+      tags:
+      - GenerativeFeedback
+      x-codegen-request-body-name: body
+      description: Create a generative exchange rating.
+      parameters:
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+  /api/conversation/v1/generative-ratings/{data.rating.rating_id}/review:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    patch:
+      operationId: GenerativeFeedback_UpdateGenerativeExchangeRatingReview
+      parameters:
+      - description: UUID that uniquely identifies a particular exchange rating. Automatically generated on create.
+        in: path
+        name: data.rating.rating_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1UpdateGenerativeExchangeRatingReviewRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetGenerativeExchangeRatingReviewResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: UpdateGenerativeExchangeRatingReview
+      tags:
+      - GenerativeFeedback
+      x-codegen-request-body-name: body
+      description: A reviewing authority can update the review perspective of an exchange rating item. This includes review information not available to un-privileged users.
+  /api/conversation/v1/generative-ratings/{data.rating_id}:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    patch:
+      operationId: GenerativeFeedback_UpdateGenerativeExchangeRating
+      parameters:
+      - description: UUID that uniquely identifies a particular exchange rating. Automatically generated on create.
+        in: path
+        name: data.rating_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1UpdateGenerativeExchangeRatingRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetGenerativeExchangeRatingResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - GenerativeFeedback
+      x-codegen-request-body-name: body
+      summary: UpdateGenerativeExchangeRating
+      description: ''
+  /api/conversation/v1/generative-ratings/{rating_id}:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    delete:
+      operationId: GenerativeFeedback_DeleteGenerativeExchangeRating
+      parameters:
+      - in: path
+        name: rating_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - GenerativeFeedback
+      summary: DeleteGenerativeExchangeRating
+      description: ''
+    get:
+      operationId: GenerativeFeedback_GetGenerativeExchangeRating
+      parameters:
+      - in: path
+        name: rating_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetGenerativeExchangeRatingResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - GenerativeFeedback
+      summary: GetGenerativeExchangeRating
+      description: ''
+  /api/conversation/v1/generative-ratings/{rating_id}/review:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: GenerativeFeedback_GetGenerativeExchangeRatingReview
+      parameters:
+      - in: path
+        name: rating_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1GetGenerativeExchangeRatingReviewResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: GetGenerativeExchangeRatingReview
+      tags:
+      - GenerativeFeedback
+      description: A reviewing authority can retrieve the review perspective of an exchange rating item. This includes review information not available to un-privileged users.
+components:
+  schemas:
+    v1UpdateGenerativeExchangeRatingReviewRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/v1GenerativeExchangeRatingReview'
+        update_mask:
+          items:
+            type: string
+          title: "Required. The data path corresponding to the fields being updated in this request.\nExchange Rating Reviewer can update the following fields:\n   data.flagged\n   data.status\nExample mask declaration in JSON format:\n   updateMask: \"data.flagged\"\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
+          type: array
+      type: object
+    v1GetGenerativeExchangeRatingReviewResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/v1GenerativeExchangeRatingReview'
+      type: object
+    v1ResourceMetadata:
+      properties:
+        uuid:
+          description: UUID returned in the resource response, which represents the unique interaction with the API, that is, the response id.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: 'Time of the last update.
+
+            A value of 0 indicates it has never been updated.'
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          title: Time difference in milliseconds between when the request was received and when the response was generated
+          type: integer
+      type: object
+    v1GenerativeExchangeRatingReviewStatus:
+      default: UNSPECIFIED
+      description: " - UNSPECIFIED: Not a valid exchange rating value\n - PENDING: This exchange rating is waiting to be inspected for approval or rejection (default).\n - COMPLETE: This exchange rating has been inspected and acted upon. No further action will be taken."
+      enum:
+      - UNSPECIFIED
+      - PENDING
+      - COMPLETE
+      type: string
+    v1GenerativeExchangeRatingReview:
+      properties:
+        rating:
+          $ref: '#/components/schemas/v1GenerativeExchangeRating'
+        collection_id:
+          description: UUID of the knowledge collection from which the exchange being rated came. Automatically populated on create. Immutable.
+          type: string
+        knowledge_domain_id:
+          description: UUID of the knowledge domain from which the exchange being rated came. Automatically populated on create. Immutable.
+          type: string
+        reviewer_ids:
+          description: Output field only, automatically populated. IDs of the reviewing authorities that viewed/inspected this item.
+          items:
+            type: string
+          type: array
+        flagged:
+          description: Reviewing authorities can flag this rating item upon inspection. The exact meaning of flagging is intentionally vague and is left to the API to use as necessary.
+          type: boolean
+        approval_id:
+          description: Output field only, automatically populated. The approval item related to this exchange rating. May be empty.
+          type: string
+        status:
+          $ref: '#/components/schemas/v1GenerativeExchangeRatingReviewStatus'
+      title: Authority perspective of an ExchangeRating
+      type: object
+    v1UpdateGenerativeExchangeRatingRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/v1GenerativeExchangeRating'
+        update_mask:
+          items:
+            type: string
+          title: "Required. The data path corresponding to the fields being updated in this request.\nExchange Rating Reviewer can update the following fields:\n   data.flagged\n   data.status\nExample mask declaration in JSON format:\n   updateMask: \"data.flagged\"\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
+          type: array
+      type: object
+    v1CollectionMetadata:
+      properties:
+        uuid:
+          description: Random UUID returned in the resource response to represent the unique interaction with the API.  This can be thought of as a response id.
+          type: string
+        response_time_millis:
+          description: Time difference in milliseconds between when the request was received and when the response was generated, that is, the latency.
+          format: int64
+          type: integer
+      title: Metadata that will be returned with each collection-level GET
+      type: object
+    v1CreateGenerativeExchangeRatingRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/v1GenerativeExchangeRating'
+      type: object
+    v1GetGenerativeExchangeRatingResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/v1GenerativeExchangeRating'
+      type: object
+    v1GenerativeExchangeRating:
+      properties:
+        rating_id:
+          description: UUID that uniquely identifies a particular exchange rating. Automatically generated on create.
+          type: string
+        generative_exchange_id:
+          description: 'Required. This is an GenerativeExchangeResponseData''s generative_exchange_id from Exchange API''s response.
+
+            Specify type and populate this field. ExchangeRatings can only be created for exchanges matching active domains.'
+          type: string
+        exchange_id:
+          description: Optional. An ID representing an extractive exchange_id associated with this response object from sources.
+          type: string
+        exchange_output_ids:
+          description: 'Optional. A list of output_ids from extractive output that this generated answer is for.
+
+            Relevant to n-best extractive exchange responses. Defaults to "best_1".
+
+            Note: This must exist alongside the generative response, and not be chit-chat, otherwise it will be ignored.'
+          items:
+            type: string
+          type: array
+        creator_id:
+          description: Output field only, automatically populated. User ID (e.g. email address) that provided this feedback.
+          type: string
+        question:
+          description: Output field only, automatically populated. The question that was recorded for the exchange that is being rated.
+          type: string
+        rank:
+          description: Required. The rank value given by the user. Range from 1 to 5 with 5 being the most positive rating.
+          format: int32
+          type: integer
+        message:
+          description: Optional user comment. Provides additional context on the rating. For example, a rating of 5 means "The answer was on topic and helpful".
+          type: string
+        freeform_text:
+          description: Optional freeform text for feedback provider.
+          type: string
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      type: object
+    googlerpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+      type: object
+    v1ListGenerativeExchangeRatingReviewsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/v1GetGenerativeExchangeRatingReviewResponse'
+          type: array
+        next_page_token:
+          description: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+
+            See https://cloud.google.com/apis/design/design_patterns#list_pagination for details.'
+          type: string
+        total_size:
+          description: 'This is the total number of items in the collection across all the pages matching the given list filter.
+
+            It is returned with every page and may change during page traversal.
+
+            See https://cloud.google.com/apis/design/design_patterns#list_pagination for more details.'
+          format: int32
+          type: integer
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
+        order_by:
+          description: Returned for convenience and clarity - same as order_by in request.
+          type: string
+      type: object
+x-refined-from:
+- pryon-admin-openapi.json
+- pryon-generative-feedback-may2025-openapi.json
+x-original-swagger-version: '2.0'
+x-tagGroups:
+- name: Retrieval
+  tags:
+  - Exchange
+  - ExchangeEvent
+  - Feedback
+  - GenerativeExchange
+  - GenerativeFeedback
+  - TextToSpeech
+- name: Reporting
+  tags:
+  - Analytics
+  - Reports
+  - Usage
+- name: Collection Management
+  tags:
+  - KnowledgeCollectionService
+  - KnowledgeDomain
+  - ContentService
+  - RegressionTest
+  - Subjects
+- name: Organization Management
+  tags:
+  - ConnectorServiceExternal
+  - OrganizationService
+  - Messages
+- name: Ops Console
+  tags:
+  - Operations

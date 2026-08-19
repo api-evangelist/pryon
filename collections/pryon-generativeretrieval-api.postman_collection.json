@@ -1,0 +1,357 @@
+{
+  "item": [
+    {
+      "id": "85eb615c-b77d-4001-adba-2be489b2289b",
+      "name": "GenerativeRetrieval",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7bf04ed9-758c-4d62-a6d7-a1f5940accf2",
+          "name": "Create Generative Retrieval SSE",
+          "request": {
+            "name": "Create Generative Retrieval SSE",
+            "description": {
+              "content": "Create a new generative retrieval using server-sent events (SSE).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1alpha1",
+                "generative-retrievals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input\": {\n    \"conversation_id\": \"<string>\",\n    \"language_id\": \"<string>\",\n    \"query\": \"<string>\",\n    \"audio\": {\n      \"audio_encoding\": \"<string>\",\n      \"sample_rate_hertz\": \"<integer>\",\n      \"content\": \"<byte>\"\n    },\n    \"options\": {\n      \"audio_output_enabled\": \"<boolean>\",\n      \"max_outputs\": \"<integer>\",\n      \"context\": {}\n    },\n    \"filters\": {\n      \"collection_id\": \"<string>\",\n      \"knowledge_domain_id\": \"<string>\",\n      \"content_group_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"tags\": [\n        {\n          \"source\": \"TAG_SOURCE_TYPE_UNSPECIFIED\",\n          \"type\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"source\": \"TAG_SOURCE_TYPE_UNSPECIFIED\",\n          \"type\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"temperature\": \"<float>\",\n  \"max_context_chunk_num\": \"<integer>\",\n  \"min_context_chunk_score\": \"<float>\",\n  \"context_chunk_beam_delta_cutoff\": \"<float>\",\n  \"verified_answer_score_threshold\": \"<float>\",\n  \"out_of_domain_score_threshold\": \"<float>\",\n  \"out_of_domain_message\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "91d10e90-64d9-4f1d-b720-b5b209548c94",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "generative-retrievals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": {\n    \"conversation_id\": \"<string>\",\n    \"language_id\": \"<string>\",\n    \"query\": \"<string>\",\n    \"audio\": {\n      \"audio_encoding\": \"<string>\",\n      \"sample_rate_hertz\": \"<integer>\",\n      \"content\": \"<byte>\"\n    },\n    \"options\": {\n      \"audio_output_enabled\": \"<boolean>\",\n      \"max_outputs\": \"<integer>\",\n      \"context\": {}\n    },\n    \"filters\": {\n      \"collection_id\": \"<string>\",\n      \"knowledge_domain_id\": \"<string>\",\n      \"content_group_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"tags\": [\n        {\n          \"source\": \"TAG_SOURCE_TYPE_UNSPECIFIED\",\n          \"type\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"source\": \"TAG_SOURCE_TYPE_UNSPECIFIED\",\n          \"type\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"temperature\": \"<float>\",\n  \"max_context_chunk_num\": \"<integer>\",\n  \"min_context_chunk_score\": \"<float>\",\n  \"context_chunk_beam_delta_cutoff\": \"<float>\",\n  \"verified_answer_score_threshold\": \"<float>\",\n  \"out_of_domain_score_threshold\": \"<float>\",\n  \"out_of_domain_message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1953-06-16T18:26:13.404Z\",\n    \"update_time\": \"2009-03-31T02:23:30.766Z\",\n    \"response_time_millis\": 1804\n  },\n  \"state\": \"UNSPECIFIED\",\n  \"input_text\": \"string\",\n  \"retrieval_data\": {\n    \"user_id\": \"string\",\n    \"conversation_id\": \"string\",\n    \"retrieval_id\": \"string\",\n    \"collection_id\": \"string\",\n    \"knowledge_domain_id\": \"string\",\n    \"normalized_input\": {\n      \"normalized_input_id\": \"string\",\n      \"query\": \"string\",\n      \"understood_tags\": [\n        {\n          \"source\": \"TAG_SOURCE_TYPE_UNSPECIFIED\",\n          \"type\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"source\": \"TAG_SOURCE_TYPE_UNSPECIFIED\",\n          \"type\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    \"suggested_query\": [\n      \"string\",\n      \"string\"\n    ],\n    \"outputs\": [\n      {\n        \"id\": \"string\",\n        \"answer_snippet\": \"string\",\n        \"final_query\": \"string\",\n        \"context_chunk\": \"string\",\n        \"context_chunk_start_page\": 25,\n        \"context_chunk_end_page\": 7327,\n        \"context_chunk_bbox\": [\n          {\n            \"x1\": 5484.3732997556845,\n            \"y1\": 4869.996762070452,\n            \"x2\": 3051.020637571764,\n            \"y2\": 477.937307708336,\n            \"page_number\": 1086,\n            \"page_width\": 8889.236539322208,\n            \"page_height\": 6475.9694643082385\n          },\n          {\n            \"x1\": 9633.725937873163,\n            \"y1\": 5020.8416364366985,\n            \"x2\": 2709.627537188447,\n            \"y2\": 6290.931151795904,\n            \"page_number\": 3617,\n            \"page_width\": 3493.4751754661397,\n            \"page_height\": 8239.915465184775\n          }\n        ],\n        \"score\": 9015.778571117144,\n        \"answer_snippet_score\": 2637.809324327002,\n        \"answer_snippet_start_index\": 8509,\n        \"answer_snippet_end_index\": 2592,\n        \"answer_snippet_bbox\": [\n          {\n            \"x1\": 6926.010215319044,\n            \"y1\": 6914.698184403461,\n            \"x2\": 775.2084352998301,\n            \"y2\": 4362.685535277819,\n            \"page_number\": 5000,\n            \"page_width\": 3049.109223039156,\n            \"page_height\": 4053.0776840654426\n          },\n          {\n            \"x1\": 1531.5646948317153,\n            \"y1\": 3188.921217013654,\n            \"x2\": 5492.704945514255,\n            \"y2\": 2195.5425133587582,\n            \"page_number\": 1240,\n            \"page_width\": 874.1624369526957,\n            \"page_height\": 6644.498187370274\n          }\n        ],\n        \"audio\": {\n          \"audio_output_id\": \"string\",\n          \"audio_encoding\": \"UNSPECIFIED\",\n          \"sample_rate_hertz\": 9559,\n          \"content\": \"rIzsbeC2bEdAyMnVD3Q8DKBK\"\n        },\n        \"confidence_label\": \"string\",\n        \"tags\": [\n          {\n            \"source\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"source\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"answer_type\": \"UNSPECIFIED\",\n        \"verified_answer_id\": \"string\",\n        \"video_time_offset_seconds\": 8121,\n        \"content_group\": {\n          \"content_group_id\": \"string\",\n          \"display_name\": \"string\"\n        },\n        \"content_metadata\": {\n          \"content_id\": \"string\",\n          \"content_display_name\": \"string\",\n          \"content_source_uri\": \"string\",\n          \"content_origin_source_url\": \"string\",\n          \"content_create_time\": \"1955-12-22T06:05:13.276Z\",\n          \"content_update_time\": \"1954-05-11T10:56:10.504Z\",\n          \"image_uri\": \"string\",\n          \"hyperlinks\": [\n            \"string\",\n            \"string\"\n          ],\n          \"author\": \"string\",\n          \"author_id\": \"string\",\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"mime_type\": \"string\",\n          \"additional_metadata\": {\n            \"key_0\": {},\n            \"key_1\": {}\n          }\n        },\n        \"context\": {\n          \"augmentation\": {}\n        },\n        \"answer_html\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"answer_snippet\": \"string\",\n        \"final_query\": \"string\",\n        \"context_chunk\": \"string\",\n        \"context_chunk_start_page\": 7844,\n        \"context_chunk_end_page\": 9514,\n        \"context_chunk_bbox\": [\n          {\n            \"x1\": 1299.3784725806345,\n            \"y1\": 8108.550323531375,\n            \"x2\": 8235.172524736483,\n            \"y2\": 9021.20288694653,\n            \"page_number\": 8408,\n            \"page_width\": 1900.5711617518862,\n            \"page_height\": 1426.7950855251931\n          },\n          {\n            \"x1\": 3205.6188250655405,\n            \"y1\": 9270.757167479172,\n            \"x2\": 140.62079465661736,\n            \"y2\": 6975.1250907151925,\n            \"page_number\": 5280,\n            \"page_width\": 7430.017068332825,\n            \"page_height\": 6386.228420196687\n          }\n        ],\n        \"score\": 7365.580100294848,\n        \"answer_snippet_score\": 4310.994269782138,\n        \"answer_snippet_start_index\": 7771,\n        \"answer_snippet_end_index\": 4620,\n        \"answer_snippet_bbox\": [\n          {\n            \"x1\": 3387.040386037934,\n            \"y1\": 6478.260765718454,\n            \"x2\": 503.3749317702541,\n            \"y2\": 2989.334394380094,\n            \"page_number\": 5144,\n            \"page_width\": 8772.190152867095,\n            \"page_height\": 4700.669961008525\n          },\n          {\n            \"x1\": 8328.209168029985,\n            \"y1\": 322.51710424803014,\n            \"x2\": 3699.763991930478,\n            \"y2\": 5947.918271904554,\n            \"page_number\": 1317,\n            \"page_width\": 3465.5782846631246,\n            \"page_height\": 3427.6626509444286\n          }\n        ],\n        \"audio\": {\n          \"audio_output_id\": \"string\",\n          \"audio_encoding\": \"UNSPECIFIED\",\n          \"sample_rate_hertz\": 7020,\n          \"content\": \"MB8bijce4qjAfI5Ot1zsCsDN3gWY/7MlHl==\"\n        },\n        \"confidence_label\": \"string\",\n        \"tags\": [\n          {\n            \"source\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"source\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ],\n        \"answer_type\": \"UNSPECIFIED\",\n        \"verified_answer_id\": \"string\",\n        \"video_time_offset_seconds\": 3643,\n        \"content_group\": {\n          \"content_group_id\": \"string\",\n          \"display_name\": \"string\"\n        },\n        \"content_metadata\": {\n          \"content_id\": \"string\",\n          \"content_display_name\": \"string\",\n          \"content_source_uri\": \"string\",\n          \"content_origin_source_url\": \"string\",\n          \"content_create_time\": \"2005-05-12T23:12:17.680Z\",\n          \"content_update_time\": \"1991-07-25T19:14:37.753Z\",\n          \"image_uri\": \"string\",\n          \"hyperlinks\": [\n            \"string\",\n            \"string\"\n          ],\n          \"author\": \"string\",\n          \"author_id\": \"string\",\n          \"title\": \"string\",\n          \"description\": \"string\",\n          \"mime_type\": \"string\",\n          \"additional_metadata\": {\n            \"key_0\": {},\n            \"key_1\": {}\n          }\n        },\n        \"context\": {\n          \"augmentation\": {}\n        },\n        \"answer_html\": \"string\"\n      }\n    ]\n  },\n  \"conversation_data\": {\n    \"data\": {\n      \"text\": \"string\",\n      \"reference\": [\n        {\n          \"text_index_start\": 7680,\n          \"text_index_end\": 8206,\n          \"retrieval_output_index\": 493\n        },\n        {\n          \"text_index_start\": 6361,\n          \"text_index_end\": 9350,\n          \"retrieval_output_index\": 6386\n        }\n      ],\n      \"generative_retrieval_id\": \"string\",\n      \"knowledge_domain_id\": \"string\",\n      \"retrieval_id\": \"string\",\n      \"collection_id\": \"string\"\n    },\n    \"conversation_id\": \"string\"\n  },\n  \"error\": {\n    \"code\": 5785,\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"type_url\": \"string\",\n        \"value\": \"ZfR=\"\n      },\n      {\n        \"type_url\": \"string\",\n        \"value\": \"luf38b8a1Y+IlueBwW6bVWk0K2H2Y4nt24w6xKe=\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3673225b-eb07-40c0-a74a-2366ab16d8d1",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "generative-retrievals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": {\n    \"conversation_id\": \"<string>\",\n    \"language_id\": \"<string>\",\n    \"query\": \"<string>\",\n    \"audio\": {\n      \"audio_encoding\": \"<string>\",\n      \"sample_rate_hertz\": \"<integer>\",\n      \"content\": \"<byte>\"\n    },\n    \"options\": {\n      \"audio_output_enabled\": \"<boolean>\",\n      \"max_outputs\": \"<integer>\",\n      \"context\": {}\n    },\n    \"filters\": {\n      \"collection_id\": \"<string>\",\n      \"knowledge_domain_id\": \"<string>\",\n      \"content_group_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"tags\": [\n        {\n          \"source\": \"TAG_SOURCE_TYPE_UNSPECIFIED\",\n          \"type\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"source\": \"TAG_SOURCE_TYPE_UNSPECIFIED\",\n          \"type\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  },\n  \"temperature\": \"<float>\",\n  \"max_context_chunk_num\": \"<integer>\",\n  \"min_context_chunk_score\": \"<float>\",\n  \"context_chunk_beam_delta_cutoff\": \"<float>\",\n  \"verified_answer_score_threshold\": \"<float>\",\n  \"out_of_domain_score_threshold\": \"<float>\",\n  \"out_of_domain_message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5014,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"fBOeekOchuqZDE==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"EtaIPdipDrSQSs30pbve1I==\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd078666-6683-4f52-8ba4-b0d17fa1c640",
+          "name": "Get Generative Retrieval",
+          "request": {
+            "name": "Get Generative Retrieval",
+            "description": {
+              "content": "Return a generative retrieval answer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1alpha1",
+                "generative-retrievals",
+                ":generative_retrieval_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "knowledge_domain_id",
+                  "value": "<string>",
+                  "description": "Unique identifier of the knowledge domain that supplied the generative exchange response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "generative_retrieval_id",
+                  "description": "(Required) Unique identifier for the generative response object."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a583e8e7-af5d-4a48-8fb7-4044b35f538b",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "generative-retrievals",
+                    ":generative_retrieval_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "knowledge_domain_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "generative_retrieval_id",
+                      "description": "(Required) Unique identifier for the generative response object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1966-09-28T00:19:01.841Z\",\n    \"update_time\": \"1947-11-23T13:38:03.835Z\",\n    \"response_time_millis\": 5923\n  },\n  \"data\": {\n    \"text\": \"string\",\n    \"reference\": [\n      {\n        \"text_index_start\": 625,\n        \"text_index_end\": 5717,\n        \"retrieval_output_index\": 7673\n      },\n      {\n        \"text_index_start\": 714,\n        \"text_index_end\": 7577,\n        \"retrieval_output_index\": 1893\n      }\n    ],\n    \"generative_retrieval_id\": \"string\",\n    \"knowledge_domain_id\": \"string\",\n    \"retrieval_id\": \"string\",\n    \"collection_id\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4e58f4d-8f38-4977-b325-7507d76a05dd",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "generative-retrievals",
+                    ":generative_retrieval_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "knowledge_domain_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "generative_retrieval_id",
+                      "description": "(Required) Unique identifier for the generative response object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5014,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"fBOeekOchuqZDE==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"EtaIPdipDrSQSs30pbve1I==\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b7dd7e28-5837-4d43-9020-e59b7f84de64",
+    "name": "Retrieval Generative Retrieval API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: Pryon Product Support\n Email: support@pryon.zendesk.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,219 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "pryon/api/ext/connector/v1alpha1/connector.proto",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ConnectorServiceExternal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Content Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/connector/v1alpha1/connectors/:connector_id/content-data:download",
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the connector associated with the request."
+              },
+              {
+                "name": "range_header.range_start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "range_header.range_end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "range_header.total_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "opaque_data",
+                "value": "",
+                "type": "query",
+                "description": "Hidden string with additional information the PULL API uses to retrieve the content data and source location from the underlying content; for example, drinve_id + item_id in SharePoint."
+              },
+              {
+                "name": "source_location",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the content source."
+              }
+            ]
+          },
+          "docs": "Use custom methods to get ContentData to download in multiple parts."
+        },
+        {
+          "info": {
+            "name": "Get Content Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/connector/v1alpha1/connectors/:connector_id/content/metadata",
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the connector associated with the metadata request."
+              },
+              {
+                "name": "opaque_data",
+                "value": "",
+                "type": "query",
+                "description": "Hidden string with additional information the PULL API uses to retrieve the content data and source location from the underlying content; for example, drinve_id + item_id in SharePoint."
+              },
+              {
+                "name": "source_location",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the content source."
+              },
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the content."
+              }
+            ]
+          },
+          "docs": "Get Content Metadata"
+        },
+        {
+          "info": {
+            "name": "Get Read Permission for Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/connector/v1alpha1/connectors/:connector_id/content/read-permission",
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the connector associated with the request."
+              },
+              {
+                "name": "opaque_data",
+                "value": "",
+                "type": "query",
+                "description": "Hidden string with additonal information the PULL API uses to retrieve the content data and source location from the underlying content; for example, drinve_id + item_id in SharePoint."
+              },
+              {
+                "name": "source_location",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the content source."
+              },
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the content."
+              }
+            ]
+          },
+          "docs": "Get Read Permission for Content"
+        },
+        {
+          "info": {
+            "name": "Discover Content Source",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/connector/v1alpha1/connectors/:connector_id/contents:pull",
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the connector associated with the request."
+              },
+              {
+                "name": "seed_source_location",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the content."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size is 100; default is 100."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "Hidden token that determines the starting point for the next set of results; if not specified, the server fetches from the first record; if there are multiple pages, specify this value in pages 2-N using the value of next_page_token."
+              }
+            ]
+          },
+          "docs": "Discover Content Source"
+        },
+        {
+          "info": {
+            "name": "List Connector Group Permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/connector/v1alpha1/connectors/:connector_id/group-permission/members",
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the connector associated with the request."
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the group."
+              }
+            ]
+          },
+          "docs": "List Connector Group Permissions"
+        },
+        {
+          "info": {
+            "name": "List Connector Group Permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/connector/v1alpha1/connectors/:connector_id/group-permissions",
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the connector associated with the request."
+              }
+            ]
+          },
+          "docs": "List Connector Group Permissions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

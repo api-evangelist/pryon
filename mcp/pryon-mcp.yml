@@ -2,753 +2,765 @@ generated: '2026-08-02'
 method: derived
 status: candidate
 source: openapi/ (22 harvested Pryon OpenAPI documents, 276 operations / 184 unique operationIds)
-searched: |
-  No official or third-party Pryon MCP server was found as of 2026-08-02. Probed docs.pryon.com
+searched: 'No official or third-party Pryon MCP server was found as of 2026-08-02. Probed docs.pryon.com
+
   (llms.txt index, all Guides/API Reference/Recipes pages), www.pryon.com, github.com/Pryon-AI
+
   (0 public repositories), npm, PyPI and web search. api.pryon.net/mcp returns 404.
-  Pryon's Q1 2026 release notes do document tool calling and structured outputs on the Pryon
-  Generative node and a 'Pryon Memory Services' Symphony node that exposes the public Services
+
+  Pryon''s Q1 2026 release notes do document tool calling and structured outputs on the Pryon
+
+  Generative node and a ''Pryon Memory Services'' Symphony node that exposes the public Services
+
   API endpoints inside orchestrations — an adjacent capability, not an MCP server.
+
+  '
 server:
   name: pryon
   transport: http
-  url: null      # no published MCP endpoint
+  url: null
   auth: OAuth2 client-credentials bearer token (see authentication/pryon-authentication.yml)
 tool_count: 184
 tools:
 - name: knowledge_collection_create_collection_with_sources
-  description: "Create Knowledge Collections"
+  description: Create Knowledge Collections
   category: KnowledgeCollectionService
   source_operation: openapi/pryon-knowledge-collections-may2025-openapi.json#KnowledgeCollectionService_CreateCollectionWithSources
 - name: knowledge_collection_delete_collection
-  description: "DeleteCollection"
+  description: DeleteCollection
   category: KnowledgeCollectionService
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeCollectionService_DeleteCollection
 - name: knowledge_collection_get_collection
-  description: "GetCollection"
+  description: GetCollection
   category: KnowledgeCollectionService
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeCollectionService_GetCollection
 - name: knowledge_collection_get_collection_active_domain
-  description: "GetCollectionActiveDomain"
+  description: GetCollectionActiveDomain
   category: KnowledgeCollectionService
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeCollectionService_GetCollectionActiveDomain
 - name: knowledge_collection_get_collection_domain
-  description: "Get Knowledge Collections"
+  description: Get Knowledge Collections
   category: KnowledgeCollectionService
   source_operation: openapi/pryon-knowledge-collections-may2025-openapi.json#KnowledgeCollectionService_GetCollectionDomain
 - name: knowledge_collection_list_active_domains
-  description: "ListActiveDomains"
+  description: ListActiveDomains
   category: KnowledgeCollectionService
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeCollectionService_ListActiveDomains
 - name: knowledge_collection_list_collections
-  description: "ListCollections"
+  description: ListCollections
   category: KnowledgeCollectionService
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeCollectionService_ListCollections
 - name: knowledge_collection_list_default_active_domains
-  description: "ListDefaultActiveDomains"
+  description: ListDefaultActiveDomains
   category: KnowledgeCollectionService
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeCollectionService_ListDefaultActiveDomains
 - name: knowledge_collection_restore_collection_active_domain
-  description: "RestoreCollectionActiveDomain"
+  description: RestoreCollectionActiveDomain
   category: KnowledgeCollectionService
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeCollectionService_RestoreCollectionActiveDomain
 - name: knowledge_collection_update_collection
-  description: "UpdateCollection"
+  description: UpdateCollection
   category: KnowledgeCollectionService
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeCollectionService_UpdateCollection
 - name: knowledge_collection_update_collection_active_domain
-  description: "UpdateCollectionActiveDomain"
+  description: UpdateCollectionActiveDomain
   category: KnowledgeCollectionService
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeCollectionService_UpdateCollectionActiveDomain
 - name: content_cascade_delete_content
-  description: "CascadeDeleteContent"
+  description: CascadeDeleteContent
   category: ContentService
   source_operation: openapi/pryon-admin-openapi.json#ContentService_CascadeDeleteContent
 - name: content_cascade_delete_content_group
-  description: "CascadeDeleteContentGroup"
+  description: CascadeDeleteContentGroup
   category: ContentService
   source_operation: openapi/pryon-admin-openapi.json#ContentService_CascadeDeleteContentGroup
 - name: content_create_content
-  description: "CreateContent"
+  description: CreateContent
   category: ContentService
   source_operation: openapi/pryon-admin-openapi.json#ContentService_CreateContent
 - name: content_create_content_group
-  description: "CreateContentGroup"
+  description: CreateContentGroup
   category: ContentService
   source_operation: openapi/pryon-admin-openapi.json#ContentService_CreateContentGroup
 - name: content_create_content_group_content
-  description: "CreateContentGroupContent"
+  description: CreateContentGroupContent
   category: ContentService
   source_operation: openapi/pryon-admin-openapi.json#ContentService_CreateContentGroupContent
 - name: content_delete_content
-  description: "DeleteContent"
+  description: DeleteContent
   category: ContentService
   source_operation: openapi/pryon-admin-openapi.json#ContentService_DeleteContent
 - name: content_delete_content_group
-  description: "DeleteContentGroup"
+  description: DeleteContentGroup
   category: ContentService
   source_operation: openapi/pryon-admin-openapi.json#ContentService_DeleteContentGroup
 - name: content_delete_content_group_content
-  description: "DeleteContentGroupContent"
+  description: DeleteContentGroupContent
   category: ContentService
   source_operation: openapi/pryon-admin-openapi.json#ContentService_DeleteContentGroupContent
 - name: content_delete_content_group_contents
-  description: "DeleteContentGroupContents"
+  description: DeleteContentGroupContents
   category: ContentService
   source_operation: openapi/pryon-admin-openapi.json#ContentService_DeleteContentGroupContents
 - name: content_get_content
-  description: "GetContent"
+  description: GetContent
   category: ContentService
   source_operation: openapi/pryon-admin-openapi.json#ContentService_GetContent
 - name: content_get_content_group
-  description: "GetContentGroup"
+  description: GetContentGroup
   category: ContentService
   source_operation: openapi/pryon-admin-openapi.json#ContentService_GetContentGroup
 - name: content_get_content_group_content
-  description: "GetContentGroupContent"
+  description: GetContentGroupContent
   category: ContentService
   source_operation: openapi/pryon-admin-openapi.json#ContentService_GetContentGroupContent
 - name: content_get_content_image
-  description: "GetContentImage"
+  description: GetContentImage
   category: ContentService
   source_operation: openapi/pryon-admin-openapi.json#ContentService_GetContentImage
 - name: content_get_summary
-  description: "GetSummary"
+  description: GetSummary
   category: ContentService
   source_operation: openapi/pryon-admin-openapi.json#ContentService_GetSummary
 - name: content_list_content_group_contents
-  description: "ListContentGroupContents"
+  description: ListContentGroupContents
   category: ContentService
   source_operation: openapi/pryon-admin-openapi.json#ContentService_ListContentGroupContents
 - name: content_list_content_groups
-  description: "ListContentGroups"
+  description: ListContentGroups
   category: ContentService
   source_operation: openapi/pryon-admin-openapi.json#ContentService_ListContentGroups
 - name: content_list_content_subjects
-  description: "ListContentSubjects"
+  description: ListContentSubjects
   category: ContentService
   source_operation: openapi/pryon-admin-openapi.json#ContentService_ListContentSubjects
 - name: content_list_contents
-  description: "ListContents"
+  description: ListContents
   category: ContentService
   source_operation: openapi/pryon-admin-openapi.json#ContentService_ListContents
 - name: content_update_content_group
-  description: "UpdateContentGroup"
+  description: UpdateContentGroup
   category: ContentService
   source_operation: openapi/pryon-admin-openapi.json#ContentService_UpdateContentGroup
 - name: content_get_content_metadata
-  description: "Get Content Metadata"
+  description: Get Content Metadata
   category: Content Service
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#ContentService_GetContentMetadata
 - name: content_list_processed_content_extracts
-  description: "List Processed Content Extracts"
+  description: List Processed Content Extracts
   category: Content Service
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#ContentService_ListProcessedContentExtracts
 - name: content_list_retrieval_content_extracts
-  description: "List Retrieval Content Extracts"
+  description: List Retrieval Content Extracts
   category: Content Service
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#ContentService_ListRetrievalContentExtracts
 - name: retrieval_create_retrieval
-  description: "Create Retrieval"
+  description: Create Retrieval
   category: Retrieval
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#Retrieval_CreateRetrieval
 - name: retrieval_create_ws_retrieval
-  description: "Create Ws Retrieval"
+  description: Create Ws Retrieval
   category: Retrieval
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#Retrieval_CreateWsRetrieval
 - name: retrieval_get_retrieval
-  description: "Get Retrieval"
+  description: Get Retrieval
   category: Retrieval
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#Retrieval_GetRetrieval
 - name: retrieval_get_retrieval_content_image
-  description: "Get Retrieval Content Image"
+  description: Get Retrieval Content Image
   category: Retrieval
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#Retrieval_GetRetrievalContentImage
 - name: generative_retrieval_create_generative_retrieval_s_s_e
-  description: "Create Generative Retrieval SSE"
+  description: Create Generative Retrieval SSE
   category: GenerativeRetrieval
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#GenerativeRetrieval_CreateGenerativeRetrievalSSE
 - name: generative_retrieval_get_generative_retrieval
-  description: "Get Generative Retrieval"
+  description: Get Generative Retrieval
   category: GenerativeRetrieval
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#GenerativeRetrieval_GetGenerativeRetrieval
 - name: exchange_create_exchange
-  description: "CreateExchange"
+  description: CreateExchange
   category: Exchange
   source_operation: openapi/pryon-admin-openapi.json#Exchange_CreateExchange
 - name: exchange_create_ws_exchange
-  description: "CreateWsExchange"
+  description: CreateWsExchange
   category: Exchange
   source_operation: openapi/pryon-admin-openapi.json#Exchange_CreateWsExchange
 - name: exchange_get_exchange
-  description: "GetExchange"
+  description: GetExchange
   category: Exchange
   source_operation: openapi/pryon-admin-openapi.json#Exchange_GetExchange
 - name: generative_exchange_create_generative_exchange
-  description: "CreateGenerativeExchange"
+  description: CreateGenerativeExchange
   category: GenerativeExchange
   source_operation: openapi/pryon-admin-openapi.json#GenerativeExchange_CreateGenerativeExchange
 - name: generative_exchange_create_generative_exchange_s_s_e
-  description: "CreateGenerativeExchangeSSE"
+  description: CreateGenerativeExchangeSSE
   category: GenerativeExchange
   source_operation: openapi/pryon-admin-openapi.json#GenerativeExchange_CreateGenerativeExchangeSSE
 - name: generative_exchange_get_generative_exchange
-  description: "GetGenerativeExchange"
+  description: GetGenerativeExchange
   category: GenerativeExchange
   source_operation: openapi/pryon-admin-openapi.json#GenerativeExchange_GetGenerativeExchange
 - name: generative_answer_summarization
-  description: "Generative_AnswerSummarization"
+  description: Generative_AnswerSummarization
   category: Generative
   source_operation: openapi/pryon-chat-completion-only-generative-openapi.json#Generative_AnswerSummarization
 - name: generative_complete_query
-  description: "Generative_CompleteQuery"
+  description: Generative_CompleteQuery
   category: Generative
   source_operation: openapi/pryon-chat-completion-only-generative-openapi.json#Generative_CompleteQuery
 - name: generative_create_chat_completions
-  description: "Chat Completions"
+  description: Chat Completions
   category: Generative
   source_operation: openapi/pryon-chat-completion-only-generative-openapi.json#Generative_CreateChatCompletions
 - name: generative_guardrail_query
-  description: "Generative_GuardrailQuery"
+  description: Generative_GuardrailQuery
   category: Generative
   source_operation: openapi/pryon-chat-completion-only-generative-openapi.json#Generative_GuardrailQuery
 - name: generative_list_chat_completions_models
-  description: "Generative_ListChatCompletionsModels"
+  description: Generative_ListChatCompletionsModels
   category: Generative
   source_operation: openapi/pryon-chat-completion-only-generative-openapi.json#Generative_ListChatCompletionsModels
 - name: generative_route_query
-  description: "Generative_RouteQuery"
+  description: Generative_RouteQuery
   category: Generative
   source_operation: openapi/pryon-chat-completion-only-generative-openapi.json#Generative_RouteQuery
 - name: user_defined_metadata_create_user_defined_metadata_field
-  description: "Create User-Defined Metadata Fields"
+  description: Create User-Defined Metadata Fields
   category: UserDefinedMetadata
   source_operation: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_CreateUserDefinedMetadataField
 - name: user_defined_metadata_delete_user_defined_metadata_field
-  description: "Delete User-Defined Metadata Fields"
+  description: Delete User-Defined Metadata Fields
   category: UserDefinedMetadata
   source_operation: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_DeleteUserDefinedMetadataField
 - name: user_defined_metadata_delete_user_defined_metadata_field_value
-  description: "Delete User-Defined Metadata Field Values"
+  description: Delete User-Defined Metadata Field Values
   category: UserDefinedMetadata
   source_operation: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_DeleteUserDefinedMetadataFieldValue
 - name: user_defined_metadata_get_user_defined_metadata_field
-  description: "Get User-Defined Metadata Fields"
+  description: Get User-Defined Metadata Fields
   category: UserDefinedMetadata
   source_operation: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_GetUserDefinedMetadataField
 - name: user_defined_metadata_get_user_defined_metadata_field_value
-  description: "Get User-Defined Metadata Field Values"
+  description: Get User-Defined Metadata Field Values
   category: UserDefinedMetadata
   source_operation: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_GetUserDefinedMetadataFieldValue
 - name: user_defined_metadata_list_collections_by_metadata_field
-  description: "List Org IDs using Metadata Field"
+  description: List Org IDs using Metadata Field
   category: UserDefinedMetadata
   source_operation: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_ListCollectionsByMetadataField
 - name: user_defined_metadata_list_user_defined_metadata_field_values
-  description: "List User-Defined Metadata Field Values"
+  description: List User-Defined Metadata Field Values
   category: UserDefinedMetadata
   source_operation: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_ListUserDefinedMetadataFieldValues
 - name: user_defined_metadata_list_user_defined_metadata_fields
-  description: "List User-Defined Metadata Fields"
+  description: List User-Defined Metadata Fields
   category: UserDefinedMetadata
   source_operation: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_ListUserDefinedMetadataFields
 - name: user_defined_metadata_update_user_defined_metadata_field
-  description: "Update User-Defined Metadata Fields"
+  description: Update User-Defined Metadata Fields
   category: UserDefinedMetadata
   source_operation: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_UpdateUserDefinedMetadataField
 - name: user_defined_metadata_update_user_defined_metadata_field_value
-  description: "Update User-Defined Metadata Field Values"
+  description: Update User-Defined Metadata Field Values
   category: UserDefinedMetadata
   source_operation: openapi/pryon-user-defined-metadata-may2025-openapi.json#UserDefinedMetadata_UpdateUserDefinedMetadataFieldValue
 - name: user_defined_metadata_create_user_defined_metadata_field_values
-  description: "Create User-Defined Metadata Field Values"
+  description: Create User-Defined Metadata Field Values
   category: UserDefinedMetadata
   source_operation: openapi/pryon-user-defined-metadata-may2025-openapi.json#User_defined_metadata_create_user_defined_metadata_field_values
 - name: analytics_list_conversation_counts
-  description: "ListConversationCounts"
+  description: ListConversationCounts
   category: Analytics
   source_operation: openapi/pryon-admin-openapi.json#Analytics_ListConversationCounts
 - name: analytics_list_conversation_size_categories
-  description: "ListConversationSizeCategories"
+  description: ListConversationSizeCategories
   category: Analytics
   source_operation: openapi/pryon-admin-openapi.json#Analytics_ListConversationSizeCategories
 - name: analytics_list_exchange_confidence_categories
-  description: "ListExchangeConfidenceCategories"
+  description: ListExchangeConfidenceCategories
   category: Analytics
   source_operation: openapi/pryon-admin-openapi.json#Analytics_ListExchangeConfidenceCategories
 - name: analytics_list_exchange_confidence_scores
-  description: "ListExchangeConfidenceScores"
+  description: ListExchangeConfidenceScores
   category: Analytics
   source_operation: openapi/pryon-admin-openapi.json#Analytics_ListExchangeConfidenceScores
 - name: analytics_list_exchange_counts
-  description: "ListExchangeCounts"
+  description: ListExchangeCounts
   category: Analytics
   source_operation: openapi/pryon-admin-openapi.json#Analytics_ListExchangeCounts
 - name: analytics_list_exchange_rating_categories
-  description: "ListExchangeRatingCategories"
+  description: ListExchangeRatingCategories
   category: Analytics
   source_operation: openapi/pryon-admin-openapi.json#Analytics_ListExchangeRatingCategories
 - name: analytics_list_ingest_counts
-  description: "ListIngestCounts"
+  description: ListIngestCounts
   category: Analytics
   source_operation: openapi/pryon-admin-openapi.json#Analytics_ListIngestCounts
 - name: analytics_list_sync_counts
-  description: "ListSyncCounts"
+  description: ListSyncCounts
   category: Analytics
   source_operation: openapi/pryon-admin-openapi.json#Analytics_ListSyncCounts
 - name: subjects_get_subject
-  description: "GetSubject"
+  description: GetSubject
   category: Subjects
   source_operation: openapi/pryon-admin-openapi.json#Subjects_GetSubject
 - name: subjects_get_subject_category
-  description: "GetSubjectCategory"
+  description: GetSubjectCategory
   category: Subjects
   source_operation: openapi/pryon-admin-openapi.json#Subjects_GetSubjectCategory
 - name: subjects_list_subject_categories
-  description: "ListSubjectCategories"
+  description: ListSubjectCategories
   category: Subjects
   source_operation: openapi/pryon-admin-openapi.json#Subjects_ListSubjectCategories
 - name: subjects_list_subject_relationship_types
-  description: "ListSubjectRelationshipTypes"
+  description: ListSubjectRelationshipTypes
   category: Subjects
   source_operation: openapi/pryon-admin-openapi.json#Subjects_ListSubjectRelationshipTypes
 - name: subjects_list_subject_relationships
-  description: "ListSubjectRelationships"
+  description: ListSubjectRelationships
   category: Subjects
   source_operation: openapi/pryon-admin-openapi.json#Subjects_ListSubjectRelationships
 - name: subjects_list_subjects
-  description: "ListSubjects"
+  description: ListSubjects
   category: Subjects
   source_operation: openapi/pryon-admin-openapi.json#Subjects_ListSubjects
 - name: knowledge_domain_create_domain_content_group
-  description: "CreateDomainContentGroup"
+  description: CreateDomainContentGroup
   category: KnowledgeDomain
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeDomain_CreateDomainContentGroup
 - name: knowledge_domain_create_domain_next_version_with_sources
-  description: "CreateDomainNextVersionWithSources"
+  description: CreateDomainNextVersionWithSources
   category: KnowledgeDomain
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeDomain_CreateDomainNextVersionWithSources
 - name: knowledge_domain_create_domain_with_sources
-  description: "CreateDomainWithSources"
+  description: CreateDomainWithSources
   category: KnowledgeDomain
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeDomain_CreateDomainWithSources
 - name: knowledge_domain_delete_domain_content_group
-  description: "DeleteDomainContentGroup"
+  description: DeleteDomainContentGroup
   category: KnowledgeDomain
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeDomain_DeleteDomainContentGroup
 - name: knowledge_domain_delete_domain_content_groups
-  description: "DeleteDomainContentGroups"
+  description: DeleteDomainContentGroups
   category: KnowledgeDomain
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeDomain_DeleteDomainContentGroups
 - name: knowledge_domain_get_domain
-  description: "GetDomain"
+  description: GetDomain
   category: KnowledgeDomain
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeDomain_GetDomain
 - name: knowledge_domain_get_domain_content_group
-  description: "GetDomainContentGroup"
+  description: GetDomainContentGroup
   category: KnowledgeDomain
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeDomain_GetDomainContentGroup
 - name: knowledge_domain_get_domain_content_group_by_content
-  description: "GetDomainContentGroupByContent"
+  description: GetDomainContentGroupByContent
   category: KnowledgeDomain
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeDomain_GetDomainContentGroupByContent
 - name: knowledge_domain_list_content_group_subjects
-  description: "ListContentGroupSubjects"
+  description: ListContentGroupSubjects
   category: KnowledgeDomain
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeDomain_ListContentGroupSubjects
 - name: knowledge_domain_list_default_domains
-  description: "ListDefaultDomains"
+  description: ListDefaultDomains
   category: KnowledgeDomain
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeDomain_ListDefaultDomains
 - name: knowledge_domain_list_domain_content_groups
-  description: "ListDomainContentGroups"
+  description: ListDomainContentGroups
   category: KnowledgeDomain
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeDomain_ListDomainContentGroups
 - name: knowledge_domain_list_domain_subjects
-  description: "ListDomainSubjects"
+  description: ListDomainSubjects
   category: KnowledgeDomain
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeDomain_ListDomainSubjects
 - name: knowledge_domain_list_domain_tags
-  description: "ListDomainTags"
+  description: ListDomainTags
   category: KnowledgeDomain
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeDomain_ListDomainTags
 - name: knowledge_domain_list_domains
-  description: "ListDomains"
+  description: ListDomains
   category: KnowledgeDomain
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeDomain_ListDomains
 - name: knowledge_domain_update_domain
-  description: "UpdateDomain"
+  description: UpdateDomain
   category: KnowledgeDomain
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeDomain_UpdateDomain
 - name: knowledge_domain_update_domain_content_groups_content_permission
-  description: "UpdateDomainContentGroupsContentPermission"
+  description: UpdateDomainContentGroupsContentPermission
   category: KnowledgeDomain
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeDomain_UpdateDomainContentGroupsContentPermission
 - name: knowledge_domain_update_domain_content_groups_group_permission
-  description: "UpdateDomainContentGroupsGroupPermission"
+  description: UpdateDomainContentGroupsGroupPermission
   category: KnowledgeDomain
   source_operation: openapi/pryon-admin-openapi.json#KnowledgeDomain_UpdateDomainContentGroupsGroupPermission
 - name: feedback_create_approval
-  description: "CreateApproval"
+  description: CreateApproval
   category: Feedback
   source_operation: openapi/pryon-admin-openapi.json#Feedback_CreateApproval
 - name: feedback_create_exchange_rating
-  description: "CreateExchangeRating"
+  description: CreateExchangeRating
   category: Feedback
   source_operation: openapi/pryon-admin-openapi.json#Feedback_CreateExchangeRating
 - name: feedback_delete_approval
-  description: "DeleteApproval"
+  description: DeleteApproval
   category: Feedback
   source_operation: openapi/pryon-admin-openapi.json#Feedback_DeleteApproval
 - name: feedback_delete_exchange_rating
-  description: "DeleteExchangeRating"
+  description: DeleteExchangeRating
   category: Feedback
   source_operation: openapi/pryon-admin-openapi.json#Feedback_DeleteExchangeRating
 - name: feedback_get_approval
-  description: "GetApproval"
+  description: GetApproval
   category: Feedback
   source_operation: openapi/pryon-admin-openapi.json#Feedback_GetApproval
 - name: feedback_get_exchange_rating
-  description: "GetExchangeRating"
+  description: GetExchangeRating
   category: Feedback
   source_operation: openapi/pryon-admin-openapi.json#Feedback_GetExchangeRating
 - name: feedback_get_exchange_rating_review
-  description: "GetExchangeRatingReview"
+  description: GetExchangeRatingReview
   category: Feedback
   source_operation: openapi/pryon-admin-openapi.json#Feedback_GetExchangeRatingReview
 - name: feedback_list_approvals
-  description: "ListApprovals"
+  description: ListApprovals
   category: Feedback
   source_operation: openapi/pryon-admin-openapi.json#Feedback_ListApprovals
 - name: feedback_list_exchange_rating_reviews
-  description: "ListExchangeRatingReviews"
+  description: ListExchangeRatingReviews
   category: Feedback
   source_operation: openapi/pryon-admin-openapi.json#Feedback_ListExchangeRatingReviews
 - name: feedback_update_approval
-  description: "UpdateApproval"
+  description: UpdateApproval
   category: Feedback
   source_operation: openapi/pryon-admin-openapi.json#Feedback_UpdateApproval
 - name: feedback_update_exchange_rating
-  description: "UpdateExchangeRating"
+  description: UpdateExchangeRating
   category: Feedback
   source_operation: openapi/pryon-admin-openapi.json#Feedback_UpdateExchangeRating
 - name: feedback_update_exchange_rating_review
-  description: "UpdateExchangeRatingReview"
+  description: UpdateExchangeRatingReview
   category: Feedback
   source_operation: openapi/pryon-admin-openapi.json#Feedback_UpdateExchangeRatingReview
 - name: retrieval_feedback_create_retrieval_rating
-  description: "Create Retrieval Rating"
+  description: Create Retrieval Rating
   category: RetrievalFeedback
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_CreateRetrievalRating
 - name: retrieval_feedback_create_verified_answer
-  description: "Create Verified Answer"
+  description: Create Verified Answer
   category: RetrievalFeedback
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_CreateVerifiedAnswer
 - name: retrieval_feedback_delete_retrieval_rating
-  description: "Delete Retrieval Rating"
+  description: Delete Retrieval Rating
   category: RetrievalFeedback
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_DeleteRetrievalRating
 - name: retrieval_feedback_delete_verified_answer
-  description: "Delete Verified Answer"
+  description: Delete Verified Answer
   category: RetrievalFeedback
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_DeleteVerifiedAnswer
 - name: retrieval_feedback_get_retrieval_rating
-  description: "Get Retrieval Rating"
+  description: Get Retrieval Rating
   category: RetrievalFeedback
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_GetRetrievalRating
 - name: retrieval_feedback_get_retrieval_rating_review
-  description: "Get Retrieval Rating Review"
+  description: Get Retrieval Rating Review
   category: RetrievalFeedback
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_GetRetrievalRatingReview
 - name: retrieval_feedback_get_verified_answer
-  description: "Get Verified Answer"
+  description: Get Verified Answer
   category: RetrievalFeedback
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_GetVerifiedAnswer
 - name: retrieval_feedback_list_retrieval_rating_reviews
-  description: "List Retrieval Rating Reviews"
+  description: List Retrieval Rating Reviews
   category: RetrievalFeedback
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_ListRetrievalRatingReviews
 - name: retrieval_feedback_list_verified_answers
-  description: "List Verified Answers"
+  description: List Verified Answers
   category: RetrievalFeedback
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_ListVerifiedAnswers
 - name: retrieval_feedback_update_retrieval_rating
-  description: "Update Retrieval Rating"
+  description: Update Retrieval Rating
   category: RetrievalFeedback
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_UpdateRetrievalRating
 - name: retrieval_feedback_update_retrieval_rating_review
-  description: "Update Retrieval Rating Review"
+  description: Update Retrieval Rating Review
   category: RetrievalFeedback
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_UpdateRetrievalRatingReview
 - name: retrieval_feedback_update_verified_answer
-  description: "Update Verified Answer"
+  description: Update Verified Answer
   category: RetrievalFeedback
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#RetrievalFeedback_UpdateVerifiedAnswer
 - name: generative_feedback_create_generative_exchange_rating
-  description: "CreateGenerativeExchangeRating"
+  description: CreateGenerativeExchangeRating
   category: GenerativeFeedback
   source_operation: openapi/pryon-admin-openapi.json#GenerativeFeedback_CreateGenerativeExchangeRating
 - name: generative_feedback_delete_generative_exchange_rating
-  description: "DeleteGenerativeExchangeRating"
+  description: DeleteGenerativeExchangeRating
   category: GenerativeFeedback
   source_operation: openapi/pryon-admin-openapi.json#GenerativeFeedback_DeleteGenerativeExchangeRating
 - name: generative_feedback_get_generative_exchange_rating
-  description: "GetGenerativeExchangeRating"
+  description: GetGenerativeExchangeRating
   category: GenerativeFeedback
   source_operation: openapi/pryon-admin-openapi.json#GenerativeFeedback_GetGenerativeExchangeRating
 - name: generative_feedback_get_generative_exchange_rating_review
-  description: "GetGenerativeExchangeRatingReview"
+  description: GetGenerativeExchangeRatingReview
   category: GenerativeFeedback
   source_operation: openapi/pryon-admin-openapi.json#GenerativeFeedback_GetGenerativeExchangeRatingReview
 - name: generative_feedback_list_generative_exchange_rating_reviews
-  description: "ListGenerativeExchangeRatingReviews"
+  description: ListGenerativeExchangeRatingReviews
   category: GenerativeFeedback
   source_operation: openapi/pryon-admin-openapi.json#GenerativeFeedback_ListGenerativeExchangeRatingReviews
 - name: generative_feedback_update_generative_exchange_rating
-  description: "UpdateGenerativeExchangeRating"
+  description: UpdateGenerativeExchangeRating
   category: GenerativeFeedback
   source_operation: openapi/pryon-admin-openapi.json#GenerativeFeedback_UpdateGenerativeExchangeRating
 - name: generative_feedback_update_generative_exchange_rating_review
-  description: "UpdateGenerativeExchangeRatingReview"
+  description: UpdateGenerativeExchangeRatingReview
   category: GenerativeFeedback
   source_operation: openapi/pryon-admin-openapi.json#GenerativeFeedback_UpdateGenerativeExchangeRatingReview
 - name: generative_retrieval_feedback_create_generative_retrieval_rating
-  description: "Create Generative Retrieval Rating"
+  description: Create Generative Retrieval Rating
   category: GenerativeRetrievalFeedback
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#GenerativeRetrievalFeedback_CreateGenerativeRetrievalRating
 - name: generative_retrieval_feedback_delete_generative_retrieval_rating
-  description: "Delete Generative Retrieval Rating"
+  description: Delete Generative Retrieval Rating
   category: GenerativeRetrievalFeedback
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#GenerativeRetrievalFeedback_DeleteGenerativeRetrievalRating
 - name: generative_retrieval_feedback_get_generative_retrieval_rating
-  description: "Get Generative Retrieval Rating"
+  description: Get Generative Retrieval Rating
   category: GenerativeRetrievalFeedback
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#GenerativeRetrievalFeedback_GetGenerativeRetrievalRating
 - name: generative_retrieval_feedback_get_generative_retrieval_rating_review
-  description: "Get Generative Retrieval Rating Review"
+  description: Get Generative Retrieval Rating Review
   category: GenerativeRetrievalFeedback
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#GenerativeRetrievalFeedback_GetGenerativeRetrievalRatingReview
 - name: generative_retrieval_feedback_list_generative_retrieval_rating_reviews
-  description: "List Generative Retrieval Rating Reviews"
+  description: List Generative Retrieval Rating Reviews
   category: GenerativeRetrievalFeedback
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#GenerativeRetrievalFeedback_ListGenerativeRetrievalRatingReviews
 - name: generative_retrieval_feedback_update_generative_retrieval_rating
-  description: "Update Generative Retrieval Rating"
+  description: Update Generative Retrieval Rating
   category: GenerativeRetrievalFeedback
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#GenerativeRetrievalFeedback_UpdateGenerativeRetrievalRating
 - name: generative_retrieval_feedback_update_generative_retrieval_rating_review
-  description: "Update Generative Retrieval Rating Review"
+  description: Update Generative Retrieval Rating Review
   category: GenerativeRetrievalFeedback
   source_operation: openapi/pryon-retrieval-may2025-openapi.json#GenerativeRetrievalFeedback_UpdateGenerativeRetrievalRatingReview
 - name: organization_batch_create_team_user
-  description: "BatchCreateTeamUser"
+  description: BatchCreateTeamUser
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_BatchCreateTeamUser
 - name: organization_batch_create_user
-  description: "BatchCreateUser"
+  description: BatchCreateUser
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_BatchCreateUser
 - name: organization_batch_delete_team_user
-  description: "BatchDeleteTeamUser"
+  description: BatchDeleteTeamUser
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_BatchDeleteTeamUser
 - name: organization_batch_delete_user
-  description: "BatchDeleteUser"
+  description: BatchDeleteUser
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_BatchDeleteUser
 - name: organization_create_idp_discovery
-  description: "CreateIdpDiscovery"
+  description: CreateIdpDiscovery
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_CreateIdpDiscovery
 - name: organization_create_service
-  description: "CreateService"
+  description: CreateService
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_CreateService
 - name: organization_create_team
-  description: "CreateTeam"
+  description: CreateTeam
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_CreateTeam
 - name: organization_create_team_user
-  description: "CreateTeamUser"
+  description: CreateTeamUser
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_CreateTeamUser
 - name: organization_create_user
-  description: "CreateUser"
+  description: CreateUser
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_CreateUser
 - name: organization_delete_service
-  description: "DeleteService"
+  description: DeleteService
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_DeleteService
 - name: organization_delete_team
-  description: "DeleteTeam"
+  description: DeleteTeam
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_DeleteTeam
 - name: organization_delete_team_user
-  description: "DeleteTeamUser"
+  description: DeleteTeamUser
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_DeleteTeamUser
 - name: organization_get_organization
-  description: "GetOrganization"
+  description: GetOrganization
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_GetOrganization
 - name: organization_get_service
-  description: "GetService"
+  description: GetService
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_GetService
 - name: organization_get_solution
-  description: "GetSolution"
+  description: GetSolution
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_GetSolution
 - name: organization_get_team
-  description: "GetTeam"
+  description: GetTeam
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_GetTeam
 - name: organization_get_team_user
-  description: "GetTeamUser"
+  description: GetTeamUser
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_GetTeamUser
 - name: organization_get_user
-  description: "GetUser"
+  description: GetUser
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_GetUser
 - name: organization_get_user_info
-  description: "GetUserInfo"
+  description: GetUserInfo
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_GetUserInfo
 - name: organization_list_identity_providers
-  description: "ListIdentityProviders"
+  description: ListIdentityProviders
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_ListIdentityProviders
 - name: organization_list_integrations
-  description: "ListIntegrations"
+  description: ListIntegrations
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_ListIntegrations
 - name: organization_list_services
-  description: "ListServices"
+  description: ListServices
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_ListServices
 - name: organization_list_solutions
-  description: "ListSolutions"
+  description: ListSolutions
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_ListSolutions
 - name: organization_list_team_users
-  description: "ListTeamUsers"
+  description: ListTeamUsers
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_ListTeamUsers
 - name: organization_list_teams
-  description: "ListTeams"
+  description: ListTeams
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_ListTeams
 - name: organization_list_users
-  description: "ListUsers"
+  description: ListUsers
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_ListUsers
 - name: organization_update_organization
-  description: "UpdateOrganization"
+  description: UpdateOrganization
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_UpdateOrganization
 - name: organization_update_service
-  description: "UpdateService"
+  description: UpdateService
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_UpdateService
 - name: organization_update_team
-  description: "UpdateTeam"
+  description: UpdateTeam
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_UpdateTeam
 - name: organization_update_team_user
-  description: "UpdateTeamUser"
+  description: UpdateTeamUser
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_UpdateTeamUser
 - name: organization_update_user
-  description: "UpdateUser"
+  description: UpdateUser
   category: OrganizationService
   source_operation: openapi/pryon-admin-openapi.json#OrganizationService_UpdateUser
 - name: connector_service_external_download_content_data
-  description: "DownloadContentData"
+  description: DownloadContentData
   category: ConnectorServiceExternal
   source_operation: openapi/pryon-admin-openapi.json#ConnectorServiceExternal_DownloadContentData
 - name: connector_service_external_get_metadata
-  description: "Get Content Metadata"
+  description: Get Content Metadata
   category: ConnectorServiceExternal
   source_operation: openapi/pryon-universal-connector-may2025-openapi.json#ConnectorServiceExternal_GetMetadata
 - name: connector_service_external_get_read_permission
-  description: "GetReadPermission"
+  description: GetReadPermission
   category: ConnectorServiceExternal
   source_operation: openapi/pryon-admin-openapi.json#ConnectorServiceExternal_GetReadPermission
 - name: connector_service_external_list_group_permission_members
-  description: "ListGroupPermissionMembers"
+  description: ListGroupPermissionMembers
   category: ConnectorServiceExternal
   source_operation: openapi/pryon-admin-openapi.json#ConnectorServiceExternal_ListGroupPermissionMembers
 - name: connector_service_external_list_group_permissions
-  description: "ListGroupPermissions"
+  description: ListGroupPermissions
   category: ConnectorServiceExternal
   source_operation: openapi/pryon-admin-openapi.json#ConnectorServiceExternal_ListGroupPermissions
 - name: connector_service_external_pull_contents
-  description: "PullContents"
+  description: PullContents
   category: ConnectorServiceExternal
   source_operation: openapi/pryon-admin-openapi.json#ConnectorServiceExternal_PullContents
 - name: messages_delete_message
-  description: "DeleteMessage"
+  description: DeleteMessage
   category: Messages
   source_operation: openapi/pryon-admin-openapi.json#Messages_DeleteMessage
 - name: messages_get_message
-  description: "GetMessage"
+  description: GetMessage
   category: Messages
   source_operation: openapi/pryon-admin-openapi.json#Messages_GetMessage
 - name: messages_list_messages
-  description: "ListMessages"
+  description: ListMessages
   category: Messages
   source_operation: openapi/pryon-admin-openapi.json#Messages_ListMessages
 - name: messages_list_system_events
-  description: "ListSystemEvents"
+  description: ListSystemEvents
   category: Messages
   source_operation: openapi/pryon-admin-openapi.json#Messages_ListSystemEvents
 - name: regression_test_create_test
-  description: "CreateTest"
+  description: CreateTest
   category: RegressionTest
   source_operation: openapi/pryon-admin-openapi.json#RegressionTest_CreateTest
 - name: regression_test_create_test_question
-  description: "CreateTestQuestion"
+  description: CreateTestQuestion
   category: RegressionTest
   source_operation: openapi/pryon-admin-openapi.json#RegressionTest_CreateTestQuestion
 - name: regression_test_delete_test
-  description: "DeleteTest"
+  description: DeleteTest
   category: RegressionTest
   source_operation: openapi/pryon-admin-openapi.json#RegressionTest_DeleteTest
 - name: regression_test_delete_test_question
-  description: "DeleteTestQuestion"
+  description: DeleteTestQuestion
   category: RegressionTest
   source_operation: openapi/pryon-admin-openapi.json#RegressionTest_DeleteTestQuestion
 - name: regression_test_get_test
-  description: "GetTest"
+  description: GetTest
   category: RegressionTest
   source_operation: openapi/pryon-admin-openapi.json#RegressionTest_GetTest
 - name: regression_test_get_test_question
-  description: "GetTestQuestion"
+  description: GetTestQuestion
   category: RegressionTest
   source_operation: openapi/pryon-admin-openapi.json#RegressionTest_GetTestQuestion
 - name: regression_test_get_test_result
-  description: "GetTestResult"
+  description: GetTestResult
   category: RegressionTest
   source_operation: openapi/pryon-admin-openapi.json#RegressionTest_GetTestResult
 - name: regression_test_list_test_questions
-  description: "ListTestQuestions"
+  description: ListTestQuestions
   category: RegressionTest
   source_operation: openapi/pryon-admin-openapi.json#RegressionTest_ListTestQuestions
 - name: regression_test_list_test_results
-  description: "ListTestResults"
+  description: ListTestResults
   category: RegressionTest
   source_operation: openapi/pryon-admin-openapi.json#RegressionTest_ListTestResults
 - name: regression_test_list_tests
-  description: "ListTests"
+  description: ListTests
   category: RegressionTest
   source_operation: openapi/pryon-admin-openapi.json#RegressionTest_ListTests
 - name: text_to_speech_create_synthesis
-  description: "CreateSynthesis"
+  description: CreateSynthesis
   category: TextToSpeech
   source_operation: openapi/pryon-admin-openapi.json#TextToSpeech_CreateSynthesis
 - name: exchange_event_create_exchange_event_s_s_e
-  description: "CreateExchangeEventSSE"
+  description: CreateExchangeEventSSE
   category: ExchangeEvent
   source_operation: openapi/pryon-admin-openapi.json#ExchangeEvent_CreateExchangeEventSSE
+deployment:
+  mode: none
+  verified: derived
+  tools: 184
+  checked: '2026-08-12'
+  source: catalog MCP census

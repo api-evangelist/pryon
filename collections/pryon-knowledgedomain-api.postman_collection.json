@@ -1,0 +1,3433 @@
+{
+  "item": [
+    {
+      "id": "9496dc6d-0804-4edf-a980-d7b20fa574e6",
+      "name": "KnowledgeDomain",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "01ab534a-3415-43cc-8c18-bcaefef9bb9b",
+          "name": "ListContentGroupSubjects",
+          "request": {
+            "name": "ListContentGroupSubjects",
+            "description": {
+              "content": "List subjects associated with a Content Group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "content-groups",
+                ":content_group_id",
+                "subjects"
+              ],
+              "host": [
+                "{{api-knowledge-v1-content-groups-content_group_id-subjects-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page size is default, this param can be omitted; otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests.  Supported options are: \"reference_count desc\" (default) and \"reference_count asc\".\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+                },
+                {
+                  "disabled": false,
+                  "key": "subject_category_id",
+                  "value": "<string>",
+                  "description": "If specified, the list will be filtered to subjects of the specified category."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_group_id",
+                  "description": "(Required) Content Group that subjects must be found in"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "58cb63af-a472-4c32-9a5d-68ddd075ff42",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    ":content_group_id",
+                    "subjects"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-content_group_id-subjects-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subject_category_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Content Group that subjects must be found in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 8650\n  },\n  \"items\": [\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1960-12-04T21:25:41.853Z\",\n        \"update_time\": \"1990-12-05T08:56:47.238Z\",\n        \"response_time_millis\": 6348\n      },\n      \"data\": {\n        \"subject_id\": \"string\",\n        \"term\": \"string\",\n        \"subject_category_id\": \"string\",\n        \"definition\": \"string\",\n        \"reference_count\": \"string\",\n        \"content_count\": \"string\"\n      }\n    },\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1964-02-14T13:11:55.721Z\",\n        \"update_time\": \"1963-04-30T10:13:41.933Z\",\n        \"response_time_millis\": 2223\n      },\n      \"data\": {\n        \"subject_id\": \"string\",\n        \"term\": \"string\",\n        \"subject_category_id\": \"string\",\n        \"definition\": \"string\",\n        \"reference_count\": \"string\",\n        \"content_count\": \"string\"\n      }\n    }\n  ],\n  \"next_page_token\": \"string\",\n  \"page_size\": 6346,\n  \"order_by\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "afdd92e2-a572-4eba-850d-6366e5d94e5b",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    ":content_group_id",
+                    "subjects"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-content_group_id-subjects-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subject_category_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Content Group that subjects must be found in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2082,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"XdH/\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"AoY1d8mK29fzwCPl6l5S\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf5127da-4507-40d0-bc60-6f8be509ece7",
+          "name": "ListDomains",
+          "request": {
+            "name": "ListDomains",
+            "description": {
+              "content": "List all Knowledge Domains that the user has access to and which do not have a status of DECOMMISSIONED.  To see KD's that are DECOMMISSIONED, use a status filter.\nORG_WORKER users can list the domains that their team assignments allow.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "domains"
+              ],
+              "host": [
+                "{{api-knowledge-v1-domains-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "display_name",
+                  "value": "<string>",
+                  "description": "Filter returned knowledge domains to those that match this Display Name. The REST query parameter is \"display_name\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "UNKNOWN",
+                  "description": "Filter returned knowledge domains to those that match this Status. The REST query parameter is \"status\" and the value can be a string or integer representation. The only way to see DECOMMISSIONED KD's is to specify that status value here - please be aware that those KD's can and will disappear so do not expect them to be there on subsequent requests.\n\n - CONTENT_AWAIT: CONTENT_AWAIT: Initial value for a newly created KD.  If KD was created with data.uri or data.contents then asynchronous status transition will occur to CONTENT_IDENTIFIED after constituent Content Group and Contents are created.  If KD was created without either of these then it will remain in this status until an explicit PATCH with CONTENT_IDENTIFIED status is received.\n - CONTENT_IDENTIFIED: CONTENT_IDENTIFIED: When a KD enters this state, our automation will begin the process of readying the content for Conversation Exchanges by ingesting each constituent Content.\n - CONTENT_READY: CONTENT_READY: The KD's content is ready and able to support conversation exchanges.  Each Content in the KD's Content Groups has been successfully ingested.\n - CONTENT_NOT_SUPPORTED: CONTENT_NOT_SUPPORTED: Unable to support conversation exchanges on this KD's content due to some problem readying its Contents.  You can look for constituent Contents that have INGESTION_FAILED status to find out more details.  To retry, update KD status to CONTENT_IDENTIFIED using PATCH.  If the problem persists then remove the INGESTION_FAILED contents from the KD's Content Group(s) and try again.\n - DECOMMISSIONED: DECOMMISSIONED: KD is no longer needed, is not going to be used for conversation exchanges, and should be removed from the system.  The KD is going to be removed from the system ASAP by ongoing housekeeping operations.  Any KD can transition to DECOMMISSIONED status."
+                },
+                {
+                  "disabled": false,
+                  "key": "kd_succession_id",
+                  "value": "<string>",
+                  "description": "Filter list to all KD's that are in a line of succession. A versioned Collection represents such a KD succession where some of the KDs may have served as the active version. If this list is sorted by metadata.create_time then it shows the succession history."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page_size is set to the default, this param can be omitted; otherwise, it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests. Supported options are: \"status asc, update_time desc\" (default), \"status asc, update_time asc\" and \"status asc, create_time desc\".\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+                },
+                {
+                  "disabled": false,
+                  "key": "team_id",
+                  "value": "<string>",
+                  "description": "Filter list to all KD's that are associated with a team. The REST query parameter is \"team\" and the value is the unique id of a team to filter on. Filtering is subject to internal authorization rules."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6823be3-404c-44f1-ab47-4e3b6dae7fbc",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "display_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "UNKNOWN"
+                    },
+                    {
+                      "key": "kd_succession_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "team_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 8202\n  },\n  \"items\": {\n    \"key_0\": {\n      \"data\": {\n        \"knowledge_domain_id\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\",\n        \"status\": \"UNKNOWN\",\n        \"labels\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"kd_succession_id\": \"string\",\n        \"status_reason\": \"string\",\n        \"team_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"created_by\": \"string\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1954-04-19T22:01:02.126Z\",\n        \"update_time\": \"1996-08-20T14:28:32.007Z\",\n        \"response_time_millis\": 4301\n      }\n    },\n    \"key_1\": {\n      \"data\": {\n        \"knowledge_domain_id\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\",\n        \"status\": \"UNKNOWN\",\n        \"labels\": {\n          \"key_0\": \"string\"\n        },\n        \"kd_succession_id\": \"string\",\n        \"status_reason\": \"string\",\n        \"team_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"created_by\": \"string\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"2012-05-04T08:45:57.640Z\",\n        \"update_time\": \"1965-04-10T21:15:03.999Z\",\n        \"response_time_millis\": 4357\n      }\n    },\n    \"key_2\": {\n      \"data\": {\n        \"knowledge_domain_id\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\",\n        \"status\": \"UNKNOWN\",\n        \"labels\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"kd_succession_id\": \"string\",\n        \"status_reason\": \"string\",\n        \"team_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"created_by\": \"string\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1973-10-04T18:57:10.804Z\",\n        \"update_time\": \"1965-08-31T06:10:11.858Z\",\n        \"response_time_millis\": 4611\n      }\n    },\n    \"key_3\": {\n      \"data\": {\n        \"knowledge_domain_id\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\",\n        \"status\": \"UNKNOWN\",\n        \"labels\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        \"kd_succession_id\": \"string\",\n        \"status_reason\": \"string\",\n        \"team_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"created_by\": \"string\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1949-05-19T18:18:57.385Z\",\n        \"update_time\": \"2000-03-08T20:04:37.180Z\",\n        \"response_time_millis\": 1109\n      }\n    },\n    \"key_4\": {\n      \"data\": {\n        \"knowledge_domain_id\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\",\n        \"status\": \"UNKNOWN\",\n        \"labels\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"kd_succession_id\": \"string\",\n        \"status_reason\": \"string\",\n        \"team_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"created_by\": \"string\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"2003-11-01T04:11:55.190Z\",\n        \"update_time\": \"1979-10-07T21:51:19.976Z\",\n        \"response_time_millis\": 3756\n      }\n    }\n  },\n  \"next_page_token\": \"string\",\n  \"total_size\": 9733,\n  \"page_size\": 6731,\n  \"order_by\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "105fdc64-ac63-47d4-80fd-6f64f7a96093",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "display_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "UNKNOWN"
+                    },
+                    {
+                      "key": "kd_succession_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "team_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9588,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"e2dsNK+F8o+zC77N\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WIF5+k0XdjFyiImq4HBM9tapxByY\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "363b422b-c4d9-47b6-ab4d-a5c7e6291157",
+          "name": "UpdateDomain",
+          "request": {
+            "name": "UpdateDomain",
+            "description": {
+              "content": "Update a single Knowledge Domain (KD) that the user has access to. This is primarily used to mark a KD for decommissioning when it is no longer needed. Decommissioning a KD that serves as the Active Domain of a Knowledge Collection isn't allowed. Please use the collection API to either promote/demote an active domain or delete the parent collection first.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "domains",
+                ":data.knowledge_domain_id"
+              ],
+              "host": [
+                "{{api-knowledge-v1-domains-data.knowledge_domain_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "data.knowledge_domain_id",
+                  "description": "(Required) Optional.  When specified, it must be a UUID that is unique in the system.  When not specified, a UUID will be generated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"knowledge_domain_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"kd_succession_id\": \"<string>\",\n    \"status_reason\": \"<string>\",\n    \"team_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"created_by\": \"<string>\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d8bf9899-f618-4f91-8fe0-bf7b1290f6fe",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":data.knowledge_domain_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-data.knowledge_domain_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.knowledge_domain_id",
+                      "description": "(Required) Optional.  When specified, it must be a UUID that is unique in the system.  When not specified, a UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"knowledge_domain_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"kd_succession_id\": \"<string>\",\n    \"status_reason\": \"<string>\",\n    \"team_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"created_by\": \"<string>\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1960-10-23T13:05:53.702Z\",\n    \"update_time\": \"1956-10-25T12:46:30.775Z\",\n    \"response_time_millis\": 8889\n  },\n  \"data\": {\n    \"knowledge_domain_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"kd_succession_id\": \"<string>\",\n    \"status_reason\": \"<string>\",\n    \"team_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"created_by\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "453b7eb2-4db2-4396-87e5-ee43cd8ab1a3",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":data.knowledge_domain_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-data.knowledge_domain_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.knowledge_domain_id",
+                      "description": "(Required) Optional.  When specified, it must be a UUID that is unique in the system.  When not specified, a UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"knowledge_domain_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"kd_succession_id\": \"<string>\",\n    \"status_reason\": \"<string>\",\n    \"team_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"created_by\": \"<string>\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9588,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"e2dsNK+F8o+zC77N\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WIF5+k0XdjFyiImq4HBM9tapxByY\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb23b98e-c92f-4816-a7b8-4abc7892776b",
+          "name": "CreateDomainContentGroup",
+          "request": {
+            "name": "CreateDomainContentGroup",
+            "description": {
+              "content": "Create a Knowledge Domain (KD) to Content Group (CG) relationship.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "domains",
+                ":data.knowledge_domain_id",
+                "content-groups"
+              ],
+              "host": [
+                "{{api-knowledge-v1-domains-data.knowledge_domain_id-content-groups-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "data.knowledge_domain_id",
+                  "description": "(Required) id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bd82c956-f44b-4ce0-b2c4-eea258fa6146",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":data.knowledge_domain_id",
+                    "content-groups"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-data.knowledge_domain_id-content-groups-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.knowledge_domain_id",
+                      "description": "(Required) id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1972-08-25T01:02:20.768Z\",\n    \"update_time\": \"1966-05-15T21:21:35.519Z\",\n    \"response_time_millis\": 1462\n  },\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18231e75-4acd-4722-97a2-a08ebceb87d2",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":data.knowledge_domain_id",
+                    "content-groups"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-data.knowledge_domain_id-content-groups-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.knowledge_domain_id",
+                      "description": "(Required) id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9588,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"e2dsNK+F8o+zC77N\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WIF5+k0XdjFyiImq4HBM9tapxByY\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e56c02dc-277d-456b-9286-7229cd6ea561",
+          "name": "GetDomainContentGroup",
+          "request": {
+            "name": "GetDomainContentGroup",
+            "description": {
+              "content": "Get a single Content Group associated with a Knowledge Domain that the user has access to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "domains",
+                ":data.knowledge_domain_id",
+                "content-groups",
+                ":data.content_group_id"
+              ],
+              "host": [
+                "{{api-knowledge-v1-domains-data.knowledge_domain_id-content-groups-data.content_group_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "data.knowledge_domain_id",
+                  "description": "(Required) id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "data.content_group_id",
+                  "description": "(Required) id of a valid Content Group from /api/knowledge/v1/content-groups"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "44295bce-d7da-493d-a3d4-5ff1a3ca6f16",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":data.knowledge_domain_id",
+                    "content-groups",
+                    ":data.content_group_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-data.knowledge_domain_id-content-groups-data.content_group_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.knowledge_domain_id",
+                      "description": "(Required) id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.content_group_id",
+                      "description": "(Required) id of a valid Content Group from /api/knowledge/v1/content-groups"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1972-08-25T01:02:20.768Z\",\n    \"update_time\": \"1966-05-15T21:21:35.519Z\",\n    \"response_time_millis\": 1462\n  },\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd39ab34-261a-4ab5-8365-22f8f8445edd",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":data.knowledge_domain_id",
+                    "content-groups",
+                    ":data.content_group_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-data.knowledge_domain_id-content-groups-data.content_group_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.knowledge_domain_id",
+                      "description": "(Required) id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.content_group_id",
+                      "description": "(Required) id of a valid Content Group from /api/knowledge/v1/content-groups"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9588,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"e2dsNK+F8o+zC77N\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WIF5+k0XdjFyiImq4HBM9tapxByY\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e7ccac7-a044-4701-9932-2ade2fc319ae",
+          "name": "GetDomain",
+          "request": {
+            "name": "GetDomain",
+            "description": {
+              "content": "Get a single Knowledge Domain (KD) that the user has access to.  This API can be used to monitor the status transitions of a KD being prepared for Q&A exchanges.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "domains",
+                ":knowledge_domain_id"
+              ],
+              "host": [
+                "{{api-knowledge-v1-domains-knowledge_domain_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "knowledge_domain_id",
+                  "description": "(Required) id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5ca5e69b-9586-44b0-8d5c-e336bf5bd785",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":knowledge_domain_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-knowledge_domain_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1960-10-23T13:05:53.702Z\",\n    \"update_time\": \"1956-10-25T12:46:30.775Z\",\n    \"response_time_millis\": 8889\n  },\n  \"data\": {\n    \"knowledge_domain_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"kd_succession_id\": \"<string>\",\n    \"status_reason\": \"<string>\",\n    \"team_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"created_by\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "41267886-37b4-402c-9ead-f718dc492662",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":knowledge_domain_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-knowledge_domain_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9588,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"e2dsNK+F8o+zC77N\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WIF5+k0XdjFyiImq4HBM9tapxByY\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7e8f98e-67e9-4782-a131-b2b7ea83c7e0",
+          "name": "GetDomainContentGroupByContent",
+          "request": {
+            "name": "GetDomainContentGroupByContent",
+            "description": {
+              "content": "Get a single Content Group associated with a Knowledge Domain and a for a specific Content Item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "domains",
+                ":knowledge_domain_id",
+                "content-group"
+              ],
+              "host": [
+                "{{api-knowledge-v1-domains-knowledge_domain_id-content-group-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "content_id",
+                  "value": "<string>",
+                  "description": "Required. Content ID to retrieve Content Group for."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "knowledge_domain_id",
+                  "description": "(Required) Required. Knowledge Domain associated with the Content Group version."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4f1f0a12-3a2b-47ef-96d9-bf4589b4e9c1",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":knowledge_domain_id",
+                    "content-group"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-knowledge_domain_id-content-group-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "content_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) Required. Knowledge Domain associated with the Content Group version."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1988-05-24T12:46:02.796Z\",\n    \"update_time\": \"2019-05-03T13:12:02.156Z\",\n    \"response_time_millis\": 9023\n  },\n  \"data\": {\n    \"content_group_id\": \"string\",\n    \"display_name\": \"string\",\n    \"description\": \"string\",\n    \"source_location\": \"string\",\n    \"content_statuses\": [\n      8906,\n      2100\n    ],\n    \"service_id\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2125984e-b383-4db2-9645-71d91b35d6d9",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":knowledge_domain_id",
+                    "content-group"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-knowledge_domain_id-content-group-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "content_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) Required. Knowledge Domain associated with the Content Group version."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9588,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"e2dsNK+F8o+zC77N\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WIF5+k0XdjFyiImq4HBM9tapxByY\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc6f8192-35f9-4b71-b97f-37ad622b5f38",
+          "name": "DeleteDomainContentGroups",
+          "request": {
+            "name": "DeleteDomainContentGroups",
+            "description": {
+              "content": "Delete all child Content Group associations with the parent Knowledge Domain.  This does not alter the Content Groups resources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "domains",
+                ":knowledge_domain_id",
+                "content-groups"
+              ],
+              "host": [
+                "{{api-knowledge-v1-domains-knowledge_domain_id-content-groups-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "knowledge_domain_id",
+                  "description": "(Required) id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bb42a204-7d25-4e61-a284-bb974189da9d",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":knowledge_domain_id",
+                    "content-groups"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-knowledge_domain_id-content-groups-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89b6f9b0-623d-4db9-989f-f8cbcf270578",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":knowledge_domain_id",
+                    "content-groups"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-knowledge_domain_id-content-groups-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9588,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"e2dsNK+F8o+zC77N\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WIF5+k0XdjFyiImq4HBM9tapxByY\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bca0e9c-d64c-47c3-a5cd-8379c7a80632",
+          "name": "ListDomainContentGroups",
+          "request": {
+            "name": "ListDomainContentGroups",
+            "description": {
+              "content": "List all Content Groups associated with a Knowledge Domain that the user has access to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "domains",
+                ":knowledge_domain_id",
+                "content-groups"
+              ],
+              "host": [
+                "{{api-knowledge-v1-domains-knowledge_domain_id-content-groups-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "return_only_id",
+                  "value": "<boolean>",
+                  "description": "Optional: if caller only needs the item ID's, set this to true."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "knowledge_domain_id",
+                  "description": "(Required) Required: the identifier of a valid Knowledge Domain to retrieve the domain content groups from."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5dca523b-cab3-4354-b786-7ea81018be3d",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":knowledge_domain_id",
+                    "content-groups"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-knowledge_domain_id-content-groups-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "return_only_id",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) Required: the identifier of a valid Knowledge Domain to retrieve the domain content groups from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 1966\n  },\n  \"items\": {\n    \"key_0\": {\n      \"data\": {\n        \"content_group_id\": \"<string>\",\n        \"knowledge_domain_id\": \"<string>\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1992-10-17T23:29:43.802Z\",\n        \"update_time\": \"1971-09-03T11:29:21.183Z\",\n        \"response_time_millis\": 760\n      }\n    },\n    \"key_1\": {\n      \"data\": {\n        \"content_group_id\": \"<string>\",\n        \"knowledge_domain_id\": \"<string>\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1988-10-06T01:35:11.742Z\",\n        \"update_time\": \"1956-01-21T09:17:06.208Z\",\n        \"response_time_millis\": 780\n      }\n    },\n    \"key_2\": {\n      \"data\": {\n        \"content_group_id\": \"<string>\",\n        \"knowledge_domain_id\": \"<string>\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"2000-05-09T22:29:15.699Z\",\n        \"update_time\": \"1980-07-24T12:03:42.215Z\",\n        \"response_time_millis\": 2635\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb0cab97-6b5d-4770-be9a-cbea16780cdf",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":knowledge_domain_id",
+                    "content-groups"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-knowledge_domain_id-content-groups-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "return_only_id",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) Required: the identifier of a valid Knowledge Domain to retrieve the domain content groups from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9588,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"e2dsNK+F8o+zC77N\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WIF5+k0XdjFyiImq4HBM9tapxByY\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84a4c790-713f-490d-a349-2f1b2e93517e",
+          "name": "DeleteDomainContentGroup",
+          "request": {
+            "name": "DeleteDomainContentGroup",
+            "description": {
+              "content": "Delete a Knowledge Domain to Content Group relationship that the user has access to remove.  This does not alter the Content Group resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "domains",
+                ":knowledge_domain_id",
+                "content-groups",
+                ":content_group_id"
+              ],
+              "host": [
+                "{{api-knowledge-v1-domains-knowledge_domain_id-content-groups-content_group_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "knowledge_domain_id",
+                  "description": "(Required) id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_group_id",
+                  "description": "(Required) id of a valid Content Group from /api/knowledge/v1/content-groups"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "22e3418d-6fe3-4f86-b8ef-34df95047d4f",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":knowledge_domain_id",
+                    "content-groups",
+                    ":content_group_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-knowledge_domain_id-content-groups-content_group_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) id of a valid Content Group from /api/knowledge/v1/content-groups"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "073618ec-9cc2-48de-b1fa-02b71110ea0c",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":knowledge_domain_id",
+                    "content-groups",
+                    ":content_group_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-knowledge_domain_id-content-groups-content_group_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) id of a valid Content Group from /api/knowledge/v1/content-groups"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9588,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"e2dsNK+F8o+zC77N\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WIF5+k0XdjFyiImq4HBM9tapxByY\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c3ae980-8ce8-4334-a81b-b4d79a00b005",
+          "name": "UpdateDomainContentGroupsContentPermission",
+          "request": {
+            "name": "UpdateDomainContentGroupsContentPermission",
+            "description": {
+              "content": "This utility POST method is used to update the content permission of content groups in the knowledge domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "domains",
+                ":knowledge_domain_id",
+                "content-groups:updateContentPermission"
+              ],
+              "host": [
+                "{{api-knowledge-v1-domains-knowledge_domain_id-content-groups:updateContentPermission-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "knowledge_domain_id",
+                  "description": "(Required) Required. The identifier of the knowledge domain asscociated with this update method."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"knowledge_domain_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "56506755-e734-4900-84c6-ba763a1392f3",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":knowledge_domain_id",
+                    "content-groups:updateContentPermission"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-knowledge_domain_id-content-groups:updateContentPermission-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) Required. The identifier of the knowledge domain asscociated with this update method."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"knowledge_domain_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 7417\n  },\n  \"items\": {\n    \"key_0\": {\n      \"data\": {\n        \"content_group_id\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\",\n        \"source_location\": \"string\",\n        \"content_statuses\": [\n          61,\n          4978\n        ],\n        \"service_id\": \"string\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"2001-02-05T23:57:10.806Z\",\n        \"update_time\": \"1992-06-17T00:58:05.870Z\",\n        \"response_time_millis\": 2658\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "420a528d-d435-4279-a74e-0e5598bbc8d5",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":knowledge_domain_id",
+                    "content-groups:updateContentPermission"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-knowledge_domain_id-content-groups:updateContentPermission-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) Required. The identifier of the knowledge domain asscociated with this update method."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"knowledge_domain_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9588,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"e2dsNK+F8o+zC77N\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WIF5+k0XdjFyiImq4HBM9tapxByY\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "273c749e-9b47-4f50-a804-e9f5bf0a2e9a",
+          "name": "UpdateDomainContentGroupsGroupPermission",
+          "request": {
+            "name": "UpdateDomainContentGroupsGroupPermission",
+            "description": {
+              "content": "This utility POST method is used to update the group permission of content groups in the knowledge domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "domains",
+                ":knowledge_domain_id",
+                "content-groups:updateGroupPermission"
+              ],
+              "host": [
+                "{{api-knowledge-v1-domains-knowledge_domain_id-content-groups:updateGroupPermission-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "knowledge_domain_id",
+                  "description": "(Required) Required. The identifier of the knowledge domain asscociated with this update method."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"knowledge_domain_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "202d74fc-4479-4254-a388-5d1c3811b3a4",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":knowledge_domain_id",
+                    "content-groups:updateGroupPermission"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-knowledge_domain_id-content-groups:updateGroupPermission-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) Required. The identifier of the knowledge domain asscociated with this update method."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"knowledge_domain_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 7417\n  },\n  \"items\": {\n    \"key_0\": {\n      \"data\": {\n        \"content_group_id\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\",\n        \"source_location\": \"string\",\n        \"content_statuses\": [\n          61,\n          4978\n        ],\n        \"service_id\": \"string\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"2001-02-05T23:57:10.806Z\",\n        \"update_time\": \"1992-06-17T00:58:05.870Z\",\n        \"response_time_millis\": 2658\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d288faef-f50b-4f05-b2fd-216340756382",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":knowledge_domain_id",
+                    "content-groups:updateGroupPermission"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-knowledge_domain_id-content-groups:updateGroupPermission-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) Required. The identifier of the knowledge domain asscociated with this update method."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"knowledge_domain_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9588,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"e2dsNK+F8o+zC77N\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WIF5+k0XdjFyiImq4HBM9tapxByY\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3ce897aa-51fa-4bfd-9709-144c02915e77",
+          "name": "ListDomainSubjects",
+          "request": {
+            "name": "ListDomainSubjects",
+            "description": {
+              "content": "List subjects associated with a Knowledge Domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "domains",
+                ":knowledge_domain_id",
+                "subjects"
+              ],
+              "host": [
+                "{{api-knowledge-v1-domains-knowledge_domain_id-subjects-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page size is default, this param can be omitted; otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests.  Supported options are: \"reference_count desc\" (default) and \"reference_count asc\".\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+                },
+                {
+                  "disabled": false,
+                  "key": "subject_category_id",
+                  "value": "<string>",
+                  "description": "If specified, the list will be filtered to subjects of the specified category."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "knowledge_domain_id",
+                  "description": "(Required) Knowledge Domain that subjects must be found in"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b64a863-f113-489e-95b2-31eb74b898bd",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":knowledge_domain_id",
+                    "subjects"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-knowledge_domain_id-subjects-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subject_category_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) Knowledge Domain that subjects must be found in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 3557\n  },\n  \"items\": [\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"2022-07-26T00:13:40.569Z\",\n        \"update_time\": \"1989-01-23T00:34:41.889Z\",\n        \"response_time_millis\": 834\n      },\n      \"data\": {\n        \"subject_id\": \"string\",\n        \"term\": \"string\",\n        \"subject_category_id\": \"string\",\n        \"definition\": \"string\",\n        \"reference_count\": \"string\",\n        \"content_count\": \"string\"\n      }\n    },\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"2006-03-15T02:31:07.248Z\",\n        \"update_time\": \"1952-07-13T15:57:54.190Z\",\n        \"response_time_millis\": 6256\n      },\n      \"data\": {\n        \"subject_id\": \"string\",\n        \"term\": \"string\",\n        \"subject_category_id\": \"string\",\n        \"definition\": \"string\",\n        \"reference_count\": \"string\",\n        \"content_count\": \"string\"\n      }\n    }\n  ],\n  \"next_page_token\": \"string\",\n  \"page_size\": 1407,\n  \"order_by\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20cd79de-8485-4928-aec5-d9833b3ab44b",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":knowledge_domain_id",
+                    "subjects"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-knowledge_domain_id-subjects-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subject_category_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) Knowledge Domain that subjects must be found in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9588,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"e2dsNK+F8o+zC77N\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WIF5+k0XdjFyiImq4HBM9tapxByY\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e163256-508c-49b7-a4d3-bfbf739b8ce8",
+          "name": "ListDomainTags",
+          "request": {
+            "name": "ListDomainTags",
+            "description": {
+              "content": "List tags for the Knowledge Domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "domains",
+                ":knowledge_domain_id",
+                "tags"
+              ],
+              "host": [
+                "{{api-knowledge-v1-domains-knowledge_domain_id-tags-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page size is default, this param can be omitted; otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests.  Supported options are: \"reference_count desc\" (default) and \"reference_count asc\".\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+                },
+                {
+                  "disabled": false,
+                  "key": "tag_source_type",
+                  "value": "TAG_SOURCE_TYPE_UNSPECIFIED",
+                  "description": "Required. Filter on tag source.\nIf TAG_SOURCE_TYPE_UNSPECIFIED, an error response will be returned.\n\n - TAG_SOURCE_TYPE_UNSPECIFIED: Default. No tags can be created with this source.\n - SYSTEM_DEFINED: Tags created by the Pryon Cloud Services system.\n - USER_DEFINED: Tags defined by users if the system and created via user input.\n - QUERY_ATTRIBUTE: Tags associated to a content which can be used to improve Exchange response ranking quality based on the context specified in ExchangeInputOption.\nSee \"documentation about improving ranking quality\" link for more details."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_counts",
+                  "value": "<boolean>",
+                  "description": "Include counts for every tag of a given type.\nCounts are calculated over contents belonging to the KD."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "knowledge_domain_id",
+                  "description": "(Required) Required. Knowledge Domain to list tags for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "748f4bf9-f93d-424a-a004-045a3a143962",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":knowledge_domain_id",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-knowledge_domain_id-tags-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag_source_type",
+                      "value": "TAG_SOURCE_TYPE_UNSPECIFIED"
+                    },
+                    {
+                      "key": "include_counts",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) Required. Knowledge Domain to list tags for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tag_types\": [\n    {\n      \"type_name\": \"string\",\n      \"tag_source_type\": \"TAG_SOURCE_TYPE_UNSPECIFIED\",\n      \"tags\": [\n        {\n          \"value\": \"string\",\n          \"count\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"count\": \"string\"\n        }\n      ]\n    },\n    {\n      \"type_name\": \"string\",\n      \"tag_source_type\": \"TAG_SOURCE_TYPE_UNSPECIFIED\",\n      \"tags\": [\n        {\n          \"value\": \"string\",\n          \"count\": \"string\"\n        },\n        {\n          \"value\": \"string\",\n          \"count\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"next_page_token\": \"string\",\n  \"total_size\": 5067,\n  \"page_size\": 4983,\n  \"order_by\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54c1b292-e7be-493e-9a9c-1839174baa5d",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains",
+                    ":knowledge_domain_id",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains-knowledge_domain_id-tags-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag_source_type",
+                      "value": "TAG_SOURCE_TYPE_UNSPECIFIED"
+                    },
+                    {
+                      "key": "include_counts",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "knowledge_domain_id",
+                      "description": "(Required) Required. Knowledge Domain to list tags for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9588,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"e2dsNK+F8o+zC77N\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WIF5+k0XdjFyiImq4HBM9tapxByY\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f185f633-9555-4d08-b58d-f71cf6f47ffd",
+          "name": "CreateDomainNextVersionWithSources",
+          "request": {
+            "name": "CreateDomainNextVersionWithSources",
+            "description": {
+              "content": "Create a new version of a Knowledge Domain (KD) with Sources\nIf TeamIds are not specified with the request, the team assignments will carry forward from the previous domain version.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "domains:createNextVersionWithSources"
+              ],
+              "host": [
+                "{{api-knowledge-v1-domains:createNextVersionWithSources-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"knowledge_domain_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"sources\": [\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"team_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"solution_id\": \"<string>\"\n  },\n  \"ancestor_knowledge_domain_id\": \"<string>\",\n  \"mode\": \"UNKNOWN\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bbc82456-6047-4204-85cf-1db27ffdf046",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains:createNextVersionWithSources"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains:createNextVersionWithSources-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"knowledge_domain_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"sources\": [\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"team_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"solution_id\": \"<string>\"\n  },\n  \"ancestor_knowledge_domain_id\": \"<string>\",\n  \"mode\": \"UNKNOWN\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1960-10-23T13:05:53.702Z\",\n    \"update_time\": \"1956-10-25T12:46:30.775Z\",\n    \"response_time_millis\": 8889\n  },\n  \"data\": {\n    \"knowledge_domain_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"kd_succession_id\": \"<string>\",\n    \"status_reason\": \"<string>\",\n    \"team_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"created_by\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46a48574-8734-4b62-a047-532b29c01eb6",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains:createNextVersionWithSources"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains:createNextVersionWithSources-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"knowledge_domain_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"sources\": [\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"team_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"solution_id\": \"<string>\"\n  },\n  \"ancestor_knowledge_domain_id\": \"<string>\",\n  \"mode\": \"UNKNOWN\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9588,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"e2dsNK+F8o+zC77N\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WIF5+k0XdjFyiImq4HBM9tapxByY\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58170c9d-6dd0-4fb6-a794-da226935c5ab",
+          "name": "CreateDomainWithSources",
+          "request": {
+            "name": "CreateDomainWithSources",
+            "description": {
+              "content": "Create a Knowledge Domain (KD)\nWhen data.sources are specified KD create will inspect them and determine if they are supported.  If any of the sources are invalid, an error response will be returned with a 400\nHTTP status code.  If there are supported Contents, a KD will be created with status a of CONTENT_AWAIT and a success response will be returned with a 200 http status code.\nAsynchronously, a single Content Group with the appropriate number of Contents will be created with each Content status being CONFIGURED.  When that is complete, the KD will be\ntransitioned to CONTENT_IDENTIFIED status.  After that, asynchronous ingestion of the Contents will be run transitioning each to INGESTING status and eventually to INGESTED.\nWhen content ingestion is completed successfully, the KD status will be transitioned to CONTENT_READY.  If the KD is unable to be ingested successfully, its status will be set to\nCONTENT_NOT_SUPPORTED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "domains:createWithSources"
+              ],
+              "host": [
+                "{{api-knowledge-v1-domains:createWithSources-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"knowledge_domain_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"sources\": [\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"team_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"solution_id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b36642e-f3f5-4443-9cce-571f73b061ef",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains:createWithSources"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains:createWithSources-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"knowledge_domain_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"sources\": [\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"labels\": {\n      \"key_0\": \"<string>\"\n    },\n    \"team_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"solution_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1960-10-23T13:05:53.702Z\",\n    \"update_time\": \"1956-10-25T12:46:30.775Z\",\n    \"response_time_millis\": 8889\n  },\n  \"data\": {\n    \"knowledge_domain_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"kd_succession_id\": \"<string>\",\n    \"status_reason\": \"<string>\",\n    \"team_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"created_by\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00b848cc-b133-4f62-a718-32bcc78b5515",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains:createWithSources"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains:createWithSources-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"knowledge_domain_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"sources\": [\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"labels\": {\n      \"key_0\": \"<string>\"\n    },\n    \"team_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"solution_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9588,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"e2dsNK+F8o+zC77N\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WIF5+k0XdjFyiImq4HBM9tapxByY\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6282d174-f240-4f11-9b5b-5d3852645fd9",
+          "name": "ListDefaultDomains",
+          "request": {
+            "name": "ListDefaultDomains",
+            "description": {
+              "content": "List the Knowledge Domains the authorized user can implicitly access in the absence of any team assignments (defaults).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "domains:default"
+              ],
+              "host": [
+                "{{api-knowledge-v1-domains:default-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd70f486-63dd-4a95-92f9-a79cebb1b69c",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains:default"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains:default-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 3175\n  },\n  \"items\": {\n    \"key_0\": {\n      \"data\": {\n        \"knowledge_domain_id\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"status\": \"UNKNOWN\",\n        \"labels\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"kd_succession_id\": \"<string>\",\n        \"status_reason\": \"<string>\",\n        \"team_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"created_by\": \"<string>\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1997-07-05T14:55:28.866Z\",\n        \"update_time\": \"2024-02-13T00:52:17.764Z\",\n        \"response_time_millis\": 4193\n      }\n    },\n    \"key_1\": {\n      \"data\": {\n        \"knowledge_domain_id\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"status\": \"UNKNOWN\",\n        \"labels\": {\n          \"key_0\": \"<string>\"\n        },\n        \"kd_succession_id\": \"<string>\",\n        \"status_reason\": \"<string>\",\n        \"team_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"created_by\": \"<string>\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1985-08-15T10:55:51.202Z\",\n        \"update_time\": \"2021-06-23T11:01:10.267Z\",\n        \"response_time_millis\": 3918\n      }\n    }\n  },\n  \"next_page_token\": \"string\",\n  \"total_size\": 9547,\n  \"page_size\": 5373,\n  \"order_by\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5a8539e-b981-43dd-8764-cd595b465568",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "domains:default"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-domains:default-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9588,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"e2dsNK+F8o+zC77N\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WIF5+k0XdjFyiImq4HBM9tapxByY\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "994d8466-e301-4043-9c84-dc2e04c13f03",
+          "name": "Decommission Knowledge Domain",
+          "request": {
+            "name": "Decommission Knowledge Domain",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1alpha1",
+                "domains:createWithSources"
+              ],
+              "host": [
+                "{{api-knowledge-v1alpha1-domains:createWithSources-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"knowledge_domain_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"\",\n    \"sources\": [\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"kd_succession_id\": \"<string>\",\n    \"team_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"solution_id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "adda6240-fc6b-4fff-990e-3530e1661d8d",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "domains:createWithSources"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1alpha1-domains:createWithSources-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"knowledge_domain_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"\",\n    \"sources\": [\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"kd_succession_id\": \"<string>\",\n    \"team_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"solution_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"2001-02-09T14:29:26.621Z\",\n    \"update_time\": \"1958-01-15T07:24:39.976Z\",\n    \"response_time_millis\": 8812\n  },\n  \"data\": {\n    \"knowledge_domain_id\": \"string\",\n    \"display_name\": \"string\",\n    \"description\": \"string\",\n    \"status\": \"\",\n    \"labels\": {\n      \"key_0\": \"string\"\n    },\n    \"kd_succession_id\": \"string\",\n    \"status_reason\": \"string\",\n    \"team_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"created_by\": \"string\",\n    \"collection_id\": \"string\",\n    \"config\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6dd05037-f8c1-4662-8731-645b3cd6e0b1",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1alpha1",
+                    "domains:createWithSources"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1alpha1-domains:createWithSources-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"knowledge_domain_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"\",\n    \"sources\": [\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"source_location\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"service_id\": \"<string>\",\n        \"content_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"kd_succession_id\": \"<string>\",\n    \"team_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"solution_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9588,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"e2dsNK+F8o+zC77N\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WIF5+k0XdjFyiImq4HBM9tapxByY\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-content-groups-content_group_id-subjects-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-domains-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-domains-data.knowledge_domain_id-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-domains-data.knowledge_domain_id-content-groups-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-domains-data.knowledge_domain_id-content-groups-data.content_group_id-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-domains-knowledge_domain_id-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-domains-knowledge_domain_id-content-group-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-domains-knowledge_domain_id-content-groups-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-domains-knowledge_domain_id-content-groups-content_group_id-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-domains-knowledge_domain_id-content-groups:updateContentPermission-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-domains-knowledge_domain_id-content-groups:updateGroupPermission-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-domains-knowledge_domain_id-subjects-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-domains-knowledge_domain_id-tags-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-domains:createNextVersionWithSources-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-domains:createWithSources-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-domains:default-Url"
+    },
+    {
+      "type": "string",
+      "value": "/",
+      "key": "api-knowledge-v1alpha1-domains:createWithSources-Url"
+    }
+  ],
+  "info": {
+    "_postman_id": "73c864e7-b024-44ab-9525-7bff16c0fd39",
+    "name": "Pryon Knowledge Domain API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged KnowledgeDomain across 2 of this provider's published API definitions: pryon-admin-openapi.json, pryon-domains-swagger-may2025-openapi.json. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

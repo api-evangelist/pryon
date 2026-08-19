@@ -1,0 +1,625 @@
+openapi: 3.2.0
+info:
+  title: Retrieval API
+  version: '1.0'
+  contact:
+    name: Pryon Product Support
+    url: https://pryon.zendesk.com
+    email: support@pryon.zendesk.com
+  description: ''
+  x-logo:
+    altText: Pryon APIs
+servers:
+- url: https://api.pryon.net
+  description: Pryon Cloud
+tags:
+- name: Retrieval
+paths:
+  /api/conversation/v1alpha1/retrievals:
+    post:
+      operationId: Retrieval_CreateRetrieval
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/filename_v1alpha1CreateRetrievalRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetRetrievalResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Create Retrieval
+      tags:
+      - Retrieval
+      x-codegen-request-body-name: body
+      description: Initiate or continue a conversation with the retrieval service.
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+  /api/conversation/v1alpha1/retrievals/wss:
+    post:
+      description: Initiate or continue a conversation.
+      operationId: Retrieval_CreateWsRetrieval
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/filename_v1alpha1CreateWsRetrievalRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1WsRetrieval'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Create Ws Retrieval
+      tags:
+      - Retrieval
+      x-codegen-request-body-name: body
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+  /api/conversation/v1alpha1/retrievals/{retrieval_id}:
+    get:
+      operationId: Retrieval_GetRetrieval
+      parameters:
+      - description: Unique identifier associated with the response object sources.
+        in: path
+        name: retrieval_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier for the output.
+        in: query
+        name: output_id
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetRetrievalResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Get Retrieval
+      tags:
+      - Retrieval
+      description: Retrieve the query and output data for existing retrieval data.
+  /api/conversation/v1alpha1/retrievals/{retrieval_id}/image:
+    get:
+      description: Get an image representation of the content with bounding boxes.
+      operationId: Retrieval_GetRetrievalContentImage
+      parameters:
+      - description: Unique identifier for the response object for the bounding boxes and content ID.
+        in: path
+        name: retrieval_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier for the retrieval output; defaults to the first instance.
+        in: query
+        name: output_id
+        schema:
+          type: string
+      - description: Page number in the content; defaults to the first content page associated with the retrieval output.
+        in: query
+        name: page
+        schema:
+          format: int32
+          type: integer
+      - description: Compress image data; valid values are 0 for compressed (default) and 1 for uncompressed.
+        in: query
+        name: uncompressed
+        schema:
+          type: boolean
+      - description: Bounding box overlay color specified as a hex color code without the leading hashtag; supports 3, 4, 6, and 8 character codes.
+        in: query
+        name: overlay_color
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetRetrievalContentImageResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Get Retrieval Content Image
+      tags:
+      - Retrieval
+components:
+  schemas:
+    filename_v1alpha1BoundingBox:
+      properties:
+        x1:
+          format: float
+          title: Required. top-left corner X-axis
+          type: number
+        y1:
+          format: float
+          title: Required. top-left corner Y-axis
+          type: number
+        x2:
+          format: float
+          title: Bottom-right corner X-axis.
+          type: number
+        y2:
+          format: float
+          title: Bottom-right corner Y-axis.
+          type: number
+        page_number:
+          format: int32
+          title: Page number where the bounding box was found.
+          type: integer
+        page_width:
+          format: float
+          title: The width of the page the bounding box was found on
+          type: number
+        page_height:
+          format: float
+          title: The height of the page the bounding box was found on
+          type: number
+      title: A rectangle bounding box typically for indicating where text matched on a page
+      type: object
+    filename_v1alpha1RetrievalFilter:
+      properties:
+        collection_id:
+          description: Parent collection for the knowledge domain; autogenerated and not editable.
+          type: string
+        knowledge_domain_id:
+          description: Unique identifier of the knowledge domain that supplied the exchange response.
+          type: string
+        content_group_ids:
+          description: Unique identifier for the content group.
+          items:
+            type: string
+          type: array
+        tags:
+          description: Tags used to return data.
+          items:
+            $ref: '#/components/schemas/filename_v1alpha1TagData'
+          type: array
+      title: Filters for limiting what content is searched
+      type: object
+    filename_v1alpha1ContentMetadata:
+      properties:
+        content_id:
+          description: Unique identifier for the content within the matching content groups.
+          type: string
+        content_display_name:
+          description: Display name of the source file that includes the best sentence answer.
+          type: string
+        content_source_uri:
+          description: Unique identifier for the source content that contains the answer.
+          type: string
+        content_origin_source_url:
+          description: URL for the original source location of a document.
+          type: string
+        content_create_time:
+          format: date-time
+          title: Time of the initial content update.
+          type: string
+        content_update_time:
+          format: date-time
+          title: Time of the last update; 0 indicates updates have never been made.
+          type: string
+        image_uri:
+          title: First page of the document where the answer was found.
+          type: string
+        hyperlinks:
+          items:
+            type: string
+          title: Relevant links to the web-based document.
+          type: array
+        author:
+          title: Name of the author who created the document.
+          type: string
+        author_id:
+          title: Unique identifier for the author who created the document.
+          type: string
+        title:
+          description: Name or title of the document; maximum size is 255 characters.
+          type: string
+        description:
+          description: Summary of the document; maximum size is 1000 characters.
+          type: string
+        mime_type:
+          title: Document media type.
+          type: string
+        additional_metadata:
+          additionalProperties:
+            properties: {}
+            type: object
+          title: Metadata captured when ingesting the document.
+          type: object
+      title: Additional metadata from the source content
+      type: object
+    filename_RetrievalOutputAnswerType:
+      default: UNSPECIFIED
+      description: "- UNSPECIFIED: None\n - TEXT_EXCERPT: Default\n - FAQ: Answer comes from FAQ.\n - VA_PROMOTED: Promoted answer from existing content.\n - VA_CURATED: Verified answer created as standalone VA content.\n - BELOW_CONFIDENCE_THRESHOLD: Results scored below a minimum confidence threshold.\n - NO_ANSWER: No answer matched, or no permissions to see the matches; alternate answer supplied.\n - INTELLIGIBILITY_OUT_OF_SCOPE: Query is classified as gibberish and is not intelligible.\n - LANGUAGE_OUT_OF_SCOPE: Query is not in a supported language.\n - CONVERSATIONAL_OUT_OF_SCOPE: Query is classified as conversational."
+      title: General source of the answer
+      type: string
+    filename_protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      type: object
+    filename_v1alpha1WsRetrieval:
+      description: The only top-level message returned to the client by the CreateWsRetrieval (WebSocket) method.
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        user_id:
+          title: Unique identifier of the user who made the retrieval.
+          type: string
+        knowledge_domain_id:
+          title: Unique identifier of the knowledge domain that supplied the exchange response.
+          type: string
+        collection_id:
+          title: Unique identifier of the knowledge collection where the response was located.
+          type: string
+        state:
+          $ref: '#/components/schemas/filename_WsRetrievalState'
+        retrieval:
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalData'
+        error:
+          $ref: '#/components/schemas/filename_googlerpcStatus'
+      type: object
+    filename_v1alpha1ResourceMetadata:
+      properties:
+        uuid:
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: Time of the last update; 0 indicates updates have never been made.
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          description: Response time (in milliseconds).
+          type: integer
+      type: object
+    filename_v1alpha1GetRetrievalContentImageResponse:
+      title: GetRetrievalContentImage returns the image bytes directly in the REST response, and not through gRPC
+      type: object
+    filename_v1alpha1CreateRetrievalRequest:
+      description: Message sent by the client for the create retrieval method.
+      properties:
+        conversation_id:
+          description: Unique identifier for the conversation returned with the create retrieval response; leaving blank starts a new conversation on the request.
+          type: string
+        language_id:
+          description: Language tags; default is en-US.
+          type: string
+        query:
+          description: Input query used for retrieval.
+          type: string
+        audio:
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalAudioInput'
+        options:
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalOption'
+        filters:
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalFilter'
+      type: object
+    filename_v1alpha1ContentGroupSparse:
+      properties:
+        content_group_id:
+          title: Unique identifier for the content group.
+          type: string
+        display_name:
+          title: Name of the collection.
+          type: string
+      title: Abbreviated form of ContentGroup for returning only the essential information.
+      type: object
+    filename_CreateWsRetrievalRequestAction:
+      default: UNSPECIFIED
+      description: "- UNSPECIFIED: This indicates that an action was not specified, as it is the protobuf default.  This is never a valid value, and if received, then an ERROR response message will be returned, and the connection will be closed by the server.\n - START: START: signals the intent to begin a Retrieval. If an existing conversation is being continued, then conversation_id should be set to the value used in previous Retrievals.\nIf text input mode is being used, this text-based message must also include the complete input query.\nIf audio input mode is being used, this text-based message must include valid input.raw_audio.audio_encoding and input.raw_audio.sample_rate_hertz fields. It cannot include input.raw_audio.content, as input audio should be sent in binary messages that follow. If invalid values are requested for audio_encoding and/or sample_rate_hertz, then an ERROR response message will be sent, and the connection will be closed by the server.\nIn both text and audio input modes, a successful start request will be acknowledged by the server with a PROCESSING text message. Frames of audio should be sent by the client as binary messages following receipt of this PROCESSING text message.  After all frames of audio have been sent, a STOP message should be sent by the client.\n - STOP: STOP: This message should be sent following the START message. When audio input mode is being used, STOP should be sent by the client after all audio frames have been sent to the server."
+      title: Action
+      type: string
+    filename_v1alpha1RetrievalAudioOutputAudioEncoding:
+      default: UNSPECIFIED
+      description: "- UNSPECIFIED: Not specified.\n - LINEAR16: LINEAR16: Uncompressed 16-bit signed little-endian samples (Linear PCM).\n - MP3: MP3: MP3 audio encoding. The sample rate is encoded in the payload."
+      title: Audio encoding of the content in the message
+      type: string
+    filename_v1alpha1TagData:
+      properties:
+        source:
+          $ref: '#/components/schemas/filename_v1alpha1TagSourceType'
+        type:
+          title: A grouping of related types of tags
+          type: string
+        value:
+          title: The most specific part of the tag
+          type: string
+      type: object
+    filename_v1alpha1RetrievalOutput:
+      properties:
+        id:
+          description: Unique identifier for the output resource.
+          type: string
+        answer_snippet:
+          description: Best matching snippet displayed to the end-user
+          type: string
+        final_query:
+          description: Specific matched query after synonym expansion and prior knowledge corrections.
+          type: string
+        context_chunk:
+          description: Full surrounding text content for the matched text.
+          type: string
+        context_chunk_start_page:
+          description: Page number where the answer in context starts in a document.
+          format: int32
+          type: integer
+        context_chunk_end_page:
+          description: Page number where the answer in context ends in a document.
+          format: int32
+          type: integer
+        context_chunk_bbox:
+          items:
+            $ref: '#/components/schemas/filename_v1alpha1BoundingBox'
+          description: Bounding boxes of answer in context; generally one response but can be multiple if the context chunk spans pages.
+          type: array
+        score:
+          description: Approximate strength of the returned answer in context.
+          format: float
+          type: number
+        answer_snippet_score:
+          format: float
+          description: Approximate gauge of how well the the answer snippet matched the query.
+          type: number
+        answer_snippet_start_index:
+          description: Character index of the first occurrence of the answer text within the surrounding answer in context.
+          format: int32
+          type: integer
+        answer_snippet_end_index:
+          description: Character index of the last occurrence of the answer within the surrounding answer in context.
+          format: int32
+          type: integer
+        answer_snippet_bbox:
+          items:
+            $ref: '#/components/schemas/filename_v1alpha1BoundingBox'
+          title: Bounding boxes for each line of the text match.
+          type: array
+        audio:
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalAudioOutput'
+        confidence_label:
+          description: Answer confidence levels; used to categorize outputs.
+          type: string
+        tags:
+          description: Tags associated with the output.
+          items:
+            $ref: '#/components/schemas/filename_v1alpha1TagData'
+          type: array
+        answer_type:
+          $ref: '#/components/schemas/filename_RetrievalOutputAnswerType'
+        verified_answer_id:
+          description: Unique identifier of the verified answer; if the answer isn't verified this is unset.
+          type: string
+        video_time_offset_seconds:
+          description: Length of time from the beginning of a in video (in seconds) until the short answer is found.
+          format: int32
+          type: integer
+        content_group:
+          $ref: '#/components/schemas/filename_v1alpha1ContentGroupSparse'
+        content_metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ContentMetadata'
+        context:
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalContext'
+        answer_html:
+          title: A marked up HTML version of the text_wordy/answer_in_context text
+          type: string
+      title: Each Retrieval output represents text matched in source content against the input
+      type: object
+    filename_WsRetrievalState:
+      default: UNSPECIFIED
+      description: "- UNSPECIFIED: Not specified.\n - ERROR: Unsupported request received or problem with the API server.\n - PROCESSING: START request for audio input successful.\n - QUERY_RESULT: API returned the Retrieval response to the client.\n - PROCESSING_COMPLETED: Full response sent for retrieval request."
+      title: State of the Retrieval
+      type: string
+    filename_v1alpha1NormalizedRetrievalInput:
+      properties:
+        normalized_input_id:
+          description: Unique identifier for the normalized input resource.
+          type: string
+        query:
+          description: Original input query.
+          type: string
+        understood_tags:
+          description: Tags detected from the query and used for filtering.
+          items:
+            $ref: '#/components/schemas/filename_v1alpha1TagData'
+          type: array
+      title: Post-processed version of the input
+      type: object
+    filename_v1alpha1RetrievalContext:
+      description: Additional context for the output.
+      properties:
+        augmentation:
+          description: Predefined additional information provided with the source of this output.
+          properties: {}
+          type: object
+      type: object
+    filename_v1alpha1RetrievalAudioInputAudioEncoding:
+      description: "- UNSPECIFIED: Encoding not specified; default and returns an ERROR response.\n - LINEAR16: Uncompressed 16-bit signed little-endian samples (Linear PCM)."
+      title: Audio encoding of the content in the message; must be one-channel (mono).
+      type: string
+    filename_v1alpha1RetrievalData:
+      properties:
+        user_id:
+          title: The identifier of the user that originally made the Retrieval
+          type: string
+        conversation_id:
+          description: Unique identifier for conversations for subsequent calls; saved in the client and returned on the next request.
+          type: string
+        retrieval_id:
+          description: Unique ID of the response item.
+          type: string
+        collection_id:
+          description: Parent collection for the knowledge domain; autogenerated and not editable.
+          type: string
+        knowledge_domain_id:
+          description: Unique identifier of the knowledge domain that supplied the exchange response.
+          type: string
+        normalized_input:
+          $ref: '#/components/schemas/filename_v1alpha1NormalizedRetrievalInput'
+        suggested_query:
+          description: Spelling corrections, if any, or other suggestions found for the input query.
+          items:
+            type: string
+          type: array
+        outputs:
+          description: List of outputs answering the question ported from retrieval result.
+          items:
+            $ref: '#/components/schemas/filename_v1alpha1RetrievalOutput'
+          type: array
+      title: A Retrieval is the primary object for getting content matched against the question asked in CreateRetrieval
+      type: object
+    filename_v1alpha1RetrievalAudioInput:
+      properties:
+        audio_encoding:
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalAudioInputAudioEncoding'
+        sample_rate_hertz:
+          description: Sample rate in hertz of the audio data; only valid value is 16000, which must be explicitly stated by the client.
+          format: int32
+          type: integer
+        content:
+          description: Bytes of encoded audio data.
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      title: Audio input for speech to text
+      type: object
+    filename_v1alpha1GetRetrievalResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalData'
+      type: object
+    filename_googlerpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/filename_protobufAny'
+          type: array
+      type: object
+    filename_v1alpha1RetrievalAudioOutput:
+      properties:
+        audio_output_id:
+          description: Unique identifier for the audio output resource.
+          type: string
+        audio_encoding:
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalAudioOutputAudioEncoding'
+        sample_rate_hertz:
+          description: Sample rate in hertz of the audio data; only valid value is 16000, which must be explicitly stated by the client.
+          format: int32
+          type: integer
+        content:
+          description: Bytes of encoded audio data.
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      title: Audio output when answer is converted back to speech
+      type: object
+    filename_v1alpha1TagSourceType:
+      default: TAG_SOURCE_TYPE_UNSPECIFIED
+      description: " - TAG_SOURCE_TYPE_UNSPECIFIED: Default. No tags can be created with this source.\n - SYSTEM_DEFINED: Tags created by the Pryon Cloud Services system.\n - USER_DEFINED: Tags defined by users if the system and created via user input.\n - QUERY_ATTRIBUTE: Tags associated to a content which can be used to improve Exchange response ranking quality based on the context specified in ExchangeInputOption."
+      type: string
+    filename_v1alpha1CreateWsRetrievalRequest:
+      description: The top-level message sent by the client for the CreateWsRetrieval (WebSocket) method.
+      properties:
+        ws_retrieval_id:
+          description: Unique identifier for the retrieval item.
+          type: string
+        action:
+          $ref: '#/components/schemas/filename_CreateWsRetrievalRequestAction'
+        Retrieval_request:
+          $ref: '#/components/schemas/filename_v1alpha1CreateRetrievalRequest'
+      type: object
+    filename_v1alpha1RetrievalOption:
+      properties:
+        audio_output_enabled:
+          description: Returns audio output when set to True; if no audio output is generated, responses include only text output; default is false.
+          type: boolean
+        max_outputs:
+          description: Number of outputs to be returned; minimum is 3 (default), maximum is 10.
+          format: int32
+          type: integer
+        context:
+          properties: {}
+          title: Additional context for the exchange input; improves response ranking quality.
+          type: object
+      title: Additional options for customizing the result of a Retrieval
+      type: object
+  securitySchemes:
+    oauth2_token:
+      description: The Pryon APIs are authenicated with an OAuth2 Bearer token.
+      type: apiKey
+      name: 'Authoriation: Bearer'
+      in: header
+x-tagGroups:
+- name: Retrieval APIs
+  tags:
+  - Content Service
+  - Exchange
+  - Glossary

@@ -1,0 +1,2148 @@
+{
+  "item": [
+    {
+      "id": "95257bf4-fe47-4626-8da6-f8eb87db252d",
+      "name": "RetrievalFeedback",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1a7282b2-1f4f-4d24-b9d8-0e6fe448d9cb",
+          "name": "List Retrieval Rating Reviews",
+          "request": {
+            "name": "List Retrieval Rating Reviews",
+            "description": {
+              "content": "Return rating reviews for a resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1alpha1",
+                "retrievals",
+                "rating-reviews"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "collection_id",
+                  "value": "<string>",
+                  "description": "Filter list output  with ratings for a knowledge collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "retrieval_id",
+                  "value": "<string>",
+                  "description": "Unique ID of the exchange item; if supplied, overrides the collection ID as a filter item; default is no entry."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Ratings included in requested review status; defaults to UNSPECIFIED.\n\n - UNSPECIFIED: Not a valid retrieval rating value.\n - PENDING: Waiting to be inspected for approval or rejection.\n - COMPLETE: Inspected and acted upon; no further action taken."
+                },
+                {
+                  "disabled": false,
+                  "key": "creator_id",
+                  "value": "<string>",
+                  "description": "Filter list output to only include ratings made by a given user."
+                },
+                {
+                  "disabled": false,
+                  "key": "rank",
+                  "value": "<integer>",
+                  "description": "Rank value given by the user; valid responses are 1 (negative) and 5 (positive)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Maximum page size is 100; default is 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "For multiple pages; must be specified in each request for two pages per sheet."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "Sort order for multi page requests; valid options are rank, rank desc, create_time, create_time desc."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7141b5a6-1538-4a49-a888-2fffa0bf9936",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "retrievals",
+                    "rating-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "retrieval_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "creator_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rank",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 775\n  },\n  \"items\": [\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"2003-11-20T23:27:06.349Z\",\n        \"update_time\": \"2011-08-25T12:44:49.727Z\",\n        \"response_time_millis\": 7739\n      },\n      \"data\": {\n        \"rating\": {\n          \"rating_id\": \"string\",\n          \"retrieval_id\": \"string\",\n          \"output_id\": \"string\",\n          \"creator_id\": \"string\",\n          \"question\": \"string\",\n          \"rank\": 9125,\n          \"message\": \"string\",\n          \"freeform_text\": \"string\"\n        },\n        \"collection_id\": \"string\",\n        \"knowledge_domain_id\": \"string\",\n        \"reviewer_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"flagged\": true,\n        \"verified_answer_id\": \"string\",\n        \"status\": \"string\"\n      }\n    },\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1951-11-15T21:46:33.218Z\",\n        \"update_time\": \"1979-07-22T17:19:48.098Z\",\n        \"response_time_millis\": 6755\n      },\n      \"data\": {\n        \"rating\": {\n          \"rating_id\": \"string\",\n          \"retrieval_id\": \"string\",\n          \"output_id\": \"string\",\n          \"creator_id\": \"string\",\n          \"question\": \"string\",\n          \"rank\": 1888,\n          \"message\": \"string\",\n          \"freeform_text\": \"string\"\n        },\n        \"collection_id\": \"string\",\n        \"knowledge_domain_id\": \"string\",\n        \"reviewer_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"flagged\": true,\n        \"verified_answer_id\": \"string\",\n        \"status\": \"string\"\n      }\n    }\n  ],\n  \"next_page_token\": \"string\",\n  \"total_size\": 8426,\n  \"page_size\": 7476,\n  \"order_by\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08bf7388-6cff-41e7-a817-ece0105e6fce",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "retrievals",
+                    "rating-reviews"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "retrieval_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "creator_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rank",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7893,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"rz1cGm8M7/ZsAiX25P==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"6fkjHSwHuvR7XPnN0S==\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e551d8e6-f7f2-42a8-9e77-4559bb3f6299",
+          "name": "Create Retrieval Rating",
+          "request": {
+            "name": "Create Retrieval Rating",
+            "description": {
+              "content": "Create a retrieval rating.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1alpha1",
+                "retrievals",
+                "ratings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"retrieval_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0780b63c-bc97-4bc2-9051-408e0c2ccef3",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "retrievals",
+                    "ratings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"retrieval_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"2001-06-11T03:40:49.804Z\",\n    \"update_time\": \"2025-07-01T06:42:19.914Z\",\n    \"response_time_millis\": 2462\n  },\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"retrieval_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89b60a47-5263-4750-8474-07678fe848f9",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "retrievals",
+                    "ratings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"retrieval_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1533,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"yqVu5c6JCUmTo7IoZIOdY6OPi5o2YepnC2kAhjl=\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"T0lcncwcx+nmfUxxjzPpS/v+j4WP7o7QthkPge+8\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9aaeec34-c3d1-4708-a3d6-4408022dc8ee",
+          "name": "Update Retrieval Rating Review",
+          "request": {
+            "name": "Update Retrieval Rating Review",
+            "description": {
+              "content": "Update the review perspective of a retrieval rating item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1alpha1",
+                "retrievals",
+                "ratings",
+                ":data.rating.rating_id",
+                "review"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "data.rating.rating_id",
+                  "description": "(Required) Unique identifier for the exchange rating; automatically generated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"rating\": {\n      \"rating_id\": \"<string>\",\n      \"retrieval_id\": \"<string>\",\n      \"output_id\": \"<string>\",\n      \"creator_id\": \"<string>\",\n      \"question\": \"<string>\",\n      \"rank\": \"<integer>\",\n      \"message\": \"<string>\",\n      \"freeform_text\": \"<string>\"\n    },\n    \"collection_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"reviewer_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"flagged\": \"<boolean>\",\n    \"verified_answer_id\": \"<string>\",\n    \"status\": \"<string>\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aac0374f-475e-4df2-a6ea-7e0d454fa76b",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "retrievals",
+                    "ratings",
+                    ":data.rating.rating_id",
+                    "review"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.rating.rating_id",
+                      "description": "(Required) Unique identifier for the exchange rating; automatically generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"rating\": {\n      \"rating_id\": \"<string>\",\n      \"retrieval_id\": \"<string>\",\n      \"output_id\": \"<string>\",\n      \"creator_id\": \"<string>\",\n      \"question\": \"<string>\",\n      \"rank\": \"<integer>\",\n      \"message\": \"<string>\",\n      \"freeform_text\": \"<string>\"\n    },\n    \"collection_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"reviewer_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"flagged\": \"<boolean>\",\n    \"verified_answer_id\": \"<string>\",\n    \"status\": \"<string>\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1952-10-20T12:37:58.239Z\",\n    \"update_time\": \"2024-08-17T06:12:03.626Z\",\n    \"response_time_millis\": 1970\n  },\n  \"data\": {\n    \"rating\": {\n      \"rating_id\": \"<string>\",\n      \"retrieval_id\": \"<string>\",\n      \"output_id\": \"<string>\",\n      \"creator_id\": \"<string>\",\n      \"question\": \"<string>\",\n      \"rank\": \"<integer>\",\n      \"message\": \"<string>\",\n      \"freeform_text\": \"<string>\"\n    },\n    \"collection_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"reviewer_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"flagged\": \"<boolean>\",\n    \"verified_answer_id\": \"<string>\",\n    \"status\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8f5368b-6b12-41fc-9023-c60c62b96c75",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "retrievals",
+                    "ratings",
+                    ":data.rating.rating_id",
+                    "review"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.rating.rating_id",
+                      "description": "(Required) Unique identifier for the exchange rating; automatically generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"rating\": {\n      \"rating_id\": \"<string>\",\n      \"retrieval_id\": \"<string>\",\n      \"output_id\": \"<string>\",\n      \"creator_id\": \"<string>\",\n      \"question\": \"<string>\",\n      \"rank\": \"<integer>\",\n      \"message\": \"<string>\",\n      \"freeform_text\": \"<string>\"\n    },\n    \"collection_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"reviewer_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"flagged\": \"<boolean>\",\n    \"verified_answer_id\": \"<string>\",\n    \"status\": \"<string>\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1533,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"yqVu5c6JCUmTo7IoZIOdY6OPi5o2YepnC2kAhjl=\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"T0lcncwcx+nmfUxxjzPpS/v+j4WP7o7QthkPge+8\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0fad2d47-0cf1-4782-8267-1cc0cbd09b16",
+          "name": "Update Retrieval Rating",
+          "request": {
+            "name": "Update Retrieval Rating",
+            "description": {
+              "content": "Modify an existing retrieval rating.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1alpha1",
+                "retrievals",
+                "ratings",
+                ":data.rating_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "data.rating_id",
+                  "description": "(Required) Unique identifier for the exchange rating; automatically generated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"retrieval_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2310df47-ebf0-40c6-9ee6-4edf93b44450",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "retrievals",
+                    "ratings",
+                    ":data.rating_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.rating_id",
+                      "description": "(Required) Unique identifier for the exchange rating; automatically generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"retrieval_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"2001-06-11T03:40:49.804Z\",\n    \"update_time\": \"2025-07-01T06:42:19.914Z\",\n    \"response_time_millis\": 2462\n  },\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"retrieval_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "536db3f8-ffb2-4627-a791-e69fed49bdd5",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "retrievals",
+                    "ratings",
+                    ":data.rating_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.rating_id",
+                      "description": "(Required) Unique identifier for the exchange rating; automatically generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"retrieval_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1533,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"yqVu5c6JCUmTo7IoZIOdY6OPi5o2YepnC2kAhjl=\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"T0lcncwcx+nmfUxxjzPpS/v+j4WP7o7QthkPge+8\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0579c213-2144-4c07-96c4-0db4b5399e0e",
+          "name": "Delete Retrieval Rating",
+          "request": {
+            "name": "Delete Retrieval Rating",
+            "description": {
+              "content": "Delete a retrieval rating.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1alpha1",
+                "retrievals",
+                "ratings",
+                ":rating_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rating_id",
+                  "description": "(Required) Unique identifier for the exchange rating; automatically generated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ee73e89-cd5b-4268-baaf-61da16338a24",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "retrievals",
+                    "ratings",
+                    ":rating_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rating_id",
+                      "description": "(Required) Unique identifier for the exchange rating; automatically generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca04fc71-698b-4292-830b-f642fd1447ec",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "retrievals",
+                    "ratings",
+                    ":rating_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rating_id",
+                      "description": "(Required) Unique identifier for the exchange rating; automatically generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1533,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"yqVu5c6JCUmTo7IoZIOdY6OPi5o2YepnC2kAhjl=\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"T0lcncwcx+nmfUxxjzPpS/v+j4WP7o7QthkPge+8\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dcde7e5d-97c4-4457-b501-b0f59009ab6a",
+          "name": "Get Retrieval Rating",
+          "request": {
+            "name": "Get Retrieval Rating",
+            "description": {
+              "content": "Get a retrieval rating.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1alpha1",
+                "retrievals",
+                "ratings",
+                ":rating_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rating_id",
+                  "description": "(Required) Unique identifier for the exchange rating; automatically generated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e7e6c1f-6dca-4544-8c55-eb3c702a10cf",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "retrievals",
+                    "ratings",
+                    ":rating_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rating_id",
+                      "description": "(Required) Unique identifier for the exchange rating; automatically generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"2001-06-11T03:40:49.804Z\",\n    \"update_time\": \"2025-07-01T06:42:19.914Z\",\n    \"response_time_millis\": 2462\n  },\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"retrieval_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73d0f63f-c13a-4b75-8124-202b5f49abcc",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "retrievals",
+                    "ratings",
+                    ":rating_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rating_id",
+                      "description": "(Required) Unique identifier for the exchange rating; automatically generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1533,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"yqVu5c6JCUmTo7IoZIOdY6OPi5o2YepnC2kAhjl=\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"T0lcncwcx+nmfUxxjzPpS/v+j4WP7o7QthkPge+8\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e08ff08e-bd8a-4524-a590-51a6cd3dcbd6",
+          "name": "Get Retrieval Rating Review",
+          "request": {
+            "name": "Get Retrieval Rating Review",
+            "description": {
+              "content": "Return the review perspective of a retrieval rating item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1alpha1",
+                "retrievals",
+                "ratings",
+                ":rating_id",
+                "review"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rating_id",
+                  "description": "(Required) Unique identifier for the exchange rating; automatically generated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4c357657-9b3b-406a-9c8e-c53dcaff5e8a",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "retrievals",
+                    "ratings",
+                    ":rating_id",
+                    "review"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rating_id",
+                      "description": "(Required) Unique identifier for the exchange rating; automatically generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1952-10-20T12:37:58.239Z\",\n    \"update_time\": \"2024-08-17T06:12:03.626Z\",\n    \"response_time_millis\": 1970\n  },\n  \"data\": {\n    \"rating\": {\n      \"rating_id\": \"<string>\",\n      \"retrieval_id\": \"<string>\",\n      \"output_id\": \"<string>\",\n      \"creator_id\": \"<string>\",\n      \"question\": \"<string>\",\n      \"rank\": \"<integer>\",\n      \"message\": \"<string>\",\n      \"freeform_text\": \"<string>\"\n    },\n    \"collection_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"reviewer_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"flagged\": \"<boolean>\",\n    \"verified_answer_id\": \"<string>\",\n    \"status\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8daa1066-5f15-4c5e-953a-206a6862f6a2",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "retrievals",
+                    "ratings",
+                    ":rating_id",
+                    "review"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rating_id",
+                      "description": "(Required) Unique identifier for the exchange rating; automatically generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1533,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"yqVu5c6JCUmTo7IoZIOdY6OPi5o2YepnC2kAhjl=\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"T0lcncwcx+nmfUxxjzPpS/v+j4WP7o7QthkPge+8\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "909351a1-047b-43f2-8e3a-5591791358ff",
+          "name": "List Verified Answers",
+          "request": {
+            "name": "List Verified Answers",
+            "description": {
+              "content": "List verified answer entries.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1alpha1",
+                "verified-answers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "knowledge_domain_id",
+                  "value": "<string>",
+                  "description": "Unique identifier of the knowledge domain that lists the verified answers."
+                },
+                {
+                  "disabled": false,
+                  "key": "collection_id",
+                  "value": "<string>",
+                  "description": "If request contains the collection_id, use it as the filter instead of the knowledge_domain_id."
+                },
+                {
+                  "disabled": false,
+                  "key": "verified_answer_status",
+                  "value": "UNSPECIFIED",
+                  "description": "Verified answer status.\n\n - PENDING_REVIEW: Answer under review.\n - APPROVED: Answer verified and approved."
+                },
+                {
+                  "disabled": false,
+                  "key": "return_only_item_keys",
+                  "value": "<boolean>",
+                  "description": "If set to True will only return item IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Maximum page size is 100; default is 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "For multiple pages; must be specified in each request for two pages per sheet."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "Sort order for multi page requests; valid options are update_time desc and update_time asc."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a3c74b25-801a-4b52-95ab-6c53c811b3bb",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "verified-answers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "knowledge_domain_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verified_answer_status",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "return_only_item_keys",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 2725\n  },\n  \"items\": [\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1971-12-27T11:16:51.679Z\",\n        \"update_time\": \"2010-08-14T07:54:55.100Z\",\n        \"response_time_millis\": 1704\n      },\n      \"data\": {\n        \"verified_answer_status\": \"UNSPECIFIED\",\n        \"verified_answer_id\": \"string\",\n        \"conv_review_id\": \"string\",\n        \"retrieval_id\": \"string\",\n        \"output_id\": \"string\",\n        \"knowledge_domain_id\": \"string\",\n        \"collection_id\": \"string\",\n        \"input_understood_text\": \"string\",\n        \"output_text\": \"string\",\n        \"approver_id\": \"string\",\n        \"uri\": \"string\",\n        \"uri_display_name\": \"string\",\n        \"contact_info\": {\n          \"contact_name\": \"string\",\n          \"contact_email\": \"string\"\n        },\n        \"answer_rich_text\": \"string\",\n        \"answer_hyperlinks\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    },\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"2020-10-03T14:03:03.243Z\",\n        \"update_time\": \"1964-02-18T05:05:02.252Z\",\n        \"response_time_millis\": 7531\n      },\n      \"data\": {\n        \"verified_answer_status\": \"UNSPECIFIED\",\n        \"verified_answer_id\": \"string\",\n        \"conv_review_id\": \"string\",\n        \"retrieval_id\": \"string\",\n        \"output_id\": \"string\",\n        \"knowledge_domain_id\": \"string\",\n        \"collection_id\": \"string\",\n        \"input_understood_text\": \"string\",\n        \"output_text\": \"string\",\n        \"approver_id\": \"string\",\n        \"uri\": \"string\",\n        \"uri_display_name\": \"string\",\n        \"contact_info\": {\n          \"contact_name\": \"string\",\n          \"contact_email\": \"string\"\n        },\n        \"answer_rich_text\": \"string\",\n        \"answer_hyperlinks\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    }\n  ],\n  \"next_page_token\": \"string\",\n  \"total_size\": 4510,\n  \"page_size\": 1002,\n  \"order_by\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0441c03c-e558-436a-bdc6-75626c0fdfd4",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "verified-answers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "knowledge_domain_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "verified_answer_status",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "return_only_item_keys",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1533,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"yqVu5c6JCUmTo7IoZIOdY6OPi5o2YepnC2kAhjl=\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"T0lcncwcx+nmfUxxjzPpS/v+j4WP7o7QthkPge+8\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f4ecc97-ce04-4d42-80ba-b07692df85c7",
+          "name": "Create Verified Answer",
+          "request": {
+            "name": "Create Verified Answer",
+            "description": {
+              "content": "Create a verified answer entry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1alpha1",
+                "verified-answers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"verified_answer_status\": \"UNSPECIFIED\",\n    \"verified_answer_id\": \"<string>\",\n    \"conv_review_id\": \"<string>\",\n    \"retrieval_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"collection_id\": \"<string>\",\n    \"input_understood_text\": \"<string>\",\n    \"output_text\": \"<string>\",\n    \"uri\": \"<string>\",\n    \"uri_display_name\": \"<string>\",\n    \"contact_info\": {\n      \"contact_name\": \"<string>\",\n      \"contact_email\": \"<string>\"\n    },\n    \"answer_rich_text\": \"<string>\",\n    \"answer_hyperlinks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "52804ae3-bce9-443f-8887-c9798f0b53f4",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "verified-answers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"verified_answer_status\": \"UNSPECIFIED\",\n    \"verified_answer_id\": \"<string>\",\n    \"conv_review_id\": \"<string>\",\n    \"retrieval_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"collection_id\": \"<string>\",\n    \"input_understood_text\": \"<string>\",\n    \"output_text\": \"<string>\",\n    \"uri\": \"<string>\",\n    \"uri_display_name\": \"<string>\",\n    \"contact_info\": {\n      \"contact_name\": \"<string>\",\n      \"contact_email\": \"<string>\"\n    },\n    \"answer_rich_text\": \"<string>\",\n    \"answer_hyperlinks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"2020-05-22T21:11:49.513Z\",\n    \"update_time\": \"1998-03-06T10:02:19.195Z\",\n    \"response_time_millis\": 6591\n  },\n  \"data\": {\n    \"verified_answer_status\": \"UNSPECIFIED\",\n    \"verified_answer_id\": \"<string>\",\n    \"conv_review_id\": \"<string>\",\n    \"retrieval_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"collection_id\": \"<string>\",\n    \"input_understood_text\": \"<string>\",\n    \"output_text\": \"<string>\",\n    \"approver_id\": \"string\",\n    \"uri\": \"<string>\",\n    \"uri_display_name\": \"<string>\",\n    \"contact_info\": {\n      \"contact_name\": \"<string>\",\n      \"contact_email\": \"<string>\"\n    },\n    \"answer_rich_text\": \"<string>\",\n    \"answer_hyperlinks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "003be063-5e3d-480d-905e-5cfcfbc5e15a",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "verified-answers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"verified_answer_status\": \"UNSPECIFIED\",\n    \"verified_answer_id\": \"<string>\",\n    \"conv_review_id\": \"<string>\",\n    \"retrieval_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"collection_id\": \"<string>\",\n    \"input_understood_text\": \"<string>\",\n    \"output_text\": \"<string>\",\n    \"uri\": \"<string>\",\n    \"uri_display_name\": \"<string>\",\n    \"contact_info\": {\n      \"contact_name\": \"<string>\",\n      \"contact_email\": \"<string>\"\n    },\n    \"answer_rich_text\": \"<string>\",\n    \"answer_hyperlinks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1533,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"yqVu5c6JCUmTo7IoZIOdY6OPi5o2YepnC2kAhjl=\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"T0lcncwcx+nmfUxxjzPpS/v+j4WP7o7QthkPge+8\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77d587eb-3c4a-46df-810b-053c88a2a911",
+          "name": "Update Verified Answer",
+          "request": {
+            "name": "Update Verified Answer",
+            "description": {
+              "content": "Modify an existing verified answer entry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1alpha1",
+                "verified-answers",
+                ":data.verified_answer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "data.verified_answer_id",
+                  "description": "(Required) Unique identifier generated on a create verified answer request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"verified_answer_status\": \"UNSPECIFIED\",\n    \"verified_answer_id\": \"<string>\",\n    \"conv_review_id\": \"<string>\",\n    \"retrieval_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"collection_id\": \"<string>\",\n    \"input_understood_text\": \"<string>\",\n    \"output_text\": \"<string>\",\n    \"uri\": \"<string>\",\n    \"uri_display_name\": \"<string>\",\n    \"contact_info\": {\n      \"contact_name\": \"<string>\",\n      \"contact_email\": \"<string>\"\n    },\n    \"answer_rich_text\": \"<string>\",\n    \"answer_hyperlinks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a5f456f1-d7bc-4d85-8bf5-6da881cfa004",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "verified-answers",
+                    ":data.verified_answer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.verified_answer_id",
+                      "description": "(Required) Unique identifier generated on a create verified answer request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"verified_answer_status\": \"UNSPECIFIED\",\n    \"verified_answer_id\": \"<string>\",\n    \"conv_review_id\": \"<string>\",\n    \"retrieval_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"collection_id\": \"<string>\",\n    \"input_understood_text\": \"<string>\",\n    \"output_text\": \"<string>\",\n    \"uri\": \"<string>\",\n    \"uri_display_name\": \"<string>\",\n    \"contact_info\": {\n      \"contact_name\": \"<string>\",\n      \"contact_email\": \"<string>\"\n    },\n    \"answer_rich_text\": \"<string>\",\n    \"answer_hyperlinks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"2020-05-22T21:11:49.513Z\",\n    \"update_time\": \"1998-03-06T10:02:19.195Z\",\n    \"response_time_millis\": 6591\n  },\n  \"data\": {\n    \"verified_answer_status\": \"UNSPECIFIED\",\n    \"verified_answer_id\": \"<string>\",\n    \"conv_review_id\": \"<string>\",\n    \"retrieval_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"collection_id\": \"<string>\",\n    \"input_understood_text\": \"<string>\",\n    \"output_text\": \"<string>\",\n    \"approver_id\": \"string\",\n    \"uri\": \"<string>\",\n    \"uri_display_name\": \"<string>\",\n    \"contact_info\": {\n      \"contact_name\": \"<string>\",\n      \"contact_email\": \"<string>\"\n    },\n    \"answer_rich_text\": \"<string>\",\n    \"answer_hyperlinks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "380ad8fa-cc6c-49a5-80e9-750ec2300273",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "verified-answers",
+                    ":data.verified_answer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.verified_answer_id",
+                      "description": "(Required) Unique identifier generated on a create verified answer request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"verified_answer_status\": \"UNSPECIFIED\",\n    \"verified_answer_id\": \"<string>\",\n    \"conv_review_id\": \"<string>\",\n    \"retrieval_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"collection_id\": \"<string>\",\n    \"input_understood_text\": \"<string>\",\n    \"output_text\": \"<string>\",\n    \"uri\": \"<string>\",\n    \"uri_display_name\": \"<string>\",\n    \"contact_info\": {\n      \"contact_name\": \"<string>\",\n      \"contact_email\": \"<string>\"\n    },\n    \"answer_rich_text\": \"<string>\",\n    \"answer_hyperlinks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1533,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"yqVu5c6JCUmTo7IoZIOdY6OPi5o2YepnC2kAhjl=\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"T0lcncwcx+nmfUxxjzPpS/v+j4WP7o7QthkPge+8\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55875d86-146c-4c70-ae80-59eae2fe3308",
+          "name": "Delete Verified Answer",
+          "request": {
+            "name": "Delete Verified Answer",
+            "description": {
+              "content": "Delete a verified answer entry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1alpha1",
+                "verified-answers",
+                ":verified_answer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "verified_answer_id",
+                  "description": "(Required) Unique identifier of the verified answer; if the answer isn't verified this is unset."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "545d7675-5326-4097-a5a8-77d7386fc203",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "verified-answers",
+                    ":verified_answer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "verified_answer_id",
+                      "description": "(Required) Unique identifier of the verified answer; if the answer isn't verified this is unset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ac967c3-0a50-4c4b-8403-d49336297a58",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "verified-answers",
+                    ":verified_answer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "verified_answer_id",
+                      "description": "(Required) Unique identifier of the verified answer; if the answer isn't verified this is unset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1533,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"yqVu5c6JCUmTo7IoZIOdY6OPi5o2YepnC2kAhjl=\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"T0lcncwcx+nmfUxxjzPpS/v+j4WP7o7QthkPge+8\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95e10121-ebfb-4463-83d2-3dc10b98c630",
+          "name": "Get Verified Answer",
+          "request": {
+            "name": "Get Verified Answer",
+            "description": {
+              "content": "Get information about a verified answer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1alpha1",
+                "verified-answers",
+                ":verified_answer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "verified_answer_id",
+                  "description": "(Required) Unique identifier of the verified answer; if the answer isn't verified this is unset."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "463d0e2e-03a8-4414-9f70-f6698c43d8ea",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "verified-answers",
+                    ":verified_answer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "verified_answer_id",
+                      "description": "(Required) Unique identifier of the verified answer; if the answer isn't verified this is unset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"2020-05-22T21:11:49.513Z\",\n    \"update_time\": \"1998-03-06T10:02:19.195Z\",\n    \"response_time_millis\": 6591\n  },\n  \"data\": {\n    \"verified_answer_status\": \"UNSPECIFIED\",\n    \"verified_answer_id\": \"<string>\",\n    \"conv_review_id\": \"<string>\",\n    \"retrieval_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"collection_id\": \"<string>\",\n    \"input_understood_text\": \"<string>\",\n    \"output_text\": \"<string>\",\n    \"approver_id\": \"string\",\n    \"uri\": \"<string>\",\n    \"uri_display_name\": \"<string>\",\n    \"contact_info\": {\n      \"contact_name\": \"<string>\",\n      \"contact_email\": \"<string>\"\n    },\n    \"answer_rich_text\": \"<string>\",\n    \"answer_hyperlinks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3bc3097f-fc1c-4ec5-907a-75df7e2c26b0",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1alpha1",
+                    "verified-answers",
+                    ":verified_answer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "verified_answer_id",
+                      "description": "(Required) Unique identifier of the verified answer; if the answer isn't verified this is unset."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1533,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"yqVu5c6JCUmTo7IoZIOdY6OPi5o2YepnC2kAhjl=\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"T0lcncwcx+nmfUxxjzPpS/v+j4WP7o7QthkPge+8\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "41722413-9fbe-42fe-bb49-93122de51498",
+    "name": "Retrieval Retrieval Feedback API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: Pryon Product Support\n Email: support@pryon.zendesk.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,239 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Retrieval Generative Retrieval Feedback API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GenerativeRetrievalFeedback",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Generative Retrieval Rating",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/generative-retrieval-ratings",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a rating for the generative retrieval."
+        },
+        {
+          "info": {
+            "name": "List Generative Retrieval Rating Reviews",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/generative-retrieval-ratings-reviews",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter list output to only include ratings for a knowledge collection."
+              },
+              {
+                "name": "generative_retrieval_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique ID of the exchange item; if supplied, overrides the collection ID as a filter item; default is no entry."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Ratings included in requested review status; defaults to UNSPECIFIED.\n\n - UNSPECIFIED: Not a valid retrieval rating value.\n - PENDING: Waiting to be inspected for approval or rejection.\n - COMPLETE: Inspected and acted upon; no further action taken."
+              },
+              {
+                "name": "creator_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter list output to only include ratings made by a given user."
+              },
+              {
+                "name": "rank",
+                "value": "",
+                "type": "query",
+                "description": "Filter list output to only include ratings that match a given rank value. In REST form the parameter is expressed as 'rank' with valid values 1-5."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size is 100; default is 100."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "For multiple pages; must be specified in each request for two pages per sheet."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for multi page requests; valid options are rank, rank desc, create_time, create_time desc."
+              }
+            ]
+          },
+          "docs": "List generative retrieval reviews by rating."
+        },
+        {
+          "info": {
+            "name": "Update Generative Retrieval Rating Review",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/generative-retrieval-ratings/:data.rating.rating_id/review",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.rating.rating_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the exchange rating; automatically generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the review perspective of a retrieval rating item."
+        },
+        {
+          "info": {
+            "name": "Update Generative Retrieval Rating",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/generative-retrieval-ratings/:data.rating_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.rating_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the exchange rating; automatically generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a generative retrieval rating."
+        },
+        {
+          "info": {
+            "name": "Get Generative Retrieval Rating",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/generative-retrieval-ratings/:rating_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "rating_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the exchange rating; automatically generated."
+              }
+            ]
+          },
+          "docs": "Return a generative retrieval rating. "
+        },
+        {
+          "info": {
+            "name": "Delete Generative Retrieval Rating",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/generative-retrieval-ratings/:rating_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "rating_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the exchange rating; automatically generated."
+              }
+            ]
+          },
+          "docs": "Delete a generative retrieval rating."
+        },
+        {
+          "info": {
+            "name": "Get Generative Retrieval Rating Review",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/generative-retrieval-ratings/:rating_id/review",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "rating_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the exchange rating; automatically generated."
+              }
+            ]
+          },
+          "docs": "List the review perspective of a retrieval rating item."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,2244 @@
+{
+  "item": [
+    {
+      "id": "9a989565-dd76-47af-b88d-534be277a412",
+      "name": "Feedback",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9c713913-b433-496d-b081-259fb6c006ee",
+          "name": "ListApprovals",
+          "request": {
+            "name": "ListApprovals",
+            "description": {
+              "content": "List Approval entries based on filters.\nFor a REST call filtering, params need to be passed in the request query string\nSupported filters:\nknowledge_domain_id (required)\nkd_succession_id (optional)\napproval_status (optional)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "approvals"
+              ],
+              "host": [
+                "{{api-conversation-v1-approvals-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "knowledge_domain_id",
+                  "value": "<string>",
+                  "description": "Required. Knowledge Domain under which approval items are listed."
+                },
+                {
+                  "disabled": false,
+                  "key": "kd_succession_id",
+                  "value": "<string>",
+                  "description": "Optional. Collection ID for KD, if present.\nIf request contains kd_succession_id, filter on it instead of knowledge_domain_id."
+                },
+                {
+                  "disabled": false,
+                  "key": "approval_status",
+                  "value": "UNSPECIFIED",
+                  "description": "Optional. Filter only items with this Approval status.\n\n - PENDING_REVIEW: PENDING_REVIEW: This approval item is pending review\n - REJECTED: REJECTED: This approval item has been rejected\n - APPROVED: APPROVED: This approval item has been approved"
+                },
+                {
+                  "disabled": false,
+                  "key": "return_only_item_keys",
+                  "value": "<boolean>",
+                  "description": "Optional. Return only the item keys when set to True."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Default page size is 100 when omitted. The maximum page size is 100.\nThe REST query parameter is \"page_size\".\nSee https://cloud.google.com/apis/design/design_patterns#list_pagination for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nSee https://cloud.google.com/apis/design/design_patterns#list_pagination for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "If there are multiple pages, a sort order can be used and is applicable to the pages but not to the items in a page.\nIf the sort order parameter is provided with a multi-page request, it must be provided on all subsequent page requests.\nSupported options are: \"update_time desc\" and \"update_time asc\".\nSee https://cloud.google.com/apis/design/design_patterns#sorting_order for details."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "85cad212-79de-41f4-9fed-55d3020ffcf0",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "approvals"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-approvals-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "knowledge_domain_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "kd_succession_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "approval_status",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "return_only_item_keys",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 1243\n  },\n  \"items\": [\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1995-04-07T08:18:29.939Z\",\n        \"update_time\": \"1953-12-29T16:30:48.906Z\",\n        \"response_time_millis\": 7768\n      },\n      \"data\": {\n        \"approval_status\": \"UNSPECIFIED\",\n        \"approval_id\": \"string\",\n        \"conv_review_id\": \"string\",\n        \"exchange_id\": \"string\",\n        \"knowledge_domain_id\": \"string\",\n        \"kd_succession_id\": \"string\",\n        \"input_understood_text\": \"string\",\n        \"output_text\": \"string\",\n        \"approver_id\": \"string\",\n        \"uri\": \"string\",\n        \"uri_display_name\": \"string\",\n        \"contact_info\": {\n          \"contact_name\": \"string\",\n          \"contact_email\": \"string\"\n        },\n        \"attachments\": {\n          \"key_0\": {\n            \"content_type\": \"string\",\n            \"content\": \"string\"\n          }\n        }\n      }\n    },\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1973-08-17T19:32:54.718Z\",\n        \"update_time\": \"1946-12-23T15:52:18.719Z\",\n        \"response_time_millis\": 3483\n      },\n      \"data\": {\n        \"approval_status\": \"UNSPECIFIED\",\n        \"approval_id\": \"string\",\n        \"conv_review_id\": \"string\",\n        \"exchange_id\": \"string\",\n        \"knowledge_domain_id\": \"string\",\n        \"kd_succession_id\": \"string\",\n        \"input_understood_text\": \"string\",\n        \"output_text\": \"string\",\n        \"approver_id\": \"string\",\n        \"uri\": \"string\",\n        \"uri_display_name\": \"string\",\n        \"contact_info\": {\n          \"contact_name\": \"string\",\n          \"contact_email\": \"string\"\n        },\n        \"attachments\": {\n          \"key_0\": {\n            \"content_type\": \"string\",\n            \"content\": \"string\"\n          },\n          \"key_1\": {\n            \"content_type\": \"string\",\n            \"content\": \"string\"\n          },\n          \"key_2\": {\n            \"content_type\": \"string\",\n            \"content\": \"string\"\n          }\n        }\n      }\n    }\n  ],\n  \"next_page_token\": \"string\",\n  \"total_size\": 6835,\n  \"page_size\": 7516,\n  \"order_by\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e189f7a0-4d14-481d-a018-d6a1f04a24aa",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "approvals"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-approvals-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "knowledge_domain_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "kd_succession_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "approval_status",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "return_only_item_keys",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9853,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"uv4nCcNKuVusfU4gGvzHL0YPZ/t3xM==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"DBB=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70c35e4e-ae50-4cb5-a295-78e7472b4fa8",
+          "name": "CreateApproval",
+          "request": {
+            "name": "CreateApproval",
+            "description": {
+              "content": "Create an Approval entry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "approvals"
+              ],
+              "host": [
+                "{{api-conversation-v1-approvals-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"approval_status\": \"UNSPECIFIED\",\n    \"approval_id\": \"<string>\",\n    \"conv_review_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"kd_succession_id\": \"<string>\",\n    \"input_understood_text\": \"<string>\",\n    \"output_text\": \"<string>\",\n    \"uri\": \"<string>\",\n    \"uri_display_name\": \"<string>\",\n    \"contact_info\": {\n      \"contact_name\": \"<string>\",\n      \"contact_email\": \"<string>\"\n    },\n    \"attachments\": {\n      \"key_0\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      },\n      \"key_1\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      }\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5e9e7ab3-f29d-438e-8db3-d3e4914e676e",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "approvals"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-approvals-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"approval_status\": \"UNSPECIFIED\",\n    \"approval_id\": \"<string>\",\n    \"conv_review_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"kd_succession_id\": \"<string>\",\n    \"input_understood_text\": \"<string>\",\n    \"output_text\": \"<string>\",\n    \"uri\": \"<string>\",\n    \"uri_display_name\": \"<string>\",\n    \"contact_info\": {\n      \"contact_name\": \"<string>\",\n      \"contact_email\": \"<string>\"\n    },\n    \"attachments\": {\n      \"key_0\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      },\n      \"key_1\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1992-07-09T01:34:54.663Z\",\n    \"update_time\": \"1971-04-26T04:33:26.029Z\",\n    \"response_time_millis\": 4549\n  },\n  \"data\": {\n    \"approval_status\": \"UNSPECIFIED\",\n    \"approval_id\": \"<string>\",\n    \"conv_review_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"kd_succession_id\": \"<string>\",\n    \"input_understood_text\": \"<string>\",\n    \"output_text\": \"<string>\",\n    \"approver_id\": \"string\",\n    \"uri\": \"<string>\",\n    \"uri_display_name\": \"<string>\",\n    \"contact_info\": {\n      \"contact_name\": \"<string>\",\n      \"contact_email\": \"<string>\"\n    },\n    \"attachments\": {\n      \"key_0\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      },\n      \"key_1\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      },\n      \"key_2\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e18dbb8-07cd-4b4e-a158-933f02ee3944",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "approvals"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-approvals-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"approval_status\": \"UNSPECIFIED\",\n    \"approval_id\": \"<string>\",\n    \"conv_review_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"kd_succession_id\": \"<string>\",\n    \"input_understood_text\": \"<string>\",\n    \"output_text\": \"<string>\",\n    \"uri\": \"<string>\",\n    \"uri_display_name\": \"<string>\",\n    \"contact_info\": {\n      \"contact_name\": \"<string>\",\n      \"contact_email\": \"<string>\"\n    },\n    \"attachments\": {\n      \"key_0\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      },\n      \"key_1\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1306,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WheLl/a3ke==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"2BPrKoEW0TG=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5493737-cc2f-489c-b728-2b0e711f5648",
+          "name": "DeleteApproval",
+          "request": {
+            "name": "DeleteApproval",
+            "description": {
+              "content": "Delete an Approval entry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "approvals",
+                ":approval_id"
+              ],
+              "host": [
+                "{{api-conversation-v1-approvals-approval_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "approval_id",
+                  "description": "(Required) Required. approval_id of item to be deleted."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e50ca34-c958-490b-863b-103e420db662",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "approvals",
+                    ":approval_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-approvals-approval_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "approval_id",
+                      "description": "(Required) Required. approval_id of item to be deleted."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c1040a8-31be-41a5-98c8-8eb1c4e1c3bd",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "approvals",
+                    ":approval_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-approvals-approval_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "approval_id",
+                      "description": "(Required) Required. approval_id of item to be deleted."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1306,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WheLl/a3ke==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"2BPrKoEW0TG=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9e1a588-dee8-420b-b145-0efbc3d3c861",
+          "name": "GetApproval",
+          "request": {
+            "name": "GetApproval",
+            "description": {
+              "content": "Get information about an Approval entry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "approvals",
+                ":approval_id"
+              ],
+              "host": [
+                "{{api-conversation-v1-approvals-approval_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "approval_id",
+                  "description": "(Required) Required. Must be a valid UUID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9154cc69-0504-4d16-9d1a-6921f61aa739",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "approvals",
+                    ":approval_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-approvals-approval_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "approval_id",
+                      "description": "(Required) Required. Must be a valid UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1992-07-09T01:34:54.663Z\",\n    \"update_time\": \"1971-04-26T04:33:26.029Z\",\n    \"response_time_millis\": 4549\n  },\n  \"data\": {\n    \"approval_status\": \"UNSPECIFIED\",\n    \"approval_id\": \"<string>\",\n    \"conv_review_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"kd_succession_id\": \"<string>\",\n    \"input_understood_text\": \"<string>\",\n    \"output_text\": \"<string>\",\n    \"approver_id\": \"string\",\n    \"uri\": \"<string>\",\n    \"uri_display_name\": \"<string>\",\n    \"contact_info\": {\n      \"contact_name\": \"<string>\",\n      \"contact_email\": \"<string>\"\n    },\n    \"attachments\": {\n      \"key_0\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      },\n      \"key_1\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      },\n      \"key_2\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc0d8c31-791d-4482-8942-17ab1fc39bf1",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "approvals",
+                    ":approval_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-approvals-approval_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "approval_id",
+                      "description": "(Required) Required. Must be a valid UUID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1306,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WheLl/a3ke==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"2BPrKoEW0TG=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70c4f167-f2dd-4744-8022-f12de282b773",
+          "name": "UpdateApproval",
+          "request": {
+            "name": "UpdateApproval",
+            "description": {
+              "content": "Modify an existing Approval entry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "approvals",
+                ":data.approval_id"
+              ],
+              "host": [
+                "{{api-conversation-v1-approvals-data.approval_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "data.approval_id",
+                  "description": "(Required) Optional. Random UUID generated on a CreateApproval request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"approval_status\": \"UNSPECIFIED\",\n    \"approval_id\": \"<string>\",\n    \"conv_review_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"kd_succession_id\": \"<string>\",\n    \"input_understood_text\": \"<string>\",\n    \"output_text\": \"<string>\",\n    \"uri\": \"<string>\",\n    \"uri_display_name\": \"<string>\",\n    \"contact_info\": {\n      \"contact_name\": \"<string>\",\n      \"contact_email\": \"<string>\"\n    },\n    \"attachments\": {\n      \"key_0\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      },\n      \"key_1\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      }\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "85e1c87f-0b45-4dc1-99b2-c50f069c89af",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "approvals",
+                    ":data.approval_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-approvals-data.approval_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.approval_id",
+                      "description": "(Required) Optional. Random UUID generated on a CreateApproval request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"approval_status\": \"UNSPECIFIED\",\n    \"approval_id\": \"<string>\",\n    \"conv_review_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"kd_succession_id\": \"<string>\",\n    \"input_understood_text\": \"<string>\",\n    \"output_text\": \"<string>\",\n    \"uri\": \"<string>\",\n    \"uri_display_name\": \"<string>\",\n    \"contact_info\": {\n      \"contact_name\": \"<string>\",\n      \"contact_email\": \"<string>\"\n    },\n    \"attachments\": {\n      \"key_0\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      },\n      \"key_1\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1992-07-09T01:34:54.663Z\",\n    \"update_time\": \"1971-04-26T04:33:26.029Z\",\n    \"response_time_millis\": 4549\n  },\n  \"data\": {\n    \"approval_status\": \"UNSPECIFIED\",\n    \"approval_id\": \"<string>\",\n    \"conv_review_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"kd_succession_id\": \"<string>\",\n    \"input_understood_text\": \"<string>\",\n    \"output_text\": \"<string>\",\n    \"approver_id\": \"string\",\n    \"uri\": \"<string>\",\n    \"uri_display_name\": \"<string>\",\n    \"contact_info\": {\n      \"contact_name\": \"<string>\",\n      \"contact_email\": \"<string>\"\n    },\n    \"attachments\": {\n      \"key_0\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      },\n      \"key_1\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      },\n      \"key_2\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e2fec18-e589-4c11-906a-93b167fef997",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "approvals",
+                    ":data.approval_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-approvals-data.approval_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.approval_id",
+                      "description": "(Required) Optional. Random UUID generated on a CreateApproval request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"approval_status\": \"UNSPECIFIED\",\n    \"approval_id\": \"<string>\",\n    \"conv_review_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"kd_succession_id\": \"<string>\",\n    \"input_understood_text\": \"<string>\",\n    \"output_text\": \"<string>\",\n    \"uri\": \"<string>\",\n    \"uri_display_name\": \"<string>\",\n    \"contact_info\": {\n      \"contact_name\": \"<string>\",\n      \"contact_email\": \"<string>\"\n    },\n    \"attachments\": {\n      \"key_0\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      },\n      \"key_1\": {\n        \"content_type\": \"<string>\",\n        \"content\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1306,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WheLl/a3ke==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"2BPrKoEW0TG=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd352b29-b655-42f2-971a-b7f4af9fe663",
+          "name": "ListExchangeRatingReviews",
+          "request": {
+            "name": "ListExchangeRatingReviews",
+            "description": {
+              "content": "List exchange rating reviews.\nAccepted REST filter parameters:\ncollection_id (required)\nexchange_id (optional)\ncreator_id (optional)\nrank (optional)\nstatus (optional)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "rating-reviews"
+              ],
+              "host": [
+                "{{api-conversation-v1-rating-reviews-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "collection_id",
+                  "value": "<string>",
+                  "description": "Required. Filter list output to only include ratings for a knowledge collection. In REST form the parameter is expressed as 'collection_id'."
+                },
+                {
+                  "disabled": false,
+                  "key": "exchange_id",
+                  "value": "<string>",
+                  "description": "Filter list output to only include ratings for a particular exchange. Overrides the collection_id filter value if supplied. Defaults to empty which disables this filter. In REST form the parameter is expressed as 'exchange_id'."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "UNSPECIFIED",
+                  "description": "Filter list output to only include ratings that are in requested review status. Defaults to UNSPECIFIED which disables this filter. In REST form the parameter is expressed as 'status' with valid values PENDING and COMPLETE.\n\n - UNSPECIFIED: Not a valid exchange rating value\n - PENDING: This exchange rating is waiting to be inspected for approval or rejection (default).\n - COMPLETE: This exchange rating has been inspected and acted upon. No further action will be taken."
+                },
+                {
+                  "disabled": false,
+                  "key": "creator_id",
+                  "value": "<string>",
+                  "description": "Filter list output to only include ratings made by a given user. In REST form the parameter is expressed as 'creator_id'."
+                },
+                {
+                  "disabled": false,
+                  "key": "rank",
+                  "value": "<integer>",
+                  "description": "Filter list output to only include ratings that match a given rank value. In REST form the parameter is expressed as 'rank' with valid values 1-5."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Default page size is 100 when omitted. The maximum page size is 100.\nThe REST query parameter is \"page_size\".\nSee https://cloud.google.com/apis/design/design_patterns#list_pagination for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nSee https://cloud.google.com/apis/design/design_patterns#list_pagination for details."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "If the sort order parameter is provided with a multi page request, it must be provided on all subsequent page requests.\nFor exchange requests the valid options are: rank, rank desc, create_time, create_time desc.\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "30ca72ed-11c7-4602-970e-81d764ab97c2",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "rating-reviews"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-rating-reviews-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exchange_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "creator_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rank",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 7696\n  },\n  \"items\": [\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1988-12-04T01:11:05.549Z\",\n        \"update_time\": \"2009-09-29T14:03:50.359Z\",\n        \"response_time_millis\": 2899\n      },\n      \"data\": {\n        \"rating\": {\n          \"rating_id\": \"string\",\n          \"exchange_id\": \"string\",\n          \"output_id\": \"string\",\n          \"creator_id\": \"string\",\n          \"question\": \"string\",\n          \"rank\": 1689,\n          \"message\": \"string\",\n          \"freeform_text\": \"string\"\n        },\n        \"collection_id\": \"string\",\n        \"knowledge_domain_id\": \"string\",\n        \"reviewer_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"flagged\": true,\n        \"approval_id\": \"string\",\n        \"status\": \"UNSPECIFIED\"\n      }\n    },\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"2001-12-30T10:53:17.653Z\",\n        \"update_time\": \"1981-01-26T17:37:10.929Z\",\n        \"response_time_millis\": 2116\n      },\n      \"data\": {\n        \"rating\": {\n          \"rating_id\": \"string\",\n          \"exchange_id\": \"string\",\n          \"output_id\": \"string\",\n          \"creator_id\": \"string\",\n          \"question\": \"string\",\n          \"rank\": 1319,\n          \"message\": \"string\",\n          \"freeform_text\": \"string\"\n        },\n        \"collection_id\": \"string\",\n        \"knowledge_domain_id\": \"string\",\n        \"reviewer_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"flagged\": false,\n        \"approval_id\": \"string\",\n        \"status\": \"UNSPECIFIED\"\n      }\n    }\n  ],\n  \"next_page_token\": \"string\",\n  \"total_size\": 1942,\n  \"page_size\": 5819,\n  \"order_by\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6090a56a-ff58-4108-99a7-1a23a7adcb7e",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "rating-reviews"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-rating-reviews-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exchange_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "creator_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rank",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1306,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WheLl/a3ke==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"2BPrKoEW0TG=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c0836bd-bd87-4e09-ba5e-e314e859d1f2",
+          "name": "CreateExchangeRating",
+          "request": {
+            "name": "CreateExchangeRating",
+            "description": {
+              "content": "Create an exchange rating.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "ratings"
+              ],
+              "host": [
+                "{{api-conversation-v1-ratings-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "15ccd600-fca5-4a05-aae4-18a609a269b0",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "ratings"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-ratings-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1971-07-23T00:40:10.150Z\",\n    \"update_time\": \"1950-05-30T02:44:10.235Z\",\n    \"response_time_millis\": 9715\n  },\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04b73ffa-41a6-46c4-a292-526d4f2a2b97",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "ratings"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-ratings-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1306,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WheLl/a3ke==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"2BPrKoEW0TG=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ae48316-8578-4d1a-a876-0dcd7c8ac9ad",
+          "name": "UpdateExchangeRatingReview",
+          "request": {
+            "name": "UpdateExchangeRatingReview",
+            "description": {
+              "content": "A reviewing authority can update the review perspective of an exchange rating item. This includes review information not available to un-privileged users.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "ratings",
+                ":data.rating.rating_id",
+                "review"
+              ],
+              "host": [
+                "{{api-conversation-v1-ratings-data.rating.rating_id-review-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "data.rating.rating_id",
+                  "description": "(Required) UUID that uniquely identifies a particular exchange rating. Automatically generated on create."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"rating\": {\n      \"rating_id\": \"<string>\",\n      \"exchange_id\": \"<string>\",\n      \"output_id\": \"<string>\",\n      \"creator_id\": \"<string>\",\n      \"question\": \"<string>\",\n      \"rank\": \"<integer>\",\n      \"message\": \"<string>\",\n      \"freeform_text\": \"<string>\"\n    },\n    \"collection_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"reviewer_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"flagged\": \"<boolean>\",\n    \"approval_id\": \"<string>\",\n    \"status\": \"UNSPECIFIED\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5234ed6a-be0e-4503-89c1-3c0305515ceb",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "ratings",
+                    ":data.rating.rating_id",
+                    "review"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-ratings-data.rating.rating_id-review-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.rating.rating_id",
+                      "description": "(Required) UUID that uniquely identifies a particular exchange rating. Automatically generated on create."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"rating\": {\n      \"rating_id\": \"<string>\",\n      \"exchange_id\": \"<string>\",\n      \"output_id\": \"<string>\",\n      \"creator_id\": \"<string>\",\n      \"question\": \"<string>\",\n      \"rank\": \"<integer>\",\n      \"message\": \"<string>\",\n      \"freeform_text\": \"<string>\"\n    },\n    \"collection_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"reviewer_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"flagged\": \"<boolean>\",\n    \"approval_id\": \"<string>\",\n    \"status\": \"UNSPECIFIED\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1983-03-08T19:45:38.313Z\",\n    \"update_time\": \"2018-06-07T07:37:31.696Z\",\n    \"response_time_millis\": 6994\n  },\n  \"data\": {\n    \"rating\": {\n      \"rating_id\": \"<string>\",\n      \"exchange_id\": \"<string>\",\n      \"output_id\": \"<string>\",\n      \"creator_id\": \"<string>\",\n      \"question\": \"<string>\",\n      \"rank\": \"<integer>\",\n      \"message\": \"<string>\",\n      \"freeform_text\": \"<string>\"\n    },\n    \"collection_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"reviewer_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"flagged\": \"<boolean>\",\n    \"approval_id\": \"<string>\",\n    \"status\": \"UNSPECIFIED\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03a54a82-a38d-425d-bde5-66b48231e999",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "ratings",
+                    ":data.rating.rating_id",
+                    "review"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-ratings-data.rating.rating_id-review-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.rating.rating_id",
+                      "description": "(Required) UUID that uniquely identifies a particular exchange rating. Automatically generated on create."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"rating\": {\n      \"rating_id\": \"<string>\",\n      \"exchange_id\": \"<string>\",\n      \"output_id\": \"<string>\",\n      \"creator_id\": \"<string>\",\n      \"question\": \"<string>\",\n      \"rank\": \"<integer>\",\n      \"message\": \"<string>\",\n      \"freeform_text\": \"<string>\"\n    },\n    \"collection_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"reviewer_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"flagged\": \"<boolean>\",\n    \"approval_id\": \"<string>\",\n    \"status\": \"UNSPECIFIED\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1306,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WheLl/a3ke==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"2BPrKoEW0TG=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9920e483-9581-48b5-9425-ad134e9aea53",
+          "name": "UpdateExchangeRating",
+          "request": {
+            "name": "UpdateExchangeRating",
+            "description": {
+              "content": "Modify an existing exchange rating.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "ratings",
+                ":data.rating_id"
+              ],
+              "host": [
+                "{{api-conversation-v1-ratings-data.rating_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "data.rating_id",
+                  "description": "(Required) UUID that uniquely identifies a particular exchange rating. Automatically generated on create."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "77ae7145-8be1-4fc4-9aae-94a11e06f5bb",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "ratings",
+                    ":data.rating_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-ratings-data.rating_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.rating_id",
+                      "description": "(Required) UUID that uniquely identifies a particular exchange rating. Automatically generated on create."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1971-07-23T00:40:10.150Z\",\n    \"update_time\": \"1950-05-30T02:44:10.235Z\",\n    \"response_time_millis\": 9715\n  },\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3037c70a-f72a-41f1-9e7f-3020d7aa6e4a",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "ratings",
+                    ":data.rating_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-ratings-data.rating_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.rating_id",
+                      "description": "(Required) UUID that uniquely identifies a particular exchange rating. Automatically generated on create."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1306,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WheLl/a3ke==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"2BPrKoEW0TG=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94d5e101-e152-43a6-97ae-3c6b1c567c12",
+          "name": "DeleteExchangeRating",
+          "request": {
+            "name": "DeleteExchangeRating",
+            "description": {
+              "content": "Delete an exchange rating.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "ratings",
+                ":rating_id"
+              ],
+              "host": [
+                "{{api-conversation-v1-ratings-rating_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rating_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34174e4b-5122-4dee-aa45-f79f3a5a14cc",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "ratings",
+                    ":rating_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-ratings-rating_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rating_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8867dbd-32da-48fa-bf67-f864e2c1e195",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "ratings",
+                    ":rating_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-ratings-rating_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rating_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1306,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WheLl/a3ke==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"2BPrKoEW0TG=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e451601-9f74-4afd-a8b9-f92693b8f175",
+          "name": "GetExchangeRating",
+          "request": {
+            "name": "GetExchangeRating",
+            "description": {
+              "content": "Retrieve an exchange rating.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "ratings",
+                ":rating_id"
+              ],
+              "host": [
+                "{{api-conversation-v1-ratings-rating_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rating_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e569e6f-93a1-41b9-8d63-5529a523a8ef",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "ratings",
+                    ":rating_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-ratings-rating_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rating_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1971-07-23T00:40:10.150Z\",\n    \"update_time\": \"1950-05-30T02:44:10.235Z\",\n    \"response_time_millis\": 9715\n  },\n  \"data\": {\n    \"rating_id\": \"<string>\",\n    \"exchange_id\": \"<string>\",\n    \"output_id\": \"<string>\",\n    \"creator_id\": \"<string>\",\n    \"question\": \"<string>\",\n    \"rank\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"freeform_text\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a07abdd-6c73-4033-9054-25ce9173f51e",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "ratings",
+                    ":rating_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-ratings-rating_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rating_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1306,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WheLl/a3ke==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"2BPrKoEW0TG=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f06540b-6fbf-4175-9618-fe976137fd92",
+          "name": "GetExchangeRatingReview",
+          "request": {
+            "name": "GetExchangeRatingReview",
+            "description": {
+              "content": "A reviewing authority can retrieve the review perspective of an exchange rating item. This includes review information not available to un-privileged users.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "ratings",
+                ":rating_id",
+                "review"
+              ],
+              "host": [
+                "{{api-conversation-v1-ratings-rating_id-review-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rating_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "35625199-cd2c-4f43-8090-b3922927c84c",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "ratings",
+                    ":rating_id",
+                    "review"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-ratings-rating_id-review-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rating_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1983-03-08T19:45:38.313Z\",\n    \"update_time\": \"2018-06-07T07:37:31.696Z\",\n    \"response_time_millis\": 6994\n  },\n  \"data\": {\n    \"rating\": {\n      \"rating_id\": \"<string>\",\n      \"exchange_id\": \"<string>\",\n      \"output_id\": \"<string>\",\n      \"creator_id\": \"<string>\",\n      \"question\": \"<string>\",\n      \"rank\": \"<integer>\",\n      \"message\": \"<string>\",\n      \"freeform_text\": \"<string>\"\n    },\n    \"collection_id\": \"<string>\",\n    \"knowledge_domain_id\": \"<string>\",\n    \"reviewer_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"flagged\": \"<boolean>\",\n    \"approval_id\": \"<string>\",\n    \"status\": \"UNSPECIFIED\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca7e8abb-0a40-4d6d-adf3-ea546b054576",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "ratings",
+                    ":rating_id",
+                    "review"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-ratings-rating_id-review-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rating_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1306,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"WheLl/a3ke==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"2BPrKoEW0TG=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-conversation-v1-approvals-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-conversation-v1-approvals-approval_id-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-conversation-v1-approvals-data.approval_id-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-conversation-v1-rating-reviews-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-conversation-v1-ratings-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-conversation-v1-ratings-data.rating.rating_id-review-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-conversation-v1-ratings-data.rating_id-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-conversation-v1-ratings-rating_id-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-conversation-v1-ratings-rating_id-review-Url"
+    }
+  ],
+  "info": {
+    "_postman_id": "d7881284-3cc7-4617-903c-1b308616ac87",
+    "name": "Pryon Feedback API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged Feedback across 2 of this provider's published API definitions: pryon-admin-openapi.json, pryon-feedback-august2025-openapi.json. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

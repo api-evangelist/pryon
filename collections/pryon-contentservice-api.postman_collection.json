@@ -1,0 +1,3433 @@
+{
+  "item": [
+    {
+      "id": "c20ec449-f323-4b89-b38b-b4c1d3ebae5d",
+      "name": "ContentService",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c4209ce7-6ce2-4239-84d7-4e4f800ca8f2",
+          "name": "ListContentGroups",
+          "request": {
+            "name": "ListContentGroups",
+            "description": {
+              "content": "Get a list of all the Content Groups.  The filters supported are knowledge_domain_id and content_id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "content-groups"
+              ],
+              "host": [
+                "{{api-knowledge-v1-content-groups-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "knowledge_domain_id",
+                  "value": "<string>",
+                  "description": "Optional: ID for Knowledge Domain under which to search for ContentGroups."
+                },
+                {
+                  "disabled": false,
+                  "key": "content_id",
+                  "value": "<string>",
+                  "description": "Optional: ID for Content which is contained by matching Content Groups."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48fda7b8-e07d-441b-8b30-dde60666d830",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "knowledge_domain_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "content_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 4875\n  },\n  \"items\": {\n    \"key_0\": {\n      \"data\": {\n        \"content_group_id\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\",\n        \"source_location\": \"string\",\n        \"content_statuses\": [\n          9647,\n          7970\n        ],\n        \"service_id\": \"string\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1953-09-24T14:06:39.066Z\",\n        \"update_time\": \"1958-01-08T07:43:07.679Z\",\n        \"response_time_millis\": 3790\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa70f559-e47a-48f2-9bdd-9cd1f4a5fa6a",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "knowledge_domain_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "content_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2838,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"GI==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"v3RSTjwwjqIYIV9VvTdGWMh22Qet5D8HrlkUHxp=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f55b62a-27c3-47c9-9979-bd057563b254",
+          "name": "CreateContentGroup",
+          "request": {
+            "name": "CreateContentGroup",
+            "description": {
+              "content": "CRD methods for a ContentGroup",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "content-groups"
+              ],
+              "host": [
+                "{{api-knowledge-v1-content-groups-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"content_statuses\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"service_id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c6a6c488-ed12-4b84-af5b-b063f410c9e9",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"content_statuses\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"service_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1959-12-27T01:54:28.621Z\",\n    \"update_time\": \"1998-09-30T05:25:48.716Z\",\n    \"response_time_millis\": 5095\n  },\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"content_statuses\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"service_id\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6540f1a1-1c13-4885-9fe4-69b899d267e4",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"content_statuses\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"service_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2013,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1VsjqV8Oi93WqLAx3SvfaQVlizr6\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"oXS5mGsVjyKLUJYXNqo/gTOdaiklR6fZGCqBEslMeoF=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9fddbc47-9cfa-4a8e-85a1-2c893fbe3833",
+          "name": "DeleteContentGroup",
+          "request": {
+            "name": "DeleteContentGroup",
+            "description": {
+              "content": "Delete a Content Group and all its associations with Contents.  This will not alter the Content resources.  This request will be rejected if the Content Group is a member of any Knowledge Domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "content-groups",
+                ":content_group_id"
+              ],
+              "host": [
+                "{{api-knowledge-v1-content-groups-content_group_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_group_id",
+                  "description": "(Required) ID of ContentGroup to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5713ca55-f37f-47d9-87a0-e8c4d98156e8",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    ":content_group_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-content_group_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) ID of ContentGroup to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f0d91eb3-6266-42bf-ad04-83fa0a009598",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    ":content_group_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-content_group_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) ID of ContentGroup to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2013,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1VsjqV8Oi93WqLAx3SvfaQVlizr6\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"oXS5mGsVjyKLUJYXNqo/gTOdaiklR6fZGCqBEslMeoF=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32e5d2c8-fa23-4d6d-ad98-51547f87895d",
+          "name": "GetContentGroup",
+          "request": {
+            "name": "GetContentGroup",
+            "description": {
+              "content": "Get a Content Group by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "content-groups",
+                ":content_group_id"
+              ],
+              "host": [
+                "{{api-knowledge-v1-content-groups-content_group_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_group_id",
+                  "description": "(Required) ID of ContentGroup to return"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a7e15ee5-4b99-47ee-a7de-7bd0c1d5d9d3",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    ":content_group_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-content_group_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) ID of ContentGroup to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1959-12-27T01:54:28.621Z\",\n    \"update_time\": \"1998-09-30T05:25:48.716Z\",\n    \"response_time_millis\": 5095\n  },\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"content_statuses\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"service_id\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "afd7be8d-9357-4dc6-be9f-18ae97500e73",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    ":content_group_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-content_group_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) ID of ContentGroup to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2013,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1VsjqV8Oi93WqLAx3SvfaQVlizr6\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"oXS5mGsVjyKLUJYXNqo/gTOdaiklR6fZGCqBEslMeoF=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04e2f906-c617-4037-8a96-0c334aeb68a4",
+          "name": "DeleteContentGroupContents",
+          "request": {
+            "name": "DeleteContentGroupContents",
+            "description": {
+              "content": "Delete all child Content associations with the parent Content Group.  The Content resources are not altered.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "content-groups",
+                ":content_group_id",
+                "contents"
+              ],
+              "host": [
+                "{{api-knowledge-v1-content-groups-content_group_id-contents-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_group_id",
+                  "description": "(Required) ID of ContentGroup to return"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1331278b-9558-4460-9e57-cfd8cda176dc",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    ":content_group_id",
+                    "contents"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-content_group_id-contents-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) ID of ContentGroup to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "389fea3e-bf17-4313-8966-91b081b38f0e",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    ":content_group_id",
+                    "contents"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-content_group_id-contents-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) ID of ContentGroup to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2013,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1VsjqV8Oi93WqLAx3SvfaQVlizr6\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"oXS5mGsVjyKLUJYXNqo/gTOdaiklR6fZGCqBEslMeoF=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d204c60c-cfa9-4e8b-9440-810fceb73751",
+          "name": "ListContentGroupContents",
+          "request": {
+            "name": "ListContentGroupContents",
+            "description": {
+              "content": "List Content Group Contents, by content_group_id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "content-groups",
+                ":content_group_id",
+                "contents"
+              ],
+              "host": [
+                "{{api-knowledge-v1-content-groups-content_group_id-contents-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "The default page size is 500, which is also the maximum page size. The REST query parameter is \"page_size\". If page size is the default, this param can be omitted; otherwise, it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "If there are multiple pages, any pages after the first must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "return_only_id",
+                  "value": "<boolean>",
+                  "description": "Optional: if caller only needs the item ID's then set this to true."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_group_id",
+                  "description": "(Required) Required: id of a valid Content Group from /api/knowledge/v1/content-groups"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "04a7b101-4871-417c-8b86-baa35a97fa9f",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    ":content_group_id",
+                    "contents"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-content_group_id-contents-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "return_only_id",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Required: id of a valid Content Group from /api/knowledge/v1/content-groups"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 211\n  },\n  \"items\": [\n    {\n      \"data\": {\n        \"content_id\": \"string\",\n        \"content_group_id\": \"string\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1987-12-27T23:24:47.835Z\",\n        \"update_time\": \"1980-08-01T21:37:40.193Z\",\n        \"response_time_millis\": 2139\n      }\n    },\n    {\n      \"data\": {\n        \"content_id\": \"string\",\n        \"content_group_id\": \"string\"\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1985-09-30T09:47:30.783Z\",\n        \"update_time\": \"1976-02-18T10:54:14.218Z\",\n        \"response_time_millis\": 7215\n      }\n    }\n  ],\n  \"next_page_token\": \"string\",\n  \"total_size\": 3677,\n  \"page_size\": 2418\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6879ce2a-12d0-4b9a-9c2e-5ac6a28ae69d",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    ":content_group_id",
+                    "contents"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-content_group_id-contents-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "return_only_id",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Required: id of a valid Content Group from /api/knowledge/v1/content-groups"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2013,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1VsjqV8Oi93WqLAx3SvfaQVlizr6\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"oXS5mGsVjyKLUJYXNqo/gTOdaiklR6fZGCqBEslMeoF=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2fa17e81-81da-4e0c-b024-462cf63a282e",
+          "name": "DeleteContentGroupContent",
+          "request": {
+            "name": "DeleteContentGroupContent",
+            "description": {
+              "content": "Delete Content association with the parent Content Group.  The Content resource is not altered.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "content-groups",
+                ":content_group_id",
+                "contents",
+                ":content_id"
+              ],
+              "host": [
+                "{{api-knowledge-v1-content-groups-content_group_id-contents-content_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_group_id",
+                  "description": "(Required) Required: ID of the ContentGroup"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_id",
+                  "description": "(Required) Required: ID of the Content"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "497572f6-0bb2-4a2a-b8ed-b4ea3ebc5fa0",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    ":content_group_id",
+                    "contents",
+                    ":content_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-content_group_id-contents-content_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Required: ID of the ContentGroup"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Required: ID of the Content"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42dbe375-a79f-4f80-9263-c8ec9013429f",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    ":content_group_id",
+                    "contents",
+                    ":content_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-content_group_id-contents-content_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Required: ID of the ContentGroup"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Required: ID of the Content"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2013,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1VsjqV8Oi93WqLAx3SvfaQVlizr6\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"oXS5mGsVjyKLUJYXNqo/gTOdaiklR6fZGCqBEslMeoF=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "485cb37d-647d-4c33-9f48-99ecefe739c4",
+          "name": "GetContentGroupContent",
+          "request": {
+            "name": "GetContentGroupContent",
+            "description": {
+              "content": "Get Content Group Content, by content_id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "content-groups",
+                ":content_group_id",
+                "contents",
+                ":content_id"
+              ],
+              "host": [
+                "{{api-knowledge-v1-content-groups-content_group_id-contents-content_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_group_id",
+                  "description": "(Required) Required: ID of the ContentGroup"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_id",
+                  "description": "(Required) Required: ID of the Content"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8bd3ff14-4f1a-4f8c-b538-9049a164ddc7",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    ":content_group_id",
+                    "contents",
+                    ":content_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-content_group_id-contents-content_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Required: ID of the ContentGroup"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Required: ID of the Content"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1984-02-08T22:16:39.499Z\",\n    \"update_time\": \"1995-02-26T09:09:41.620Z\",\n    \"response_time_millis\": 8792\n  },\n  \"data\": {\n    \"content_id\": \"string\",\n    \"content_group_id\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b3de00b-85f1-4a66-9ad2-8466d1f8901e",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    ":content_group_id",
+                    "contents",
+                    ":content_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-content_group_id-contents-content_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_group_id",
+                      "description": "(Required) Required: ID of the ContentGroup"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Required: ID of the Content"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2013,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1VsjqV8Oi93WqLAx3SvfaQVlizr6\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"oXS5mGsVjyKLUJYXNqo/gTOdaiklR6fZGCqBEslMeoF=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f168314e-9b43-4d84-b2d8-e5a6c69f01f2",
+          "name": "CascadeDeleteContentGroup",
+          "request": {
+            "name": "CascadeDeleteContentGroup",
+            "description": {
+              "content": "Delete Content Group and all its associations with Contents.  This will not alter the Content resources.  This request will remove the Content Group from any Knowledge Domains it is member of.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "content-groups",
+                "{{content_group_id}}:cascade"
+              ],
+              "host": [
+                "{{api-knowledge-v1-content-groups-content_group_id:cascade-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09832e32-10cc-461f-8b05-5c73ed12ca87",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    "{{content_group_id}}:cascade"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-content_group_id:cascade-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70f69af4-b7e8-482b-a8f3-bd53efd9162a",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    "{{content_group_id}}:cascade"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-content_group_id:cascade-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2013,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1VsjqV8Oi93WqLAx3SvfaQVlizr6\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"oXS5mGsVjyKLUJYXNqo/gTOdaiklR6fZGCqBEslMeoF=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e057be7e-b7c8-4c11-974a-793c40841a8c",
+          "name": "UpdateContentGroup",
+          "request": {
+            "name": "UpdateContentGroup",
+            "description": {
+              "content": "Update a Content Group. This can only currently be used to update the display_name field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "content-groups",
+                ":data.content_group_id"
+              ],
+              "host": [
+                "{{api-knowledge-v1-content-groups-data.content_group_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "data.content_group_id",
+                  "description": "(Required) Required: ID of this entity"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"content_statuses\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"service_id\": \"<string>\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8e4f1675-394e-4e0d-8a65-10a1247c47a5",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    ":data.content_group_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-data.content_group_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.content_group_id",
+                      "description": "(Required) Required: ID of this entity"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"content_statuses\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"service_id\": \"<string>\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1959-12-27T01:54:28.621Z\",\n    \"update_time\": \"1998-09-30T05:25:48.716Z\",\n    \"response_time_millis\": 5095\n  },\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"content_statuses\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"service_id\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2c21039-f001-4f1c-b7b8-595eba717cde",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    ":data.content_group_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-data.content_group_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.content_group_id",
+                      "description": "(Required) Required: ID of this entity"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content_group_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"content_statuses\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"service_id\": \"<string>\"\n  },\n  \"update_mask\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2013,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1VsjqV8Oi93WqLAx3SvfaQVlizr6\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"oXS5mGsVjyKLUJYXNqo/gTOdaiklR6fZGCqBEslMeoF=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d9102b4-b4df-4644-b3cd-a2cb3628de59",
+          "name": "CreateContentGroupContent",
+          "request": {
+            "name": "CreateContentGroupContent",
+            "description": {
+              "content": "CRD methods for ContentGroupContent, a join of a ContentGroup with Content",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "content-groups",
+                ":data.content_group_id",
+                "contents",
+                ":data.content_id"
+              ],
+              "host": [
+                "{{api-knowledge-v1-content-groups-data.content_group_id-contents-data.content_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "data.content_group_id",
+                  "description": "(Required) Required: ID of the ContentGroup"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "data.content_id",
+                  "description": "(Required) Required: ID of the Content"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"content_id\": \"<string>\",\n    \"content_group_id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ec79ce8d-a6f7-48d3-8a3a-331dd3356ff0",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    ":data.content_group_id",
+                    "contents",
+                    ":data.content_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-data.content_group_id-contents-data.content_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.content_group_id",
+                      "description": "(Required) Required: ID of the ContentGroup"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.content_id",
+                      "description": "(Required) Required: ID of the Content"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content_id\": \"<string>\",\n    \"content_group_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"2020-07-10T12:40:16.794Z\",\n    \"update_time\": \"1973-11-09T13:16:15.249Z\",\n    \"response_time_millis\": 8286\n  },\n  \"data\": {\n    \"content_id\": \"<string>\",\n    \"content_group_id\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3e2275a-6ef1-44d2-b8b8-5563c0dbdf0b",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "content-groups",
+                    ":data.content_group_id",
+                    "contents",
+                    ":data.content_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-content-groups-data.content_group_id-contents-data.content_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.content_group_id",
+                      "description": "(Required) Required: ID of the ContentGroup"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "data.content_id",
+                      "description": "(Required) Required: ID of the Content"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content_id\": \"<string>\",\n    \"content_group_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2013,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1VsjqV8Oi93WqLAx3SvfaQVlizr6\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"oXS5mGsVjyKLUJYXNqo/gTOdaiklR6fZGCqBEslMeoF=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba3d473b-9d9e-4672-8903-17a1322be08a",
+          "name": "ListContents",
+          "request": {
+            "name": "ListContents",
+            "description": {
+              "content": "Get the list of Contents associated with a Knowledge Domain",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "contents"
+              ],
+              "host": [
+                "{{api-knowledge-v1-contents-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "knowledge_domain_id",
+                  "value": "<string>",
+                  "description": "Optional: ID for KnowledgeDomain to filter search. The REST query parameter is \"knowledge_domain_id\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "content_group_id",
+                  "value": "<string>",
+                  "description": "Optional: ID for ContentGroup to filter search. The REST query parameter is \"content_group_id\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "source_location",
+                  "value": "<string>",
+                  "description": "Optional: SourceLocation string to filter search. The REST query parameter is \"source_location\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "The default page size is 500, which is also the maximum page size. The REST query parameter is \"page_size\". If page size is default, this param can be omitted; otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5fe43e17-c6e5-4b0e-9227-6836c986b33b",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "contents"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-contents-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "knowledge_domain_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "content_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source_location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 5514\n  },\n  \"items\": [\n    {\n      \"data\": {\n        \"content_id\": \"string\",\n        \"content_type_id\": \"string\",\n        \"source_location\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\",\n        \"status\": \"UNKNOWN\",\n        \"source_owner\": \"string\",\n        \"revision\": \"string\",\n        \"status_reason\": \"string\",\n        \"labels\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1974-06-01T16:13:11.650Z\",\n        \"update_time\": \"2005-02-18T20:41:45.259Z\",\n        \"response_time_millis\": 6494\n      }\n    },\n    {\n      \"data\": {\n        \"content_id\": \"string\",\n        \"content_type_id\": \"string\",\n        \"source_location\": \"string\",\n        \"display_name\": \"string\",\n        \"description\": \"string\",\n        \"status\": \"UNKNOWN\",\n        \"source_owner\": \"string\",\n        \"revision\": \"string\",\n        \"status_reason\": \"string\",\n        \"labels\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      },\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"2012-06-01T07:38:31.999Z\",\n        \"update_time\": \"1994-05-05T21:02:04.436Z\",\n        \"response_time_millis\": 7112\n      }\n    }\n  ],\n  \"next_page_token\": \"string\",\n  \"page_size\": 5382\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0ede0b9-52bb-49da-b62c-76ea7206e9cd",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "contents"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-contents-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "knowledge_domain_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "content_group_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source_location",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2013,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1VsjqV8Oi93WqLAx3SvfaQVlizr6\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"oXS5mGsVjyKLUJYXNqo/gTOdaiklR6fZGCqBEslMeoF=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb38981d-338e-4e09-a804-348a66bad95b",
+          "name": "CreateContent",
+          "request": {
+            "name": "CreateContent",
+            "description": {
+              "content": "CRD methods for Contents",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "contents"
+              ],
+              "host": [
+                "{{api-knowledge-v1-contents-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"content_id\": \"<string>\",\n    \"content_type_id\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"source_owner\": \"<string>\",\n    \"revision\": \"<string>\",\n    \"status_reason\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8c4e7a39-6764-44ef-aa70-bffb49236fa7",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "contents"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-contents-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content_id\": \"<string>\",\n    \"content_type_id\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"source_owner\": \"<string>\",\n    \"revision\": \"<string>\",\n    \"status_reason\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1969-12-26T06:32:05.955Z\",\n    \"update_time\": \"2003-03-03T05:35:23.861Z\",\n    \"response_time_millis\": 9855\n  },\n  \"data\": {\n    \"content_id\": \"<string>\",\n    \"content_type_id\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"source_owner\": \"<string>\",\n    \"revision\": \"<string>\",\n    \"status_reason\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9733c22-235b-4f2d-99c9-fb732ccf114a",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "contents"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-contents-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"content_id\": \"<string>\",\n    \"content_type_id\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"source_owner\": \"<string>\",\n    \"revision\": \"<string>\",\n    \"status_reason\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2013,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1VsjqV8Oi93WqLAx3SvfaQVlizr6\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"oXS5mGsVjyKLUJYXNqo/gTOdaiklR6fZGCqBEslMeoF=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "886dd60d-53df-4026-bfca-7bb42ca4acb9",
+          "name": "DeleteContent",
+          "request": {
+            "name": "DeleteContent",
+            "description": {
+              "content": "Delete the Content and all its constituent child resources.  This request will be rejected if Content is a member of any Content Groups.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "contents",
+                ":content_id"
+              ],
+              "host": [
+                "{{api-knowledge-v1-contents-content_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_id",
+                  "description": "(Required) Required ID of Content to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b38a0889-cc3d-45e6-bda3-f20e2f3ed017",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "contents",
+                    ":content_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-contents-content_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Required ID of Content to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3adaa6f-f4fc-4f01-b32f-16d754ced52d",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "contents",
+                    ":content_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-contents-content_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Required ID of Content to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2013,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1VsjqV8Oi93WqLAx3SvfaQVlizr6\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"oXS5mGsVjyKLUJYXNqo/gTOdaiklR6fZGCqBEslMeoF=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba132e1c-eef3-4e65-bc7a-a24d79563146",
+          "name": "GetContent",
+          "request": {
+            "name": "GetContent",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "contents",
+                ":content_id"
+              ],
+              "host": [
+                "{{api-knowledge-v1-contents-content_id-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_id",
+                  "description": "(Required) Required: ID of Content to return"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a2edd6b-15a6-4702-b013-90e21dce8abf",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "contents",
+                    ":content_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-contents-content_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Required: ID of Content to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1969-12-26T06:32:05.955Z\",\n    \"update_time\": \"2003-03-03T05:35:23.861Z\",\n    \"response_time_millis\": 9855\n  },\n  \"data\": {\n    \"content_id\": \"<string>\",\n    \"content_type_id\": \"<string>\",\n    \"source_location\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"UNKNOWN\",\n    \"source_owner\": \"<string>\",\n    \"revision\": \"<string>\",\n    \"status_reason\": \"<string>\",\n    \"labels\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90b51518-a030-4fc7-99a4-c40ef55a2f54",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "contents",
+                    ":content_id"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-contents-content_id-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Required: ID of Content to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2013,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1VsjqV8Oi93WqLAx3SvfaQVlizr6\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"oXS5mGsVjyKLUJYXNqo/gTOdaiklR6fZGCqBEslMeoF=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff6e29bb-f1a8-473a-ad51-8ede8c27901a",
+          "name": "GetContentImage",
+          "request": {
+            "name": "GetContentImage",
+            "description": {
+              "content": "This is an EXPERIMENTAL REST API to get an image representation of the content\nThe HTTP GET returns bytes data of image/jpeg Content-Type.\nQuery parameters:\npage - Required. A page number within the content_id (e.g. application/vnd.pryon.start_page attachment from Exchange API)\nuncompressed - Optional. A value of 1 indicates the image data should not be compressed. Default value is 0 (compressed). If compressed image data is not found, the API will return uncompressed image data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "contents",
+                ":content_id",
+                "image"
+              ],
+              "host": [
+                "{{api-knowledge-v1-contents-content_id-image-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Required: The page number within the content_id (e.g. application/vnd.pryon.start_page attachment from Exchange API)."
+                },
+                {
+                  "disabled": false,
+                  "key": "uncompressed",
+                  "value": "<boolean>",
+                  "description": "Optional: A value of true indicates the image data should not be compressed (Default is compressed)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_id",
+                  "description": "(Required) Required: ID of Content (e.g. application/vnd.pryon.content.id attachment from Exchange API)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db201201-afd2-481b-ba0f-6053c50128a1",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "contents",
+                    ":content_id",
+                    "image"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-contents-content_id-image-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "uncompressed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Required: ID of Content (e.g. application/vnd.pryon.content.id attachment from Exchange API)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26641a10-c14e-45f4-8c69-8bae264fe5a0",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "contents",
+                    ":content_id",
+                    "image"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-contents-content_id-image-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "uncompressed",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Required: ID of Content (e.g. application/vnd.pryon.content.id attachment from Exchange API)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2013,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1VsjqV8Oi93WqLAx3SvfaQVlizr6\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"oXS5mGsVjyKLUJYXNqo/gTOdaiklR6fZGCqBEslMeoF=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac6f7267-b839-45e4-b817-e5812b08540c",
+          "name": "ListContentSubjects",
+          "request": {
+            "name": "ListContentSubjects",
+            "description": {
+              "content": "List subjects associated with a content item",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "contents",
+                ":content_id",
+                "subjects"
+              ],
+              "host": [
+                "{{api-knowledge-v1-contents-content_id-subjects-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page size is default, this param can be omitted; otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_token",
+                  "value": "<string>",
+                  "description": "If there are multiple pages, any pages after the first must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "If there are multiple pages, a sort order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests. Supported options are: \"reference_count desc\" (default) and \"reference_count asc\".\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+                },
+                {
+                  "disabled": false,
+                  "key": "subject_category_id",
+                  "value": "<string>",
+                  "description": "If specified, the list will be filtered to subjects of the specified category."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_id",
+                  "description": "(Required) Content that subject must be found in"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c72d7a6d-bd04-45fd-ad68-af9cbf9f573a",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "contents",
+                    ":content_id",
+                    "subjects"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-contents-content_id-subjects-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subject_category_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Content that subject must be found in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 8378\n  },\n  \"items\": [\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1948-05-04T19:14:24.252Z\",\n        \"update_time\": \"1966-11-23T18:10:34.949Z\",\n        \"response_time_millis\": 7584\n      },\n      \"data\": {\n        \"subject_id\": \"string\",\n        \"term\": \"string\",\n        \"subject_category_id\": \"string\",\n        \"definition\": \"string\",\n        \"reference_count\": \"string\",\n        \"content_count\": \"string\"\n      }\n    },\n    {\n      \"metadata\": {\n        \"uuid\": \"string\",\n        \"create_time\": \"1969-10-14T18:49:45.534Z\",\n        \"update_time\": \"1963-12-01T07:38:07.285Z\",\n        \"response_time_millis\": 6030\n      },\n      \"data\": {\n        \"subject_id\": \"string\",\n        \"term\": \"string\",\n        \"subject_category_id\": \"string\",\n        \"definition\": \"string\",\n        \"reference_count\": \"string\",\n        \"content_count\": \"string\"\n      }\n    }\n  ],\n  \"next_page_token\": \"string\",\n  \"page_size\": 6258,\n  \"order_by\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "809019c1-9cb0-43a5-907d-be1feb58ff1e",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "contents",
+                    ":content_id",
+                    "subjects"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-contents-content_id-subjects-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "subject_category_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Content that subject must be found in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2013,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1VsjqV8Oi93WqLAx3SvfaQVlizr6\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"oXS5mGsVjyKLUJYXNqo/gTOdaiklR6fZGCqBEslMeoF=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e57353a-9124-4b9a-8275-97c213ad72e4",
+          "name": "GetSummary",
+          "request": {
+            "name": "GetSummary",
+            "description": {
+              "content": "Get summary associated with a Content ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "contents",
+                ":content_id",
+                "summary"
+              ],
+              "host": [
+                "{{api-knowledge-v1-contents-content_id-summary-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "content_id",
+                  "description": "(Required) Required: ID of the content whose summary should be returned"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "14fabf4f-c4a6-48cf-b549-6bc42aa2906e",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "contents",
+                    ":content_id",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-contents-content_id-summary-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Required: ID of the content whose summary should be returned"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1986-01-16T14:52:33.767Z\",\n    \"update_time\": \"2006-12-19T10:00:26.024Z\",\n    \"response_time_millis\": 4157\n  },\n  \"data\": {\n    \"text\": \"string\",\n    \"html\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c7d4df8-643e-4539-ac01-384cd5c514c0",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "contents",
+                    ":content_id",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-contents-content_id-summary-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "content_id",
+                      "description": "(Required) Required: ID of the content whose summary should be returned"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2013,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1VsjqV8Oi93WqLAx3SvfaQVlizr6\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"oXS5mGsVjyKLUJYXNqo/gTOdaiklR6fZGCqBEslMeoF=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5580f564-46e5-494d-9a4e-1efdfc3bd81e",
+          "name": "CascadeDeleteContent",
+          "request": {
+            "name": "CascadeDeleteContent",
+            "description": {
+              "content": "Delete the Content and all its constituent child resources.  This will also remove the Content from all Content Groups it is a member of - this has the effect of removing it from the relevant Knowledge Domains as well.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "knowledge",
+                "v1",
+                "contents",
+                "{{content_id}}:cascade"
+              ],
+              "host": [
+                "{{api-knowledge-v1-contents-content_id:cascade-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3df7b0d5-3c79-4636-9249-267a1746d5fa",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "contents",
+                    "{{content_id}}:cascade"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-contents-content_id:cascade-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69467eac-a933-4a92-a3f9-4117354ec786",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "knowledge",
+                    "v1",
+                    "contents",
+                    "{{content_id}}:cascade"
+                  ],
+                  "host": [
+                    "{{api-knowledge-v1-contents-content_id:cascade-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2013,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1VsjqV8Oi93WqLAx3SvfaQVlizr6\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"oXS5mGsVjyKLUJYXNqo/gTOdaiklR6fZGCqBEslMeoF=\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-content-groups-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-content-groups-content_group_id-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-content-groups-content_group_id-contents-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-content-groups-content_group_id-contents-content_id-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-content-groups-content_group_id:cascade-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-content-groups-data.content_group_id-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-content-groups-data.content_group_id-contents-data.content_id-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-contents-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-contents-content_id-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-contents-content_id-image-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-contents-content_id-subjects-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-contents-content_id-summary-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-knowledge-v1-contents-content_id:cascade-Url"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ID of ContentGroup to delete",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "content_group_id"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Required ID of Content to delete",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "content_id"
+    }
+  ],
+  "info": {
+    "_postman_id": "b71fe232-529d-4cc9-aa6a-d9c15147097d",
+    "name": "Pryon Content Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged ContentService across 2 of this provider's published API definitions: pryon-admin-openapi.json, pryon-getcontentimage-swagger-openapi.json. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

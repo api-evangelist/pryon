@@ -1,0 +1,1091 @@
+{
+  "item": [
+    {
+      "id": "0cf90a35-25d9-4394-bab1-b23b39107a95",
+      "name": "Generative",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aa219cfe-b24a-4f23-a054-1605f7d475d4",
+          "name": "Generative Create Chat Completions",
+          "request": {
+            "name": "Generative Create Chat Completions",
+            "description": {
+              "content": "A generic text-generation interface to external LLM providers and Pryon-hosted LLMs.\n implements a subset of the OpenAI /v1/chat/completions API specification\n as defined here: https://platform.openai.com/docs/api-reference/chat\n Using the official OpenAI client SDK for your language is recommended.\n The following providers are supported currently:\n - pryon\n - openai\n - anthropic\n - vertex ai\n Please check the respective provider's documentation\n for supported text-generation models and accepted sampling params.\n If streaming is enabled, responses will follow the SSE standard\n https://html.spec.whatwg.org/multipage/server-sent-events.html#server-sent-events.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "generative",
+                "v1alpha1",
+                "chat",
+                "completions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Organization ID; only required for organizations with multiple tenants.",
+                "key": "x-pryon-org-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"messages\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"function\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"arguments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"function\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"arguments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"name\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"function\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"arguments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"function\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"arguments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"name\": \"<string>\"\n    }\n  ],\n  \"model\": \"<string>\",\n  \"temperature\": \"<float>\",\n  \"top_p\": \"<float>\",\n  \"stream\": \"<boolean>\",\n  \"stop\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"max_completion_tokens\": \"<integer>\",\n  \"logprobs\": \"<boolean>\",\n  \"top_logprobs\": \"<integer>\",\n  \"tools\": [\n    {\n      \"type\": \"<string>\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": \"<object>\",\n        \"strict\": \"<boolean>\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": \"<object>\",\n        \"strict\": \"<boolean>\"\n      }\n    }\n  ],\n  \"tool_choice\": {},\n  \"response_format\": {\n    \"type\": \"<string>\",\n    \"json_schema\": {\n      \"name\": \"<string>\",\n      \"strict\": \"<boolean>\",\n      \"schema\": \"<object>\",\n      \"description\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c2bd575e-8cf4-422f-b453-5c7edce93c57",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messages\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"function\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"arguments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"function\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"arguments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"name\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"function\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"arguments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"function\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"arguments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"name\": \"<string>\"\n    }\n  ],\n  \"model\": \"<string>\",\n  \"temperature\": \"<float>\",\n  \"top_p\": \"<float>\",\n  \"stream\": \"<boolean>\",\n  \"stop\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"max_completion_tokens\": \"<integer>\",\n  \"logprobs\": \"<boolean>\",\n  \"top_logprobs\": \"<integer>\",\n  \"tools\": [\n    {\n      \"type\": \"<string>\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": \"<object>\",\n        \"strict\": \"<boolean>\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": \"<object>\",\n        \"strict\": \"<boolean>\"\n      }\n    }\n  ],\n  \"tool_choice\": {},\n  \"response_format\": {\n    \"type\": \"<string>\",\n    \"json_schema\": {\n      \"name\": \"<string>\",\n      \"strict\": \"<boolean>\",\n      \"schema\": \"<object>\",\n      \"description\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"choices\": [\n    {\n      \"index\": 8498,\n      \"message\": {\n        \"role\": \"<string>\",\n        \"content\": \"<string>\",\n        \"tool_calls\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"function\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"function\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"name\": \"<string>\"\n      },\n      \"delta\": {\n        \"role\": \"string\",\n        \"content\": \"string\",\n        \"tool_calls\": [\n          {\n            \"index\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"function\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"index\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"function\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"logprobs\": [\n        {\n          \"content\": [\n            {\n              \"token\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logprob\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bytes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"top_logprobs\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"token\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logprob\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bytes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"top_logprobs\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"refusal\": [\n            {\n              \"token\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logprob\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bytes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"top_logprobs\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"token\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logprob\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bytes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"top_logprobs\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"content\": [\n            {\n              \"token\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logprob\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bytes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"top_logprobs\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"token\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logprob\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bytes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"top_logprobs\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"refusal\": [\n            {\n              \"token\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logprob\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bytes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"top_logprobs\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"token\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logprob\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bytes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"top_logprobs\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"finish_reason\": \"string\"\n    },\n    {\n      \"index\": 7151,\n      \"message\": {\n        \"role\": \"<string>\",\n        \"content\": \"<string>\",\n        \"tool_calls\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"function\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"function\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"name\": \"<string>\"\n      },\n      \"delta\": {\n        \"role\": \"string\",\n        \"content\": \"string\",\n        \"tool_calls\": [\n          {\n            \"index\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"function\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"index\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"function\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"logprobs\": [\n        {\n          \"content\": [\n            {\n              \"token\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logprob\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bytes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"top_logprobs\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"token\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logprob\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bytes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"top_logprobs\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"refusal\": [\n            {\n              \"token\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logprob\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bytes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"top_logprobs\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"token\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logprob\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bytes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"top_logprobs\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"content\": [\n            {\n              \"token\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logprob\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bytes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"top_logprobs\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"token\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logprob\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bytes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"top_logprobs\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"refusal\": [\n            {\n              \"token\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logprob\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bytes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"top_logprobs\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"token\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"logprob\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bytes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"top_logprobs\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"finish_reason\": \"string\"\n    }\n  ],\n  \"created\": \"string\",\n  \"model\": \"string\",\n  \"object\": \"string\",\n  \"usage\": {\n    \"prompt_tokens\": 3279,\n    \"completion_tokens\": 947,\n    \"total_tokens\": 2325\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7832f3a8-4d03-4e37-aa3d-d45cac176c62",
+              "name": "Default error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messages\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"function\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"arguments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"function\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"arguments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"name\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"function\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"arguments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"function\": {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"arguments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"name\": \"<string>\"\n    }\n  ],\n  \"model\": \"<string>\",\n  \"temperature\": \"<float>\",\n  \"top_p\": \"<float>\",\n  \"stream\": \"<boolean>\",\n  \"stop\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"max_completion_tokens\": \"<integer>\",\n  \"logprobs\": \"<boolean>\",\n  \"top_logprobs\": \"<integer>\",\n  \"tools\": [\n    {\n      \"type\": \"<string>\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": \"<object>\",\n        \"strict\": \"<boolean>\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": \"<object>\",\n        \"strict\": \"<boolean>\"\n      }\n    }\n  ],\n  \"tool_choice\": {},\n  \"response_format\": {\n    \"type\": \"<string>\",\n    \"json_schema\": {\n      \"name\": \"<string>\",\n      \"strict\": \"<boolean>\",\n      \"schema\": \"<object>\",\n      \"description\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7520,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\",\n      \"key_0\": true,\n      \"key_1\": \"string\"\n    },\n    {\n      \"@type\": \"string\",\n      \"key_0\": true,\n      \"key_1\": \"string\",\n      \"key_2\": 8340\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f2998e3-c594-4b87-b736-3b2af633a864",
+          "name": "Generative List Chat Completions Models",
+          "request": {
+            "name": "Generative List Chat Completions Models",
+            "description": {
+              "content": "Lists the models available for our Chat Completions API",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "generative",
+                "v1alpha1",
+                "chat",
+                "completions",
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Organization ID; only required for organizations with multiple tenants.",
+                "key": "x-pryon-org-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"function_calling\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "913efd32-0120-432d-a228-3f75e3a15cc2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "chat",
+                    "completions",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"function_calling\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": {\n    \"key_0\": {\n      \"models\": [\n        {\n          \"id\": \"string\",\n          \"display_name\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"display_name\": \"string\"\n        }\n      ]\n    },\n    \"key_1\": {\n      \"models\": [\n        {\n          \"id\": \"string\",\n          \"display_name\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"display_name\": \"string\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f5a846b-f0c2-40b2-94e3-bdfd0a1ff846",
+              "name": "Default error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "chat",
+                    "completions",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"function_calling\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5079,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\"\n    },\n    {\n      \"@type\": \"string\",\n      \"key_0\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b061385-24bf-449e-bb33-b8fc551deb86",
+          "name": "Rewrite Query",
+          "request": {
+            "name": "Rewrite Query",
+            "description": {
+              "content": "Generates a completed query by replacing references in prior turns of the conversation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "generative",
+                "v1alpha1",
+                "tasks",
+                "complete-query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Organization ID; only required for organizations with multiple tenants.",
+                "key": "x-pryon-org-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"conversation_context\": \"<string>\",\n  \"conversation_id\": \"<string>\",\n  \"generation_configs\": {\n    \"model\": \"<string>\",\n    \"temperature\": \"<float>\",\n    \"top_p\": \"<float>\",\n    \"stream\": \"<boolean>\",\n    \"stop\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"max_completion_tokens\": \"<integer>\"\n  },\n  \"conversation_history\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e7715c12-4bd5-4b38-8e91-4a3e96446b49",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "tasks",
+                    "complete-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"conversation_context\": \"<string>\",\n  \"conversation_id\": \"<string>\",\n  \"generation_configs\": {\n    \"model\": \"<string>\",\n    \"temperature\": \"<float>\",\n    \"top_p\": \"<float>\",\n    \"stream\": \"<boolean>\",\n    \"stop\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"max_completion_tokens\": \"<integer>\"\n  },\n  \"conversation_history\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"completed_query\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e960f080-8d25-4f8c-bd8f-d505e59d342b",
+              "name": "Default error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "tasks",
+                    "complete-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"conversation_context\": \"<string>\",\n  \"conversation_id\": \"<string>\",\n  \"generation_configs\": {\n    \"model\": \"<string>\",\n    \"temperature\": \"<float>\",\n    \"top_p\": \"<float>\",\n    \"stream\": \"<boolean>\",\n    \"stop\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"max_completion_tokens\": \"<integer>\"\n  },\n  \"conversation_history\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5079,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\"\n    },\n    {\n      \"@type\": \"string\",\n      \"key_0\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5de3682f-6815-4f55-9d63-41d83641aa16",
+          "name": "Generative Guardrail Query",
+          "request": {
+            "name": "Generative Guardrail Query",
+            "description": {
+              "content": "Return query toxicity and prompt injection classifications given a query",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "generative",
+                "v1alpha1",
+                "tasks",
+                "guardrail-query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Organization ID; only required for organizations with multiple tenants.",
+                "key": "x-pryon-org-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"fast\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e1bb5e94-0ace-4f9a-853f-fa244eea98ae",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "tasks",
+                    "guardrail-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"fast\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"is_toxic\": false,\n  \"is_prompt_injection_attack\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb02eb09-d5da-42a0-8c71-0e77fda5a8cf",
+              "name": "Default error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "tasks",
+                    "guardrail-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"fast\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5079,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\"\n    },\n    {\n      \"@type\": \"string\",\n      \"key_0\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b305542-74e8-493b-94ea-d32f7839f57e",
+          "name": "Generative Route Query",
+          "request": {
+            "name": "Generative Route Query",
+            "description": {
+              "content": "Return query out-of-domain classifications given a query",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "generative",
+                "v1alpha1",
+                "tasks",
+                "route-query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Organization ID; only required for organizations with multiple tenants.",
+                "key": "x-pryon-org-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"domain\": \"<string>\",\n  \"enable_generative_conversational_response\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0277eea6-aa1d-45f5-b563-347f03c3f081",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "tasks",
+                    "route-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"domain\": \"<string>\",\n  \"enable_generative_conversational_response\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"is_intelligible\": true,\n  \"is_english\": false,\n  \"is_conversational\": true,\n  \"conversational_response\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7f89dbc-afa1-4930-8b41-81bbf983dfbf",
+              "name": "Default error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "tasks",
+                    "route-query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"domain\": \"<string>\",\n  \"enable_generative_conversational_response\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5079,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\"\n    },\n    {\n      \"@type\": \"string\",\n      \"key_0\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53f12fae-6dcb-4287-af2f-55dd88383fe7",
+          "name": "Generative Answer Summarization",
+          "request": {
+            "name": "Generative Answer Summarization",
+            "description": {
+              "content": "Generates a summarized answer given retrieval outputs and configs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "generative",
+                "v1alpha1",
+                "tasks",
+                "summarize-answer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Organization ID; only required for organizations with multiple tenants.",
+                "key": "x-pryon-org-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"exchange_outputs\": [\n    {\n      \"output_id\": \"<string>\",\n      \"text\": \"<string>\",\n      \"summary_text\": \"<string>\",\n      \"audio\": {\n        \"audio_output_id\": \"<string>\",\n        \"audio_encoding\": \"<enum>\",\n        \"sample_rate_hertz\": \"<integer>\",\n        \"content\": \"<bytes>\"\n      },\n      \"attachments\": {\n        \"key_0\": {\n          \"content_type\": \"<string>\",\n          \"content\": \"<string>\"\n        },\n        \"key_1\": {\n          \"content_type\": \"<string>\",\n          \"content\": \"<string>\"\n        }\n      },\n      \"subject_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"context\": {\n        \"augmentation\": \"<object>\"\n      },\n      \"data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"system_data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_1\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_2\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"user_selected_data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"user_defined_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      }\n    },\n    {\n      \"output_id\": \"<string>\",\n      \"text\": \"<string>\",\n      \"summary_text\": \"<string>\",\n      \"audio\": {\n        \"audio_output_id\": \"<string>\",\n        \"audio_encoding\": \"<enum>\",\n        \"sample_rate_hertz\": \"<integer>\",\n        \"content\": \"<bytes>\"\n      },\n      \"attachments\": {\n        \"key_0\": {\n          \"content_type\": \"<string>\",\n          \"content\": \"<string>\"\n        },\n        \"key_1\": {\n          \"content_type\": \"<string>\",\n          \"content\": \"<string>\"\n        }\n      },\n      \"subject_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"context\": {\n        \"augmentation\": \"<object>\"\n      },\n      \"data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"system_data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"user_selected_data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_1\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"user_defined_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_1\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_2\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      }\n    }\n  ],\n  \"generation_configs\": {\n    \"model\": \"<string>\",\n    \"temperature\": \"<float>\",\n    \"top_p\": \"<float>\",\n    \"stream\": \"<boolean>\",\n    \"stop\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"max_completion_tokens\": \"<integer>\"\n  },\n  \"configs\": {\n    \"unanswerable_response\": \"<string>\",\n    \"persona\": \"<string>\"\n  },\n  \"include_exchange_outputs_context\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "21c74a81-a304-422b-af84-2ea4c1e13f19",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "tasks",
+                    "summarize-answer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"exchange_outputs\": [\n    {\n      \"output_id\": \"<string>\",\n      \"text\": \"<string>\",\n      \"summary_text\": \"<string>\",\n      \"audio\": {\n        \"audio_output_id\": \"<string>\",\n        \"audio_encoding\": \"<enum>\",\n        \"sample_rate_hertz\": \"<integer>\",\n        \"content\": \"<bytes>\"\n      },\n      \"attachments\": {\n        \"key_0\": {\n          \"content_type\": \"<string>\",\n          \"content\": \"<string>\"\n        },\n        \"key_1\": {\n          \"content_type\": \"<string>\",\n          \"content\": \"<string>\"\n        }\n      },\n      \"subject_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"context\": {\n        \"augmentation\": \"<object>\"\n      },\n      \"data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_1\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"system_data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"user_selected_data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_1\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"user_defined_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_1\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      }\n    },\n    {\n      \"output_id\": \"<string>\",\n      \"text\": \"<string>\",\n      \"summary_text\": \"<string>\",\n      \"audio\": {\n        \"audio_output_id\": \"<string>\",\n        \"audio_encoding\": \"<enum>\",\n        \"sample_rate_hertz\": \"<integer>\",\n        \"content\": \"<bytes>\"\n      },\n      \"attachments\": {\n        \"key_0\": {\n          \"content_type\": \"<string>\",\n          \"content\": \"<string>\"\n        },\n        \"key_1\": {\n          \"content_type\": \"<string>\",\n          \"content\": \"<string>\"\n        }\n      },\n      \"subject_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"context\": {\n        \"augmentation\": \"<object>\"\n      },\n      \"data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"system_data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_1\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_2\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"user_selected_data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_1\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_2\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"user_defined_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      }\n    }\n  ],\n  \"generation_configs\": {\n    \"model\": \"<string>\",\n    \"temperature\": \"<float>\",\n    \"top_p\": \"<float>\",\n    \"stream\": \"<boolean>\",\n    \"stop\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"max_completion_tokens\": \"<integer>\"\n  },\n  \"configs\": {\n    \"unanswerable_response\": \"<string>\",\n    \"persona\": \"<string>\"\n  },\n  \"include_exchange_outputs_context\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"answer_summarization_id\": \"string\",\n  \"state\": 6269,\n  \"delta\": \"string\",\n  \"text\": \"string\",\n  \"references\": [\n    {\n      \"position\": 6544,\n      \"exchange_output_index\": 544\n    },\n    {\n      \"position\": 6378,\n      \"exchange_output_index\": 1930\n    }\n  ],\n  \"exchange_outputs\": [\n    {\n      \"output_id\": \"<string>\",\n      \"text\": \"<string>\",\n      \"summary_text\": \"<string>\",\n      \"audio\": {\n        \"audio_output_id\": \"<string>\",\n        \"audio_encoding\": \"<enum>\",\n        \"sample_rate_hertz\": \"<integer>\",\n        \"content\": \"<bytes>\"\n      },\n      \"attachments\": {\n        \"key_0\": {\n          \"content_type\": \"<string>\",\n          \"content\": \"<string>\"\n        },\n        \"key_1\": {\n          \"content_type\": \"<string>\",\n          \"content\": \"<string>\"\n        },\n        \"key_2\": {\n          \"content_type\": \"<string>\",\n          \"content\": \"<string>\"\n        },\n        \"key_3\": {\n          \"content_type\": \"<string>\",\n          \"content\": \"<string>\"\n        }\n      },\n      \"subject_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"context\": {\n        \"augmentation\": \"<object>\"\n      },\n      \"data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"system_data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"user_selected_data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_1\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"user_defined_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_1\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_2\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      }\n    },\n    {\n      \"output_id\": \"<string>\",\n      \"text\": \"<string>\",\n      \"summary_text\": \"<string>\",\n      \"audio\": {\n        \"audio_output_id\": \"<string>\",\n        \"audio_encoding\": \"<enum>\",\n        \"sample_rate_hertz\": \"<integer>\",\n        \"content\": \"<bytes>\"\n      },\n      \"attachments\": {\n        \"key_0\": {\n          \"content_type\": \"<string>\",\n          \"content\": \"<string>\"\n        },\n        \"key_1\": {\n          \"content_type\": \"<string>\",\n          \"content\": \"<string>\"\n        }\n      },\n      \"subject_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"context\": {\n        \"augmentation\": \"<object>\"\n      },\n      \"data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_1\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"system_data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_1\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"user_selected_data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_1\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"user_defined_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7599f97e-c851-4547-b3d4-db18416de050",
+              "name": "Default error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative",
+                    "v1alpha1",
+                    "tasks",
+                    "summarize-answer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authorization",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID; only required for organizations with multiple tenants.",
+                    "key": "x-pryon-org-id",
+                    "value": "pryoninc.com"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"exchange_outputs\": [\n    {\n      \"output_id\": \"<string>\",\n      \"text\": \"<string>\",\n      \"summary_text\": \"<string>\",\n      \"audio\": {\n        \"audio_output_id\": \"<string>\",\n        \"audio_encoding\": \"<enum>\",\n        \"sample_rate_hertz\": \"<integer>\",\n        \"content\": \"<bytes>\"\n      },\n      \"attachments\": {\n        \"key_0\": {\n          \"content_type\": \"<string>\",\n          \"content\": \"<string>\"\n        },\n        \"key_1\": {\n          \"content_type\": \"<string>\",\n          \"content\": \"<string>\"\n        }\n      },\n      \"subject_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"context\": {\n        \"augmentation\": \"<object>\"\n      },\n      \"data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_1\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"system_data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"user_selected_data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_1\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"user_defined_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_1\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      }\n    },\n    {\n      \"output_id\": \"<string>\",\n      \"text\": \"<string>\",\n      \"summary_text\": \"<string>\",\n      \"audio\": {\n        \"audio_output_id\": \"<string>\",\n        \"audio_encoding\": \"<enum>\",\n        \"sample_rate_hertz\": \"<integer>\",\n        \"content\": \"<bytes>\"\n      },\n      \"attachments\": {\n        \"key_0\": {\n          \"content_type\": \"<string>\",\n          \"content\": \"<string>\"\n        },\n        \"key_1\": {\n          \"content_type\": \"<string>\",\n          \"content\": \"<string>\"\n        }\n      },\n      \"subject_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"context\": {\n        \"augmentation\": \"<object>\"\n      },\n      \"data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"system_data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_1\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_2\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"user_selected_data_source_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_1\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        },\n        \"key_2\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      },\n      \"user_defined_metadata\": {\n        \"key_0\": {\n          \"display_field_name\": \"<string>\",\n          \"value\": {},\n          \"data_type\": \"<enum>\"\n        }\n      }\n    }\n  ],\n  \"generation_configs\": {\n    \"model\": \"<string>\",\n    \"temperature\": \"<float>\",\n    \"top_p\": \"<float>\",\n    \"stream\": \"<boolean>\",\n    \"stop\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"max_completion_tokens\": \"<integer>\"\n  },\n  \"configs\": {\n    \"unanswerable_response\": \"<string>\",\n    \"persona\": \"<string>\"\n  },\n  \"include_exchange_outputs_context\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5079,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"@type\": \"string\"\n    },\n    {\n      \"@type\": \"string\",\n      \"key_0\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "{{pryon_base_url}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d6555908-0fca-4724-bbc3-1a77031cb238",
+    "name": "Generative API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Pryon Generative API.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "pryon/api/ext/analytics/v1/analytics.proto Text To Speech API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TextToSpeech",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CreateSynthesis",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/speech/v1/synthesis",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Synthesizes speech synchronously according to the text input and settings."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

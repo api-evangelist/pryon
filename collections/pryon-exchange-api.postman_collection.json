@@ -1,0 +1,548 @@
+{
+  "item": [
+    {
+      "id": "dea52c5f-228b-47a6-8c1c-1b139ad1c70f",
+      "name": "Exchange",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b62f6da2-224b-4f95-83c7-24a787b8d9d3",
+          "name": "CreateExchange",
+          "request": {
+            "name": "CreateExchange",
+            "description": {
+              "content": "Initiates or continues a conversation with the conversation exchange service.\nEach call performs one synchronous round-trip by sending a text or audio request to the service and receiving the text and optional audio response.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "exchange"
+              ],
+              "host": [
+                "{{api-conversation-v1-exchange-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"conversation_id\": \"<string>\",\n  \"input\": {\n    \"option\": {\n      \"audio_output_enabled\": \"<boolean>\",\n      \"knowledge_domain_id\": \"<string>\",\n      \"max_outputs\": \"<integer>\",\n      \"collection_id\": \"<string>\",\n      \"max_sentence_outputs\": \"<integer>\",\n      \"max_concise_outputs\": \"<integer>\",\n      \"content_group_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subject_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"filter\": {\n        \"condition\": \"<string>\"\n      },\n      \"context\": {}\n    },\n    \"language_id\": \"<string>\",\n    \"raw_text\": \"<string>\",\n    \"raw_audio\": {\n      \"audio_encoding\": \"UNSPECIFIED_AUDIO_ENCODING\",\n      \"sample_rate_hertz\": \"<integer>\",\n      \"content\": \"<byte>\"\n    },\n    \"recommended_questions\": \"UNSPECIFIED\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7b397f3a-4287-4b16-af3c-0adc77f00968",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "exchange"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-exchange-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conversation_id\": \"<string>\",\n  \"input\": {\n    \"option\": {\n      \"audio_output_enabled\": \"<boolean>\",\n      \"knowledge_domain_id\": \"<string>\",\n      \"max_outputs\": \"<integer>\",\n      \"collection_id\": \"<string>\",\n      \"max_sentence_outputs\": \"<integer>\",\n      \"max_concise_outputs\": \"<integer>\",\n      \"content_group_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subject_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"filter\": {\n        \"condition\": \"<string>\"\n      },\n      \"context\": {}\n    },\n    \"language_id\": \"<string>\",\n    \"raw_text\": \"<string>\",\n    \"raw_audio\": {\n      \"audio_encoding\": \"UNSPECIFIED_AUDIO_ENCODING\",\n      \"sample_rate_hertz\": \"<integer>\",\n      \"content\": \"<byte>\"\n    },\n    \"recommended_questions\": \"UNSPECIFIED\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"1964-04-16T20:35:09.840Z\",\n    \"update_time\": \"1989-05-11T05:51:13.851Z\",\n    \"response_time_millis\": 7633\n  },\n  \"data\": {\n    \"exchange_id\": \"string\",\n    \"conversation_id\": \"string\",\n    \"normalized_input\": {\n      \"normalized_input_id\": \"string\",\n      \"raw_text\": \"string\",\n      \"understood_text\": \"string\",\n      \"understood_subject_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"suggested_raw_texts\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"output\": [\n      {\n        \"output_id\": \"string\",\n        \"text\": \"string\",\n        \"summary_text\": \"string\",\n        \"audio\": {\n          \"audio_output_id\": \"string\",\n          \"audio_encoding\": \"UNSPECIFIED_AUDIO_ENCODING\",\n          \"sample_rate_hertz\": 8026,\n          \"content\": \"\"\n        },\n        \"attachments\": {\n          \"key_0\": {\n            \"content_type\": \"string\",\n            \"content\": \"string\"\n          }\n        },\n        \"subject_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"context\": {\n          \"augmentation\": {}\n        }\n      },\n      {\n        \"output_id\": \"string\",\n        \"text\": \"string\",\n        \"summary_text\": \"string\",\n        \"audio\": {\n          \"audio_output_id\": \"string\",\n          \"audio_encoding\": \"UNSPECIFIED_AUDIO_ENCODING\",\n          \"sample_rate_hertz\": 87,\n          \"content\": \"cfiIq4pjxSFsTdZ=\"\n        },\n        \"attachments\": {\n          \"key_0\": {\n            \"content_type\": \"string\",\n            \"content\": \"string\"\n          },\n          \"key_1\": {\n            \"content_type\": \"string\",\n            \"content\": \"string\"\n          }\n        },\n        \"subject_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"context\": {\n          \"augmentation\": {}\n        }\n      }\n    ]\n  },\n  \"user_id\": \"string\",\n  \"knowledge_domain_id\": \"string\",\n  \"collection_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6198ff1-9e5f-464d-9cb8-65f8ef7c5c69",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "exchange"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-exchange-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"conversation_id\": \"<string>\",\n  \"input\": {\n    \"option\": {\n      \"audio_output_enabled\": \"<boolean>\",\n      \"knowledge_domain_id\": \"<string>\",\n      \"max_outputs\": \"<integer>\",\n      \"collection_id\": \"<string>\",\n      \"max_sentence_outputs\": \"<integer>\",\n      \"max_concise_outputs\": \"<integer>\",\n      \"content_group_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subject_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"filter\": {\n        \"condition\": \"<string>\"\n      },\n      \"context\": {}\n    },\n    \"language_id\": \"<string>\",\n    \"raw_text\": \"<string>\",\n    \"raw_audio\": {\n      \"audio_encoding\": \"UNSPECIFIED_AUDIO_ENCODING\",\n      \"sample_rate_hertz\": \"<integer>\",\n      \"content\": \"<byte>\"\n    },\n    \"recommended_questions\": \"UNSPECIFIED\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3714,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"aAQOgBKtyXuwlO09llL=\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"XP1mEIv5W8TOfXgTxJl2gMpX8ek/OGnj\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "409de82a-d76c-470e-90d3-336d38985dfa",
+          "name": "CreateWsExchange",
+          "request": {
+            "name": "CreateWsExchange",
+            "description": {
+              "content": "Initiates or continues a conversation with the conversation exchange service.\nThe conversation exchange request and response cycle has the following steps.\n\n1. Open a connection.\n\nThe conversation exchange service uses the secure WebSocket protocol (wss) at the following endpoint:\nwss://{hostname}/api/conversation/v1/exchange/wss\n\nAfter the connection is established, the client defines the event listeners (onOpen, onMessage, onClose, etc) to respond to events from the server.\n\n2. Initiate an exchange request.\n\nTo initiate an exchange request, the client sends a JSON text message to the service over the established connection.\nThe client must send this message before it sends any audio.\nThe JSON text message must include an \"action\" parameter.\n\nFor example,\n{\n  \"action\": \"START\",\n  \"exchange_request\": {\n    \"conversation_id\": \"conversation-59410397-aaa9-42f0-91ef-1e39f710edec\",\n    \"input\": {\n      \"option\": {\n        \"audio_output_disabled\": true,\n      },\n      \"raw_audio\": {\n        \"audio_encoding\": \"LINEAR16\",\n        \"sample_rate_hertz\": 16000,\n      }\n    }\n  }\n}\n\nIf the service receives the request successfully, the service returns the following JSON text message to indicate that it is \"PROCESSING\".\n\n{\n \"data\": {\n   \"state\": \"PROCESSING\"\n }\n}\n\n3. Send audio.\n\nAfter the client sends the initial \"START\" message, it can start sending audio data to the service.\nThe client does not need to wait for the service to respond to the \"START\" message with the \"PROCESSING\" message.\n\n4. End a request.\n\nWhen the client is done sending the audio data, it must signal the service by sending a JSON text message with the action parameter set to the value of \"STOP\".\n\n{\n  \"action\": \"STOP\"\n}\n\n5. Receive exchange result\n\nOnce the service receives the \"STOP\" action from the client and finishes processing the request,\nit will send a response JSON text message (CreateWsExchangeResponse message type) asynchronously,\nfollowed by { \"data\": { \"state\" : \"PROCESSING_COMPLETED\" } } indicating that it's done sending the response.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "exchange",
+                "wss"
+              ],
+              "host": [
+                "{{api-conversation-v1-exchange-wss-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"UNSPECIFIED_ACTION\",\n  \"exchange_request\": {\n    \"conversation_id\": \"<string>\",\n    \"input\": {\n      \"option\": {\n        \"audio_output_enabled\": \"<boolean>\",\n        \"knowledge_domain_id\": \"<string>\",\n        \"max_outputs\": \"<integer>\",\n        \"collection_id\": \"<string>\",\n        \"max_sentence_outputs\": \"<integer>\",\n        \"max_concise_outputs\": \"<integer>\",\n        \"content_group_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"subject_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"filter\": {\n          \"condition\": \"<string>\"\n        },\n        \"context\": {}\n      },\n      \"language_id\": \"<string>\",\n      \"raw_text\": \"<string>\",\n      \"raw_audio\": {\n        \"audio_encoding\": \"UNSPECIFIED_AUDIO_ENCODING\",\n        \"sample_rate_hertz\": \"<integer>\",\n        \"content\": \"<byte>\"\n      },\n      \"recommended_questions\": \"UNSPECIFIED\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ecb6f17b-d074-4d09-8c7d-f0970fcd34af",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "exchange",
+                    "wss"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-exchange-wss-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"UNSPECIFIED_ACTION\",\n  \"exchange_request\": {\n    \"conversation_id\": \"<string>\",\n    \"input\": {\n      \"option\": {\n        \"audio_output_enabled\": \"<boolean>\",\n        \"knowledge_domain_id\": \"<string>\",\n        \"max_outputs\": \"<integer>\",\n        \"collection_id\": \"<string>\",\n        \"max_sentence_outputs\": \"<integer>\",\n        \"max_concise_outputs\": \"<integer>\",\n        \"content_group_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"subject_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"filter\": {\n          \"condition\": \"<string>\"\n        },\n        \"context\": {}\n      },\n      \"language_id\": \"<string>\",\n      \"raw_text\": \"<string>\",\n      \"raw_audio\": {\n        \"audio_encoding\": \"UNSPECIFIED_AUDIO_ENCODING\",\n        \"sample_rate_hertz\": \"<integer>\",\n        \"content\": \"<byte>\"\n      },\n      \"recommended_questions\": \"UNSPECIFIED\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"2004-11-12T10:07:16.363Z\",\n    \"update_time\": \"1968-09-15T21:03:02.694Z\",\n    \"response_time_millis\": 7775\n  },\n  \"data\": {\n    \"state\": \"UNSPECIFIED_STATE\",\n    \"exchange\": {\n      \"exchange_id\": \"string\",\n      \"conversation_id\": \"string\",\n      \"normalized_input\": {\n        \"normalized_input_id\": \"string\",\n        \"raw_text\": \"string\",\n        \"understood_text\": \"string\",\n        \"understood_subject_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"suggested_raw_texts\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"output\": [\n        {\n          \"output_id\": \"string\",\n          \"text\": \"string\",\n          \"summary_text\": \"string\",\n          \"audio\": {\n            \"audio_output_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"audio_encoding\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sample_rate_hertz\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"attachments\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"subject_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"context\": {\n            \"augmentation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"output_id\": \"string\",\n          \"text\": \"string\",\n          \"summary_text\": \"string\",\n          \"audio\": {\n            \"audio_output_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"audio_encoding\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sample_rate_hertz\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"attachments\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"subject_ids\": [\n            \"string\",\n            \"string\"\n          ],\n          \"context\": {\n            \"augmentation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ]\n    },\n    \"error\": {\n      \"code\": 5190,\n      \"message\": \"string\",\n      \"details\": [\n        {\n          \"type_url\": \"string\",\n          \"value\": \"AJHu\"\n        },\n        {\n          \"type_url\": \"string\",\n          \"value\": \"vcgyBfEFlSvk2hamNtvaeDiGIAq1RQDf\"\n        }\n      ]\n    }\n  },\n  \"user_id\": \"string\",\n  \"knowledge_domain_id\": \"string\",\n  \"collection_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d94cfd0b-bd7b-4dae-955b-4174dec78944",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "exchange",
+                    "wss"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-exchange-wss-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"UNSPECIFIED_ACTION\",\n  \"exchange_request\": {\n    \"conversation_id\": \"<string>\",\n    \"input\": {\n      \"option\": {\n        \"audio_output_enabled\": \"<boolean>\",\n        \"knowledge_domain_id\": \"<string>\",\n        \"max_outputs\": \"<integer>\",\n        \"collection_id\": \"<string>\",\n        \"max_sentence_outputs\": \"<integer>\",\n        \"max_concise_outputs\": \"<integer>\",\n        \"content_group_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"subject_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"filter\": {\n          \"condition\": \"<string>\"\n        },\n        \"context\": {}\n      },\n      \"language_id\": \"<string>\",\n      \"raw_text\": \"<string>\",\n      \"raw_audio\": {\n        \"audio_encoding\": \"UNSPECIFIED_AUDIO_ENCODING\",\n        \"sample_rate_hertz\": \"<integer>\",\n        \"content\": \"<byte>\"\n      },\n      \"recommended_questions\": \"UNSPECIFIED\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7163,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"mGkJBAQsj9zhvuTm6XYKU2dfE7/gXm==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"zRJdJDEnZ17JP788Dy3pBUmR\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f59f163-c0f5-4420-95ce-b1f53935d54a",
+          "name": "GetExchange",
+          "request": {
+            "name": "GetExchange",
+            "description": {
+              "content": "Retrieves the query and output data for an existing exchange data when supplied with an exchange_id and optional output_id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "exchanges",
+                ":exchange_id"
+              ],
+              "host": [
+                "{{api-conversation-v1-exchanges-exchange_id-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "output_id",
+                  "value": "<string>",
+                  "description": "Optional. The ranking of the answer and answer_in_context chunk, represented as best_1, best_2, etc."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "exchange_id",
+                  "description": "(Required) Required. Valid Unique ID of the exchange item from /api/knowledge/v1/exchanges"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "33550eca-fb06-4cac-9bd7-6238f382696e",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "exchanges",
+                    ":exchange_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-exchanges-exchange_id-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "output_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange_id",
+                      "description": "(Required) Required. Valid Unique ID of the exchange item from /api/knowledge/v1/exchanges"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"2000-03-01T19:24:07.547Z\",\n    \"update_time\": \"1953-01-01T13:02:51.787Z\",\n    \"response_time_millis\": 5579\n  },\n  \"data\": {\n    \"exchange_id\": \"string\",\n    \"conversation_id\": \"string\",\n    \"normalized_input\": {\n      \"normalized_input_id\": \"string\",\n      \"raw_text\": \"string\",\n      \"understood_text\": \"string\",\n      \"understood_subject_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"suggested_raw_texts\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"output\": [\n      {\n        \"output_id\": \"string\",\n        \"text\": \"string\",\n        \"summary_text\": \"string\",\n        \"audio\": {\n          \"audio_output_id\": \"string\",\n          \"audio_encoding\": \"UNSPECIFIED_AUDIO_ENCODING\",\n          \"sample_rate_hertz\": 3805,\n          \"content\": \"OcX8SU8KkHH3tUh=\"\n        },\n        \"attachments\": {\n          \"key_0\": {\n            \"content_type\": \"string\",\n            \"content\": \"string\"\n          }\n        },\n        \"subject_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"context\": {\n          \"augmentation\": {}\n        }\n      },\n      {\n        \"output_id\": \"string\",\n        \"text\": \"string\",\n        \"summary_text\": \"string\",\n        \"audio\": {\n          \"audio_output_id\": \"string\",\n          \"audio_encoding\": \"UNSPECIFIED_AUDIO_ENCODING\",\n          \"sample_rate_hertz\": 5663,\n          \"content\": \"XE==\"\n        },\n        \"attachments\": {\n          \"key_0\": {\n            \"content_type\": \"string\",\n            \"content\": \"string\"\n          }\n        },\n        \"subject_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"context\": {\n          \"augmentation\": {}\n        }\n      }\n    ]\n  },\n  \"user_id\": \"string\",\n  \"knowledge_domain_id\": \"string\",\n  \"collection_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5cc359f-c755-4a14-9ae2-8595fb1d22a6",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "exchanges",
+                    ":exchange_id"
+                  ],
+                  "host": [
+                    "{{api-conversation-v1-exchanges-exchange_id-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "output_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange_id",
+                      "description": "(Required) Required. Valid Unique ID of the exchange item from /api/knowledge/v1/exchanges"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7163,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"mGkJBAQsj9zhvuTm6XYKU2dfE7/gXm==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"zRJdJDEnZ17JP788Dy3pBUmR\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-conversation-v1-exchange-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-conversation-v1-exchange-wss-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "api-conversation-v1-exchanges-exchange_id-Url"
+    }
+  ],
+  "info": {
+    "_postman_id": "9933ea8a-c2c9-41ea-afec-24b711506f02",
+    "name": "Pryon Exchange API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged Exchange across 2 of this provider's published API definitions: pryon-admin-openapi.json, pryon-exchange-may2025-openapi.json. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

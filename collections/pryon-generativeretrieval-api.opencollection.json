@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Retrieval Generative Retrieval API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GenerativeRetrieval",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Generative Retrieval SSE",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/generative-retrievals",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new generative retrieval using server-sent events (SSE)."
+        },
+        {
+          "info": {
+            "name": "Get Generative Retrieval",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/generative-retrievals/:generative_retrieval_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "generative_retrieval_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the generative response object."
+              },
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier of the knowledge domain that supplied the generative exchange response."
+              }
+            ]
+          },
+          "docs": "Return a generative retrieval answer."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

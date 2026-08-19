@@ -1,0 +1,1672 @@
+{
+  "item": [
+    {
+      "id": "1b602e3c-b4d1-4a6d-b09e-6c4af6364946",
+      "name": "Analytics",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "92c96427-3069-4eaf-92d9-2182a7664a6a",
+          "name": "ListConversationCounts",
+          "request": {
+            "name": "ListConversationCounts",
+            "description": {
+              "content": "ListConversationCounts retrieves a time-series of the unique conversation counts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "analytics",
+                "v1",
+                "conversation-counts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<dateTime>",
+                  "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<dateTime>",
+                  "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+                },
+                {
+                  "disabled": false,
+                  "key": "agg_interval",
+                  "value": "UNSPECIFIED",
+                  "description": "Required. Aggregate conversation counts in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+                },
+                {
+                  "disabled": false,
+                  "key": "collection_id",
+                  "value": "<string>",
+                  "description": "Filter conversation counts by collection_id. REST query parameter is \"collection_id\". The conversation counts must be filtered by either collection or solution."
+                },
+                {
+                  "disabled": false,
+                  "key": "solution_id",
+                  "value": "<string>",
+                  "description": "Filter conversation counts by solution_id. REST query parameter is \"solution_id\". The conversation counts must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b74d0722-685f-4d34-86a6-ba4a98506fe8",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "analytics",
+                    "v1",
+                    "conversation-counts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "agg_interval",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "solution_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 4807\n  },\n  \"items\": [\n    {\n      \"start_time\": \"1979-07-30T14:46:10.199Z\",\n      \"end_time\": \"1953-01-17T15:18:51.590Z\",\n      \"count\": \"string\"\n    },\n    {\n      \"start_time\": \"1963-10-20T08:59:44.290Z\",\n      \"end_time\": \"2022-05-13T21:48:33.123Z\",\n      \"count\": \"string\"\n    }\n  ],\n  \"collection_id\": \"string\",\n  \"solution_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe7c6df3-2c6e-4948-a54e-03f8e717de77",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "analytics",
+                    "v1",
+                    "conversation-counts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "agg_interval",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "solution_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3037,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"Htl9eapI45==\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"JuoN\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ad69272-dd88-4bdc-b64d-61fef7a95607",
+          "name": "ListConversationSizeCategories",
+          "request": {
+            "name": "ListConversationSizeCategories",
+            "description": {
+              "content": "ListConversationSizeCategories retrieves a time-series of the conversation size counts. The size of a conversation is the number of exchanges that occurred.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "analytics",
+                "v1",
+                "conversation-size-categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<dateTime>",
+                  "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<dateTime>",
+                  "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+                },
+                {
+                  "disabled": false,
+                  "key": "agg_interval",
+                  "value": "UNSPECIFIED",
+                  "description": "Required. Aggregate conversation size categories in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+                },
+                {
+                  "disabled": false,
+                  "key": "collection_id",
+                  "value": "<string>",
+                  "description": "Filter conversation size categories by collection_id. REST query parameter is \"collection_id\". The conversation size categories must be filtered by either collection or solution."
+                },
+                {
+                  "disabled": false,
+                  "key": "solution_id",
+                  "value": "<string>",
+                  "description": "Filter conversation size categories by solution_id. REST query parameter is \"solution_id\". The conversation size categories must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c6bc3afe-92ac-4b85-bbab-3ce44c41fe51",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "analytics",
+                    "v1",
+                    "conversation-size-categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "agg_interval",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "solution_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 2189\n  },\n  \"items\": [\n    {\n      \"start_time\": \"2020-09-15T11:15:38.761Z\",\n      \"end_time\": \"2021-12-31T09:41:41.994Z\",\n      \"one_two_count\": \"string\",\n      \"three_four_count\": \"string\",\n      \"five_plus_count\": \"string\"\n    },\n    {\n      \"start_time\": \"2022-10-23T16:37:27.239Z\",\n      \"end_time\": \"1992-11-02T11:13:12.866Z\",\n      \"one_two_count\": \"string\",\n      \"three_four_count\": \"string\",\n      \"five_plus_count\": \"string\"\n    }\n  ],\n  \"collection_id\": \"string\",\n  \"solution_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa5f924e-5601-4d27-8cce-a308ba481321",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "analytics",
+                    "v1",
+                    "conversation-size-categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "agg_interval",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "solution_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6382,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1o+Pyda0HVle6NECYtH0\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"v2+U8h+s6PsHm955Q0pHCp1mfnzy/e/0JEvyvPLmOK==\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd1af5ee-e7e3-4d16-b640-8f0a6e46e97c",
+          "name": "ListExchangeConfidenceCategories",
+          "request": {
+            "name": "ListExchangeConfidenceCategories",
+            "description": {
+              "content": "List the exchange confidence counts in well defined categories in time interval buckets by collection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "analytics",
+                "v1",
+                "exchange-confidence-categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<dateTime>",
+                  "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<dateTime>",
+                  "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+                },
+                {
+                  "disabled": false,
+                  "key": "agg_interval",
+                  "value": "UNSPECIFIED",
+                  "description": "Required. Aggregate exchange confidence categories in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+                },
+                {
+                  "disabled": false,
+                  "key": "collection_id",
+                  "value": "<string>",
+                  "description": "Filter exchange confidence categories by collection_id. REST query parameter is \"collection_id\". The exchange confidence categories must be filtered by either collection or solution."
+                },
+                {
+                  "disabled": false,
+                  "key": "solution_id",
+                  "value": "<string>",
+                  "description": "Filter exchange confidence categories by solution_id. REST query parameter is \"solution_id\". The exchange confidence categories must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e0428e94-0371-4862-a536-226fbacaeda8",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "analytics",
+                    "v1",
+                    "exchange-confidence-categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "agg_interval",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "solution_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 2380\n  },\n  \"items\": [\n    {\n      \"start_time\": \"1985-11-27T08:20:13.061Z\",\n      \"end_time\": \"1976-11-26T02:15:13.259Z\",\n      \"low_count\": \"string\",\n      \"weak_count\": \"string\",\n      \"moderate_count\": \"string\",\n      \"high_count\": \"string\"\n    },\n    {\n      \"start_time\": \"1958-10-14T08:54:46.282Z\",\n      \"end_time\": \"1974-01-20T07:54:21.644Z\",\n      \"low_count\": \"string\",\n      \"weak_count\": \"string\",\n      \"moderate_count\": \"string\",\n      \"high_count\": \"string\"\n    }\n  ],\n  \"collection_id\": \"string\",\n  \"solution_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7875c03e-6c29-471e-bf4f-0476d429357c",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "analytics",
+                    "v1",
+                    "exchange-confidence-categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "agg_interval",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "solution_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6382,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1o+Pyda0HVle6NECYtH0\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"v2+U8h+s6PsHm955Q0pHCp1mfnzy/e/0JEvyvPLmOK==\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23848706-8013-4c9a-922e-51dfa3d0a337",
+          "name": "ListExchangeConfidenceScores",
+          "request": {
+            "name": "ListExchangeConfidenceScores",
+            "description": {
+              "content": "List the exchange confidence average as a numeric score in time interval buckets by collection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "analytics",
+                "v1",
+                "exchange-confidence-scores"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<dateTime>",
+                  "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<dateTime>",
+                  "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+                },
+                {
+                  "disabled": false,
+                  "key": "agg_interval",
+                  "value": "UNSPECIFIED",
+                  "description": "Required. Aggregate exchange confidence scores in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+                },
+                {
+                  "disabled": false,
+                  "key": "collection_id",
+                  "value": "<string>",
+                  "description": "Filter exchange confidence scores by collection_id. REST query parameter is \"collection_id\". The exchange confidence scores must be filtered by either collection or solution."
+                },
+                {
+                  "disabled": false,
+                  "key": "solution_id",
+                  "value": "<string>",
+                  "description": "Filter exchange confidence scores by solution_id. REST query parameter is \"solution_id\". The exchange confidence scores must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aba3d618-df64-4697-b858-c88ad46834ef",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "analytics",
+                    "v1",
+                    "exchange-confidence-scores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "agg_interval",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "solution_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 3035\n  },\n  \"items\": [\n    {\n      \"start_time\": \"2025-05-22T15:29:49.240Z\",\n      \"end_time\": \"1973-06-09T07:33:22.535Z\",\n      \"average_score\": 4155.680043250275\n    },\n    {\n      \"start_time\": \"1990-04-15T21:22:16.272Z\",\n      \"end_time\": \"2014-08-27T01:15:55.418Z\",\n      \"average_score\": 6914.626260576998\n    }\n  ],\n  \"collection_id\": \"string\",\n  \"solution_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7b530f1-35af-461d-a1df-c0e253ad8c5a",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "analytics",
+                    "v1",
+                    "exchange-confidence-scores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "agg_interval",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "solution_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6382,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1o+Pyda0HVle6NECYtH0\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"v2+U8h+s6PsHm955Q0pHCp1mfnzy/e/0JEvyvPLmOK==\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a66e66e-7259-4cc0-aaee-2f8c7af975f3",
+          "name": "ListExchangeCounts",
+          "request": {
+            "name": "ListExchangeCounts",
+            "description": {
+              "content": "List the exchange count in time interval buckets by collection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "analytics",
+                "v1",
+                "exchange-counts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<dateTime>",
+                  "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<dateTime>",
+                  "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+                },
+                {
+                  "disabled": false,
+                  "key": "agg_interval",
+                  "value": "UNSPECIFIED",
+                  "description": "Required. Aggregate exchange counts in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+                },
+                {
+                  "disabled": false,
+                  "key": "collection_id",
+                  "value": "<string>",
+                  "description": "Filter exchange counts by collection_id. REST query parameter is \"collection_id\". The exchange counts must be filtered by either collection or solution."
+                },
+                {
+                  "disabled": false,
+                  "key": "solution_id",
+                  "value": "<string>",
+                  "description": "Filter exchange counts by solution_id. REST query parameter is \"solution_id\". The exchange counts must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1246c685-9b02-422e-bccc-5ae2c6d9aad3",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "analytics",
+                    "v1",
+                    "exchange-counts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "agg_interval",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "solution_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 3586\n  },\n  \"items\": [\n    {\n      \"start_time\": \"2013-04-19T14:39:10.959Z\",\n      \"end_time\": \"2024-09-04T10:47:42.647Z\",\n      \"count\": \"string\"\n    },\n    {\n      \"start_time\": \"1991-08-12T17:10:39.324Z\",\n      \"end_time\": \"1985-06-29T21:45:34.562Z\",\n      \"count\": \"string\"\n    }\n  ],\n  \"collection_id\": \"string\",\n  \"solution_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8278ad3d-eec7-4dcc-8283-279df23af7d5",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "analytics",
+                    "v1",
+                    "exchange-counts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "agg_interval",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "solution_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6382,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1o+Pyda0HVle6NECYtH0\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"v2+U8h+s6PsHm955Q0pHCp1mfnzy/e/0JEvyvPLmOK==\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "27542874-82f2-450a-9ddf-fabc6cac204f",
+          "name": "ListExchangeRatingCategories",
+          "request": {
+            "name": "ListExchangeRatingCategories",
+            "description": {
+              "content": "List the exchange rating counts in time interval buckets by collection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "analytics",
+                "v1",
+                "exchange-rating-categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<dateTime>",
+                  "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<dateTime>",
+                  "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+                },
+                {
+                  "disabled": false,
+                  "key": "agg_interval",
+                  "value": "UNSPECIFIED",
+                  "description": "Required. Aggregate exchange rating categories in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+                },
+                {
+                  "disabled": false,
+                  "key": "collection_id",
+                  "value": "<string>",
+                  "description": "Filter exchange rating categories by collection_id. REST query parameter is \"collection_id\". The exchange rating categories must be filtered by either collection or solution."
+                },
+                {
+                  "disabled": false,
+                  "key": "solution_id",
+                  "value": "<string>",
+                  "description": "Filter exchange rating categories by solution_id. REST query parameter is \"solution_id\". The exchange rating categories must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3b8db2c-1441-4b75-b3ef-92e867fa80d0",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "analytics",
+                    "v1",
+                    "exchange-rating-categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "agg_interval",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "solution_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 9299\n  },\n  \"items\": [\n    {\n      \"start_time\": \"1972-06-01T13:08:02.338Z\",\n      \"end_time\": \"1996-01-24T15:32:59.867Z\",\n      \"rating_one_count\": \"string\",\n      \"rating_two_count\": \"string\",\n      \"rating_three_count\": \"string\",\n      \"rating_four_count\": \"string\",\n      \"rating_five_count\": \"string\"\n    },\n    {\n      \"start_time\": \"1997-08-04T19:12:07.526Z\",\n      \"end_time\": \"1990-06-17T16:02:24.394Z\",\n      \"rating_one_count\": \"string\",\n      \"rating_two_count\": \"string\",\n      \"rating_three_count\": \"string\",\n      \"rating_four_count\": \"string\",\n      \"rating_five_count\": \"string\"\n    }\n  ],\n  \"collection_id\": \"string\",\n  \"solution_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7119c793-b9f3-4368-afda-efd8b0faa5b5",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "analytics",
+                    "v1",
+                    "exchange-rating-categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "agg_interval",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "solution_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6382,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1o+Pyda0HVle6NECYtH0\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"v2+U8h+s6PsHm955Q0pHCp1mfnzy/e/0JEvyvPLmOK==\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "009726d5-66d1-4843-948f-0f13e466c740",
+          "name": "ListIngestCounts",
+          "request": {
+            "name": "ListIngestCounts",
+            "description": {
+              "content": "List the total ingestion count by collection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "analytics",
+                "v1",
+                "ingest-counts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<dateTime>",
+                  "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<dateTime>",
+                  "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+                },
+                {
+                  "disabled": false,
+                  "key": "agg_interval",
+                  "value": "UNSPECIFIED",
+                  "description": "Required. Aggregate ingest counts in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+                },
+                {
+                  "disabled": false,
+                  "key": "collection_id",
+                  "value": "<string>",
+                  "description": "Filter ingest counts by collection_id. REST query parameter is \"collection_id\". The ingest counts must be filtered by either collection or solution."
+                },
+                {
+                  "disabled": false,
+                  "key": "solution_id",
+                  "value": "<string>",
+                  "description": "Filter ingest counts by solution_id. REST query parameter is \"solution_id\". The ingest counts must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7383a1dc-fb27-4b04-995c-5293d0f69734",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "analytics",
+                    "v1",
+                    "ingest-counts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "agg_interval",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "solution_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 6786\n  },\n  \"items\": [\n    {\n      \"start_time\": \"1988-12-31T21:18:04.229Z\",\n      \"end_time\": \"1948-12-07T02:34:24.486Z\",\n      \"count\": \"string\"\n    },\n    {\n      \"start_time\": \"1996-08-09T01:15:56.596Z\",\n      \"end_time\": \"1948-01-05T06:25:20.194Z\",\n      \"count\": \"string\"\n    }\n  ],\n  \"collection_id\": \"string\",\n  \"solution_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40c70b1b-a301-425d-bd7e-06abbba832c0",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "analytics",
+                    "v1",
+                    "ingest-counts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "agg_interval",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "solution_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6382,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1o+Pyda0HVle6NECYtH0\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"v2+U8h+s6PsHm955Q0pHCp1mfnzy/e/0JEvyvPLmOK==\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b10347f-624e-444c-91b1-4e741e4caec3",
+          "name": "ListSyncCounts",
+          "request": {
+            "name": "ListSyncCounts",
+            "description": {
+              "content": "List the total collection sync count by collection. Includes the initial collection creation and subsequent collection updates (versioning) events. A collection is versioned by promoting a new knowledge domain to serve as its active domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "analytics",
+                "v1",
+                "sync-counts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<dateTime>",
+                  "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<dateTime>",
+                  "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+                },
+                {
+                  "disabled": false,
+                  "key": "agg_interval",
+                  "value": "UNSPECIFIED",
+                  "description": "Required. Aggregate sync counts in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+                },
+                {
+                  "disabled": false,
+                  "key": "collection_id",
+                  "value": "<string>",
+                  "description": "Filter sync counts by collection_id. REST query parameter is \"collection_id\". The sync counts must be filtered by either collection or solution."
+                },
+                {
+                  "disabled": false,
+                  "key": "solution_id",
+                  "value": "<string>",
+                  "description": "Filter sync counts by solution_id. REST query parameter is \"solution_id\". The sync counts must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d3891bf-f406-4305-954e-8b0746a8daae",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "analytics",
+                    "v1",
+                    "sync-counts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "agg_interval",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "solution_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"response_time_millis\": 3465\n  },\n  \"items\": [\n    {\n      \"start_time\": \"2018-08-26T07:32:45.535Z\",\n      \"end_time\": \"1989-12-27T19:07:28.444Z\",\n      \"count\": \"string\"\n    },\n    {\n      \"start_time\": \"1990-07-03T21:43:05.613Z\",\n      \"end_time\": \"1991-08-25T16:23:40.218Z\",\n      \"count\": \"string\"\n    }\n  ],\n  \"collection_id\": \"string\",\n  \"solution_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb877076-a874-4c82-8e31-cc31be11b976",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "analytics",
+                    "v1",
+                    "sync-counts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "agg_interval",
+                      "value": "UNSPECIFIED"
+                    },
+                    {
+                      "key": "collection_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "solution_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6382,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"1o+Pyda0HVle6NECYtH0\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"v2+U8h+s6PsHm955Q0pHCp1mfnzy/e/0JEvyvPLmOK==\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cf3cbc98-b7fb-4833-9a15-71f3e58ea867",
+    "name": "pryon/api/ext//v1/.proto Analytics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# Introduction\nThe Pryon API blah blah blah.\n\n# Authentication\nWhen you sign up for an account, you are given your set of API credentials.\n\n\nPryon supports authentication in the form of JSON Web Tokens.\n- JWT: authenticates each request by the http header: Authorization\n\nFor all API requests, you will have to include the Authorization header in the following form:\n\n```javascript\nAuthorization: Bearer {encoded token}\n```\n\n\nContact Support:\n Name: Pryon Product Support\n Email: support@pryoninc.com",
+      "type": "text/plain"
+    }
+  }
+}

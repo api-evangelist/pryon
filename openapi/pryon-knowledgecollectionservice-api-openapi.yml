@@ -1,0 +1,957 @@
+openapi: 3.2.0
+info:
+  title: Pryon Knowledge Collection Service API
+  version: '1.0'
+  description: 'Operations tagged KnowledgeCollectionService across 2 of this provider''s published API definitions: pryon-admin-openapi.json, pryon-knowledge-collections-may2025-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.pryon.net
+  description: Pryon Cloud
+tags:
+- name: KnowledgeCollectionService
+paths:
+  /api/knowledge/v1/active-domains:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: KnowledgeCollectionService_ListActiveDomains
+      parameters:
+      - description: Optionally, filter Active Domains where the calling user has one of these team roles, otherwise return the full set.
+        explode: true
+        in: query
+        name: roles
+        schema:
+          items:
+            enum:
+            - MEMBER
+            - EXPERT
+            - AUTHORITY
+            type: string
+          type: array
+        style: form
+      - description: 'The default page size is 100, which is also the maximum page size. The REST query parameter is "page_size". If page_size is set to the default, this param can be omitted; otherwise, it must be specified on every page request.
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: 'If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page''s response. The REST query parameter is "page_token".
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/collectionListActiveDomainsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListActiveDomains
+      tags:
+      - KnowledgeCollectionService
+      description: 'An ORG_ADMIN can list all active domains corresponding to the collections in their Org.
+
+        An ORG_WORKER can list the active domains their team memberships allow.'
+  /api/knowledge/v1/collections:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: KnowledgeCollectionService_ListCollections
+      parameters:
+      - description: Filters output to only include the collections authorized to the given team_id. The REST query parameter is 'team_id'.
+        in: query
+        name: team_id
+        schema:
+          type: string
+      - description: 'The default page size is 100, which is also the maximum page size. The REST query parameter is "page_size". If page_size is set to the default, this param can be omitted; otherwise, it must be specified on every page request.
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: 'If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page''s response. The REST query parameter is "page_token".
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - description: Filters output to only include the collections assigned to the given solution_id. The REST query parameter is 'solution_id'. Cannot be combined with the 'team_id' filter which it disables when both specified.
+        in: query
+        name: solution_id
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/collectionListCollectionsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListCollections
+      tags:
+      - KnowledgeCollectionService
+      description: List all Knowledge Collections configured for an Org
+  /api/knowledge/v1/collections/{collection_id}:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    delete:
+      operationId: KnowledgeCollectionService_DeleteCollection
+      parameters:
+      - description: Required. Id of a valid Knowledge Collection.
+        in: path
+        name: collection_id
+        required: true
+        schema:
+          type: string
+      - description: 'Use this flag to force delete the collection when it is set as an Org or User Default. The default value is false.
+
+          In REST it is expressed as a query parameter "force=true".'
+        in: query
+        name: force
+        schema:
+          type: boolean
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: DeleteCollection
+      tags:
+      - KnowledgeCollectionService
+      description: 'Deleting a Collection removes the item from the system. It will also locate and decommission all Knowledge Domain versions still associated with this record.
+
+        If a collection is already set as an Org or User default the delete operation will fail. ORG_ADMIN may use the force flag to delete anyway.'
+    get:
+      operationId: KnowledgeCollectionService_GetCollection
+      parameters:
+      - description: Required. Id of a valid Knowledge Collection.
+        in: path
+        name: collection_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/collectionGetCollectionResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: GetCollection
+      tags:
+      - KnowledgeCollectionService
+      description: 'Retrieve an existing Knowledge Collection.
+
+        Collections cannot be user created but are automatically generated with Knowledge Domains.'
+  /api/knowledge/v1/collections/{collection_id}/domain:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: KnowledgeCollectionService_GetCollectionActiveDomain
+      parameters:
+      - description: Required. Id of a valid Knowledge Collection.
+        in: path
+        name: collection_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domainGetDomainResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: GetCollectionActiveDomain
+      tags:
+      - KnowledgeCollectionService
+      description: 'Retrieve a Knowledge Collection''s active domain. A Collection always has an active domain.
+
+        An ORG_ADMIN can always get an active domain.
+
+        An ORG_WORKER can only get an active domain if their team memberships allow it.'
+  /api/knowledge/v1/collections/{collection_id}/domain:restoreActive:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    patch:
+      operationId: KnowledgeCollectionService_RestoreCollectionActiveDomain
+      parameters:
+      - description: Required. Id of a valid Knowledge Collection.
+        in: path
+        name: collection_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/collectionRestoreActiveDomainRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domainGetDomainResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: RestoreCollectionActiveDomain
+      tags:
+      - KnowledgeCollectionService
+      x-codegen-request-body-name: body
+      description: Revert the collection to its previous version. Reverting is immediate. The active version will not be automatically removed from the system. The ORG_ADMIN may decommission it via the Knowledge Domain API.
+  /api/knowledge/v1/collections/{collection_id}/domain:setActive:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    patch:
+      operationId: KnowledgeCollectionService_UpdateCollectionActiveDomain
+      parameters:
+      - description: Required. Id of a valid Knowledge Collection.
+        in: path
+        name: collection_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/collectionUpdateActiveDomainRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domainGetDomainResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: UpdateCollectionActiveDomain
+      tags:
+      - KnowledgeCollectionService
+      x-codegen-request-body-name: body
+      description: Updating a collection's active domain triggers the collection versioning process. The collection will remember its former version id and can return to its previous version on demand. Before promoting a Knowledge Domain to the active version, the ORG_ADMIN should ensure that the Knowledge Domain functions to their expectations. Once set, the active version becomes immediately available to Org users for exchange and feedback operations.
+  /api/knowledge/v1/collections/{data.collection_id}:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    patch:
+      operationId: KnowledgeCollectionService_UpdateCollection
+      parameters:
+      - description: Required. The Knowledge Collection unique identifier. Immutable after create.
+        in: path
+        name: data.collection_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/collectionUpdateCollectionRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/collectionGetCollectionResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: UpdateCollection
+      tags:
+      - KnowledgeCollectionService
+      x-codegen-request-body-name: body
+      description: Updating a collection allows for changing of team assignments.
+  /api/knowledge/v1/default-domains:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: KnowledgeCollectionService_ListDefaultActiveDomains
+      parameters:
+      - description: Optionally, filter Active Domains where the calling user has one of these team roles, otherwise return the full set.
+        explode: true
+        in: query
+        name: roles
+        schema:
+          items:
+            enum:
+            - MEMBER
+            - EXPERT
+            - AUTHORITY
+            type: string
+          type: array
+        style: form
+      - description: 'The default page size is 100, which is also the maximum page size. The REST query parameter is "page_size". If page_size is set to the default, this param can be omitted; otherwise, it must be specified on every page request.
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: 'If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page''s response. The REST query parameter is "page_token".
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/collectionListActiveDomainsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListDefaultActiveDomains
+      tags:
+      - KnowledgeCollectionService
+      description: List the Active Domains an authorized user can implicitly access in absence of any team assignments(defaults).
+  /api/knowledge/v1alpha1/collections:
+    post:
+      tags:
+      - KnowledgeCollectionService
+      summary: Create Knowledge Collections
+      operationId: KnowledgeCollectionService_CreateCollectionWithSources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCollectionWithSourcesRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCollectionResponse'
+        default:
+          description: Default error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+  /api/knowledge/v1alpha1/collections/{collection_id}:
+    delete:
+      tags:
+      - KnowledgeCollectionService
+      summary: Delete Knowledge Collections
+      description: Delete collections from an organization while also locating and decommissioning all knowledge domain versions associated with the record.
+      operationId: KnowledgeCollectionService_DeleteCollection
+      parameters:
+      - name: collection_id
+        in: path
+        description: Unique identifier of the knowledge collection.
+        required: true
+        schema:
+          type: string
+      - name: force
+        in: query
+        description: Flag used to force delete a collection when it is set as an organizational or user default; default is false.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content: {}
+        default:
+          description: Default error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+  /api/knowledge/v1alpha1/collections/{collection_id}/domains/{knowledge_domain_id}:
+    get:
+      tags:
+      - KnowledgeCollectionService
+      summary: Get Knowledge Collections
+      description: Retrieve all knowledge collections for an organization.
+      operationId: KnowledgeCollectionService_GetCollectionDomain
+      parameters:
+      - name: collection_id
+        in: path
+        description: Unique identifier of the knowledge collection.
+        required: true
+        schema:
+          type: string
+      - name: knowledge_domain_id
+        in: path
+        description: Unique ID of the knowledge domain.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCollectionDomainResponse'
+        default:
+          description: Default error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+components:
+  schemas:
+    collectionListCollectionItem:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/collectionKnowledgeCollection'
+      type: object
+    domainGetDomainResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/domainKnowledgeDomainEntity'
+      type: object
+    domainKnowledgeDomainEntity:
+      description: The top-level message sent by the client for the CreateDomain method.
+      properties:
+        knowledge_domain_id:
+          description: Optional.  When specified, it must be a UUID that is unique in the system.  When not specified, a UUID will be generated.
+          type: string
+        display_name:
+          description: Required.  Friendly display name of this KD.
+          type: string
+        description:
+          description: Optional.  A more elaborate explanation of this KD.
+          type: string
+        status:
+          $ref: '#/components/schemas/domainKnowledgeDomainEntityStatus'
+        labels:
+          additionalProperties:
+            type: string
+          description: "Optional. Knowledge domain specific key/value pair labels.\nLabels can be used to organize and select subsets of objects.\nReserved Pryon labels:\n   code_name - Only use this label as directed by Pryon personnel.\n   include_user_criteria - true/false."
+          type: object
+        kd_succession_id:
+          description: Optional. This is a uuidv4 stable identifier of the versioned KnowledgeCollection parent to this KnowledgeDomain. A KnowledgeCollection is automatically created with every new KnowledgeDomain. This identifier is autogenerated when not supplied and cannot be subsequently updated.
+          type: string
+        status_reason:
+          description: Reason that KD was transitioned to its current status value.  Generally only relevant when the status is CONTENT_NOT_SUPPORTED.
+          type: string
+        team_ids:
+          description: 'DEPRECATED. Teams are now specified at the collection level.
+
+            IDs of the teams allowed access to this KD.'
+          items:
+            type: string
+          type: array
+        created_by:
+          description: Automatically assigned and immutable after creation. The user identity that created this knowledge domain.
+          type: string
+      type: object
+    collectionRestoreActiveDomainRequest:
+      properties:
+        collection_id:
+          description: Required. Id of a valid Knowledge Collection.
+          type: string
+      type: object
+    collectionUpdateCollectionRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/collectionKnowledgeCollection'
+        update_mask:
+          items:
+            type: string
+          title: "Required. The data path corresponding to the fields being updated in this request.\nThe following fields are updatable:\n data.team_ids\n data.solution_id\nExample mask declaration in JSON format:\n  updateMask: \"data.teamIds\"\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
+          type: array
+      type: object
+    domainKnowledgeDomainEntityStatus:
+      default: UNKNOWN
+      description: "Output only.  An indicator of readiness of the KD to support conversation exchanges.\n\n - CONTENT_AWAIT: CONTENT_AWAIT: Initial value for a newly created KD.  If KD was created with data.uri or data.contents then asynchronous status transition will occur to CONTENT_IDENTIFIED after constituent Content Group and Contents are created.  If KD was created without either of these then it will remain in this status until an explicit PATCH with CONTENT_IDENTIFIED status is received.\n - CONTENT_IDENTIFIED: CONTENT_IDENTIFIED: When a KD enters this state, our automation will begin the process of readying the content for Conversation Exchanges by ingesting each constituent Content.\n - CONTENT_READY: CONTENT_READY: The KD's content is ready and able to support conversation exchanges.  Each Content in the KD's Content Groups has been successfully ingested.\n - CONTENT_NOT_SUPPORTED: CONTENT_NOT_SUPPORTED: Unable to support conversation exchanges on this KD's content due to some problem readying its Contents.  You can look for constituent Contents that have INGESTION_FAILED status to find out more details.  To retry, update KD status to CONTENT_IDENTIFIED using PATCH.  If the problem persists then remove the INGESTION_FAILED contents from the KD's Content Group(s) and try again.\n - DECOMMISSIONED: DECOMMISSIONED: KD is no longer needed, is not going to be used for conversation exchanges, and should be removed from the system.  The KD is going to be removed from the system ASAP by ongoing housekeeping operations.  Any KD can transition to DECOMMISSIONED status."
+      enum:
+      - UNKNOWN
+      - CONTENT_AWAIT
+      - CONTENT_IDENTIFIED
+      - CONTENT_READY
+      - CONTENT_NOT_SUPPORTED
+      - DECOMMISSIONED
+      type: string
+    collectionListCollectionsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/collectionListCollectionItem'
+          type: array
+        next_page_token:
+          title: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: string
+        total_size:
+          format: int32
+          title: 'This is the total number of items in the collection across all the pages. It is returned with every page and may change during page traversal.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: integer
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
+      type: object
+    googlerpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+      type: object
+    ContentGroupSource:
+      type: object
+      properties:
+        source_location:
+          type: string
+          description: URL of the content to be ingested; see Collections for information on valid sources.
+        display_name:
+          type: string
+          description: Display name for the source.
+        service_id:
+          type: string
+          description: Third-party service connect; if not specified, the oldest service connect with an authority and type matching the source location is assigned.
+        content_ids:
+          type: array
+          items:
+            type: string
+          description: Unique identifierof the content items to use during domain creation; only used with CreateNextVersionWithSourcesRequest when CreateNextVersionRequest.Mode == INGEST_SELECTED_CONTENTS; content record must already exist within the Content Group or an error is returned.
+    CollectionEntityWithSources:
+      type: object
+      properties:
+        sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentGroupSource'
+          description: "Required. A list of content sources to start ingesting when the Collection is created\n These can be urls to any of the supported integrations with an optional service id"
+        display_name:
+          type: string
+          description: Name of the collection.
+        description:
+          type: string
+          description: Explanatory text that fully describes the item.
+        config:
+          type: object
+          additionalProperties:
+            type: string
+          description: Advanced key/value pair configuration; see a Pryon representative before using.
+        team_ids:
+          type: array
+          items:
+            type: string
+          description: Unique identifiers of the teams authorized to the knowledge collection.
+        solution_id:
+          type: string
+          description: Licensed solution for the collection; if not provided, the organizational default solution is automatically assigned.
+      description: Data for creating a new collection; a list of content sources to ingest.
+    ResourceMetadata:
+      type: object
+      properties:
+        uuid:
+          type: string
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+        create_time:
+          type: string
+          description: Time of the initial request.
+          format: date-time
+        update_time:
+          type: string
+          description: Time of the last update; 0 indicates updates have never been made.
+          format: date-time
+        response_time_millis:
+          type: integer
+          description: Response time (in milliseconds).
+          format: uint32
+    GoogleProtobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+          description: The type of the serialized message.
+      additionalProperties: true
+      description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
+    v1ResourceMetadata:
+      properties:
+        uuid:
+          description: UUID returned in the resource response, which represents the unique interaction with the API, that is, the response id.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: 'Time of the last update.
+
+            A value of 0 indicates it has never been updated.'
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          title: Time difference in milliseconds between when the request was received and when the response was generated
+          type: integer
+      type: object
+    v1CollectionMetadata:
+      properties:
+        uuid:
+          description: Random UUID returned in the resource response to represent the unique interaction with the API.  This can be thought of as a response id.
+          type: string
+        response_time_millis:
+          description: Time difference in milliseconds between when the request was received and when the response was generated, that is, the latency.
+          format: int64
+          type: integer
+      title: Metadata that will be returned with each collection-level GET
+      type: object
+    collectionListActiveDomainsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/domainListDomainItem'
+          type: array
+        next_page_token:
+          title: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: string
+        total_size:
+          format: int32
+          title: 'This is the total number of items in the collection across all the pages. It is returned with every page and may change during page traversal.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: integer
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
+      type: object
+    KnowledgeDomainEntity:
+      type: object
+      properties:
+        knowledge_domain_id:
+          type: string
+          description: Unique identifier of the active version of the knowledge domain; if not specified, with be autogenerated.
+        display_name:
+          type: string
+          description: Name of the knowledge collection.
+        description:
+          type: string
+          description: Explanatory text that fully describes the item.
+        status:
+          enum:
+          - UNKNOWN
+          - CONTENT_AWAIT
+          - CONTENT_IDENTIFIED
+          - CONTENT_READY
+          - CONTENT_NOT_SUPPORTED
+          - DECOMMISSIONED
+          type: string
+          format: enum
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+          description: "DEPRECATED.  Use config instead.\n DEPRECATED. Knowledge domain specific key/value pair labels used to organize and select subsets of objects."
+        kd_succession_id:
+          type: string
+          description: DEPRECATED. Use collection_id; autogenerated uneditable identifier for the parent to the knowledge domain; created with each new knowledge domain.
+        status_reason:
+          type: string
+          description: Reason the knowledge domain was transitioned to its current status value.; only relevant for status of CONTENT_NOT_SUPPORTED.
+        team_ids:
+          type: array
+          items:
+            type: string
+          description: DEPRECATED; teams are specified at the collection level.
+        created_by:
+          type: string
+          description: User responsible for creating the knowledge domain; autogenerated and not editable.
+        collection_id:
+          type: string
+          description: Unique identifier of the parent collection; autogenerated and cannot be updated.
+        config:
+          type: object
+          additionalProperties:
+            type: string
+          description: Advanced key/value pair configuration; see a Pryon representative before using.
+      description: The top-level message sent by the client for the CreateDomain method.
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      type: object
+    domainListDomainItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/domainKnowledgeDomainEntity'
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+      type: object
+    collectionKnowledgeCollection:
+      properties:
+        collection_id:
+          description: Required. The Knowledge Collection unique identifier. Immutable after create.
+          type: string
+        active_domain_id:
+          description: Unique identifier of the current version Domain.
+          type: string
+        active_domain_history:
+          description: Autogenerated. An ordered list of version identifiers that were active at some point in the Collection's lifetime. The oldest version is the first item in the list.
+          items:
+            type: string
+          type: array
+        team_ids:
+          description: Unique identifiers of the teams authorized to this Knowledge Collection.
+          items:
+            type: string
+          type: array
+        solution_id:
+          description: Required. The licensed solution this collection belongs to.
+          type: string
+      title: A versioned collection of documents authorized users can interact with
+      type: object
+    collectionUpdateActiveDomainRequest:
+      properties:
+        collection_id:
+          description: Required. Id of a valid Knowledge Collection.
+          type: string
+        knowledge_domain_id:
+          title: The ID of the Knowledge Domain to serve as the active version
+          type: string
+      type: object
+    GetCollectionDomainResponse:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/KnowledgeDomainEntity'
+    collectionGetCollectionResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/collectionKnowledgeCollection'
+      type: object
+    KnowledgeCollection:
+      type: object
+      properties:
+        collection_id:
+          type: string
+          description: Unique identifier of the knowledge collection.
+        active_domain_id:
+          type: string
+          description: Unique identifier of the current version domain.
+        active_domain_history:
+          type: array
+          items:
+            type: string
+          description: All identifiers that were active throughout the life of the collection; autogenerated and listed in reverse order.
+        team_ids:
+          type: array
+          items:
+            type: string
+          description: Unique identifiers of the teams authorized to the knowledge collection.
+        solution_id:
+          type: string
+          description: Licensed solution for the collection; if not provided, the organizational default solution is automatically assigned.
+      description: Versioned collection of documents accessible by authorized users.
+    GetCollectionResponse:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/KnowledgeCollection'
+    Status:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: The status code; enum value of google.rpc.Code.
+          format: int32
+        message:
+          type: string
+          description: Developer-facing error message.
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoogleProtobufAny'
+          description: List of messages that carry the error details.
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+    CreateCollectionWithSourcesRequest:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/CollectionEntityWithSources'
+      description: The top-level request to create a collection with sources
+x-refined-from:
+- pryon-admin-openapi.json
+- pryon-knowledge-collections-may2025-openapi.json
+x-original-swagger-version: '2.0'
+x-tagGroups:
+- name: Retrieval
+  tags:
+  - Exchange
+  - ExchangeEvent
+  - Feedback
+  - GenerativeExchange
+  - GenerativeFeedback
+  - TextToSpeech
+- name: Reporting
+  tags:
+  - Analytics
+  - Reports
+  - Usage
+- name: Collection Management
+  tags:
+  - KnowledgeCollectionService
+  - KnowledgeDomain
+  - ContentService
+  - RegressionTest
+  - Subjects
+- name: Organization Management
+  tags:
+  - ConnectorServiceExternal
+  - OrganizationService
+  - Messages
+- name: Ops Console
+  tags:
+  - Operations

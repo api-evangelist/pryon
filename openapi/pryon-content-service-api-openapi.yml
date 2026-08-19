@@ -1,0 +1,1459 @@
+openapi: 3.2.0
+info:
+  title: Retrieval Content Service API
+  version: '1.0'
+  contact:
+    name: Pryon Product Support
+    url: https://pryon.zendesk.com
+    email: support@pryon.zendesk.com
+  description: ''
+  x-logo:
+    altText: Pryon APIs
+servers:
+- url: https://api.pryon.net
+  description: Pryon Cloud
+tags:
+- name: Content Service
+paths:
+  /api/knowledge/v1alpha1/content-groups:
+    get:
+      operationId: ContentService_ListContentGroups
+      parameters:
+      - description: Unique identifier of the knowledge domain that supplied the exchange response.
+        in: query
+        name: knowledge_domain_id
+        schema:
+          type: string
+      - description: Unique identifier for the content within the matching content groups.
+        in: query
+        name: content_id
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1ListContentGroupsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: List Content Groups
+      tags:
+      - Content Service
+      description: Filter content groups by knowledge domain and content.
+    post:
+      operationId: ContentService_CreateContentGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/filename_v1alpha1CreateContentGroupRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetContentGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Create Content Group
+      tags:
+      - Content Service
+      x-codegen-request-body-name: body
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+  /api/knowledge/v1alpha1/content-groups/{content_group_id}:
+    delete:
+      operationId: ContentService_DeleteContentGroup
+      parameters:
+      - description: Unique identifier for the content group.
+        in: path
+        name: content_group_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Delete Content Group
+      tags:
+      - Content Service
+      description: Delete a content group without altering the content resources.
+    get:
+      operationId: ContentService_GetContentGroup
+      parameters:
+      - description: Unique identifier for the content group.
+        in: path
+        name: content_group_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetContentGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Get Content Group
+      tags:
+      - Content Service
+      description: Retrieve a content group using the ID.
+  /api/knowledge/v1alpha1/content-groups/{content_group_id}/contents:
+    delete:
+      operationId: ContentService_DeleteContentGroupContents
+      parameters:
+      - description: Unique identifier for the content group.
+        in: path
+        name: content_group_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Delete Content Group Contents
+      tags:
+      - Content Service
+      description: Delete all child content associations with the parent content group.
+    get:
+      operationId: ContentService_ListContentGroupContents
+      parameters:
+      - description: Unique identifier for the content group.
+        in: path
+        name: content_group_id
+        required: true
+        schema:
+          type: string
+      - description: Maximum page size is 100; default is 100.
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: For multiple pages; must be specified in each request for two pages per sheet.
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - description: If set to True will only return item IDs.
+        in: query
+        name: return_only_id
+        schema:
+          type: boolean
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1ListContentGroupContentsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: List Content Group Contents
+      tags:
+      - Content Service
+      description: List content group sources by ID.
+  /api/knowledge/v1alpha1/content-groups/{content_group_id}/contents/{content_id}:
+    delete:
+      operationId: ContentService_DeleteContentGroupContent
+      parameters:
+      - description: Unique identifier for the content group.
+        in: path
+        name: content_group_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier for the content within the matching content groups.
+        in: path
+        name: content_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Delete Content Group Content
+      tags:
+      - Content Service
+      description: Delete content associations within the parent content group.
+    get:
+      operationId: ContentService_GetContentGroupContent
+      parameters:
+      - description: Unique identifier for the content group.
+        in: path
+        name: content_group_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier for the content within the matching content groups.
+        in: path
+        name: content_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetContentGroupContentResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Get Content Group Content
+      tags:
+      - Content Service
+      description: Get content group sources by ID.
+  /api/knowledge/v1alpha1/content-groups/{content_group_id}:cascade:
+    delete:
+      operationId: ContentService_CascadeDeleteContentGroup
+      parameters:
+      - description: Unique identifier for the content group.
+        in: path
+        name: content_group_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Cascade Delete Content Group
+      tags:
+      - Content Service
+      description: Delete content group source associations and remove from knowledge domain.
+  /api/knowledge/v1alpha1/content-groups/{data.content_group_id}:
+    patch:
+      operationId: ContentService_UpdateContentGroup
+      parameters:
+      - description: Unique identifier for the content group.
+        in: path
+        name: data.content_group_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetContentGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Update Content Group
+      tags:
+      - Content Service
+      description: Update the display name for a content group.
+  /api/knowledge/v1alpha1/content-groups/{data.content_group_id}/contents/{data.content_id}:
+    post:
+      operationId: ContentService_CreateContentGroupContent
+      parameters:
+      - description: Unique identifier for the content group.
+        in: path
+        name: data.content_group_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier for the content within the matching content groups.
+        in: path
+        name: data.content_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/filename_v1alpha1ContentGroupContentRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetContentGroupContentResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Create Content Group Content
+      tags:
+      - Content Service
+      x-codegen-request-body-name: body
+      description: Create content group sources.
+  /api/knowledge/v1alpha1/contents:
+    get:
+      operationId: ContentService_ListContents
+      parameters:
+      - description: Unique identifier of the knowledge domain that supplied the exchange response.
+        in: query
+        name: knowledge_domain_id
+        schema:
+          type: string
+      - description: Unique identifier for the content within the matching content groups.
+        in: query
+        name: content_group_id
+        schema:
+          type: string
+      - description: Precise location of the source material.
+        in: query
+        name: source_location
+        schema:
+          type: string
+      - description: Maximum page size is 100; default is 100.
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: For multiple pages; must be specified in each request for two pages per sheet.
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1ListContentsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: List Contents
+      tags:
+      - Content Service
+      description: List contents associated with a knowledge domain.
+    post:
+      operationId: ContentService_CreateContent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/filename_v1alpha1CreateContentRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetContentResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Create Content
+      tags:
+      - Content Service
+      x-codegen-request-body-name: body
+      description: Create methods for contents.
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+  /api/knowledge/v1alpha1/contents/{content_id}:
+    delete:
+      operationId: ContentService_DeleteContent
+      parameters:
+      - description: Unique identifier for the content to be deleted.
+        in: path
+        name: content_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Delete Content
+      tags:
+      - Content Service
+      description: Delete the content and all child resources.
+    get:
+      operationId: ContentService_GetContent
+      parameters:
+      - description: Unique identifier for the content to be returned.
+        in: path
+        name: content_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetContentResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Content Service
+      summary: Get Content
+      description: ''
+  /api/knowledge/v1alpha1/contents/{content_id}/image:
+    get:
+      operationId: ContentService_GetContentImage
+      parameters:
+      - description: Unique identifier for the content within the matching content groups.
+        in: path
+        name: content_id
+        required: true
+        schema:
+          type: string
+      - description: Page number in the content.
+        in: query
+        name: page
+        schema:
+          format: int32
+          type: integer
+      - description: True does not compress the image data; default is false (compressed).
+        in: query
+        name: uncompressed
+        schema:
+          type: boolean
+      - description: True returns a debug image.
+        in: query
+        name: debug
+        schema:
+          type: boolean
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Get Content Image
+      tags:
+      - Content Service
+      description: Return an image representation of the content.
+  /api/knowledge/v1alpha1/contents/{content_id}/processed-extracts:
+    get:
+      operationId: ContentService_ListProcessedContentExtracts
+      parameters:
+      - description: Unique identifier for the content within the matching content groups.
+        in: path
+        name: content_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier of the knowledge domain that contains the exchange response.
+        in: query
+        name: knowledge_domain_id
+        schema:
+          type: string
+      - description: Maximum page size is 100; default is 100.
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: For multiple pages; must be specified in each request for two pages per sheet.
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1ListProcessedContentExtractsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: List Processed Content Extracts
+      tags:
+      - Content Service
+      description: List initial processed extracts by content ID.
+  /api/knowledge/v1alpha1/contents/{content_id}/retrieval-extracts:
+    get:
+      operationId: ContentService_ListRetrievalContentExtracts
+      parameters:
+      - description: Unique identifier for the content within the matching content groups.
+        in: path
+        name: content_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier of the knowledge domain that supplied the exchange response.
+        in: query
+        name: knowledge_domain_id
+        schema:
+          type: string
+      - description: Maximum page size is 100; default is 100.
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: For multiple pages; must be specified in each request for two pages per sheet.
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1ListRetrievalContentExtractsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: List Retrieval Content Extracts
+      tags:
+      - Content Service
+      description: List of retrieval extracts by content ID.
+  /api/knowledge/v1alpha1/contents/{content_id}/subjects:
+    get:
+      operationId: ContentService_ListContentSubjects
+      parameters:
+      - description: Unique identifier for the content within the matching content groups.
+        in: path
+        name: content_id
+        required: true
+        schema:
+          type: string
+      - description: Maximum page size is 100; default is 100.
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: IFor multiple pages; must be specified in each request for two pages per sheet.
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - description: Sort order for multi page requests; valid options are rank, rank desc, create_time, create_time desc.
+        in: query
+        name: order_by
+        schema:
+          type: string
+      - description: Unique identifier for the grouping of specific topics.
+        in: query
+        name: subject_category_id
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1ListSubjectsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: List Content Subjects
+      tags:
+      - Content Service
+      description: List subjects associated with a content item.
+  /api/knowledge/v1alpha1/contents/{content_id}/summary:
+    get:
+      operationId: ContentService_GetSummary
+      parameters:
+      - description: Unique identifier for the content within the matching content groups.
+        in: path
+        name: content_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetSummaryResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Get Summary
+      tags:
+      - Content Service
+      description: Get summary information by content ID.
+  /api/knowledge/v1alpha1/contents/{content_id}:cascade:
+    delete:
+      operationId: ContentService_CascadeDeleteContent
+      parameters:
+      - description: Unique identifier for the content to be deleted.
+        in: path
+        name: content_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Cascade Delete Content
+      tags:
+      - Content Service
+      description: Delete the content and all child resources, and remove from all content groups.
+  /api/knowledge/v1alpha1/domains/{knowledge_domain_id}/contents/{content_id}/metadata:
+    get:
+      operationId: ContentService_GetContentMetadata
+      parameters:
+      - description: Unique identifier of the knowledge domain containing the requested metadata
+        in: path
+        name: knowledge_domain_id
+        required: true
+        schema:
+          type: string
+      - description: Unique identifier for the content within the matching content groups.
+        in: path
+        name: content_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetContentMetadataResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Get Content Metadata
+      tags:
+      - Content Service
+      description: List metadata by content ID.
+components:
+  schemas:
+    filename_v1alpha1DataSourceMetadata:
+      properties:
+        display_field_name:
+          description: The data source metadata category, display_field_name.
+          type: string
+        value:
+          description: The data source metadata value.
+          properties: {}
+          type: object
+        data_type:
+          $ref: '#/components/schemas/filename_v1alpha1DataType'
+      type: object
+    filename_v1alpha1ContentGroupContent:
+      properties:
+        content_id:
+          description: Unique identifier for the content within the matching content groups.
+          type: string
+        content_group_id:
+          description: Unique identifier for the content group.
+          type: string
+      title: Joins Content to a Content Group
+      type: object
+    filename_v1alpha1GetSubjectResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1SubjectEntity'
+      type: object
+    filename_v1alpha1SummaryItem:
+      properties:
+        text:
+          type: string
+        html:
+          type: string
+      type: object
+    filename_v1alpha1GetContentResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1Content'
+      type: object
+    filename_v1alpha1GetContentMetadataResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data_source_metadata:
+          properties: {}
+          title: The Raw Data Source Metadata for the Content
+          type: object
+      type: object
+    filename_v1alpha1CollectionMetadata:
+      properties:
+        uuid:
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          type: string
+        response_time_millis:
+          description: Response time (in milliseconds).
+          format: int64
+          type: integer
+      title: Metadata that will be returned with each collection-level GET
+      type: object
+    filename_v1alpha1ListRetrievalContentExtractsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/filename_v1alpha1ListRetrievalContentExtractsItem'
+          title: Array of retrieval extracts matching the request.
+          type: array
+        next_page_token:
+          title: For multiple pages; must be specified in each request for two pages per sheet.
+          type: string
+        page_size:
+          description: Sme as page size in request.
+          format: int32
+          type: integer
+      type: object
+    filename_v1alpha1ListContentItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1Content'
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+      type: object
+    filename_v1alpha1ContentGroup:
+      properties:
+        content_group_id:
+          description: Unique identifier for the content group.
+          type: string
+        display_name:
+          description: Name of the collection.
+          type: string
+        description:
+          title: Description of the content group.
+          type: string
+        source_location:
+          description: Unique identifier for the source location of the content group.
+          type: string
+        content_statuses:
+          description: Content status for each item in the content group; index corresponds to the number of contents in each content group with that status.
+          items:
+            format: int32
+            type: integer
+          type: array
+        service_id:
+          description: Third-party service connect; if not specified, the oldest service connect with an authority and type matching the source location is assigned.
+          type: string
+      title: A parent collection of Contents
+      type: object
+    filename_v1alpha1CreateContentGroupRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1ContentGroup'
+      type: object
+    filename_protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      type: object
+    filename_v1alpha1CreateContentRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1Content'
+      type: object
+    filename_v1alpha1ContentStatus:
+      default: UNKNOWN
+      description: "The Content status will only be updated by the server.\n\n - CONFIGURED: Initial status; content is configured. \n - UNSUPPORTED: Unsupported content found during the listing phase; cannot be ingested.\n - INGESTING: Content is currently being ingested. \n - INGESTED: Ingestion successful; content cannot be transitioned from this state.\n - INGESTION_FAILED: Ingestion failed; retry the ingestion process."
+      type: string
+    filename_v1alpha1ResourceMetadata:
+      properties:
+        uuid:
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: Time of the last update; 0 indicates updates have never been made.
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          description: Response time (in milliseconds).
+          type: integer
+      type: object
+    filename_v1alpha1ContentGroupContentRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1ContentGroupContent'
+      type: object
+    filename_v1alpha1ListProcessedContentExtractsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/filename_v1alpha1ListProcessedContentExtractsItem'
+          title: Array of process extracts matching the request.
+          type: array
+        next_page_token:
+          title: For multiple pages; must be specified in each request for two pages per sheet.
+          type: string
+        page_size:
+          description: Same as page size in request.
+          format: int32
+          type: integer
+      type: object
+    filename_v1alpha1GetSummaryResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1SummaryItem'
+      type: object
+    filename_v1alpha1ListContentGroupContentItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1ContentGroupContent'
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+      type: object
+    filename_ContentExtractReadPermission:
+      properties:
+        allow_emails:
+          description: A list of emails that have read permission for the content.
+          items:
+            type: string
+          type: array
+        allow_group_ids:
+          description: 'A list of group ids that have read permission for the content. This will
+
+            be different for each remote API. It does not need to follow any preset
+
+            pattern, but should be consistent across the particular remote API.'
+          items:
+            type: string
+          type: array
+        deny_emails:
+          description: A list of emails that do not have read permission for the content.
+          items:
+            type: string
+          type: array
+        deny_group_ids:
+          description: "A list of group ids that have read permission for the content. This will\n // be different for each remote API. It does not need to follow any preset\n // pattern, but should be consistent across the particular remote API."
+          items:
+            type: string
+          type: array
+        any_required_group_ids:
+          description: 'A list of group ids where a user needs to a part of AT LEAST ONE of them in order to access the content.
+
+            Even if a user exists in one of these groups, ''read'' permission could still be restricted.'
+          items:
+            type: string
+          type: array
+        all_required_group_ids:
+          description: 'A list group ids where a user needs to be a part of ALL of them in order to access the object.
+
+            Even if a user exists in all of these groups, ''read'' permission could still be restricted.'
+          items:
+            type: string
+          type: array
+        is_public:
+          description: A flag to indicate if the content is public.
+          type: boolean
+        unrestricted_emails:
+          description: A list of emails that always have read permission for the content.
+          items:
+            type: string
+          type: array
+      title: Permission properties
+      type: object
+    filename_TextBoxTextLine:
+      properties:
+        textline_bbox:
+          title: 'Bounding box for the text line
+
+            The coordinates of the text line in the format: x1,y1,x2,y2.'
+          type: string
+        textline_text_bbox:
+          title: 'The coordinates of the text line in the format: char1_x1,char1_x2,char2_x1,char2_x2,...'
+          type: string
+        textline_text:
+          title: Text within the text line
+          type: string
+      title: Text line level information
+      type: object
+    filename_v1alpha1DataType:
+      default: DATATYPE_UNSPECIFIED
+      description: " - DATATYPE_UNSPECIFIED: Unspecified - indicates that data type is not set. This is not a valid option when creating a metadata field.\n - STRING: Free form text characters.\n - BOOLEAN: A boolean value (true or false).\n - INTEGER: Positive and negative whole numbers, but not decimals.\n - DECIMAL: Any number with decimal places.\n - DATETIME: Datetime string.\n - DATETIME_EPOCH: Datetime in epoch time format."
+      type: string
+    filename_v1alpha1GetContentGroupContentResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1ContentGroupContent'
+      type: object
+    filename_v1alpha1SubjectEntity:
+      properties:
+        subject_id:
+          title: hash of subject_category_id and term
+          type: string
+        term:
+          description: Natural language term that represents the subject; case-sensitive.
+          type: string
+        subject_category_id:
+          title: Subject category
+          type: string
+        definition:
+          description: Natural language definition of the subject.
+          type: string
+        reference_count:
+          format: uint64
+          title: "!Deprecation Warning!: This field will no longer be kept up to date and must be considered inaccurate. To view subject reference counts \nplease see ListDomainSubjects.\nOptional.  Number of references to the subject found in the content.  This is provided if known and will otherwise be zero.\nReference count at different levels:\nContent - occurrences in content (0 for Prior Knowledge content subjects)\nContent Group - occurrences in all contents in CG\nKnowledge Domain - occurrences in all contents in KD"
+          type: string
+        content_count:
+          format: uint64
+          title: Number of contents that refer to the subject.
+          type: string
+      title: A subject is an unique tuple of term and category
+      type: object
+    filename_v1alpha1ListContentGroupContentsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/filename_v1alpha1ListContentGroupContentItem'
+          title: Map of all ContentGroup Content joins that match the request, keyed off of content_id
+          type: array
+        next_page_token:
+          title: For multiple pages; must be specified in each request for two pages per sheet.
+          type: string
+        total_size:
+          format: int32
+          title: Total number of items in the collection across all pages.
+          type: integer
+        page_size:
+          description: Same as page size in request.
+          format: int32
+          type: integer
+      type: object
+    filename_v1alpha1Content:
+      properties:
+        content_id:
+          title: Unique identifier for the content within the matching content groups.
+          type: string
+        content_type_id:
+          title: 'Required: ID of the ContentType for this Content'
+          type: string
+        source_location:
+          title: String describing the location, typically a URI
+          type: string
+        display_name:
+          title: Name of the collection.
+          type: string
+        description:
+          title: Description of the content group.
+          type: string
+        status:
+          $ref: '#/components/schemas/filename_v1alpha1ContentStatus'
+        source_owner:
+          title: Unique identifier for the owner of the source content owner.
+          type: string
+        revision:
+          description: Specific revision being referenced; if not specified, the latest revision at the time of ingestion is used.
+          type: string
+        status_reason:
+          description: Reason the content transitioned to current status value; only relevant for INGESTION_FAILED.
+          type: string
+        labels:
+          additionalProperties:
+            type: string
+          description: Content key/value pair labels that identify characteristics of the content.
+          type: object
+      type: object
+    filename_PageTextBox:
+      properties:
+        bbox:
+          title: 'Bounding box coordinates of the TextBox
+
+            A string of four floating point numbers representing the top-left and bottom-right corners of the box separated by commas.
+
+            The coordinates are in the format: x1,y1,x2,y2.'
+          type: string
+        text:
+          title: Text within the bounding box
+          type: string
+        textlines:
+          items:
+            $ref: '#/components/schemas/filename_TextBoxTextLine'
+          title: List of text lines within the TextBox
+          type: array
+        textline_start_index:
+          title: Start index for the text line
+          type: string
+        vision_class:
+          title: Vision class of the TextBox
+          type: string
+        timestamps:
+          items:
+            $ref: '#/components/schemas/filename_PageTextBoxTimestamp'
+          title: 'List of timestamps
+
+            Only available if the content is a video transcript'
+          type: array
+      title: TextBox level information
+      type: object
+    filename_v1alpha1ListContentsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/filename_v1alpha1ListContentItem'
+          title: Array of Contents that match the request
+          type: array
+        next_page_token:
+          title: For multiple pages; must be specified in each request for two pages per sheet.
+          type: string
+        page_size:
+          description: Same as page size in request.
+          format: int32
+          type: integer
+      type: object
+    filename_v1alpha1ListRetrievalContentExtractsItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1ContentExtract'
+      type: object
+    filename_v1alpha1ListProcessedContentExtractsItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1ContentExtract'
+      type: object
+    filename_PageTextBoxTimestamp:
+      properties:
+        time:
+          title: 'Time of the timestamp
+
+            The format of the time is HH:MM:SS.'
+          type: string
+        start_char_index:
+          format: int64
+          title: Start character index for the timestamp relative to the TextBox's text
+          type: integer
+      title: Timestamps information
+      type: object
+    filename_v1alpha1ListContentGroupsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
+        items:
+          additionalProperties:
+            $ref: '#/components/schemas/filename_v1alpha1ListContentGroupItem'
+          description: Map of content groups that match the request; keyed by content group ID.
+          type: object
+      type: object
+    filename_v1alpha1ContentExtract:
+      properties:
+        text:
+          title: The text extracted from the content
+          type: string
+        textbox_text_separator:
+          title: Separator used to concatenate text from multiple text boxes.
+          type: string
+        pages:
+          items:
+            $ref: '#/components/schemas/filename_ContentExtractPage'
+          title: List of pages in the content.
+          type: array
+        display_text:
+          title: Display view of the content.
+          type: string
+        read_permission:
+          $ref: '#/components/schemas/filename_ContentExtractReadPermission'
+        tags:
+          items:
+            type: string
+          title: List of tags associated with the content.
+          type: array
+        extract_index:
+          format: int64
+          title: Index of the Content Extract. Index starts at 0
+          type: integer
+        data_source_metadata:
+          additionalProperties:
+            $ref: '#/components/schemas/filename_v1alpha1DataSourceMetadata'
+          title: '{
+
+            "author": {
+
+            "display_field_name": "Author",
+
+            "value": "J. R. R. Tolkien",
+
+            "data_type": "STRING"
+
+            },
+
+            "title": {
+
+            "display_field_name": "Book Title",
+
+            "value": "The Hobbit",
+
+            "data_type": "STRING"
+
+            }
+
+            }'
+          type: object
+      type: object
+    filename_googlerpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/filename_protobufAny'
+          type: array
+      type: object
+    filename_PageAnchorCharOffset:
+      description: 'The location of a hyperlink''s anchor text within the display_text.
+
+        Only avaliable if the content is a HTML.'
+      properties:
+        end:
+          format: int64
+          title: End offset
+          type: integer
+        start:
+          format: int64
+          title: Start offset
+          type: integer
+        text:
+          title: Text at the offset
+          type: string
+        uri:
+          title: URI at the offset
+          type: string
+      type: object
+    filename_v1alpha1ListSubjectsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
+        items:
+          description: Subjects matching request criteria.
+          items:
+            $ref: '#/components/schemas/filename_v1alpha1GetSubjectResponse'
+          type: array
+        next_page_token:
+          title: For multiple pages; must be specified in each request for two pages per sheet.
+          type: string
+        page_size:
+          description: Same as page size in request.
+          format: int32
+          type: integer
+        order_by:
+          description: Same as order by in request.
+          type: string
+      type: object
+    filename_ContentExtractPage:
+      properties:
+        text_boxes:
+          items:
+            $ref: '#/components/schemas/filename_PageTextBox'
+          title: List of TextBoxes on the page
+          type: array
+        page_number:
+          title: Page number
+          type: string
+        page_bbox:
+          title: Bounding box for the page
+          type: string
+        anchor_char_offsets:
+          items:
+            $ref: '#/components/schemas/filename_PageAnchorCharOffset'
+          title: List of anchor character offsets
+          type: array
+      title: Page level information
+      type: object
+    filename_v1alpha1ListContentGroupItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1ContentGroup'
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+      type: object
+    filename_v1alpha1GetContentGroupResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1ContentGroup'
+      type: object
+  securitySchemes:
+    oauth2_token:
+      description: The Pryon APIs are authenicated with an OAuth2 Bearer token.
+      type: apiKey
+      name: 'Authoriation: Bearer'
+      in: header
+x-tagGroups:
+- name: Retrieval APIs
+  tags:
+  - Content Service
+  - Exchange
+  - Glossary

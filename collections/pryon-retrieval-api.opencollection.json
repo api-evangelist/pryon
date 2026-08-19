@@ -1,0 +1,140 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Retrieval API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Retrieval",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Retrieval",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/retrievals",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiate or continue a conversation with the retrieval service."
+        },
+        {
+          "info": {
+            "name": "Create Ws Retrieval",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/retrievals/wss",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiate or continue a conversation."
+        },
+        {
+          "info": {
+            "name": "Get Retrieval",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/retrievals/:retrieval_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "retrieval_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier associated with the response object sources."
+              },
+              {
+                "name": "output_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the output."
+              }
+            ]
+          },
+          "docs": "Retrieve the query and output data for existing retrieval data."
+        },
+        {
+          "info": {
+            "name": "Get Retrieval Content Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/conversation/v1alpha1/retrievals/:retrieval_id/image",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "retrieval_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the response object for the bounding boxes and content ID."
+              },
+              {
+                "name": "output_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the retrieval output; defaults to the first instance."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number in the content; defaults to the first content page associated with the retrieval output."
+              },
+              {
+                "name": "uncompressed",
+                "value": "",
+                "type": "query",
+                "description": "Compress image data; valid values are 0 for compressed (default) and 1 for uncompressed."
+              },
+              {
+                "name": "overlay_color",
+                "value": "",
+                "type": "query",
+                "description": "Bounding box overlay color specified as a hex color code without the leading hashtag; supports 3, 4, 6, and 8 character codes."
+              }
+            ]
+          },
+          "docs": "Get an image representation of the content with bounding boxes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

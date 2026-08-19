@@ -1,0 +1,178 @@
+{
+  "item": [
+    {
+      "id": "fd363de3-e115-46a2-a7f5-e6488d77b69e",
+      "name": "ExchangeEvent",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "94c99356-b29e-4883-ad5e-c37866d939d3",
+          "name": "Create Exchange Event SSE Service",
+          "request": {
+            "name": "Create Exchange Event SSE Service",
+            "description": {
+              "content": "Sends ExchangeEventSSEData messages as data-only server-sent events (SSE).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "conversation",
+                "v1",
+                "exchange-events",
+                "sse"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input\": {\n    \"option\": {\n      \"audio_output_enabled\": \"<boolean>\",\n      \"knowledge_domain_id\": \"<string>\",\n      \"max_outputs\": \"<integer>\",\n      \"collection_id\": \"<string>\",\n      \"max_sentence_outputs\": \"<integer>\",\n      \"max_concise_outputs\": \"<integer>\",\n      \"content_group_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subject_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"filter\": {\n        \"condition\": \"<string>\"\n      },\n      \"context\": {}\n    },\n    \"language_id\": \"<string>\",\n    \"raw_text\": \"<string>\",\n    \"raw_audio\": {\n      \"audio_encoding\": \"<string>\",\n      \"sample_rate_hertz\": \"<integer>\",\n      \"content\": \"<byte>\"\n    },\n    \"recommended_questions\": \"<string>\"\n  },\n  \"conversation_context\": \"<string>\",\n  \"randomness\": \"<float>\",\n  \"max_answer_in_contexts_num\": \"<integer>\",\n  \"min_answer_in_contexts_score\": \"<float>\",\n  \"answer_in_contexts_beam_delta_cutoff\": \"<float>\",\n  \"verified_answer_score_threshold\": \"<float>\",\n  \"out_of_domain_score_threshold\": \"<float>\",\n  \"out_of_domain_message\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f7461b71-6484-4fae-84d8-8fe085a581ca",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "exchange-events",
+                    "sse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": {\n    \"option\": {\n      \"audio_output_enabled\": \"<boolean>\",\n      \"knowledge_domain_id\": \"<string>\",\n      \"max_outputs\": \"<integer>\",\n      \"collection_id\": \"<string>\",\n      \"max_sentence_outputs\": \"<integer>\",\n      \"max_concise_outputs\": \"<integer>\",\n      \"content_group_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subject_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"filter\": {\n        \"condition\": \"<string>\"\n      },\n      \"context\": {}\n    },\n    \"language_id\": \"<string>\",\n    \"raw_text\": \"<string>\",\n    \"raw_audio\": {\n      \"audio_encoding\": \"<string>\",\n      \"sample_rate_hertz\": \"<integer>\",\n      \"content\": \"<byte>\"\n    },\n    \"recommended_questions\": \"<string>\"\n  },\n  \"conversation_context\": \"<string>\",\n  \"randomness\": \"<float>\",\n  \"max_answer_in_contexts_num\": \"<integer>\",\n  \"min_answer_in_contexts_score\": \"<float>\",\n  \"answer_in_contexts_beam_delta_cutoff\": \"<float>\",\n  \"verified_answer_score_threshold\": \"<float>\",\n  \"out_of_domain_score_threshold\": \"<float>\",\n  \"out_of_domain_message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"2015-01-17T01:47:53.410Z\",\n    \"update_time\": \"1953-02-10T08:12:13.883Z\",\n    \"response_time_millis\": 9054\n  },\n  \"state\": \"string\",\n  \"exchange_input_text\": \"string\",\n  \"exchange_response_data\": {\n    \"exchange_id\": \"string\",\n    \"conversation_id\": \"string\",\n    \"normalized_input\": {\n      \"normalized_input_id\": \"string\",\n      \"raw_text\": \"string\",\n      \"understood_text\": \"string\",\n      \"understood_subject_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"suggested_raw_texts\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"output\": [\n      {\n        \"output_id\": \"string\",\n        \"text\": \"string\",\n        \"summary_text\": \"string\",\n        \"audio\": {\n          \"audio_output_id\": \"string\",\n          \"audio_encoding\": \"string\",\n          \"sample_rate_hertz\": 9901,\n          \"content\": \"scS1SiVEcwm2p8iBTWcY+3IoQFs3XtcuqU/Bu5/raa==\"\n        },\n        \"attachments\": {\n          \"key_0\": {\n            \"content_type\": \"string\",\n            \"content\": \"string\"\n          }\n        },\n        \"subject_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"context\": {\n          \"augmentation\": {}\n        }\n      },\n      {\n        \"output_id\": \"string\",\n        \"text\": \"string\",\n        \"summary_text\": \"string\",\n        \"audio\": {\n          \"audio_output_id\": \"string\",\n          \"audio_encoding\": \"string\",\n          \"sample_rate_hertz\": 4996,\n          \"content\": \"YVuaeW6jQI/1Op2qh9iEvrwYpE29\"\n        },\n        \"attachments\": {\n          \"key_0\": {\n            \"content_type\": \"string\",\n            \"content\": \"string\"\n          },\n          \"key_1\": {\n            \"content_type\": \"string\",\n            \"content\": \"string\"\n          },\n          \"key_2\": {\n            \"content_type\": \"string\",\n            \"content\": \"string\"\n          },\n          \"key_3\": {\n            \"content_type\": \"string\",\n            \"content\": \"string\"\n          }\n        },\n        \"subject_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"context\": {\n          \"augmentation\": {}\n        }\n      }\n    ]\n  },\n  \"generative_exchange_conversation_data\": {\n    \"data\": {\n      \"text\": \"string\",\n      \"reference\": [\n        {\n          \"text_index_start\": 718,\n          \"text_index_end\": 5645,\n          \"exchange_output_index\": 6000\n        },\n        {\n          \"text_index_start\": 5124,\n          \"text_index_end\": 742,\n          \"exchange_output_index\": 7186\n        }\n      ],\n      \"generative_exchange_id\": \"string\",\n      \"knowledge_domain_id\": \"string\",\n      \"exchange_id\": \"string\",\n      \"collection_id\": \"string\"\n    },\n    \"conversation_context\": \"string\"\n  },\n  \"error\": {\n    \"code\": 5175,\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"type_url\": \"string\",\n        \"value\": \"70peHaelEbJwvywm3jrCAfcLT+dLu6tC3f==\"\n      },\n      {\n        \"type_url\": \"string\",\n        \"value\": \"NDW8sRPDxu9hXWV8iP+zhOKLWUaA\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a001768-1200-4540-9c46-1af3248fe593",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "conversation",
+                    "v1",
+                    "exchange-events",
+                    "sse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": {\n    \"option\": {\n      \"audio_output_enabled\": \"<boolean>\",\n      \"knowledge_domain_id\": \"<string>\",\n      \"max_outputs\": \"<integer>\",\n      \"collection_id\": \"<string>\",\n      \"max_sentence_outputs\": \"<integer>\",\n      \"max_concise_outputs\": \"<integer>\",\n      \"content_group_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"subject_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"filter\": {\n        \"condition\": \"<string>\"\n      },\n      \"context\": {}\n    },\n    \"language_id\": \"<string>\",\n    \"raw_text\": \"<string>\",\n    \"raw_audio\": {\n      \"audio_encoding\": \"<string>\",\n      \"sample_rate_hertz\": \"<integer>\",\n      \"content\": \"<byte>\"\n    },\n    \"recommended_questions\": \"<string>\"\n  },\n  \"conversation_context\": \"<string>\",\n  \"randomness\": \"<float>\",\n  \"max_answer_in_contexts_num\": \"<integer>\",\n  \"min_answer_in_contexts_score\": \"<float>\",\n  \"answer_in_contexts_beam_delta_cutoff\": \"<float>\",\n  \"verified_answer_score_threshold\": \"<float>\",\n  \"out_of_domain_score_threshold\": \"<float>\",\n  \"out_of_domain_message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9813,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"y1ufG/X0F1COZ3A/Lqz+qKZT\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"0kTlcFqGV1dFMRAngrV+lbdF\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4839cf35-4467-48e9-b896-b20e4bc7ab4a",
+    "name": "Exchange Event",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "item": [
+    {
+      "id": "ac938c76-dd9d-4a69-bbeb-270ca6e05f9f",
+      "name": "TextToSpeech",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2b47ed6e-87a9-426c-9822-6a823aebf756",
+          "name": "CreateSynthesis",
+          "request": {
+            "name": "CreateSynthesis",
+            "description": {
+              "content": "Synthesizes speech synchronously according to the text input and settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "speech",
+                "v1",
+                "synthesis"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "Authentication",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"source_text\": \"<string>\",\n  \"options\": {\n    \"audio_encoding\": \"UNSPECIFIED_AUDIO_ENCODING\"\n  },\n  \"conversation_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c653122d-43b1-48ca-b965-2426f7f209d7",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "speech",
+                    "v1",
+                    "synthesis"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source_text\": \"<string>\",\n  \"options\": {\n    \"audio_encoding\": \"UNSPECIFIED_AUDIO_ENCODING\"\n  },\n  \"conversation_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"uuid\": \"string\",\n    \"create_time\": \"2002-06-22T03:35:37.585Z\",\n    \"update_time\": \"2008-10-24T08:09:39.844Z\",\n    \"response_time_millis\": 295\n  },\n  \"data\": {\n    \"audio\": \"Jnrp39S/rR6CHziqegUlk/sWkT6yJYcrKm9XmX==\",\n    \"audio_encoding\": \"UNSPECIFIED_AUDIO_ENCODING\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b099d486-15ff-4d13-b54d-53a3aac17c5e",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "speech",
+                    "v1",
+                    "synthesis"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "Authentication",
+                    "value": "Authorization: Bearer {base64-encoded-token}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source_text\": \"<string>\",\n  \"options\": {\n    \"audio_encoding\": \"UNSPECIFIED_AUDIO_ENCODING\"\n  },\n  \"conversation_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9384,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"Ke/=\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"EU1Otli1/c==\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pryon.net",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "585a93dc-2229-44c0-9cb3-ecbd15ad8b94",
+    "name": "pryon/api/ext/analytics/v1/analytics.proto Text To Speech API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "# Introduction\nThe Pryon API blah blah blah.\n\n# Authentication\nWhen you sign up for an account, you are given your set of API credentials.\n\n\nPryon supports authentication in the form of JSON Web Tokens.\n- JWT: authenticates each request by the http header: Authorization\n\nFor all API requests, you will have to include the Authorization header in the following form:\n\n```javascript\nAuthorization: Bearer {encoded token}\n```\n\n\nContact Support:\n Name: Pryon Product Support\n Email: support@pryoninc.com",
+      "type": "text/plain"
+    }
+  }
+}

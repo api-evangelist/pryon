@@ -1,0 +1,410 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "pryon/api/ext//v1/.proto Analytics API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Analytics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListConversationCounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/analytics/v1/conversation-counts",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "agg_interval",
+                "value": "",
+                "type": "query",
+                "description": "Required. Aggregate conversation counts in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+              },
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter conversation counts by collection_id. REST query parameter is \"collection_id\". The conversation counts must be filtered by either collection or solution."
+              },
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter conversation counts by solution_id. REST query parameter is \"solution_id\". The conversation counts must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+              }
+            ]
+          },
+          "docs": "ListConversationCounts retrieves a time-series of the unique conversation counts."
+        },
+        {
+          "info": {
+            "name": "ListConversationSizeCategories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/analytics/v1/conversation-size-categories",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "agg_interval",
+                "value": "",
+                "type": "query",
+                "description": "Required. Aggregate conversation size categories in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+              },
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter conversation size categories by collection_id. REST query parameter is \"collection_id\". The conversation size categories must be filtered by either collection or solution."
+              },
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter conversation size categories by solution_id. REST query parameter is \"solution_id\". The conversation size categories must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+              }
+            ]
+          },
+          "docs": "ListConversationSizeCategories retrieves a time-series of the conversation size counts. The size of a conversation is the number of exchanges that occurred."
+        },
+        {
+          "info": {
+            "name": "ListExchangeConfidenceCategories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/analytics/v1/exchange-confidence-categories",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "agg_interval",
+                "value": "",
+                "type": "query",
+                "description": "Required. Aggregate exchange confidence categories in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+              },
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter exchange confidence categories by collection_id. REST query parameter is \"collection_id\". The exchange confidence categories must be filtered by either collection or solution."
+              },
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter exchange confidence categories by solution_id. REST query parameter is \"solution_id\". The exchange confidence categories must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+              }
+            ]
+          },
+          "docs": "List the exchange confidence counts in well defined categories in time interval buckets by collection."
+        },
+        {
+          "info": {
+            "name": "ListExchangeConfidenceScores",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/analytics/v1/exchange-confidence-scores",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "agg_interval",
+                "value": "",
+                "type": "query",
+                "description": "Required. Aggregate exchange confidence scores in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+              },
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter exchange confidence scores by collection_id. REST query parameter is \"collection_id\". The exchange confidence scores must be filtered by either collection or solution."
+              },
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter exchange confidence scores by solution_id. REST query parameter is \"solution_id\". The exchange confidence scores must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+              }
+            ]
+          },
+          "docs": "List the exchange confidence average as a numeric score in time interval buckets by collection."
+        },
+        {
+          "info": {
+            "name": "ListExchangeCounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/analytics/v1/exchange-counts",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "agg_interval",
+                "value": "",
+                "type": "query",
+                "description": "Required. Aggregate exchange counts in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+              },
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter exchange counts by collection_id. REST query parameter is \"collection_id\". The exchange counts must be filtered by either collection or solution."
+              },
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter exchange counts by solution_id. REST query parameter is \"solution_id\". The exchange counts must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+              }
+            ]
+          },
+          "docs": "List the exchange count in time interval buckets by collection."
+        },
+        {
+          "info": {
+            "name": "ListExchangeRatingCategories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/analytics/v1/exchange-rating-categories",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "agg_interval",
+                "value": "",
+                "type": "query",
+                "description": "Required. Aggregate exchange rating categories in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+              },
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter exchange rating categories by collection_id. REST query parameter is \"collection_id\". The exchange rating categories must be filtered by either collection or solution."
+              },
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter exchange rating categories by solution_id. REST query parameter is \"solution_id\". The exchange rating categories must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+              }
+            ]
+          },
+          "docs": "List the exchange rating counts in time interval buckets by collection."
+        },
+        {
+          "info": {
+            "name": "ListIngestCounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/analytics/v1/ingest-counts",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "agg_interval",
+                "value": "",
+                "type": "query",
+                "description": "Required. Aggregate ingest counts in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+              },
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter ingest counts by collection_id. REST query parameter is \"collection_id\". The ingest counts must be filtered by either collection or solution."
+              },
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter ingest counts by solution_id. REST query parameter is \"solution_id\". The ingest counts must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+              }
+            ]
+          },
+          "docs": "List the total ingestion count by collection."
+        },
+        {
+          "info": {
+            "name": "ListSyncCounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/analytics/v1/sync-counts",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. Start time of the listing. REST query parameter is \"start_time\". Its value will be truncated down to nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "Required. End of the listing up to this time, not inclusive. REST query parameter is \"end_time\". Its value will be rounded up to the nearest midnight in given time zone and internally converted to UTC after."
+              },
+              {
+                "name": "agg_interval",
+                "value": "",
+                "type": "query",
+                "description": "Required. Aggregate sync counts in interval buckets over the requested time period. REST query parameter is \"agg_interval\" with valid values: DAY or WEEK.\n\n - DAY: Metrics will be aggregated in 24 hour intervals\n - WEEK: Metrics will be aggregated in 168 hour intervals"
+              },
+              {
+                "name": "collection_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter sync counts by collection_id. REST query parameter is \"collection_id\". The sync counts must be filtered by either collection or solution."
+              },
+              {
+                "name": "solution_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter sync counts by solution_id. REST query parameter is \"solution_id\". The sync counts must be filtered by either collection or solution. This filter takes precedence over collection_id which it disables."
+              }
+            ]
+          },
+          "docs": "List the total collection sync count by collection. Includes the initial collection creation and subsequent collection updates (versioning) events. A collection is versioned by promoting a new knowledge domain to serve as its active domain."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

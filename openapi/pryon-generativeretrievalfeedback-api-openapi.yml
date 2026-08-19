@@ -1,0 +1,485 @@
+openapi: 3.2.0
+info:
+  title: Retrieval Generative Retrieval Feedback API
+  version: '1.0'
+  contact:
+    name: Pryon Product Support
+    url: https://pryon.zendesk.com
+    email: support@pryon.zendesk.com
+  description: ''
+  x-logo:
+    altText: Pryon APIs
+servers:
+- url: https://api.pryon.net
+  description: Pryon Cloud
+tags:
+- name: GenerativeRetrievalFeedback
+paths:
+  /api/conversation/v1alpha1/generative-retrieval-ratings:
+    post:
+      operationId: GenerativeRetrievalFeedback_CreateGenerativeRetrievalRating
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/filename_v1alpha1CreateGenerativeRetrievalRatingRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetGenerativeRetrievalRatingResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - GenerativeRetrievalFeedback
+      x-codegen-request-body-name: body
+      summary: Create Generative Retrieval Rating
+      description: Create a rating for the generative retrieval.
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+  /api/conversation/v1alpha1/generative-retrieval-ratings-reviews:
+    get:
+      operationId: GenerativeRetrievalFeedback_ListGenerativeRetrievalRatingReviews
+      parameters:
+      - description: Filter list output to only include ratings for a knowledge collection.
+        in: query
+        name: collection_id
+        schema:
+          type: string
+      - description: Unique ID of the exchange item; if supplied, overrides the collection ID as a filter item; default is no entry.
+        in: query
+        name: generative_retrieval_id
+        schema:
+          type: string
+      - description: "Ratings included in requested review status; defaults to UNSPECIFIED.\n\n - UNSPECIFIED: Not a valid retrieval rating value.\n - PENDING: Waiting to be inspected for approval or rejection.\n - COMPLETE: Inspected and acted upon; no further action taken."
+        in: query
+        name: status
+        schema:
+          type: string
+      - description: Filter list output to only include ratings made by a given user.
+        in: query
+        name: creator_id
+        schema:
+          type: string
+      - description: Filter list output to only include ratings that match a given rank value. In REST form the parameter is expressed as 'rank' with valid values 1-5.
+        in: query
+        name: rank
+        schema:
+          format: int32
+          type: integer
+      - description: Maximum page size is 100; default is 100.
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: For multiple pages; must be specified in each request for two pages per sheet.
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - description: Sort order for multi page requests; valid options are rank, rank desc, create_time, create_time desc.
+        in: query
+        name: order_by
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1ListGenerativeRetrievalRatingReviewsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - GenerativeRetrievalFeedback
+      summary: List Generative Retrieval Rating Reviews
+      description: List generative retrieval reviews by rating.
+  /api/conversation/v1alpha1/generative-retrieval-ratings/{data.rating.rating_id}/review:
+    patch:
+      operationId: GenerativeRetrievalFeedback_UpdateGenerativeRetrievalRatingReview
+      parameters:
+      - description: Unique identifier for the exchange rating; automatically generated.
+        in: path
+        name: data.rating.rating_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/filename_v1alpha1UpdateGenerativeRetrievalRatingReviewRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetGenerativeRetrievalRatingReviewResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Update Generative Retrieval Rating Review
+      tags:
+      - GenerativeRetrievalFeedback
+      x-codegen-request-body-name: body
+      description: Update the review perspective of a retrieval rating item.
+  /api/conversation/v1alpha1/generative-retrieval-ratings/{data.rating_id}:
+    patch:
+      operationId: GenerativeRetrievalFeedback_UpdateGenerativeRetrievalRating
+      parameters:
+      - description: Unique identifier for the exchange rating; automatically generated.
+        in: path
+        name: data.rating_id
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/filename_v1alpha1UpdateGenerativeRetrievalRatingRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetGenerativeRetrievalRatingResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - GenerativeRetrievalFeedback
+      x-codegen-request-body-name: body
+      summary: Update Generative Retrieval Rating
+      description: Update a generative retrieval rating.
+  /api/conversation/v1alpha1/generative-retrieval-ratings/{rating_id}:
+    delete:
+      operationId: GenerativeRetrievalFeedback_DeleteGenerativeRetrievalRating
+      parameters:
+      - in: path
+        name: rating_id
+        description: Unique identifier for the exchange rating; automatically generated.
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - GenerativeRetrievalFeedback
+      summary: Delete Generative Retrieval Rating
+      description: Delete a generative retrieval rating.
+    get:
+      operationId: GenerativeRetrievalFeedback_GetGenerativeRetrievalRating
+      parameters:
+      - in: path
+        name: rating_id
+        description: Unique identifier for the exchange rating; automatically generated.
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetGenerativeRetrievalRatingResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      tags:
+      - GenerativeRetrievalFeedback
+      summary: Get Generative Retrieval Rating
+      description: 'Return a generative retrieval rating. '
+  /api/conversation/v1alpha1/generative-retrieval-ratings/{rating_id}/review:
+    get:
+      operationId: GenerativeRetrievalFeedback_GetGenerativeRetrievalRatingReview
+      parameters:
+      - in: path
+        name: rating_id
+        description: Unique identifier for the exchange rating; automatically generated.
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_v1alpha1GetGenerativeRetrievalRatingReviewResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/filename_googlerpcStatus'
+          description: An unexpected error response.
+      summary: Get Generative Retrieval Rating Review
+      tags:
+      - GenerativeRetrievalFeedback
+      description: List the review perspective of a retrieval rating item.
+components:
+  schemas:
+    filename_v1alpha1GenerativeRetrievalRatingReviewStatus:
+      description: " - UNSPECIFIED: Not a valid retrieval rating value.\n - PENDING: This retrieval rating is waiting to be inspected for approval or rejection (default).\n - COMPLETE: This retrieval rating has been inspected and acted upon. No further action will be taken."
+      type: string
+    filename_v1alpha1ListGenerativeRetrievalRatingReviewsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/filename_v1alpha1GetGenerativeRetrievalRatingReviewResponse'
+          type: array
+        next_page_token:
+          description: For multiple pages; must be specified in each request for two pages per sheet.
+          type: string
+        total_size:
+          description: Total number of items in the collection across all pages.
+          format: int32
+          type: integer
+        page_size:
+          description: Same as page size in request.
+          format: int32
+          type: integer
+        order_by:
+          description: Same as order by in request.
+          type: string
+      type: object
+    filename_v1alpha1GenerativeRetrievalRatingReview:
+      properties:
+        rating:
+          $ref: '#/components/schemas/filename_v1alpha1GenerativeRetrievalRating'
+        collection_id:
+          description: Unique identifier for the collection being rated; autogenerated and not editable.
+          type: string
+        knowledge_domain_id:
+          description: Unique identifier for the knowledge domain being rated.
+          type: string
+        reviewer_ids:
+          description: Unique identifiers of the reviewing authorities that viewed/inspected the item; output only, automatically populated.
+          items:
+            type: string
+          type: array
+        flagged:
+          description: Reviewing authorities can flag this rating item upon inspection. The exact meaning of flagging is intentionally vague and is left to the API to use as necessary.
+          type: boolean
+        approval_id:
+          description: Unique identifier of approval item related to the retrieval rating.
+          type: string
+        status:
+          $ref: '#/components/schemas/filename_v1alpha1GenerativeRetrievalRatingReviewStatus'
+      title: Authority perspective of a Rating
+      type: object
+    filename_v1alpha1UpdateGenerativeRetrievalRatingRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1GenerativeRetrievalRating'
+        update_mask:
+          items:
+            type: string
+          title: "The data path corresponding to the fields being updated in this request.\nReviewer can update the following fields:\n   data.flagged\n   data.status\nExample mask declaration in JSON format:\n   updateMask: \"data.flagged\"\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
+          type: array
+      type: object
+    filename_v1alpha1ResourceMetadata:
+      properties:
+        uuid:
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: Time of the last update; 0 indicates updates have never been made.
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          description: Response time (in milliseconds).
+          type: integer
+      type: object
+    filename_v1alpha1CreateGenerativeRetrievalRatingRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1GenerativeRetrievalRating'
+      type: object
+    filename_v1alpha1CollectionMetadata:
+      properties:
+        uuid:
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          type: string
+        response_time_millis:
+          description: Response time (in milliseconds).
+          format: int64
+          type: integer
+      title: Metadata that will be returned with each collection-level GET
+      type: object
+    filename_v1alpha1UpdateGenerativeRetrievalRatingReviewRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1GenerativeRetrievalRatingReview'
+        update_mask:
+          items:
+            type: string
+          title: "The data path corresponding to the fields being updated in this request.\nReviewer can update the following fields:\n   data.flagged\n   data.status\nExample mask declaration in JSON format:\n   updateMask: \"data.flagged\"\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
+          type: array
+      type: object
+    filename_googlerpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/filename_protobufAny'
+          type: array
+      type: object
+    filename_v1alpha1GetGenerativeRetrievalRatingReviewResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1GenerativeRetrievalRatingReview'
+      type: object
+    filename_v1alpha1GenerativeRetrievalRating:
+      properties:
+        rating_id:
+          description: Unique identifier for the exchange rating; automatically generated.
+          type: string
+        generative_retrieval_id:
+          description: Unique ID of the generative retrieval item; only for retrievals matching active domains.
+          type: string
+        retrieval_id:
+          description: Unique identifier associated with the response object sources.
+          type: string
+        retrieval_output_ids:
+          description: Unique identifier for the output related to the output; relevant to n-best retrieval responses; defaults to best_1; chit-chat will be ignored.
+          items:
+            type: string
+          type: array
+        creator_id:
+          description: Unique identifier for the user who provided feedback; output field, automatically populated.
+          type: string
+        query:
+          description: Question recorded for the rated retrieval; output field, automatically populated.
+          type: string
+        rank:
+          description: Rank value given by the user; valid responses are 1 (negative) and 5 (positive).
+          format: int32
+          type: integer
+        message:
+          description: User comment that provides additional context on the rating.
+          type: string
+        freeform_text:
+          description: Freeform text for feedback provider.
+          type: string
+      type: object
+    filename_protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      type: object
+    filename_v1alpha1GetGenerativeRetrievalRatingResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1GenerativeRetrievalRating'
+      type: object
+  securitySchemes:
+    oauth2_token:
+      description: The Pryon APIs are authenicated with an OAuth2 Bearer token.
+      type: apiKey
+      name: 'Authoriation: Bearer'
+      in: header
+x-tagGroups:
+- name: Retrieval APIs
+  tags:
+  - Content Service
+  - Exchange
+  - Glossary

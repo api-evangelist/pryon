@@ -1,0 +1,1536 @@
+openapi: 3.2.0
+info:
+  title: Pryon Knowledge Domain API
+  version: '1.0'
+  description: 'Operations tagged KnowledgeDomain across 2 of this provider''s published API definitions: pryon-admin-openapi.json, pryon-domains-swagger-may2025-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.pryon.net
+  description: Pryon Cloud
+- url: /
+tags:
+- name: KnowledgeDomain
+paths:
+  /api/knowledge/v1/content-groups/{content_group_id}/subjects:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: KnowledgeDomain_ListContentGroupSubjects
+      parameters:
+      - description: Content Group that subjects must be found in
+        in: path
+        name: content_group_id
+        required: true
+        schema:
+          type: string
+      - description: 'The default page size is 100, which is also the maximum page size. The REST query parameter is "page_size". If page size is default, this param can be omitted; otherwise it must be specified on every page request.
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: 'If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page''s response. The REST query parameter is "page_token".
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - description: 'If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests.  Supported options are: "reference_count desc" (default) and "reference_count asc".
+
+          see https://cloud.google.com/apis/design/design_patterns#sorting_order.'
+        in: query
+        name: order_by
+        schema:
+          type: string
+      - description: If specified, the list will be filtered to subjects of the specified category.
+        in: query
+        name: subject_category_id
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/subjectsListSubjectsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListContentGroupSubjects
+      tags:
+      - KnowledgeDomain
+      description: List subjects associated with a Content Group.
+  /api/knowledge/v1/domains:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: KnowledgeDomain_ListDomains
+      parameters:
+      - description: Filter returned knowledge domains to those that match this Display Name. The REST query parameter is "display_name".
+        in: query
+        name: display_name
+        schema:
+          type: string
+      - description: "Filter returned knowledge domains to those that match this Status. The REST query parameter is \"status\" and the value can be a string or integer representation. The only way to see DECOMMISSIONED KD's is to specify that status value here - please be aware that those KD's can and will disappear so do not expect them to be there on subsequent requests.\n\n - CONTENT_AWAIT: CONTENT_AWAIT: Initial value for a newly created KD.  If KD was created with data.uri or data.contents then asynchronous status transition will occur to CONTENT_IDENTIFIED after constituent Content Group and Contents are created.  If KD was created without either of these then it will remain in this status until an explicit PATCH with CONTENT_IDENTIFIED status is received.\n - CONTENT_IDENTIFIED: CONTENT_IDENTIFIED: When a KD enters this state, our automation will begin the process of readying the content for Conversation Exchanges by ingesting each constituent Content.\n - CONTENT_READY: CONTENT_READY: The KD's content is ready and able to support conversation exchanges.  Each Content in the KD's Content Groups has been successfully ingested.\n - CONTENT_NOT_SUPPORTED: CONTENT_NOT_SUPPORTED: Unable to support conversation exchanges on this KD's content due to some problem readying its Contents.  You can look for constituent Contents that have INGESTION_FAILED status to find out more details.  To retry, update KD status to CONTENT_IDENTIFIED using PATCH.  If the problem persists then remove the INGESTION_FAILED contents from the KD's Content Group(s) and try again.\n - DECOMMISSIONED: DECOMMISSIONED: KD is no longer needed, is not going to be used for conversation exchanges, and should be removed from the system.  The KD is going to be removed from the system ASAP by ongoing housekeeping operations.  Any KD can transition to DECOMMISSIONED status."
+        in: query
+        name: status
+        schema:
+          default: UNKNOWN
+          enum:
+          - UNKNOWN
+          - CONTENT_AWAIT
+          - CONTENT_IDENTIFIED
+          - CONTENT_READY
+          - CONTENT_NOT_SUPPORTED
+          - DECOMMISSIONED
+          type: string
+      - description: Filter list to all KD's that are in a line of succession. A versioned Collection represents such a KD succession where some of the KDs may have served as the active version. If this list is sorted by metadata.create_time then it shows the succession history.
+        in: query
+        name: kd_succession_id
+        schema:
+          type: string
+      - description: 'The default page size is 100, which is also the maximum page size. The REST query parameter is "page_size". If page_size is set to the default, this param can be omitted; otherwise, it must be specified on every page request.
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: 'If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page''s response. The REST query parameter is "page_token".
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - description: 'If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests. Supported options are: "status asc, update_time desc" (default), "status asc, update_time asc" and "status asc, create_time desc".
+
+          see https://cloud.google.com/apis/design/design_patterns#sorting_order.'
+        in: query
+        name: order_by
+        schema:
+          type: string
+      - description: Filter list to all KD's that are associated with a team. The REST query parameter is "team" and the value is the unique id of a team to filter on. Filtering is subject to internal authorization rules.
+        in: query
+        name: team_id
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domainListDomainsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListDomains
+      tags:
+      - KnowledgeDomain
+      description: 'List all Knowledge Domains that the user has access to and which do not have a status of DECOMMISSIONED.  To see KD''s that are DECOMMISSIONED, use a status filter.
+
+        ORG_WORKER users can list the domains that their team assignments allow.'
+  /api/knowledge/v1/domains/{data.knowledge_domain_id}:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    patch:
+      operationId: KnowledgeDomain_UpdateDomain
+      parameters:
+      - description: Optional.  When specified, it must be a UUID that is unique in the system.  When not specified, a UUID will be generated.
+        in: path
+        name: data.knowledge_domain_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/domainUpdateDomainRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domainGetDomainResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: UpdateDomain
+      tags:
+      - KnowledgeDomain
+      x-codegen-request-body-name: body
+      description: Update a single Knowledge Domain (KD) that the user has access to. This is primarily used to mark a KD for decommissioning when it is no longer needed. Decommissioning a KD that serves as the Active Domain of a Knowledge Collection isn't allowed. Please use the collection API to either promote/demote an active domain or delete the parent collection first.
+  /api/knowledge/v1/domains/{data.knowledge_domain_id}/content-groups:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    post:
+      operationId: KnowledgeDomain_CreateDomainContentGroup
+      parameters:
+      - description: id of a valid Knowledge Domain from /api/knowledge/v1/domains
+        in: path
+        name: data.knowledge_domain_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/domainDomainContentGroupRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domainGetDomainContentGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: CreateDomainContentGroup
+      tags:
+      - KnowledgeDomain
+      x-codegen-request-body-name: body
+      description: Create a Knowledge Domain (KD) to Content Group (CG) relationship.
+  /api/knowledge/v1/domains/{data.knowledge_domain_id}/content-groups/{data.content_group_id}:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: KnowledgeDomain_GetDomainContentGroup
+      parameters:
+      - description: id of a valid Knowledge Domain from /api/knowledge/v1/domains
+        in: path
+        name: data.knowledge_domain_id
+        required: true
+        schema:
+          type: string
+      - description: id of a valid Content Group from /api/knowledge/v1/content-groups
+        in: path
+        name: data.content_group_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domainGetDomainContentGroupResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: GetDomainContentGroup
+      tags:
+      - KnowledgeDomain
+      description: Get a single Content Group associated with a Knowledge Domain that the user has access to.
+  /api/knowledge/v1/domains/{knowledge_domain_id}:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: KnowledgeDomain_GetDomain
+      parameters:
+      - description: id of a valid Knowledge Domain from /api/knowledge/v1/domains
+        in: path
+        name: knowledge_domain_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domainGetDomainResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: GetDomain
+      tags:
+      - KnowledgeDomain
+      description: Get a single Knowledge Domain (KD) that the user has access to.  This API can be used to monitor the status transitions of a KD being prepared for Q&A exchanges.
+  /api/knowledge/v1/domains/{knowledge_domain_id}/content-group:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: KnowledgeDomain_GetDomainContentGroupByContent
+      parameters:
+      - description: Required. Knowledge Domain associated with the Content Group version.
+        in: path
+        name: knowledge_domain_id
+        required: true
+        schema:
+          type: string
+      - description: Required. Content ID to retrieve Content Group for.
+        in: query
+        name: content_id
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domainGetDomainContentGroupByContentResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: GetDomainContentGroupByContent
+      tags:
+      - KnowledgeDomain
+      description: Get a single Content Group associated with a Knowledge Domain and a for a specific Content Item.
+  /api/knowledge/v1/domains/{knowledge_domain_id}/content-groups:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    delete:
+      operationId: KnowledgeDomain_DeleteDomainContentGroups
+      parameters:
+      - description: id of a valid Knowledge Domain from /api/knowledge/v1/domains
+        in: path
+        name: knowledge_domain_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: DeleteDomainContentGroups
+      tags:
+      - KnowledgeDomain
+      description: Delete all child Content Group associations with the parent Knowledge Domain.  This does not alter the Content Groups resources.
+    get:
+      operationId: KnowledgeDomain_ListDomainContentGroups
+      parameters:
+      - description: 'Required: the identifier of a valid Knowledge Domain to retrieve the domain content groups from.'
+        in: path
+        name: knowledge_domain_id
+        required: true
+        schema:
+          type: string
+      - description: 'Optional: if caller only needs the item ID''s, set this to true.'
+        in: query
+        name: return_only_id
+        schema:
+          type: boolean
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domainListDomainContentGroupsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListDomainContentGroups
+      tags:
+      - KnowledgeDomain
+      description: List all Content Groups associated with a Knowledge Domain that the user has access to.
+  /api/knowledge/v1/domains/{knowledge_domain_id}/content-groups/{content_group_id}:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    delete:
+      operationId: KnowledgeDomain_DeleteDomainContentGroup
+      parameters:
+      - description: id of a valid Knowledge Domain from /api/knowledge/v1/domains
+        in: path
+        name: knowledge_domain_id
+        required: true
+        schema:
+          type: string
+      - description: id of a valid Content Group from /api/knowledge/v1/content-groups
+        in: path
+        name: content_group_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: DeleteDomainContentGroup
+      tags:
+      - KnowledgeDomain
+      description: Delete a Knowledge Domain to Content Group relationship that the user has access to remove.  This does not alter the Content Group resource.
+  /api/knowledge/v1/domains/{knowledge_domain_id}/content-groups:updateContentPermission:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    post:
+      operationId: KnowledgeDomain_UpdateDomainContentGroupsContentPermission
+      parameters:
+      - description: Required. The identifier of the knowledge domain asscociated with this update method.
+        in: path
+        name: knowledge_domain_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/domainUpdateDomainContentGroupsContentPermissionRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contentListContentGroupsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: UpdateDomainContentGroupsContentPermission
+      tags:
+      - KnowledgeDomain
+      x-codegen-request-body-name: body
+      description: This utility POST method is used to update the content permission of content groups in the knowledge domain.
+  /api/knowledge/v1/domains/{knowledge_domain_id}/content-groups:updateGroupPermission:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    post:
+      operationId: KnowledgeDomain_UpdateDomainContentGroupsGroupPermission
+      parameters:
+      - description: Required. The identifier of the knowledge domain asscociated with this update method.
+        in: path
+        name: knowledge_domain_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/domainUpdateDomainContentGroupsGroupPermissionRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contentListContentGroupsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: UpdateDomainContentGroupsGroupPermission
+      tags:
+      - KnowledgeDomain
+      x-codegen-request-body-name: body
+      description: This utility POST method is used to update the group permission of content groups in the knowledge domain.
+  /api/knowledge/v1/domains/{knowledge_domain_id}/subjects:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: KnowledgeDomain_ListDomainSubjects
+      parameters:
+      - description: Knowledge Domain that subjects must be found in
+        in: path
+        name: knowledge_domain_id
+        required: true
+        schema:
+          type: string
+      - description: 'The default page size is 100, which is also the maximum page size. The REST query parameter is "page_size". If page size is default, this param can be omitted; otherwise it must be specified on every page request.
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: 'If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page''s response. The REST query parameter is "page_token".
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - description: 'If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests.  Supported options are: "reference_count desc" (default) and "reference_count asc".
+
+          see https://cloud.google.com/apis/design/design_patterns#sorting_order.'
+        in: query
+        name: order_by
+        schema:
+          type: string
+      - description: If specified, the list will be filtered to subjects of the specified category.
+        in: query
+        name: subject_category_id
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/subjectsListSubjectsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListDomainSubjects
+      tags:
+      - KnowledgeDomain
+      description: List subjects associated with a Knowledge Domain.
+  /api/knowledge/v1/domains/{knowledge_domain_id}/tags:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: KnowledgeDomain_ListDomainTags
+      parameters:
+      - description: Required. Knowledge Domain to list tags for.
+        in: path
+        name: knowledge_domain_id
+        required: true
+        schema:
+          type: string
+      - description: 'The default page size is 100, which is also the maximum page size. The REST query parameter is "page_size". If page size is default, this param can be omitted; otherwise it must be specified on every page request.
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: 'If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page''s response. The REST query parameter is "page_token".
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - description: 'If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests.  Supported options are: "reference_count desc" (default) and "reference_count asc".
+
+          see https://cloud.google.com/apis/design/design_patterns#sorting_order.'
+        in: query
+        name: order_by
+        schema:
+          type: string
+      - description: "Required. Filter on tag source.\nIf TAG_SOURCE_TYPE_UNSPECIFIED, an error response will be returned.\n\n - TAG_SOURCE_TYPE_UNSPECIFIED: Default. No tags can be created with this source.\n - SYSTEM_DEFINED: Tags created by the Pryon Cloud Services system.\n - USER_DEFINED: Tags defined by users if the system and created via user input.\n - QUERY_ATTRIBUTE: Tags associated to a content which can be used to improve Exchange response ranking quality based on the context specified in ExchangeInputOption.\nSee \"documentation about improving ranking quality\" link for more details."
+        in: query
+        name: tag_source_type
+        schema:
+          default: TAG_SOURCE_TYPE_UNSPECIFIED
+          enum:
+          - TAG_SOURCE_TYPE_UNSPECIFIED
+          - SYSTEM_DEFINED
+          - USER_DEFINED
+          - QUERY_ATTRIBUTE
+          type: string
+      - description: 'Include counts for every tag of a given type.
+
+          Counts are calculated over contents belonging to the KD.'
+        in: query
+        name: include_counts
+        schema:
+          type: boolean
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domainListTagsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListDomainTags
+      tags:
+      - KnowledgeDomain
+      description: List tags for the Knowledge Domain.
+  /api/knowledge/v1/domains:createNextVersionWithSources:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    post:
+      operationId: KnowledgeDomain_CreateDomainNextVersionWithSources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/domainCreateDomainNextVersionWithSourcesRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domainGetDomainResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: CreateDomainNextVersionWithSources
+      tags:
+      - KnowledgeDomain
+      x-codegen-request-body-name: body
+      description: 'Create a new version of a Knowledge Domain (KD) with Sources
+
+        If TeamIds are not specified with the request, the team assignments will carry forward from the previous domain version.'
+      parameters:
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+  /api/knowledge/v1/domains:createWithSources:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    post:
+      operationId: KnowledgeDomain_CreateDomainWithSources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/domainCreateDomainWithSourcesRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domainGetDomainResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: CreateDomainWithSources
+      tags:
+      - KnowledgeDomain
+      x-codegen-request-body-name: body
+      description: 'Create a Knowledge Domain (KD)
+
+        When data.sources are specified KD create will inspect them and determine if they are supported.  If any of the sources are invalid, an error response will be returned with a 400
+
+        HTTP status code.  If there are supported Contents, a KD will be created with status a of CONTENT_AWAIT and a success response will be returned with a 200 http status code.
+
+        Asynchronously, a single Content Group with the appropriate number of Contents will be created with each Content status being CONFIGURED.  When that is complete, the KD will be
+
+        transitioned to CONTENT_IDENTIFIED status.  After that, asynchronous ingestion of the Contents will be run transitioning each to INGESTING status and eventually to INGESTED.
+
+        When content ingestion is completed successfully, the KD status will be transitioned to CONTENT_READY.  If the KD is unable to be ingested successfully, its status will be set to
+
+        CONTENT_NOT_SUPPORTED.'
+      parameters:
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+  /api/knowledge/v1/domains:default:
+    servers:
+    - url: https://api.pryon.net
+      description: Pryon Cloud
+    get:
+      operationId: KnowledgeDomain_ListDefaultDomains
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domainListDomainsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: ListDefaultDomains
+      tags:
+      - KnowledgeDomain
+      description: List the Knowledge Domains the authorized user can implicitly access in the absence of any team assignments (defaults).
+      parameters:
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+  /api/knowledge/v1alpha1/domains:createWithSources:
+    servers:
+    - url: /
+    post:
+      operationId: KnowledgeDomain_CreateDomainWithSources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/v1alpha1CreateDomainWithSourcesRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1alpha1GetDomainResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/googlerpcStatus'
+          description: An unexpected error response.
+      summary: Decommission Knowledge Domain
+      tags:
+      - KnowledgeDomain
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    subjectsGetSubjectResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/subjectsSubjectEntity'
+      type: object
+    domainGetDomainResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/domainKnowledgeDomainEntity'
+      type: object
+    domainKnowledgeDomainEntity:
+      description: The top-level message sent by the client for the CreateDomain method.
+      properties:
+        knowledge_domain_id:
+          description: Optional.  When specified, it must be a UUID that is unique in the system.  When not specified, a UUID will be generated.
+          type: string
+        display_name:
+          description: Required.  Friendly display name of this KD.
+          type: string
+        description:
+          description: Optional.  A more elaborate explanation of this KD.
+          type: string
+        status:
+          $ref: '#/components/schemas/domainKnowledgeDomainEntityStatus'
+        labels:
+          additionalProperties:
+            type: string
+          description: "Optional. Knowledge domain specific key/value pair labels.\nLabels can be used to organize and select subsets of objects.\nReserved Pryon labels:\n   code_name - Only use this label as directed by Pryon personnel.\n   include_user_criteria - true/false."
+          type: object
+        kd_succession_id:
+          description: Optional. This is a uuidv4 stable identifier of the versioned KnowledgeCollection parent to this KnowledgeDomain. A KnowledgeCollection is automatically created with every new KnowledgeDomain. This identifier is autogenerated when not supplied and cannot be subsequently updated.
+          type: string
+        status_reason:
+          description: Reason that KD was transitioned to its current status value.  Generally only relevant when the status is CONTENT_NOT_SUPPORTED.
+          type: string
+        team_ids:
+          description: 'DEPRECATED. Teams are now specified at the collection level.
+
+            IDs of the teams allowed access to this KD.'
+          items:
+            type: string
+          type: array
+        created_by:
+          description: Automatically assigned and immutable after creation. The user identity that created this knowledge domain.
+          type: string
+      type: object
+    domainListDomainContentGroupItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/domainContentGroupAssociation'
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+      type: object
+    contentListContentGroupItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/contentContentGroup'
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+      type: object
+    domainTag:
+      properties:
+        value:
+          description: Name of the tag.
+          type: string
+        count:
+          description: 'Count representing mentions of the tag over the KD''s contents.
+
+            Empty if `include_counts` was False (default).'
+          format: uint64
+          type: string
+      type: object
+    domainGetDomainContentGroupResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/domainContentGroupAssociation'
+      type: object
+    domainKnowledgeDomainEntityStatus:
+      default: UNKNOWN
+      description: "Output only.  An indicator of readiness of the KD to support conversation exchanges.\n\n - CONTENT_AWAIT: CONTENT_AWAIT: Initial value for a newly created KD.  If KD was created with data.uri or data.contents then asynchronous status transition will occur to CONTENT_IDENTIFIED after constituent Content Group and Contents are created.  If KD was created without either of these then it will remain in this status until an explicit PATCH with CONTENT_IDENTIFIED status is received.\n - CONTENT_IDENTIFIED: CONTENT_IDENTIFIED: When a KD enters this state, our automation will begin the process of readying the content for Conversation Exchanges by ingesting each constituent Content.\n - CONTENT_READY: CONTENT_READY: The KD's content is ready and able to support conversation exchanges.  Each Content in the KD's Content Groups has been successfully ingested.\n - CONTENT_NOT_SUPPORTED: CONTENT_NOT_SUPPORTED: Unable to support conversation exchanges on this KD's content due to some problem readying its Contents.  You can look for constituent Contents that have INGESTION_FAILED status to find out more details.  To retry, update KD status to CONTENT_IDENTIFIED using PATCH.  If the problem persists then remove the INGESTION_FAILED contents from the KD's Content Group(s) and try again.\n - DECOMMISSIONED: DECOMMISSIONED: KD is no longer needed, is not going to be used for conversation exchanges, and should be removed from the system.  The KD is going to be removed from the system ASAP by ongoing housekeeping operations.  Any KD can transition to DECOMMISSIONED status."
+      enum:
+      - UNKNOWN
+      - CONTENT_AWAIT
+      - CONTENT_IDENTIFIED
+      - CONTENT_READY
+      - CONTENT_NOT_SUPPORTED
+      - DECOMMISSIONED
+      type: string
+    subjectsSubjectEntity:
+      properties:
+        subject_id:
+          title: hash of subject_category_id and term
+          type: string
+        term:
+          description: Required.  A case-insensitive natural language term that represents the subject.
+          type: string
+        subject_category_id:
+          title: Required.  Subject category
+          type: string
+        definition:
+          description: Optional.  Natural language definition of the subject.  This is provided by an expert.
+          type: string
+        reference_count:
+          format: uint64
+          title: "!Deprecation Warning!: This field will no longer be kept up to date and must be considered inaccurate. To view subject reference counts \nplease see ListDomainSubjects.\nOptional.  Number of references to the subject found in the content.  This is provided if known and will otherwise be zero.\nReference count at different levels:\nContent - occurrences in content (0 for Prior Knowledge content subjects)\nContent Group - occurrences in all contents in CG\nKnowledge Domain - occurrences in all contents in KD"
+          type: string
+        content_count:
+          format: uint64
+          title: 'Optional.  The number of contents that refer to the subject.  This is provided if known and will otherwise be zero.
+
+            Content - 1
+
+            Content Group - count of all contents it occurs in, in the CG
+
+            Knowledge Domain - count of all contents it occurs in, in the KD'
+          type: string
+      title: A subject is an unique tuple of term and category
+      type: object
+    domainListDomainContentGroupsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          additionalProperties:
+            $ref: '#/components/schemas/domainListDomainContentGroupItem'
+          title: collection of Knowledge Domain to Content Group associations where key is content_group_id
+          type: object
+      type: object
+    googlerpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+      type: object
+    v1ResourceMetadata:
+      properties:
+        uuid:
+          description: UUID returned in the resource response, which represents the unique interaction with the API, that is, the response id.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: 'Time of the last update.
+
+            A value of 0 indicates it has never been updated.'
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          title: Time difference in milliseconds between when the request was received and when the response was generated
+          type: integer
+      type: object
+    domainListTagsResponse:
+      properties:
+        tag_types:
+          description: List of unique types and their tags.
+          items:
+            $ref: '#/components/schemas/domainTagType'
+          type: array
+        next_page_token:
+          title: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: string
+        total_size:
+          format: int32
+          title: 'This is the total number of items in the knowledge domain across all the pages.  It is returned with every page and may change during page traversal.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: integer
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
+        order_by:
+          description: Returned for convenience and clarity - same as order_by in request.
+          type: string
+      type: object
+    domainListDomainsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          additionalProperties:
+            $ref: '#/components/schemas/domainListDomainItem'
+          description: Knowledge Domains that match request criteria. Note that the "status" field in this list should NOT be considered up-to-date. To get an up-to-date status, GET the individual item.
+          type: object
+        next_page_token:
+          title: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: string
+        total_size:
+          format: int32
+          title: 'This is the total number of items in the collection across all the pages. It is returned with every page and may change during page traversal.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: integer
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
+        order_by:
+          description: Returned for convenience and clarity - same as order_by in request.
+          type: string
+      type: object
+    contentContentGroup:
+      properties:
+        content_group_id:
+          title: 'Required: ID of this entity'
+          type: string
+        display_name:
+          title: 'Required: Displayed name'
+          type: string
+        description:
+          title: 'Optional: Description of the ContentGroup'
+          type: string
+        source_location:
+          description: 'Optional: URI for the source location for this Content Group. This field should not be specified by the client and will be filled in by the server when a KD is created using the custom verb createWithSources.'
+          type: string
+        content_statuses:
+          description: 'The status breakdown of the contents in the content group
+
+            The index corresponds to the Content Status and the value at the index
+
+            is the number of contents in the content group with that status.
+
+            For example, if the content group has 5 contents all in the ingesting phase,
+
+            then this would be [0, 0, 5, 0, 0, 0].
+
+            If a content group has 8 contents 2 configured, 1 ingesting, 2 ingested and 3 failed,
+
+            then this would be [0, 2, 1, 2, 3, 0].'
+          items:
+            format: int32
+            type: integer
+          type: array
+        service_id:
+          description: Optional. The third-party service connect. If not specified, the oldest service connect with an authority and type matching the source_location will be assigned.
+          type: string
+      title: 'A ContentGroup is a parent collection of Contents
+
+        It can be joined with many Knowledge Domains
+
+        It can be joined with many Contents'
+      type: object
+    domainCreateDomainWithSourcesRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/domainKnowledgeDomainEntityWithSources'
+      type: object
+    v1CollectionMetadata:
+      properties:
+        uuid:
+          description: Random UUID returned in the resource response to represent the unique interaction with the API.  This can be thought of as a response id.
+          type: string
+        response_time_millis:
+          description: Time difference in milliseconds between when the request was received and when the response was generated, that is, the latency.
+          format: int64
+          type: integer
+      title: Metadata that will be returned with each collection-level GET
+      type: object
+    domainTagType:
+      properties:
+        type_name:
+          description: Name of the type.
+          type: string
+        tag_source_type:
+          $ref: '#/components/schemas/domainTagSourceType'
+        tags:
+          description: Tags found for the type.
+          items:
+            $ref: '#/components/schemas/domainTag'
+          type: array
+      type: object
+    v1alpha1KnowledgeDomainEntityStatus:
+      default: ''
+      description: "Output only indicator of whether the knowledge domain can support conversation exchanges.\n\n - CONTENT_AWAIT: Initial value for a newly created KD; if knowledge domain was created with data.uri or data.contents, asynchronous status transition occurs to CONTENT_IDENTIFIED after a constituent Content Group and Contents are created; if knowledge domain was created without either of these, it remains in this status until an explicit PATCH with CONTENT_IDENTIFIED status is received.\n - CONTENT_IDENTIFIED: Starts an automated process of readying the content for conversation exchanges by ingesting each constituent content.\n - CONTENT_READY: Content is ingested and ready to support conversation exchanges.\n - CONTENT_NOT_SUPPORTED: Unable to support conversation exchanges on the content due to content problems; look for INGESTION_FAILED statuses to find out more details.\n - DECOMMISSIONED: No longer needed for conversation exchanges; will be removed from the system by ongoing housekeeping operations."
+      type: string
+    domainUpdateDomainContentGroupsGroupPermissionRequest:
+      properties:
+        knowledge_domain_id:
+          description: Required. The identifier of the knowledge domain asscociated with this update method.
+          type: string
+      title: input to UpdateDomainContentGroupPermission
+      type: object
+    domainGetDomainContentGroupByContentResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/contentContentGroup'
+      type: object
+    domainUpdateDomainContentGroupsContentPermissionRequest:
+      properties:
+        knowledge_domain_id:
+          description: Required. The identifier of the knowledge domain asscociated with this update method.
+          type: string
+      title: input to UpdateDomainContentGroupContentPermission
+      type: object
+    domainDomainContentGroupRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/domainContentGroupAssociation'
+      type: object
+    v1alpha1CreateDomainWithSourcesRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/v1alpha1KnowledgeDomainEntityWithSources'
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      type: object
+    domainListDomainItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/domainKnowledgeDomainEntity'
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+      type: object
+    v1alpha1KnowledgeDomainEntity:
+      description: The top-level message sent by the client for the CreateDomain method.
+      properties:
+        knowledge_domain_id:
+          description: When specified, must be a unique ID; if not specified, a unique ID is generated.
+          type: string
+        display_name:
+          description: Display name of the knowledge domain.
+          type: string
+        description:
+          description: Full description of the knowledge domain.
+          type: string
+        status:
+          description: ''
+          $ref: '#/components/schemas/v1alpha1KnowledgeDomainEntityStatus'
+        labels:
+          additionalProperties:
+            type: string
+          description: DEPRECATED. Knowledge domain specific key/value pair labels used to organize and select subsets of objects.
+          type: object
+        kd_succession_id:
+          description: DEPRECATED. Use collection_id; autogenerated uneditable identifier for the parent to the knowledge domain; created with each new knowledge domain.
+          type: string
+        status_reason:
+          description: Reason the knowledge domain was transitioned to its current status value; only relevant for status of CONTENT_NOT_SUPPORTED.
+          type: string
+        team_ids:
+          description: DEPRECATED; teams are specified at the collection level.
+          items:
+            type: string
+          type: array
+        created_by:
+          description: User responsible for creating the knowledge domain; autogenerated and not editable.
+          type: string
+        collection_id:
+          description: Parent collection for the knowledge domain; autogenerated and not editable.
+          type: string
+        config:
+          additionalProperties:
+            type: string
+          description: Advanced key/value pair configuration; see a Pryon representative before using.
+          type: object
+      type: object
+    domainTagSourceType:
+      default: TAG_SOURCE_TYPE_UNSPECIFIED
+      description: " - TAG_SOURCE_TYPE_UNSPECIFIED: Default. No tags can be created with this source.\n - SYSTEM_DEFINED: Tags created by the Pryon Cloud Services system.\n - USER_DEFINED: Tags defined by users if the system and created via user input.\n - QUERY_ATTRIBUTE: Tags associated to a content which can be used to improve Exchange response ranking quality based on the context specified in ExchangeInputOption.\nSee \"documentation about improving ranking quality\" link for more details."
+      enum:
+      - TAG_SOURCE_TYPE_UNSPECIFIED
+      - SYSTEM_DEFINED
+      - USER_DEFINED
+      - QUERY_ATTRIBUTE
+      type: string
+    domainContentGroupAssociation:
+      properties:
+        content_group_id:
+          title: id of a valid Content Group from /api/knowledge/v1/content-groups
+          type: string
+        knowledge_domain_id:
+          title: id of a valid Knowledge Domain from /api/knowledge/v1/domains
+          type: string
+      type: object
+    domainKnowledgeDomainEntityWithSources:
+      description: The top-level message sent by the client for the CreateDomainWithSources method.
+      properties:
+        knowledge_domain_id:
+          description: Optional.  When specified, it must be a UUID that is unique in the system.  When not specified, a UUID will be generated.
+          type: string
+        display_name:
+          description: Required.  Friendly display name of this KD.
+          type: string
+        description:
+          description: Optional.  A more elaborate explanation of this KD.
+          type: string
+        status:
+          $ref: '#/components/schemas/domainKnowledgeDomainEntityStatus'
+        sources:
+          description: 'Required. Before returning, KD create will create a constituent Content Group for each source.
+
+            For source folders, a Content object will be created for each file found at each source.
+
+            For source URIs and Google Docs, only one Content will be created with content from the top-level page.'
+          items:
+            $ref: '#/components/schemas/domainContentGroupSource'
+          type: array
+        labels:
+          additionalProperties:
+            type: string
+          description: 'Optional. Knowledge domain specific key/value pair labels.
+
+            Labels can be used to organize and select subsets of objects.'
+          type: object
+        team_ids:
+          description: IDs of the teams allowed access to this KD.
+          items:
+            type: string
+          type: array
+        solution_id:
+          description: Optional. The licensed solution this collection belongs to. If not provided, the organization's default solution is automatically assigned.
+          type: string
+      type: object
+    v1alpha1GetDomainResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/v1alpha1KnowledgeDomainEntity'
+      type: object
+    contentListContentGroupsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          additionalProperties:
+            $ref: '#/components/schemas/contentListContentGroupItem'
+          description: Map of ContentGroups that match the request, keyed by content_group_id.
+          type: object
+      type: object
+    domainContentGroupSource:
+      properties:
+        source_location:
+          description: 'Required. The source types currently supported are:
+
+            1)  https:// URI of an HTML webpage to download content of.
+
+            Credentials need to be provided via the Pryon Service credentials API for the following:
+
+            2)  https://drive.google.com URLs. Google Drive file and folder URLs (including Google Docs and Sheets).
+
+            3)  https://*.sharepoint.com URLs.
+
+            4)  https://*.box.com URLs.
+
+            5)  https://*.zendesk.com URLs.
+
+            6)  https://*.service-now.com URLs.
+
+            7)  https://*.s3.region.amazonaws.com URLs.
+
+            8)  https://*.atlassian.net URLs.
+
+            9)  https://*.my.salesforce.com or https://*.develop.my.salesforce.com URLs.
+
+            10) https://*.vimeo.com or vimeo.com URLs.
+
+            11) https://youtube.com URLs.'
+          type: string
+        display_name:
+          description: Required. Friendly display name for this source.
+          type: string
+        service_id:
+          description: Optional. The third-party service connect. If not specified, the oldest service connect with an authority and type matching the source_location will be assigned.
+          type: string
+        content_ids:
+          description: 'Optional. Content IDs of items that we want to specify during this Domain creation. This will only be used alongside
+
+            CreateNextVersionWithSourcesRequest when CreateNextVersionRequest.Mode == INGEST_SELECTED_CONTENTS. Otherwise,
+
+            this will be ignored. Each Content record must already exist within the Content Group previously, or else error
+
+            returned.'
+          items:
+            type: string
+          type: array
+      type: object
+    CreateDomainNextVersionWithSourcesRequestMode:
+      default: UNKNOWN
+      description: " - UNKNOWN: UNKNOWN mode will result in an invalid argument error. An API caller must specify one of the modes below.\n - INGEST_ALL_CONTENTS: All contents will be reprocessed and ingested.\nAlthough this mode is equivalent to create domain using the CreateDomain default method, it's encouraged to use the CreateDomainNextVersion method to create your next domain version for clarity.\n - INGEST_CHANGED_CONTENTS: A Content is considered unchanged only if both of these are true:\n  - It was discovered from the same KnowledgeDomainEntity uri, or KnowledgeDomainEntityWithSources source_location in the case of multiple sources.\n  - It has the same source_location and detected revision as a Content object in the ancestor KnowledgeDomain.\nIngestion artifacts from unchanged contents are copied to the domain’s next version.\nAll other contents (ie. changed contents) will be reprocessed and ingested.\nIf a KnowledgeDomainEntity is not compatible with the KD succession, for example due to a different KnowledgeDomainEntity.label, an error will be returned. An API caller should use INGEST_ALL_CONTENTS mode instead.\n - INGEST_FAILED_CONTENTS: No revision or difference checks will be made for Contents or PriorKnowledge at the source_locations for any of the ContentGroups.\nOnly Contents that ended up in INGESTION_FAILED in the ancestor KD will be retried, and all previously successfully ingested Contents will be carried forward.\n - INGEST_SELECTED_CONTENTS: Ingest only the contents specified in in ContentGroupSource.Content `content` field. This will only re-ingest\npreviously ingested contents specified. No revision or difference checks will be made for Contents or PriorKnowledge\nat the source_locations for any of the ContentGroups.\nAll previously successfully ingested Contents will be carried forward."
+      enum:
+      - UNKNOWN
+      - INGEST_ALL_CONTENTS
+      - INGEST_CHANGED_CONTENTS
+      - INGEST_FAILED_CONTENTS
+      - INGEST_SELECTED_CONTENTS
+      type: string
+    domainCreateDomainNextVersionWithSourcesRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/domainKnowledgeDomainEntityWithSources'
+        ancestor_knowledge_domain_id:
+          description: Required. An existing knowledge domain subject to this versioning operation.
+          type: string
+        mode:
+          $ref: '#/components/schemas/CreateDomainNextVersionWithSourcesRequestMode'
+      type: object
+    v1alpha1ContentGroupSource:
+      properties:
+        source_location:
+          description: 'The source types currently supported are:
+
+            1)  https:// URI of an HTML webpage to download content of.
+
+            Credentials need to be provided via the Pryon Service credentials API for the following:
+
+            2)  https://drive.google.com URLs. Google Drive file and folder URLs (including Google Docs and Sheets).
+
+            3)  https://*.sharepoint.com URLs.
+
+            4)  https://*.box.com URLs.
+
+            5)  https://*.zendesk.com URLs.
+
+            6)  https://*.service-now.com URLs.
+
+            7)  https://*.s3.region.amazonaws.com URLs.
+
+            8)  https://*.atlassian.net URLs.
+
+            9)  https://*.my.salesforce.com or https://*.develop.my.salesforce.com URLs.
+
+            10) https://*.vimeo.com or vimeo.com URLs.
+
+            11) https://youtube.com URLs.'
+          type: string
+        display_name:
+          description: Friendly display name for this source.
+          type: string
+        service_id:
+          description: The third-party service connect. If not specified, the oldest service connect with an authority and type matching the source_location will be assigned.
+          type: string
+        content_ids:
+          description: Content IDs of items specified during Domain creation; used alongside CreateNextVersionWithSourcesRequest when CreateNextVersionRequest.Mode == INGEST_SELECTED_CONTENTS; each Content record must already exist within the Content Group previously, or else this returns an error.
+          items:
+            type: string
+          type: array
+      type: object
+    domainUpdateDomainRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/domainKnowledgeDomainEntity'
+        update_mask:
+          items:
+            type: string
+          title: "The data path corresponding to the field being updated in this request. Only one field can be updated at a time.\nOnly the following fields are updatable:\n data.status\n data.team_ids\n data.display_name\n data.description\nExample mask declaration in JSON format:\n  updateMask: \"data.team_ids\"\nNote:\n If no update_mask is supplied, the default update field is data.status. All other fields will be ignored and retain their current value.\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
+          type: array
+      title: input to UpdateDomain - empty for now but being added for future additions so as not to break backward compatibility
+      type: object
+    subjectsListSubjectsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          description: Subjects that match request criteria.
+          items:
+            $ref: '#/components/schemas/subjectsGetSubjectResponse'
+          type: array
+        next_page_token:
+          title: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: string
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
+        order_by:
+          description: Returned for convenience and clarity - same as order_by in request.
+          type: string
+      type: object
+    v1alpha1ResourceMetadata:
+      properties:
+        uuid:
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: Time of the last update; 0 indicates updates have never been made.
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          title: Response time (in milliseconds).
+          type: integer
+      type: object
+    v1alpha1KnowledgeDomainEntityWithSources:
+      description: The top-level message sent by the client for the CreateDomainWithSources method.
+      properties:
+        knowledge_domain_id:
+          description: When specified, must be a unique ID; if not specified, a unique ID is generated.
+          type: string
+        display_name:
+          description: Display name of the knowledge domain.
+          type: string
+        description:
+          description: Full description of the knowledge domain.
+          type: string
+        status:
+          $ref: '#/components/schemas/v1alpha1KnowledgeDomainEntityStatus'
+        sources:
+          description: Content Group for each source; for source folders, a content object is created for each file found at each source; for source URIs and Google Docs, one content object is created with content from the top-level page.
+          items:
+            $ref: '#/components/schemas/v1alpha1ContentGroupSource'
+          type: array
+        labels:
+          additionalProperties:
+            type: string
+          description: Knowledge domain specific key/value pair labels used to organize and select subsets of objects.
+          type: object
+        kd_succession_id:
+          description: DEPRECATED. Succession identifiers are automatically assigned and can no longer be controlled by users.
+          type: string
+        team_ids:
+          description: Unique identifiers for the teams with knowledge domain access.
+          items:
+            type: string
+          type: array
+        solution_id:
+          description: Licensed solution for the collection; if not provided, the organizational default solution is automatically assigned.
+          type: string
+      type: object
+x-refined-from:
+- pryon-admin-openapi.json
+- pryon-domains-swagger-may2025-openapi.json
+x-original-swagger-version: '2.0'
+x-tagGroups:
+- name: Retrieval
+  tags:
+  - Exchange
+  - ExchangeEvent
+  - Feedback
+  - GenerativeExchange
+  - GenerativeFeedback
+  - TextToSpeech
+- name: Reporting
+  tags:
+  - Analytics
+  - Reports
+  - Usage
+- name: Collection Management
+  tags:
+  - KnowledgeCollectionService
+  - KnowledgeDomain
+  - ContentService
+  - RegressionTest
+  - Subjects
+- name: Organization Management
+  tags:
+  - ConnectorServiceExternal
+  - OrganizationService
+  - Messages
+- name: Ops Console
+  tags:
+  - Operations

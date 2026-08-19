@@ -1,0 +1,413 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pryon Connector Service External API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ConnectorServiceExternal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DownloadContentData",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/connector/v1/connectors/:connector_id/content-data:download",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. The identifier of the associated connector for the content download request."
+              },
+              {
+                "name": "range_header.range_start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "range_header.range_end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "range_header.total_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "opaque_data",
+                "value": "",
+                "type": "query",
+                "description": "The opaque_data is an opaque string contains additonal information that can be used to by the PULL API to retreive the content data from underlying content source along with the source_location. (e.g. drinve_id + item_id in SharePoint)."
+              },
+              {
+                "name": "source_location",
+                "value": "",
+                "type": "query",
+                "description": "The content source URI."
+              }
+            ]
+          },
+          "docs": "Custom methods to get ContentData\nDownload Content Data in multiple parts\nHTTP Request:\nGET https://{host}/api/connector/v1/connectors/{connector_id}/content-data:download?source_location=<source_location>&opaque_data=<opaque_data> HTTP/1.1\nHOST: {host}\nRange: bytes=<range-start>-<range-end>\n\nHTTP Response:\nHTTP/1.1 206 Partial Content\nContent-Range: bytes <range-start>-<range-end>/<total_size>\nContent-Length: <bytes-length>\nContent-Type: application/octet-stream\n\n<bytes-data>\n\nThis is a proxy t"
+        },
+        {
+          "info": {
+            "name": "GetReadPermission",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/connector/v1/connectors/:connector_id/content/read-permission",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. The identifier for the connector associated with the Read Permission request."
+              },
+              {
+                "name": "opaque_data",
+                "value": "",
+                "type": "query",
+                "description": "The opaque_data is an opaque string contains additonal information that can be used to by the PULL API to retreive the content data from underlying content source along with the source_location. (e.g. drinve_id + item_id in SharePoint)."
+              },
+              {
+                "name": "source_location",
+                "value": "",
+                "type": "query",
+                "description": "The content source URI."
+              },
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "query",
+                "description": "Pryon content id for the content to be used for logging purposes."
+              }
+            ]
+          },
+          "docs": "Get read permission for a content.\nTo be implemented by the universal connector and invoked by Pryon Ingestion and Retrieval Platform to pull most to date read permission for a content.\nThis is called on an interval in the Pryon Ingestion system to update each individual Content item's specific\npermissions in the index."
+        },
+        {
+          "info": {
+            "name": "PullContents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/connector/v1/connectors/:connector_id/contents:pull",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. The identifer of the connector for the current Pull Contents request."
+              },
+              {
+                "name": "seed_source_location",
+                "value": "",
+                "type": "query",
+                "description": "Required. The URI to be used for content discovery. The URI's query parameters can contain information about the content to be discovered such as filters, sorting, etc.\nFor Pryon Knowledge Platform, this is the KnowledgeDomain's ContentGroup's source location."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The default page size is the maximum page size specified for each Connector."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "An opaque token that the server can interpret to determine the starting point for the next set of results.\nIf not given, the server fetches from the first record.\nIf there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response."
+              }
+            ]
+          },
+          "docs": "Content source discovery custom method.\nThis is a proxy through the content source.\nTo be implemented by the universal connector and invoked by Pryon Ingestion Platform to list contents from the connector.\nThis is where we list all the content available in the remote API."
+        },
+        {
+          "info": {
+            "name": "ListGroupPermissionMembers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/connector/v1/connectors/:connector_id/group-permission/members",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Required.  The identifier of the connector associated with the group permission member list request."
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "query",
+                "description": "Required. Identifier for the group."
+              }
+            ]
+          },
+          "docs": "List members of the connector's group permission.\nTo be implemented by the universal connector and invoked by Pryon Ingestion Platform to pull most to date members of the connector's group permission.\nThe individual memberships related to each Group identified from ListGroupPermissions. This allows specific userIds (or emails) to belong\nto particular groups in Pryon given the remote account's setup."
+        },
+        {
+          "info": {
+            "name": "ListGroupPermissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/connector/v1/connectors/:connector_id/group-permissions",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. The identifier of the connector associated with the request."
+              }
+            ]
+          },
+          "docs": "List group permissions of the connector.\nTo be implemented by the universal connector and invoked by Pryon Ingestion Platform to pull most to date group permissions of the connector.\nThis should fetch all the groups in the remote API that any user can belong to. It's important that these groups\nare accessible properties in either our Pryon User records, or in the JWT claims for a particular login."
+        },
+        {
+          "info": {
+            "name": "Get Content Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/connector/v1alpha1/connectors/:connector_id/content-data:download",
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the connector associated with the request."
+              },
+              {
+                "name": "range_header.range_start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "range_header.range_end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "range_header.total_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "opaque_data",
+                "value": "",
+                "type": "query",
+                "description": "Hidden string with additional information the PULL API uses to retrieve the content data and source location from the underlying content; for example, drinve_id + item_id in SharePoint."
+              },
+              {
+                "name": "source_location",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the content source."
+              }
+            ]
+          },
+          "docs": "Use custom methods to get ContentData to download in multiple parts."
+        },
+        {
+          "info": {
+            "name": "Get Content Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/connector/v1alpha1/connectors/:connector_id/content/metadata",
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the connector associated with the metadata request."
+              },
+              {
+                "name": "opaque_data",
+                "value": "",
+                "type": "query",
+                "description": "Hidden string with additional information the PULL API uses to retrieve the content data and source location from the underlying content; for example, drinve_id + item_id in SharePoint."
+              },
+              {
+                "name": "source_location",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the content source."
+              },
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the content."
+              }
+            ]
+          },
+          "docs": "Get Content Metadata"
+        },
+        {
+          "info": {
+            "name": "Get Read Permission for Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/connector/v1alpha1/connectors/:connector_id/content/read-permission",
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the connector associated with the request."
+              },
+              {
+                "name": "opaque_data",
+                "value": "",
+                "type": "query",
+                "description": "Hidden string with additonal information the PULL API uses to retrieve the content data and source location from the underlying content; for example, drinve_id + item_id in SharePoint."
+              },
+              {
+                "name": "source_location",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the content source."
+              },
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the content."
+              }
+            ]
+          },
+          "docs": "Get Read Permission for Content"
+        },
+        {
+          "info": {
+            "name": "Discover Content Source",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/connector/v1alpha1/connectors/:connector_id/contents:pull",
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the connector associated with the request."
+              },
+              {
+                "name": "seed_source_location",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the content."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size is 100; default is 100."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "Hidden token that determines the starting point for the next set of results; if not specified, the server fetches from the first record; if there are multiple pages, specify this value in pages 2-N using the value of next_page_token."
+              }
+            ]
+          },
+          "docs": "Discover Content Source"
+        },
+        {
+          "info": {
+            "name": "List Connector Group Permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/connector/v1alpha1/connectors/:connector_id/group-permission/members",
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the connector associated with the request."
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the group."
+              }
+            ]
+          },
+          "docs": "List Connector Group Permissions"
+        },
+        {
+          "info": {
+            "name": "List Connector Group Permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/connector/v1alpha1/connectors/:connector_id/group-permissions",
+            "params": [
+              {
+                "name": "connector_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the connector associated with the request."
+              }
+            ]
+          },
+          "docs": "List Connector Group Permissions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

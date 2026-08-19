@@ -1,0 +1,267 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "pryon/api/ext/analytics/v1/analytics.proto Subjects API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subjects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListSubjectCategories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/subject-categories",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Default page size is 100 which is also the maximum page size.  Query param is \"page_size\".  If page size is default than this param can be omitted otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests. Supported options are: \"display_name asc\" (default).\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "To filter on a specific source then specify a value here.\n\n - UNSPECIFIED: Unspecified - an important option for filtering use cases when no preference is desired.  This is not a valid option when creating a subject category\n - SYSTEM_DEFINED: Category is defined by Pryon Cloud Services system\n - USER_DEFINED: Category is defined by users of the system and created via user input\n - QUERY_ATTRIBUTE: A category associated to a content which can be used to improve Exchange response ranking quality based on the context specified in ExchangeInputOption\nSee \"documentation about improving ranking quality\" link for more details."
+              }
+            ]
+          },
+          "docs": "List subject categories"
+        },
+        {
+          "info": {
+            "name": "GetSubjectCategory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/subject-categories/:subject_category_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "subject_category_id",
+                "value": "",
+                "type": "path",
+                "description": "Required."
+              }
+            ]
+          },
+          "docs": "Get subject category by subject_category_id"
+        },
+        {
+          "info": {
+            "name": "ListSubjectRelationshipTypes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/subject/relationship/types",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Default page size is 100 which is also the maximum page size.  Query param is \"page_size\".  If page size is default than this param can be omitted otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests. Supported options are: \"display_name asc\" (default).\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Filter by relationships having a specific direction.\n\n - UNSPECIFIED: Unspecified - an important option for filtering use cases when no preference is desired.\nThis is not a valid option when creating a subject relationship type.\n - UNIDIRECTIONAL: Indicates a one-way relationship from the subject specified by the from_subject_id,\nto the subject specified by the to_subject_id.\n - BIDIRECTIONAL: Indicates a two-way relationship between the subject specified by the from_subject_id,\nand the subject specified by the to_subject_id."
+              }
+            ]
+          },
+          "docs": "List subject relationship types"
+        },
+        {
+          "info": {
+            "name": "ListSubjectRelationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/subject/relationships",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Default page size is 100 which is also the maximum page size.  Query param is \"page_size\".  If page size is default than this param can be omitted otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests. Supported options are: \"to_subject_id asc\" (default) or \"from_subject_id asc\".\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              },
+              {
+                "name": "from_subject_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to_subject_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "relationship_type_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List subject relationships"
+        },
+        {
+          "info": {
+            "name": "ListSubjects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/subjects",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Default page size is 100 which is also the maximum page size.  Query param is \"page_size\".  If page size is default than this param can be omitted otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests. Supported options are: \"display_name asc\" (default).\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              },
+              {
+                "name": "term",
+                "value": "",
+                "type": "query",
+                "description": "If specified then the list will be filtered to the subject term with regard to term_is_prefix and term_is_case_sensitive."
+              },
+              {
+                "name": "term_is_prefix",
+                "value": "",
+                "type": "query",
+                "description": "If specified alongside term then list subjects whose term starts with the string provided."
+              },
+              {
+                "name": "term_is_case_insensitive",
+                "value": "",
+                "type": "query",
+                "description": "If specified alongside term then filter to those that match regardless of lowercase or uppercase."
+              },
+              {
+                "name": "subject_category_id",
+                "value": "",
+                "type": "query",
+                "description": "If specified then the list will be filtered to subjects of the specified category."
+              }
+            ]
+          },
+          "docs": "List subjects"
+        },
+        {
+          "info": {
+            "name": "GetSubject",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/subjects/:subject_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "subject_id",
+                "value": "",
+                "type": "path",
+                "description": "Required."
+              }
+            ]
+          },
+          "docs": "Get subject by subject_id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

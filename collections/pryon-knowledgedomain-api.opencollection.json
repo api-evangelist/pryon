@@ -1,0 +1,596 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pryon Knowledge Domain API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "KnowledgeDomain",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListContentGroupSubjects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/content-groups/:content_group_id/subjects",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Content Group that subjects must be found in"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page size is default, this param can be omitted; otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests.  Supported options are: \"reference_count desc\" (default) and \"reference_count asc\".\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              },
+              {
+                "name": "subject_category_id",
+                "value": "",
+                "type": "query",
+                "description": "If specified, the list will be filtered to subjects of the specified category."
+              }
+            ]
+          },
+          "docs": "List subjects associated with a Content Group."
+        },
+        {
+          "info": {
+            "name": "ListDomains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "display_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned knowledge domains to those that match this Display Name. The REST query parameter is \"display_name\"."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter returned knowledge domains to those that match this Status. The REST query parameter is \"status\" and the value can be a string or integer representation. The only way to see DECOMMISSIONED KD's is to specify that status value here - please be aware that those KD's can and will disappear so do not expect them to be there on subsequent requests.\n\n - CONTENT_AWAIT: CONTENT_AWAIT: Initial value for a newly created KD.  If KD was created with data.uri or data.contents then asynchronous status transition will occur to CONTENT_IDENTIFIED after constituent Content Group and Contents are created.  If KD was created without either of these then it will remain in this status until an explicit PATCH with CONTENT_IDENTIFIED status is received.\n - CONTENT_IDENTIFIED: CONTENT_IDENTIFIED: When a KD enters this state, our automation will begin the process of readying the content for Conversation Exchanges by ingesting each constituent Content.\n - CONTENT_READY: CONTENT_READY: The KD's content is ready and able to support conversation exchanges.  Each Content in the KD's Content Groups has been successfully ingested.\n - CONTENT_NOT_SUPPORTED: CONTENT_NOT_SUPPORTED: Unable to support conversation exchanges on this KD's content due to some problem readying its Contents.  You can look for constituent Contents that have INGESTION_FAILED status to find out more details.  To retry, update KD status to CONTENT_IDENTIFIED using PATCH.  If the problem persists then remove the INGESTION_FAILED contents from the KD's Content Group(s) and try again.\n - DECOMMISSIONED: DECOMMISSIONED: KD is no longer needed, is not going to be used for conversation exchanges, and should be removed from the system.  The KD is going to be removed from the system ASAP by ongoing housekeeping operations.  Any KD can transition to DECOMMISSIONED status."
+              },
+              {
+                "name": "kd_succession_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter list to all KD's that are in a line of succession. A versioned Collection represents such a KD succession where some of the KDs may have served as the active version. If this list is sorted by metadata.create_time then it shows the succession history."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page_size is set to the default, this param can be omitted; otherwise, it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests. Supported options are: \"status asc, update_time desc\" (default), \"status asc, update_time asc\" and \"status asc, create_time desc\".\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              },
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter list to all KD's that are associated with a team. The REST query parameter is \"team\" and the value is the unique id of a team to filter on. Filtering is subject to internal authorization rules."
+              }
+            ]
+          },
+          "docs": "List all Knowledge Domains that the user has access to and which do not have a status of DECOMMISSIONED.  To see KD's that are DECOMMISSIONED, use a status filter.\nORG_WORKER users can list the domains that their team assignments allow."
+        },
+        {
+          "info": {
+            "name": "UpdateDomain",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:data.knowledge_domain_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "Optional.  When specified, it must be a UUID that is unique in the system.  When not specified, a UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a single Knowledge Domain (KD) that the user has access to. This is primarily used to mark a KD for decommissioning when it is no longer needed. Decommissioning a KD that serves as the Active Domain of a Knowledge Collection isn't allowed. Please use the collection API to either promote/demote an active domain or delete the parent collection first."
+        },
+        {
+          "info": {
+            "name": "CreateDomainContentGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:data.knowledge_domain_id/content-groups",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Knowledge Domain (KD) to Content Group (CG) relationship."
+        },
+        {
+          "info": {
+            "name": "GetDomainContentGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:data.knowledge_domain_id/content-groups/:data.content_group_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "data.knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+              },
+              {
+                "name": "data.content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "id of a valid Content Group from /api/knowledge/v1/content-groups"
+              }
+            ]
+          },
+          "docs": "Get a single Content Group associated with a Knowledge Domain that the user has access to."
+        },
+        {
+          "info": {
+            "name": "GetDomain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:knowledge_domain_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+              }
+            ]
+          },
+          "docs": "Get a single Knowledge Domain (KD) that the user has access to.  This API can be used to monitor the status transitions of a KD being prepared for Q&A exchanges."
+        },
+        {
+          "info": {
+            "name": "GetDomainContentGroupByContent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:knowledge_domain_id/content-group",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. Knowledge Domain associated with the Content Group version."
+              },
+              {
+                "name": "content_id",
+                "value": "",
+                "type": "query",
+                "description": "Required. Content ID to retrieve Content Group for."
+              }
+            ]
+          },
+          "docs": "Get a single Content Group associated with a Knowledge Domain and a for a specific Content Item."
+        },
+        {
+          "info": {
+            "name": "ListDomainContentGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:knowledge_domain_id/content-groups",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "Required: the identifier of a valid Knowledge Domain to retrieve the domain content groups from."
+              },
+              {
+                "name": "return_only_id",
+                "value": "",
+                "type": "query",
+                "description": "Optional: if caller only needs the item ID's, set this to true."
+              }
+            ]
+          },
+          "docs": "List all Content Groups associated with a Knowledge Domain that the user has access to."
+        },
+        {
+          "info": {
+            "name": "DeleteDomainContentGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:knowledge_domain_id/content-groups",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+              }
+            ]
+          },
+          "docs": "Delete all child Content Group associations with the parent Knowledge Domain.  This does not alter the Content Groups resources."
+        },
+        {
+          "info": {
+            "name": "DeleteDomainContentGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:knowledge_domain_id/content-groups/:content_group_id",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "id of a valid Knowledge Domain from /api/knowledge/v1/domains"
+              },
+              {
+                "name": "content_group_id",
+                "value": "",
+                "type": "path",
+                "description": "id of a valid Content Group from /api/knowledge/v1/content-groups"
+              }
+            ]
+          },
+          "docs": "Delete a Knowledge Domain to Content Group relationship that the user has access to remove.  This does not alter the Content Group resource."
+        },
+        {
+          "info": {
+            "name": "UpdateDomainContentGroupsContentPermission",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:knowledge_domain_id/content-groups:updateContentPermission",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. The identifier of the knowledge domain asscociated with this update method."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This utility POST method is used to update the content permission of content groups in the knowledge domain."
+        },
+        {
+          "info": {
+            "name": "UpdateDomainContentGroupsGroupPermission",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:knowledge_domain_id/content-groups:updateGroupPermission",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. The identifier of the knowledge domain asscociated with this update method."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This utility POST method is used to update the group permission of content groups in the knowledge domain."
+        },
+        {
+          "info": {
+            "name": "ListDomainSubjects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:knowledge_domain_id/subjects",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "Knowledge Domain that subjects must be found in"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page size is default, this param can be omitted; otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests.  Supported options are: \"reference_count desc\" (default) and \"reference_count asc\".\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              },
+              {
+                "name": "subject_category_id",
+                "value": "",
+                "type": "query",
+                "description": "If specified, the list will be filtered to subjects of the specified category."
+              }
+            ]
+          },
+          "docs": "List subjects associated with a Knowledge Domain."
+        },
+        {
+          "info": {
+            "name": "ListDomainTags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains/:knowledge_domain_id/tags",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "params": [
+              {
+                "name": "knowledge_domain_id",
+                "value": "",
+                "type": "path",
+                "description": "Required. Knowledge Domain to list tags for."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "The default page size is 100, which is also the maximum page size. The REST query parameter is \"page_size\". If page size is default, this param can be omitted; otherwise it must be specified on every page request.\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "page_token",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page's response. The REST query parameter is \"page_token\".\nsee https://cloud.google.com/apis/design/design_patterns#list_pagination."
+              },
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests.  Supported options are: \"reference_count desc\" (default) and \"reference_count asc\".\nsee https://cloud.google.com/apis/design/design_patterns#sorting_order."
+              },
+              {
+                "name": "tag_source_type",
+                "value": "",
+                "type": "query",
+                "description": "Required. Filter on tag source.\nIf TAG_SOURCE_TYPE_UNSPECIFIED, an error response will be returned.\n\n - TAG_SOURCE_TYPE_UNSPECIFIED: Default. No tags can be created with this source.\n - SYSTEM_DEFINED: Tags created by the Pryon Cloud Services system.\n - USER_DEFINED: Tags defined by users if the system and created via user input.\n - QUERY_ATTRIBUTE: Tags associated to a content which can be used to improve Exchange response ranking quality based on the context specified in ExchangeInputOption.\nSee \"documentation about improving ranking quality\" link for more details."
+              },
+              {
+                "name": "include_counts",
+                "value": "",
+                "type": "query",
+                "description": "Include counts for every tag of a given type.\nCounts are calculated over contents belonging to the KD."
+              }
+            ]
+          },
+          "docs": "List tags for the Knowledge Domain."
+        },
+        {
+          "info": {
+            "name": "CreateDomainNextVersionWithSources",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains:createNextVersionWithSources",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new version of a Knowledge Domain (KD) with Sources\nIf TeamIds are not specified with the request, the team assignments will carry forward from the previous domain version."
+        },
+        {
+          "info": {
+            "name": "CreateDomainWithSources",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains:createWithSources",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Knowledge Domain (KD)\nWhen data.sources are specified KD create will inspect them and determine if they are supported.  If any of the sources are invalid, an error response will be returned with a 400\nHTTP status code.  If there are supported Contents, a KD will be created with status a of CONTENT_AWAIT and a success response will be returned with a 200 http status code.\nAsynchronously, a single Content Group with the appropriate number of Contents will be created with each Content stat"
+        },
+        {
+          "info": {
+            "name": "ListDefaultDomains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pryon.net/api/knowledge/v1/domains:default",
+            "headers": [
+              {
+                "name": "Authentication",
+                "value": "Authorization: Bearer {base64-encoded-token}"
+              }
+            ]
+          },
+          "docs": "List the Knowledge Domains the authorized user can implicitly access in the absence of any team assignments (defaults)."
+        },
+        {
+          "info": {
+            "name": "Decommission Knowledge Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pryon.net/api/knowledge/v1alpha1/domains:createWithSources",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Decommission Knowledge Domain"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,682 @@
+openapi: 3.2.0
+info:
+  title: pryon/api/ext/analytics/v1/analytics.proto Subjects API
+  version: '1.0'
+  contact:
+    name: Pryon Product Support
+    url: https://pryon.zendesk.com
+    email: support@pryoninc.com
+  description: '# Introduction
+
+    The Pryon API blah blah blah.
+
+
+    # Authentication
+
+    When you sign up for an account, you are given your set of API credentials.
+
+
+
+    Pryon supports authentication in the form of JSON Web Tokens.
+
+    - JWT: authenticates each request by the http header: Authorization
+
+
+    For all API requests, you will have to include the Authorization header in the following form:
+
+
+    ```javascript
+
+    Authorization: Bearer {encoded token}
+
+    ```
+
+    '
+  license:
+    name: Pryon
+    url: https://pryon.com/license
+  termsOfService: https://pryon.com/terms
+  x-logo:
+    url: 'data:image/png;base64,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aHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgeG1wTU06RG9jdW1lbnRJRD0iZ2ltcDpkb2NpZDpnaW1wOmZlMTQ1MGY1LTNlZDEtNDIyZi05NWM4LWM5MGFhYjc2NTQyMSIKICAgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDphNDY0NjZiNi1jMWQ1LTRmOWQtODQ0ZC0xNGFjZDE4YmE2NTEiCiAgIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoyNTY4NGRiYS03ODg4LTQxZDItYjg3MC03ZTlmZWU0YjEzOTUiCiAgIEdJTVA6QVBJPSIyLjAiCiAgIEdJTVA6UGxhdGZvcm09Ik1hYyBPUyIKICAgR0lNUDpUaW1lU3RhbXA9IjE3MTQ4ODUyNzI3MjI4NTQiCiAgIEdJTVA6VmVyc2lvbj0iMi4xMC4zNiIKICAgZGM6Rm9ybWF0PSJpbWFnZS9wbmciCiAgIGV4aWY6UGl4ZWxYRGltZW5zaW9uPSI0ODYiCiAgIGV4aWY6UGl4ZWxZRGltZW5zaW9uPSI1NjAiCiAgIHRpZmY6T3JpZW50YXRpb249IjEiCiAgIHhtcDpDcmVhdG9yVG9vbD0iR0lNUCAyLjEwIgogICB4bXA6TWV0YWRhdGFEYXRlPSIyMDI0OjA1OjA0VDIyOjAxOjEwLTA3OjAwIgogICB4bXA6TW9kaWZ5RGF0ZT0iMjAyNDowNTowNFQyMjowMToxMC0wNzowMCI+CiAgIDx4bXBNTTpIaXN0b3J5PgogICAgPHJkZjpTZXE+CiAgICAgPHJkZjpsaQogICAgICBzdEV2dDphY3Rpb249InNhdmVkIgogICAgICBzdEV2dDpjaGFuZ2VkPSIvIgogICAgICBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjU2NzFkZjUwLTY1OGYtNGNmNC04NTg2LTEyYzUxMTM4ZjhlMCIKICAgICAgc3RFdnQ6c29mdHdhcmVBZ2VudD0iR2ltcCAyLjEwIChNYWMgT1MpIgogICAgICBzdEV2dDp3aGVuPSIyMDI0LTA1LTA0VDIyOjAxOjEyLTA3OjAwIi8+CiAgICA8L3JkZjpTZXE+CiAgIDwveG1wTU06SGlzdG9yeT4KICAgPGV4aWY6VXNlckNvbW1lbnQ+CiAgICA8cmRmOkFsdD4KICAgICA8cmRmOmxpIHhtbDpsYW5nPSJ4LWRlZmF1bHQiPlNjcmVlbnNob3Q8L3JkZjpsaT4KICAgIDwvcmRmOkFsdD4KICAgPC9leGlmOlVzZXJDb21tZW50PgogIDwvcmRmOkRlc2NyaXB0aW9uPgogPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgIAo8P3hwYWNrZXQgZW5kPSJ3Ij8+jRSL1AAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAAd0SU1FB+gFBQUBDN+b84wAAAASdEVYdENvbW1lbnQAU2NyZWVuc2hvdPsRqwoAACAASURBVHja7d17lFX1Yejx354HM8NzhuGNCsMbVB6CD5KmARJvgzbXe21Sk6qNIY3GrETXXcm6yf2nXcn9oyY3KwnXRGMbMfERY6/VJK1iSwpaNUAQkJfyngEc3swDGGaGeez7hx07pSjnHGaYfc75fP7JWnG2nvM7++zv2fu3HyEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkExNzW2x9wFcrAJDABfv8LHT8bd/+FpY+buarI7a8lV74v+99PVQ39giztBHoiS8iF3VdVm1EZhcNTTKltd64NDJuKWlPWvGdsyoQWFAWXGUTevD2bMd8Xd+sjYcPd4UQghhzpUjwh23XhX6FRdmzftoPdsRP/Z3m8O2ncdDCCFcPmZQ+NoXrwuFhQVZ9Vn01vYmG9fL99Pc0h4fONR43n9WWd4/VFaUJf59Hjh0Mm5uafvAv5lSVZm1n1ciXvhX/3JFVv46H1peGmZOHxEmja8I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 '
+    altText: Pryon APIs
+servers:
+- url: https://api.pryon.net
+  description: Pryon Cloud
+tags:
+- name: Subjects
+paths:
+  /api/knowledge/v1/subject-categories:
+    get:
+      operationId: Subjects_ListSubjectCategories
+      parameters:
+      - description: 'Default page size is 100 which is also the maximum page size.  Query param is "page_size".  If page size is default than this param can be omitted otherwise it must be specified on every page request.
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: 'If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page''s response. The REST query parameter is "page_token".
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - description: 'If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests. Supported options are: "display_name asc" (default).
+
+          see https://cloud.google.com/apis/design/design_patterns#sorting_order.'
+        in: query
+        name: order_by
+        schema:
+          type: string
+      - description: "To filter on a specific source then specify a value here.\n\n - UNSPECIFIED: Unspecified - an important option for filtering use cases when no preference is desired.  This is not a valid option when creating a subject category\n - SYSTEM_DEFINED: Category is defined by Pryon Cloud Services system\n - USER_DEFINED: Category is defined by users of the system and created via user input\n - QUERY_ATTRIBUTE: A category associated to a content which can be used to improve Exchange response ranking quality based on the context specified in ExchangeInputOption\nSee \"documentation about improving ranking quality\" link for more details."
+        in: query
+        name: source
+        schema:
+          default: UNSPECIFIED
+          enum:
+          - UNSPECIFIED
+          - SYSTEM_DEFINED
+          - USER_DEFINED
+          - QUERY_ATTRIBUTE
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/subjectsListSubjectCategoriesResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      summary: ListSubjectCategories
+      tags:
+      - Subjects
+      description: List subject categories
+  /api/knowledge/v1/subject-categories/{subject_category_id}:
+    get:
+      operationId: Subjects_GetSubjectCategory
+      parameters:
+      - description: Required.
+        in: path
+        name: subject_category_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/subjectsGetSubjectCategoryResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      summary: GetSubjectCategory
+      tags:
+      - Subjects
+      description: Get subject category by subject_category_id
+  /api/knowledge/v1/subject/relationship/types:
+    get:
+      operationId: Subjects_ListSubjectRelationshipTypes
+      parameters:
+      - description: 'Default page size is 100 which is also the maximum page size.  Query param is "page_size".  If page size is default than this param can be omitted otherwise it must be specified on every page request.
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: 'If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page''s response. The REST query parameter is "page_token".
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - description: 'If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests. Supported options are: "display_name asc" (default).
+
+          see https://cloud.google.com/apis/design/design_patterns#sorting_order.'
+        in: query
+        name: order_by
+        schema:
+          type: string
+      - description: "Filter by relationships having a specific direction.\n\n - UNSPECIFIED: Unspecified - an important option for filtering use cases when no preference is desired.\nThis is not a valid option when creating a subject relationship type.\n - UNIDIRECTIONAL: Indicates a one-way relationship from the subject specified by the from_subject_id,\nto the subject specified by the to_subject_id.\n - BIDIRECTIONAL: Indicates a two-way relationship between the subject specified by the from_subject_id,\nand the subject specified by the to_subject_id."
+        in: query
+        name: direction
+        schema:
+          default: UNSPECIFIED
+          enum:
+          - UNSPECIFIED
+          - UNIDIRECTIONAL
+          - BIDIRECTIONAL
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/subjectsListSubjectRelationshipTypesResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      summary: ListSubjectRelationshipTypes
+      tags:
+      - Subjects
+      description: List subject relationship types
+  /api/knowledge/v1/subject/relationships:
+    get:
+      operationId: Subjects_ListSubjectRelationships
+      parameters:
+      - description: 'Default page size is 100 which is also the maximum page size.  Query param is "page_size".  If page size is default than this param can be omitted otherwise it must be specified on every page request.
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: 'If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page''s response. The REST query parameter is "page_token".
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - description: 'If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests. Supported options are: "to_subject_id asc" (default) or "from_subject_id asc".
+
+          see https://cloud.google.com/apis/design/design_patterns#sorting_order.'
+        in: query
+        name: order_by
+        schema:
+          type: string
+      - in: query
+        name: from_subject_id
+        schema:
+          type: string
+      - in: query
+        name: to_subject_id
+        schema:
+          type: string
+      - in: query
+        name: relationship_type_id
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/subjectsListSubjectRelationshipsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      summary: ListSubjectRelationships
+      tags:
+      - Subjects
+      description: List subject relationships
+  /api/knowledge/v1/subjects:
+    get:
+      operationId: Subjects_ListSubjects
+      parameters:
+      - description: 'Default page size is 100 which is also the maximum page size.  Query param is "page_size".  If page size is default than this param can be omitted otherwise it must be specified on every page request.
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_size
+        schema:
+          format: int32
+          type: integer
+      - description: 'If there are multiple pages, pages 2-N must specify this parameter using the value of next_page_token provided in the previous page''s response. The REST query parameter is "page_token".
+
+          see https://cloud.google.com/apis/design/design_patterns#list_pagination.'
+        in: query
+        name: page_token
+        schema:
+          type: string
+      - description: 'If there are multiple pages, a sort-order can be used and is applicable to the pages but not to the items in a page. If this parameter is provided on a multi-page request, it must be provided on all subsequent page requests. Supported options are: "display_name asc" (default).
+
+          see https://cloud.google.com/apis/design/design_patterns#sorting_order.'
+        in: query
+        name: order_by
+        schema:
+          type: string
+      - description: If specified then the list will be filtered to the subject term with regard to term_is_prefix and term_is_case_sensitive.
+        in: query
+        name: term
+        schema:
+          type: string
+      - description: If specified alongside term then list subjects whose term starts with the string provided.
+        in: query
+        name: term_is_prefix
+        schema:
+          type: boolean
+      - description: If specified alongside term then filter to those that match regardless of lowercase or uppercase.
+        in: query
+        name: term_is_case_insensitive
+        schema:
+          type: boolean
+      - description: If specified then the list will be filtered to subjects of the specified category.
+        in: query
+        name: subject_category_id
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/subjectsListSubjectsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      summary: ListSubjects
+      tags:
+      - Subjects
+      description: List subjects
+  /api/knowledge/v1/subjects/{subject_id}:
+    get:
+      operationId: Subjects_GetSubject
+      parameters:
+      - description: Required.
+        in: path
+        name: subject_id
+        required: true
+        schema:
+          type: string
+      - name: Authentication
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 'Authorization: Bearer {base64-encoded-token}'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/subjectsGetSubjectResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      summary: GetSubject
+      tags:
+      - Subjects
+      description: Get subject by subject_id
+components:
+  schemas:
+    subjectsGetSubjectResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/subjectsSubjectEntity'
+      type: object
+    subjectsSubjectCategoryEntity:
+      properties:
+        subject_category_id:
+          description: Required.
+          type: string
+        display_name:
+          description: Required.  Short name of the subject category.
+          type: string
+        description:
+          description: Required.  Wordy explanation of the subject category.
+          type: string
+        source:
+          $ref: '#/components/schemas/SubjectCategoryEntitySource'
+        exclusion:
+          description: When users specify input context, contents that match an exclusion category will be ranked lower than contents that match an inclusion category. Default is false (i.e. inclusion).
+          type: boolean
+      title: A subject category
+      type: object
+    subjectsSubjectRelationshipTypeEntity:
+      description: Description of subject relationship type.
+      properties:
+        relationship_type_id:
+          description: Required.
+          type: string
+        display_name:
+          description: Required. Short name of the type of subject link/relationship.
+          type: string
+        description:
+          description: Required. Wordy explanation.
+          type: string
+        direction:
+          $ref: '#/components/schemas/SubjectRelationshipTypeEntityDirection'
+      type: object
+    subjectsSubjectRelationshipEntity:
+      description: A directed edge from one subject entity to another subject entity.
+      properties:
+        subject_relationship_id:
+          description: Required.
+          type: string
+        relationship_type_id:
+          description: 'Required. Type of relationship e.g. synonym, acronym, misspelling, parent, child, etc.
+
+            This also determines if relationship is uni- or bi-directional.'
+          type: string
+        from_subject_id:
+          description: Required. Unique ID of the subject which link is being directed from.
+          type: string
+        to_subject_id:
+          description: Required. Unique ID of the subject to which link is being directed.
+          type: string
+        strength:
+          description: Required. The strength of the link - can also be thought of as edge weight.
+          format: float
+          type: number
+      type: object
+    v1ResourceMetadata:
+      properties:
+        uuid:
+          description: UUID returned in the resource response, which represents the unique interaction with the API, that is, the response id.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: 'Time of the last update.
+
+            A value of 0 indicates it has never been updated.'
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          title: Time difference in milliseconds between when the request was received and when the response was generated
+          type: integer
+      type: object
+    SubjectCategoryEntitySource:
+      default: UNSPECIFIED
+      description: " - UNSPECIFIED: Unspecified - an important option for filtering use cases when no preference is desired.  This is not a valid option when creating a subject category\n - SYSTEM_DEFINED: Category is defined by Pryon Cloud Services system\n - USER_DEFINED: Category is defined by users of the system and created via user input\n - QUERY_ATTRIBUTE: A category associated to a content which can be used to improve Exchange response ranking quality based on the context specified in ExchangeInputOption\nSee \"documentation about improving ranking quality\" link for more details."
+      enum:
+      - UNSPECIFIED
+      - SYSTEM_DEFINED
+      - USER_DEFINED
+      - QUERY_ATTRIBUTE
+      type: string
+    subjectsListSubjectsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          description: Subjects that match request criteria.
+          items:
+            $ref: '#/components/schemas/subjectsGetSubjectResponse'
+          type: array
+        next_page_token:
+          title: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: string
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
+        order_by:
+          description: Returned for convenience and clarity - same as order_by in request.
+          type: string
+      type: object
+    v1CollectionMetadata:
+      properties:
+        uuid:
+          description: Random UUID returned in the resource response to represent the unique interaction with the API.  This can be thought of as a response id.
+          type: string
+        response_time_millis:
+          description: Time difference in milliseconds between when the request was received and when the response was generated, that is, the latency.
+          format: int64
+          type: integer
+      title: Metadata that will be returned with each collection-level GET
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      type: object
+    SubjectRelationshipTypeEntityDirection:
+      default: UNSPECIFIED
+      description: " - UNSPECIFIED: Unspecified - an important option for filtering use cases when no preference is desired.\nThis is not a valid option when creating a subject relationship type.\n - UNIDIRECTIONAL: Indicates a one-way relationship from the subject specified by the from_subject_id,\nto the subject specified by the to_subject_id.\n - BIDIRECTIONAL: Indicates a two-way relationship between the subject specified by the from_subject_id,\nand the subject specified by the to_subject_id."
+      enum:
+      - UNSPECIFIED
+      - UNIDIRECTIONAL
+      - BIDIRECTIONAL
+      type: string
+    subjectsGetSubjectRelationshipTypeResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/subjectsSubjectRelationshipTypeEntity'
+      type: object
+    subjectsGetSubjectCategoryResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/subjectsSubjectCategoryEntity'
+      type: object
+    subjectsListSubjectRelationshipsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          description: Subject Relationships that match request criteria.
+          items:
+            $ref: '#/components/schemas/subjectsGetSubjectRelationshipResponse'
+          type: array
+        next_page_token:
+          title: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: string
+        total_size:
+          format: int32
+          title: 'This is the total number of items in the collection across all the pages.  It is returned with every page and may change during page traversal.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: integer
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
+        order_by:
+          description: Returned for convenience and clarity - same as order_by in request.
+          type: string
+      type: object
+    subjectsListSubjectCategoriesResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          description: Subject categories that match request criteria.
+          items:
+            $ref: '#/components/schemas/subjectsGetSubjectCategoryResponse'
+          type: array
+        next_page_token:
+          title: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: string
+        total_size:
+          format: int32
+          title: 'This is the total number of items in the collection across all the pages.  It is returned with every page and may change during page traversal.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: integer
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
+        order_by:
+          description: Returned for convenience and clarity - same as order_by in request.
+          type: string
+      type: object
+    subjectsSubjectEntity:
+      properties:
+        subject_id:
+          title: hash of subject_category_id and term
+          type: string
+        term:
+          description: Required.  A case-insensitive natural language term that represents the subject.
+          type: string
+        subject_category_id:
+          title: Required.  Subject category
+          type: string
+        definition:
+          description: Optional.  Natural language definition of the subject.  This is provided by an expert.
+          type: string
+        reference_count:
+          format: uint64
+          title: "!Deprecation Warning!: This field will no longer be kept up to date and must be considered inaccurate. To view subject reference counts \nplease see ListDomainSubjects.\nOptional.  Number of references to the subject found in the content.  This is provided if known and will otherwise be zero.\nReference count at different levels:\nContent - occurrences in content (0 for Prior Knowledge content subjects)\nContent Group - occurrences in all contents in CG\nKnowledge Domain - occurrences in all contents in KD"
+          type: string
+        content_count:
+          format: uint64
+          title: 'Optional.  The number of contents that refer to the subject.  This is provided if known and will otherwise be zero.
+
+            Content - 1
+
+            Content Group - count of all contents it occurs in, in the CG
+
+            Knowledge Domain - count of all contents it occurs in, in the KD'
+          type: string
+      title: A subject is an unique tuple of term and category
+      type: object
+    subjectsListSubjectRelationshipTypesResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          description: Subject Relationship Types that match request criteria.
+          items:
+            $ref: '#/components/schemas/subjectsGetSubjectRelationshipTypeResponse'
+          type: array
+        next_page_token:
+          title: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: string
+        total_size:
+          format: int32
+          title: 'This is the total number of items in the collection across all the pages.  It is returned with every page and may change during page traversal.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: integer
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
+        order_by:
+          description: Returned for convenience and clarity - same as order_by in request.
+          type: string
+      type: object
+    subjectsGetSubjectRelationshipResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/subjectsSubjectRelationshipEntity'
+      type: object
+    rpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+      type: object
+x-original-swagger-version: '2.0'
+x-tagGroups:
+- name: Retrieval
+  tags:
+  - Exchange
+  - ExchangeEvent
+  - Feedback
+  - GenerativeExchange
+  - GenerativeFeedback
+  - TextToSpeech
+- name: Reporting
+  tags:
+  - Analytics
+  - Reports
+  - Usage
+- name: Collection Management
+  tags:
+  - KnowledgeCollectionService
+  - KnowledgeDomain
+  - ContentService
+  - RegressionTest
+  - Subjects
+- name: Organization Management
+  tags:
+  - ConnectorServiceExternal
+  - OrganizationService
+  - Messages
+- name: Ops Console
+  tags:
+  - Operations
