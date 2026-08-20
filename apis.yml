@@ -24,6 +24,17 @@ tags:
 - Artificial Intelligence
 - Retrieval Augmented Generation
 - Enterprise Search
+- Knowledge-Management
+- Generative AI
+- Document Ingestion
+- Content Connectors
+- Agents
+- Machine-Learning
+- Company
+tags_raw:
+- Artificial Intelligence
+- Retrieval Augmented Generation
+- Enterprise Search
 - Knowledge Management
 - Generative AI
 - Document Ingestion
@@ -75,6 +86,8 @@ apis:
   humanURL: https://docs.pryon.com/docs/about-pryon-platform
   baseURL: https://api.pryon.net
   tags:
+  - Content Service
+  tags_raw:
   - ContentService
   properties:
   - type: OpenAPI
@@ -198,6 +211,8 @@ apis:
   humanURL: https://docs.pryon.com/docs/about-pryon-platform
   baseURL: https://api.pryon.net
   tags:
+  - Knowledge Collection Service
+  tags_raw:
   - KnowledgeCollectionService
   properties:
   - type: OpenAPI
@@ -235,6 +250,8 @@ apis:
   humanURL: https://docs.pryon.com/docs/about-pryon-platform
   baseURL: https://api.pryon.net
   tags:
+  - Message
+  tags_raw:
   - Messages
   properties:
   - type: OpenAPI
@@ -307,6 +324,8 @@ apis:
   humanURL: https://docs.pryon.com/docs/about-pryon-platform
   baseURL: https://api.pryon.net
   tags:
+  - Text-to-Speech
+  tags_raw:
   - TextToSpeech
   properties:
   - type: OpenAPI
