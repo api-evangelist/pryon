@@ -13,6 +13,18 @@ description: 'Pryon is a Raleigh, North Carolina enterprise AI company founded i
   Universal Connector, and the platform is deployed in Pryon SaaS, customer VPC, on-premises
   and air-gapped environments. All 276 published operations are documented at docs.pryon.com,
   which also serves an llms.txt index for agents.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://cdn.prod.website-files.com/65cbae0a3956181cf7a74c75/672bde6da9f2a2dc6e54b6fa_fav-icon-pryon-wht-bg.png
 url: https://raw.githubusercontent.com/api-evangelist/pryon/refs/heads/main/apis.yml
 x-type: company
