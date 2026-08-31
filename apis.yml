@@ -98,7 +98,7 @@ apis:
   humanURL: https://docs.pryon.com/docs/about-pryon-platform
   baseURL: https://api.pryon.net
   tags:
-  - Content Service
+  - ContentService
   tags_raw:
   - ContentService
   properties:
@@ -223,7 +223,7 @@ apis:
   humanURL: https://docs.pryon.com/docs/about-pryon-platform
   baseURL: https://api.pryon.net
   tags:
-  - Knowledge Collection Service
+  - KnowledgeCollectionService
   tags_raw:
   - KnowledgeCollectionService
   properties:
@@ -336,7 +336,7 @@ apis:
   humanURL: https://docs.pryon.com/docs/about-pryon-platform
   baseURL: https://api.pryon.net
   tags:
-  - Text-to-Speech
+  - TextToSpeech
   tags_raw:
   - TextToSpeech
   properties:
