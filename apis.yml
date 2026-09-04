@@ -25,6 +25,19 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: low
+  source:
+  - authentication
+  - security
+  generated: '2026-09-02'
+  method: derived
 image: https://cdn.prod.website-files.com/65cbae0a3956181cf7a74c75/672bde6da9f2a2dc6e54b6fa_fav-icon-pryon-wht-bg.png
 url: https://raw.githubusercontent.com/api-evangelist/pryon/refs/heads/main/apis.yml
 x-type: company
@@ -418,8 +431,9 @@ common:
   url: agentic-access/pryon-agentic-access.yml
 - type: AgentSkill
   url: skills/_index.yml
-- type: MCPServer
+- type: X-MCPServerCandidate
   url: mcp/pryon-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
 - type: ToolCrosswalk
   url: mcp/pryon-tool-crosswalk.yml
 - type: Events
