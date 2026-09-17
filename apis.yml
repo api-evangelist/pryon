@@ -105,20 +105,6 @@ apis:
     url: openapi/pryon-content-service-api-openapi.yml
   - type: StreamingEndpoint
     url: asyncapi/pryon-events.yml
-- aid: pryon:pryon-contentservice-api
-  name: Pryon Content Service API
-  description: The ContentService API from Pryon — 13 operation(s) for contentservice.
-  humanURL: https://docs.pryon.com/docs/about-pryon-platform
-  baseURL: https://api.pryon.net
-  tags:
-  - Content Service
-  tags_raw:
-  - ContentService
-  properties:
-  - type: OpenAPI
-    url: openapi/pryon-contentservice-api-openapi.yml
-  - type: StreamingEndpoint
-    url: asyncapi/pryon-events.yml
 - aid: pryon:pryon-exchange-api
   name: Pryon Exchange API
   description: The Exchange API from Pryon — 3 operation(s) for exchange.
@@ -229,21 +215,6 @@ apis:
     url: openapi/pryon-knowledge-collection-service-api-openapi.yml
   - type: StreamingEndpoint
     url: asyncapi/pryon-events.yml
-- aid: pryon:pryon-knowledgecollectionservice-api
-  name: Pryon Knowledge Collection Service API
-  description: >-
-    The KnowledgeCollectionService API from Pryon — 11 operation(s) for knowledgecollectionservice.
-  humanURL: https://docs.pryon.com/docs/about-pryon-platform
-  baseURL: https://api.pryon.net
-  tags:
-  - Knowledge Collection Service
-  tags_raw:
-  - KnowledgeCollectionService
-  properties:
-  - type: OpenAPI
-    url: openapi/pryon-knowledgecollectionservice-api-openapi.yml
-  - type: StreamingEndpoint
-    url: asyncapi/pryon-events.yml
 - aid: pryon:pryon-knowledgedomain-api
   name: Pryon Knowledge Domain API
   description: The KnowledgeDomain API from Pryon — 17 operation(s) for knowledgedomain.
@@ -343,20 +314,6 @@ apis:
     url: openapi/pryon-subjects-api-openapi.yml
   - type: StreamingEndpoint
     url: asyncapi/pryon-events.yml
-- aid: pryon:pryon-texttospeech-api
-  name: Pryon Text To Speech API
-  description: The TextToSpeech API from Pryon — 1 operation(s) for texttospeech.
-  humanURL: https://docs.pryon.com/docs/about-pryon-platform
-  baseURL: https://api.pryon.net
-  tags:
-  - Text-to-Speech
-  tags_raw:
-  - TextToSpeech
-  properties:
-  - type: OpenAPI
-    url: openapi/pryon-texttospeech-api-openapi.yml
-  - type: StreamingEndpoint
-    url: asyncapi/pryon-events.yml
 - aid: pryon:pryon-userdefinedmetadata-api
   name: Pryon User Defined Metadata API
   description: The UserDefinedMetadata API from Pryon — 9 operation(s) for userdefinedmetadata.
@@ -367,6 +324,18 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/pryon-userdefinedmetadata-api-openapi.yml
+  - type: StreamingEndpoint
+    url: asyncapi/pryon-events.yml
+- aid: pryon:pryon-text-to-speech-api
+  name: Pryon Text To Speech API
+  description: The Text To Speech API from Pryon — 1 operation(s) for text to speech.
+  humanURL: https://docs.pryon.com/docs/about-pryon-platform
+  baseURL: https://api.pryon.net
+  tags:
+  - Text To Speech
+  properties:
+  - type: OpenAPI
+    url: openapi/pryon-text-to-speech-api-openapi.yml
   - type: StreamingEndpoint
     url: asyncapi/pryon-events.yml
 maintainers:
