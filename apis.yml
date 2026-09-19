@@ -47,7 +47,7 @@ created: '2026-08-02'
 modified: '2026-08-02'
 tags:
 - Artificial Intelligence
-- Retrieval Augmented Generation
+- RAG
 - Enterprise Search
 - Knowledge-Management
 - Generative AI
@@ -332,6 +332,8 @@ apis:
   humanURL: https://docs.pryon.com/docs/about-pryon-platform
   baseURL: https://api.pryon.net
   tags:
+  - Text-to-Speech
+  tags_raw:
   - Text To Speech
   properties:
   - type: OpenAPI
