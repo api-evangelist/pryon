@@ -26,14 +26,12 @@ paths:
           format: int32
       - name: page_token
         in: query
-        description: Returned for multiple pages; must be specified in each request for two pages per
-          sheet using the page token parameter.
+        description: Returned for multiple pages; must be specified in each request for two pages per sheet using the page token parameter.
         schema:
           type: string
       - name: solution_id
         in: query
-        description: Licensed solution for the collection; if not provided, the organizational default
-          solution is automatically assigned.
+        description: Licensed solution for the collection; if not provided, the organizational default solution is automatically assigned.
         schema:
           type: string
       responses:
@@ -56,8 +54,7 @@ components:
       properties:
         uuid:
           type: string
-          description: Unique identifier for the interaction returned in the resource response; the response
-            ID.
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
         response_time_millis:
           type: integer
           description: Response time (in milliseconds); latency.
@@ -70,36 +67,6 @@ components:
           $ref: '#/components/schemas/ResourceMetadata'
         data:
           $ref: '#/components/schemas/KnowledgeCollection'
-    GoogleProtobufAny:
-      type: object
-      properties:
-        '@type':
-          type: string
-          description: The type of the serialized message.
-      additionalProperties: true
-      description: Contains an arbitrary serialized message along with a @type that describes the type
-        of the serialized message.
-    ListCollectionsResponse:
-      type: object
-      properties:
-        metadata:
-          $ref: '#/components/schemas/CollectionMetadata'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ListCollectionItem'
-        next_page_token:
-          type: string
-          description: Returned for multiple pages; must be specified in each request for two pages per
-            sheet using the page token parameter.
-        total_size:
-          type: integer
-          description: Total number of items in the collection across all pages.
-          format: int32
-        page_size:
-          type: integer
-          description: Same as page size in request.
-          format: int32
     Status:
       type: object
       properties:
@@ -115,10 +82,35 @@ components:
           items:
             $ref: '#/components/schemas/GoogleProtobufAny'
           description: List of messages that carry the error details.
-      description: 'The `Status` type defines a logical error model that is suitable for different programming
-        environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc).
-        Each `Status` message contains three pieces of data: error code, error message, and error details.
-        You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+    GoogleProtobufAny:
+      type: object
+      properties:
+        '@type':
+          type: string
+          description: The type of the serialized message.
+      additionalProperties: true
+      description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
+    ListCollectionsResponse:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/CollectionMetadata'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListCollectionItem'
+        next_page_token:
+          type: string
+          description: Returned for multiple pages; must be specified in each request for two pages per sheet using the page token parameter.
+        total_size:
+          type: integer
+          description: Total number of items in the collection across all pages.
+          format: int32
+        page_size:
+          type: integer
+          description: Same as page size in request.
+          format: int32
     KnowledgeCollection:
       type: object
       properties:
@@ -132,8 +124,7 @@ components:
           type: array
           items:
             type: string
-          description: All identifiers that were active throughout the life of the collection; autogenerated
-            and listed in reverse order.
+          description: All identifiers that were active throughout the life of the collection; autogenerated and listed in reverse order.
         team_ids:
           type: array
           items:
@@ -141,16 +132,14 @@ components:
           description: Unique identifiers of the teams authorized to the knowledge collection.
         solution_id:
           type: string
-          description: Licensed solution for the collection; if not provided, the organizational default
-            solution is automatically assigned.
+          description: Licensed solution for the collection; if not provided, the organizational default solution is automatically assigned.
       description: Versioned collection of documents accessible by authorized users.
     ResourceMetadata:
       type: object
       properties:
         uuid:
           type: string
-          description: Unique identifier for the interaction returned in the resource response; the response
-            ID.
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
         create_time:
           type: string
           description: Time of the initial request.

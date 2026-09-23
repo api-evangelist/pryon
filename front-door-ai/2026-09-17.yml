@@ -1,0 +1,36 @@
+# Front Door AI Index — pryon — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: pryon
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.pryon.com
+  final_host: www.pryon.com
+  ownership: own
+  owner: pryon
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 40
+  host_score: 40
+  density: 46.24
+  words: 865
+  tiers:
+    agentic: 17
+    core: 22
+    model: 1
+  ambiguous: 9
+  top_terms:
+    AI: 18
+    agent: 8
+    RAG: 7
+    AI agent: 5
+    gen ai: 3
+    embedding: 2
+    LLMs: 1
+    OpenAI: 1
+    agentic: 1
+    chatbot: 1
+    intelligence: 1
+    retrieval-augmented: 1
