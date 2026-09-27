@@ -49,12 +49,12 @@ tags:
 - Artificial Intelligence
 - RAG
 - Enterprise Search
-- Knowledge-Management
+- Knowledge Management
 - Generative AI
 - Document Ingestion
 - Content Connectors
 - Agents
-- Machine-Learning
+- Machine Learning
 - Company
 tags_raw:
 - Artificial Intelligence
@@ -67,6 +67,8 @@ tags_raw:
 - Agents
 - Machine Learning
 - Company
+- Knowledge-Management
+- Machine-Learning
 apis:
 - aid: pryon:pryon-analytics-api
   name: Pryon Analytics API
@@ -332,8 +334,6 @@ apis:
   humanURL: https://docs.pryon.com/docs/about-pryon-platform
   baseURL: https://api.pryon.net
   tags:
-  - Text-to-Speech
-  tags_raw:
   - Text To Speech
   properties:
   - type: OpenAPI

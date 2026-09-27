@@ -298,15 +298,6 @@ paths:
       description: List the review perspective of a retrieval rating item.
 components:
   schemas:
-    filename_protobufAny:
-      properties:
-        type_url:
-          type: string
-        value:
-          format: byte
-          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
-          type: string
-      type: object
     filename_v1alpha1GenerativeRetrievalRating:
       properties:
         rating_id:
@@ -340,13 +331,14 @@ components:
           description: Freeform text for feedback provider.
           type: string
       type: object
-    filename_v1alpha1GenerativeRetrievalRatingReviewStatus:
-      description: " - UNSPECIFIED: Not a valid retrieval rating value.\n - PENDING: This retrieval rating is waiting to be inspected for approval or rejection (default).\n - COMPLETE: This retrieval rating has been inspected and acted upon. No further action will be taken."
-      type: string
-    filename_v1alpha1CreateGenerativeRetrievalRatingRequest:
+    filename_protobufAny:
       properties:
-        data:
-          $ref: '#/components/schemas/filename_v1alpha1GenerativeRetrievalRating'
+        type_url:
+          type: string
+        value:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
       type: object
     filename_v1alpha1GenerativeRetrievalRatingReview:
       properties:
@@ -373,24 +365,6 @@ components:
           $ref: '#/components/schemas/filename_v1alpha1GenerativeRetrievalRatingReviewStatus'
       title: Authority perspective of a Rating
       type: object
-    filename_v1alpha1ResourceMetadata:
-      properties:
-        uuid:
-          description: Unique identifier for the interaction returned in the resource response; the response ID.
-          type: string
-        create_time:
-          description: Time of the initial request.
-          format: date-time
-          type: string
-        update_time:
-          description: Time of the last update; 0 indicates updates have never been made.
-          format: date-time
-          type: string
-        response_time_millis:
-          format: int64
-          description: Response time (in milliseconds).
-          type: integer
-      type: object
     filename_v1alpha1UpdateGenerativeRetrievalRatingRequest:
       properties:
         data:
@@ -401,23 +375,22 @@ components:
           title: "The data path corresponding to the fields being updated in this request.\nReviewer can update the following fields:\n   data.flagged\n   data.status\nExample mask declaration in JSON format:\n   updateMask: \"data.flagged\"\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
           type: array
       type: object
-    filename_v1alpha1CollectionMetadata:
-      properties:
-        uuid:
-          description: Unique identifier for the interaction returned in the resource response; the response ID.
-          type: string
-        response_time_millis:
-          description: Response time (in milliseconds).
-          format: int64
-          type: integer
-      title: Metadata that will be returned with each collection-level GET
-      type: object
     filename_v1alpha1GetGenerativeRetrievalRatingReviewResponse:
       properties:
         metadata:
           $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
         data:
           $ref: '#/components/schemas/filename_v1alpha1GenerativeRetrievalRatingReview'
+      type: object
+    filename_v1alpha1UpdateGenerativeRetrievalRatingReviewRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1GenerativeRetrievalRatingReview'
+        update_mask:
+          items:
+            type: string
+          title: "The data path corresponding to the fields being updated in this request.\nReviewer can update the following fields:\n   data.flagged\n   data.status\nExample mask declaration in JSON format:\n   updateMask: \"data.flagged\"\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
+          type: array
       type: object
     filename_v1alpha1ListGenerativeRetrievalRatingReviewsResponse:
       properties:
@@ -442,22 +415,16 @@ components:
           description: Same as order by in request.
           type: string
       type: object
-    filename_v1alpha1UpdateGenerativeRetrievalRatingReviewRequest:
+    filename_v1alpha1CollectionMetadata:
       properties:
-        data:
-          $ref: '#/components/schemas/filename_v1alpha1GenerativeRetrievalRatingReview'
-        update_mask:
-          items:
-            type: string
-          title: "The data path corresponding to the fields being updated in this request.\nReviewer can update the following fields:\n   data.flagged\n   data.status\nExample mask declaration in JSON format:\n   updateMask: \"data.flagged\"\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
-          type: array
-      type: object
-    filename_v1alpha1GetGenerativeRetrievalRatingResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/filename_v1alpha1GenerativeRetrievalRating'
+        uuid:
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          type: string
+        response_time_millis:
+          description: Response time (in milliseconds).
+          format: int64
+          type: integer
+      title: Metadata that will be returned with each collection-level GET
       type: object
     filename_googlerpcStatus:
       properties:
@@ -470,6 +437,39 @@ components:
           items:
             $ref: '#/components/schemas/filename_protobufAny'
           type: array
+      type: object
+    filename_v1alpha1GenerativeRetrievalRatingReviewStatus:
+      description: " - UNSPECIFIED: Not a valid retrieval rating value.\n - PENDING: This retrieval rating is waiting to be inspected for approval or rejection (default).\n - COMPLETE: This retrieval rating has been inspected and acted upon. No further action will be taken."
+      type: string
+    filename_v1alpha1ResourceMetadata:
+      properties:
+        uuid:
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: Time of the last update; 0 indicates updates have never been made.
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          description: Response time (in milliseconds).
+          type: integer
+      type: object
+    filename_v1alpha1CreateGenerativeRetrievalRatingRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1GenerativeRetrievalRating'
+      type: object
+    filename_v1alpha1GetGenerativeRetrievalRatingResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1GenerativeRetrievalRating'
       type: object
   securitySchemes:
     oauth2_token:

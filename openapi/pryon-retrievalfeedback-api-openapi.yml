@@ -500,24 +500,22 @@ paths:
       description: Get information about a verified answer.
 components:
   schemas:
-    filename_v1alpha1ContactInfo:
-      properties:
-        contact_name:
-          description: Name of the contact person.
-          type: string
-        contact_email:
-          description: Email of the contact person.
-          type: string
-      type: object
-    filename_v1alpha1CreateRetrievalRatingRequest:
+    filename_v1alpha1UpdateRetrievalRatingReviewRequest:
       properties:
         data:
-          $ref: '#/components/schemas/filename_v1alpha1RetrievalRating'
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalRatingReview'
+        update_mask:
+          items:
+            type: string
+          title: "The data path corresponding to the fields being updated in this request.\nRetrieval Rating Reviewer can update the following fields:\n   data.flagged\n   data.status\nExample mask declaration in JSON format:\n   updateMask: \"data.flagged\"\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
+          type: array
       type: object
-    filename_v1alpha1UpdateVerifiedAnswerRequest:
+    filename_v1alpha1GetRetrievalRatingReviewResponse:
       properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
         data:
-          $ref: '#/components/schemas/filename_v1alpha1VerifiedAnswerItem'
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalRatingReview'
       type: object
     filename_v1alpha1RetrievalRatingReview:
       properties:
@@ -544,6 +542,20 @@ components:
           $ref: '#/components/schemas/filename_v1alpha1RetrievalRatingReviewStatus'
       title: Authority perspective of a Retrieval Rating
       type: object
+    filename_v1alpha1ListVerifiedAnswerItem:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1VerifiedAnswerItem'
+      type: object
+    filename_v1alpha1GetVerifiedAnswerResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1VerifiedAnswerItem'
+      type: object
     filename_googlerpcStatus:
       properties:
         code:
@@ -556,16 +568,16 @@ components:
             $ref: '#/components/schemas/filename_protobufAny'
           type: array
       type: object
-    filename_v1alpha1GetRetrievalRatingReviewResponse:
+    filename_v1alpha1UpdateRetrievalRatingRequest:
       properties:
-        metadata:
-          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
         data:
-          $ref: '#/components/schemas/filename_v1alpha1RetrievalRatingReview'
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalRating'
+        update_mask:
+          items:
+            type: string
+          title: "The data path corresponding to the fields being updated in this request.\nRetrieval Rating Creator can update the following fields:\n   data.rank\n   data.message\n   data.freeform_text\nExample mask declaration in JSON format:\n   updateMask: \"data.freeformText\"\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
+          type: array
       type: object
-    filename_v1alpha1RetrievalRatingReviewStatus:
-      description: " - UNSPECIFIED: Not a valid retrieval rating value.\n - PENDING: This retrieval rating is waiting to be inspected for approval or rejection (default).\n - COMPLETE: This retrieval rating has been inspected and acted upon. No further action will be taken."
-      type: string
     filename_v1alpha1GetRetrievalRatingResponse:
       properties:
         metadata:
@@ -573,45 +585,31 @@ components:
         data:
           $ref: '#/components/schemas/filename_v1alpha1RetrievalRating'
       type: object
-    filename_v1alpha1RetrievalRating:
+    filename_v1alpha1UpdateVerifiedAnswerRequest:
       properties:
-        rating_id:
-          description: Unique identifier for the exchange rating; automatically generated.
-          type: string
-        retrieval_id:
-          description: Unique ID of the generative retrieval item; only for retrievals matching active domains.
-          type: string
-        output_id:
-          description: Unique identifier for the output related to the feedback; relevant to n-best exchange responses; defaults to best_1.
-          type: string
-        creator_id:
-          description: Unique identifier for the user who provided feedback; output field, automatically populated.
-          type: string
-        question:
-          description: Question asked for the rated exchange; output only, automatically populated.
-          type: string
-        rank:
-          description: Rank value given by the user; valid responses are 1 (negative) and 5 (positive).
-          format: int32
-          type: integer
-        message:
-          description: User comment that provides additional context on the rating.
-          type: string
-        freeform_text:
-          description: Freeform text for feedback provider.
-          type: string
-      type: object
-    filename_v1alpha1ListVerifiedAnswerItem:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
         data:
           $ref: '#/components/schemas/filename_v1alpha1VerifiedAnswerItem'
       type: object
-    filename_v1alpha1CreateVerifiedAnswerResponse:
+    filename_v1alpha1ResourceMetadata:
       properties:
-        metadata:
-          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        uuid:
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: Time of the last update; 0 indicates updates have never been made.
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          description: Response time (in milliseconds).
+          type: integer
+      type: object
+    filename_v1alpha1CreateVerifiedAnswerRequest:
+      properties:
         data:
           $ref: '#/components/schemas/filename_v1alpha1VerifiedAnswerItem'
       type: object
@@ -664,70 +662,10 @@ components:
             type: string
           type: array
       type: object
-    filename_v1alpha1UpdateRetrievalRatingRequest:
-      properties:
-        data:
-          $ref: '#/components/schemas/filename_v1alpha1RetrievalRating'
-        update_mask:
-          items:
-            type: string
-          title: "The data path corresponding to the fields being updated in this request.\nRetrieval Rating Creator can update the following fields:\n   data.rank\n   data.message\n   data.freeform_text\nExample mask declaration in JSON format:\n   updateMask: \"data.freeformText\"\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
-          type: array
-      type: object
-    filename_v1alpha1ResourceMetadata:
-      properties:
-        uuid:
-          description: Unique identifier for the interaction returned in the resource response; the response ID.
-          type: string
-        create_time:
-          description: Time of the initial request.
-          format: date-time
-          type: string
-        update_time:
-          description: Time of the last update; 0 indicates updates have never been made.
-          format: date-time
-          type: string
-        response_time_millis:
-          format: int64
-          description: Response time (in milliseconds).
-          type: integer
-      type: object
-    filename_v1alpha1UpdateRetrievalRatingReviewRequest:
-      properties:
-        data:
-          $ref: '#/components/schemas/filename_v1alpha1RetrievalRatingReview'
-        update_mask:
-          items:
-            type: string
-          title: "The data path corresponding to the fields being updated in this request.\nRetrieval Rating Reviewer can update the following fields:\n   data.flagged\n   data.status\nExample mask declaration in JSON format:\n   updateMask: \"data.flagged\"\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
-          type: array
-      type: object
-    filename_v1alpha1ListVerifiedAnswersResponse:
+    filename_v1alpha1CreateVerifiedAnswerResponse:
       properties:
         metadata:
-          $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
-        items:
-          description: VerifiedAnswer Items meeting the list filter/ordering criteria.
-          items:
-            $ref: '#/components/schemas/filename_v1alpha1ListVerifiedAnswerItem'
-          type: array
-        next_page_token:
-          description: For multiple pages; must be specified in each request for two pages per sheet.
-          type: string
-        total_size:
-          description: Total number of items in the collection across all pages.
-          format: int32
-          type: integer
-        page_size:
-          description: Same as page size in request.
-          format: int32
-          type: integer
-        order_by:
-          description: Same as order by in request.
-          type: string
-      type: object
-    filename_v1alpha1CreateVerifiedAnswerRequest:
-      properties:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
         data:
           $ref: '#/components/schemas/filename_v1alpha1VerifiedAnswerItem'
       type: object
@@ -754,6 +692,68 @@ components:
           description: Same as order by in request.
           type: string
       type: object
+    filename_VerifiedAnswerItemVerifiedAnswerStatus:
+      default: UNSPECIFIED
+      title: "- PENDING_REVIEW: PENDING_REVIEW: This verified answer is pending review\n - APPROVED: APPROVED: This verified answer has been approved"
+      type: string
+    filename_v1alpha1UpdateVerifiedAnswerResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1VerifiedAnswerItem'
+      type: object
+    filename_protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      type: object
+    filename_v1alpha1ContactInfo:
+      properties:
+        contact_name:
+          description: Name of the contact person.
+          type: string
+        contact_email:
+          description: Email of the contact person.
+          type: string
+      type: object
+    filename_v1alpha1CreateRetrievalRatingRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1RetrievalRating'
+      type: object
+    filename_v1alpha1RetrievalRating:
+      properties:
+        rating_id:
+          description: Unique identifier for the exchange rating; automatically generated.
+          type: string
+        retrieval_id:
+          description: Unique ID of the generative retrieval item; only for retrievals matching active domains.
+          type: string
+        output_id:
+          description: Unique identifier for the output related to the feedback; relevant to n-best exchange responses; defaults to best_1.
+          type: string
+        creator_id:
+          description: Unique identifier for the user who provided feedback; output field, automatically populated.
+          type: string
+        question:
+          description: Question asked for the rated exchange; output only, automatically populated.
+          type: string
+        rank:
+          description: Rank value given by the user; valid responses are 1 (negative) and 5 (positive).
+          format: int32
+          type: integer
+        message:
+          description: User comment that provides additional context on the rating.
+          type: string
+        freeform_text:
+          description: Freeform text for feedback provider.
+          type: string
+      type: object
     filename_v1alpha1CollectionMetadata:
       properties:
         uuid:
@@ -765,33 +765,33 @@ components:
           type: integer
       title: Metadata that will be returned with each collection-level GET
       type: object
-    filename_protobufAny:
-      properties:
-        type_url:
-          type: string
-        value:
-          format: byte
-          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
-          type: string
-      type: object
-    filename_v1alpha1GetVerifiedAnswerResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/filename_v1alpha1VerifiedAnswerItem'
-      type: object
-    filename_v1alpha1UpdateVerifiedAnswerResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/filename_v1alpha1VerifiedAnswerItem'
-      type: object
-    filename_VerifiedAnswerItemVerifiedAnswerStatus:
-      default: UNSPECIFIED
-      title: "- PENDING_REVIEW: PENDING_REVIEW: This verified answer is pending review\n - APPROVED: APPROVED: This verified answer has been approved"
+    filename_v1alpha1RetrievalRatingReviewStatus:
+      description: " - UNSPECIFIED: Not a valid retrieval rating value.\n - PENDING: This retrieval rating is waiting to be inspected for approval or rejection (default).\n - COMPLETE: This retrieval rating has been inspected and acted upon. No further action will be taken."
       type: string
+    filename_v1alpha1ListVerifiedAnswersResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
+        items:
+          description: VerifiedAnswer Items meeting the list filter/ordering criteria.
+          items:
+            $ref: '#/components/schemas/filename_v1alpha1ListVerifiedAnswerItem'
+          type: array
+        next_page_token:
+          description: For multiple pages; must be specified in each request for two pages per sheet.
+          type: string
+        total_size:
+          description: Total number of items in the collection across all pages.
+          format: int32
+          type: integer
+        page_size:
+          description: Same as page size in request.
+          format: int32
+          type: integer
+        order_by:
+          description: Same as order by in request.
+          type: string
+      type: object
   securitySchemes:
     oauth2_token:
       description: The Pryon APIs are authenicated with an OAuth2 Bearer token.

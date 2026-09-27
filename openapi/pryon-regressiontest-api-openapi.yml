@@ -415,99 +415,6 @@ paths:
       description: Retrieves the test result corresponding to a given question id from storage. The question entity must already have been declared within the scope of the test collection. If the test result does not already exist on the server, such as on a first retrieval operation, it will be generated on the fly.
 components:
   schemas:
-    rpcStatus:
-      properties:
-        code:
-          format: int32
-          type: integer
-        message:
-          type: string
-        details:
-          items:
-            $ref: '#/components/schemas/protobufAny'
-          type: array
-      type: object
-    testGetTestQuestionResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/v1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/testTestQuestion'
-      type: object
-    testTestQuestion:
-      properties:
-        collection_id:
-          description: Required. Immutable after question creation. Must match an existing collection id.
-          type: string
-        question_id:
-          description: Required. Server assigned and immutable.
-          type: string
-        text:
-          description: Required. Immutable after question creation.
-          type: string
-      type: object
-    testListTestsResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/v1CollectionMetadata'
-        items:
-          items:
-            $ref: '#/components/schemas/testGetTestResponse'
-          type: array
-      type: object
-    testListTestResultsResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/v1CollectionMetadata'
-        items:
-          items:
-            $ref: '#/components/schemas/testGetTestResultResponse'
-          type: array
-        next_page_token:
-          description: If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
-          type: string
-        total_size:
-          format: int32
-          title: 'This is the total number of items in the collection across all the pages. It is computed with the first page request and returned with every subsequent page. The count will not include items that were added or removed after the fist page retrieval.
-
-            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
-          type: integer
-        page_size:
-          description: Returned for convenience and clarity - same as page_size in request.
-          format: int32
-          type: integer
-      type: object
-    testListTestQuestionsResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/v1CollectionMetadata'
-        items:
-          items:
-            $ref: '#/components/schemas/testGetTestQuestionResponse'
-          type: array
-        next_page_token:
-          description: If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
-          type: string
-        total_size:
-          format: int32
-          title: 'This is the total number of items matching query criteria across all the pages. It is computed with the first page request and returned with every subsequent page. The count will not include items that were added or removed after the fist page retrieval.
-
-            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
-          type: integer
-        page_size:
-          description: Returned for convenience and clarity - same as page_size in request.
-          format: int32
-          type: integer
-      type: object
-    protobufAny:
-      properties:
-        type_url:
-          type: string
-        value:
-          format: byte
-          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
-          type: string
-      type: object
     testGetTestResponse:
       properties:
         metadata:
@@ -515,20 +422,30 @@ components:
         data:
           $ref: '#/components/schemas/testTest'
       type: object
-    testTest:
+    v1ResourceMetadata:
       properties:
-        test_id:
-          description: Required. Server assigned and immutable after creation.
+        uuid:
+          description: UUID returned in the resource response, which represents the unique interaction with the API, that is, the response id.
           type: string
-        base_collection_id:
-          description: Required. An existing collection configured with a set of test questions to execute.
+        create_time:
+          description: Time of the initial request.
+          format: date-time
           type: string
-        draft_domain_id:
-          description: Required. An incumbent knowledge domain to be tested against the known collection id above.
+        update_time:
+          description: 'Time of the last update.
+
+            A value of 0 indicates it has never been updated.'
+          format: date-time
           type: string
-        name:
-          description: A human friendly test name.
-          type: string
+        response_time_millis:
+          format: int64
+          title: Time difference in milliseconds between when the request was received and when the response was generated
+          type: integer
+      type: object
+    testCreateTestQuestionRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/testTestQuestion'
       type: object
     testCreateTestRequest:
       properties:
@@ -562,32 +479,27 @@ components:
         verified_answer:
           $ref: '#/components/schemas/testAnswerPropertyChange'
       type: object
-    v1ResourceMetadata:
-      properties:
-        uuid:
-          description: UUID returned in the resource response, which represents the unique interaction with the API, that is, the response id.
-          type: string
-        create_time:
-          description: Time of the initial request.
-          format: date-time
-          type: string
-        update_time:
-          description: 'Time of the last update.
-
-            A value of 0 indicates it has never been updated.'
-          format: date-time
-          type: string
-        response_time_millis:
-          format: int64
-          title: Time difference in milliseconds between when the request was received and when the response was generated
-          type: integer
-      type: object
-    testGetTestResultResponse:
+    testListTestResultsResponse:
       properties:
         metadata:
-          $ref: '#/components/schemas/v1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/testTestResult'
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/testGetTestResultResponse'
+          type: array
+        next_page_token:
+          description: If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+          type: string
+        total_size:
+          format: int32
+          title: 'This is the total number of items in the collection across all the pages. It is computed with the first page request and returned with every subsequent page. The count will not include items that were added or removed after the fist page retrieval.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: integer
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
       type: object
     v1CollectionMetadata:
       properties:
@@ -600,6 +512,27 @@ components:
           type: integer
       title: Metadata that will be returned with each collection-level GET
       type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      type: object
+    rpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+      type: object
     testAnswerPropertyChange:
       properties:
         base_value:
@@ -609,10 +542,77 @@ components:
           title: The answer property as returned by the draft domain
           type: string
       type: object
-    testCreateTestQuestionRequest:
+    testGetTestQuestionResponse:
       properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
         data:
           $ref: '#/components/schemas/testTestQuestion'
+      type: object
+    testTest:
+      properties:
+        test_id:
+          description: Required. Server assigned and immutable after creation.
+          type: string
+        base_collection_id:
+          description: Required. An existing collection configured with a set of test questions to execute.
+          type: string
+        draft_domain_id:
+          description: Required. An incumbent knowledge domain to be tested against the known collection id above.
+          type: string
+        name:
+          description: A human friendly test name.
+          type: string
+      type: object
+    testListTestQuestionsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/testGetTestQuestionResponse'
+          type: array
+        next_page_token:
+          description: If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+          type: string
+        total_size:
+          format: int32
+          title: 'This is the total number of items matching query criteria across all the pages. It is computed with the first page request and returned with every subsequent page. The count will not include items that were added or removed after the fist page retrieval.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: integer
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
+      type: object
+    testGetTestResultResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/testTestResult'
+      type: object
+    testTestQuestion:
+      properties:
+        collection_id:
+          description: Required. Immutable after question creation. Must match an existing collection id.
+          type: string
+        question_id:
+          description: Required. Server assigned and immutable.
+          type: string
+        text:
+          description: Required. Immutable after question creation.
+          type: string
+      type: object
+    testListTestsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/testGetTestResponse'
+          type: array
       type: object
 x-original-swagger-version: '2.0'
 x-tagGroups:

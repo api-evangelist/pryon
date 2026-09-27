@@ -1627,6 +1627,94 @@ paths:
       description: Delete the Content and all its constituent child resources. This will also remove the Content from all Content Groups it is a member of - this has the effect of removing it from the relevant Knowledge Domains as well.
 components:
   schemas:
+    filename_v1alpha1ListContentItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1Content'
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+      type: object
+    filename_v1alpha1CollectionMetadata:
+      properties:
+        uuid:
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          type: string
+        response_time_millis:
+          description: Response time (in milliseconds).
+          format: int64
+          type: integer
+      title: Metadata that will be returned with each collection-level GET
+      type: object
+    filename_v1alpha1SubjectEntity:
+      properties:
+        subject_id:
+          title: hash of subject_category_id and term
+          type: string
+        term:
+          description: Natural language term that represents the subject; case-sensitive.
+          type: string
+        subject_category_id:
+          title: Subject category
+          type: string
+        definition:
+          description: Natural language definition of the subject.
+          type: string
+        reference_count:
+          format: uint64
+          title: "!Deprecation Warning!: This field will no longer be kept up to date and must be considered inaccurate. To view subject reference counts \nplease see ListDomainSubjects.\nOptional.  Number of references to the subject found in the content.  This is provided if known and will otherwise be zero.\nReference count at different levels:\nContent - occurrences in content (0 for Prior Knowledge content subjects)\nContent Group - occurrences in all contents in CG\nKnowledge Domain - occurrences in all contents in KD"
+          type: string
+        content_count:
+          format: uint64
+          title: Number of contents that refer to the subject.
+          type: string
+      title: A subject is an unique tuple of term and category
+      type: object
+    filename_v1alpha1ListProcessedContentExtractsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/filename_v1alpha1ListProcessedContentExtractsItem'
+          title: Array of process extracts matching the request.
+          type: array
+        next_page_token:
+          title: For multiple pages; must be specified in each request for two pages per sheet.
+          type: string
+        page_size:
+          description: Same as page size in request.
+          format: int32
+          type: integer
+      type: object
+    filename_v1alpha1GetContentGroupResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1ContentGroup'
+      type: object
+    filename_v1alpha1GetSummaryResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1SummaryItem'
+      type: object
+    filename_TextBoxTextLine:
+      properties:
+        textline_bbox:
+          title: 'Bounding box for the text line
+
+            The coordinates of the text line in the format: x1,y1,x2,y2.'
+          type: string
+        textline_text_bbox:
+          title: 'The coordinates of the text line in the format: char1_x1,char1_x2,char2_x1,char2_x2,...'
+          type: string
+        textline_text:
+          title: Text within the text line
+          type: string
+      title: Text line level information
+      type: object
     filename_PageTextBox:
       properties:
         bbox:
@@ -1659,70 +1747,38 @@ components:
           type: array
       title: TextBox level information
       type: object
+    filename_v1alpha1ContentGroupContent:
+      properties:
+        content_id:
+          description: Unique identifier for the content within the matching content groups.
+          type: string
+        content_group_id:
+          description: Unique identifier for the content group.
+          type: string
+      title: Joins Content to a Content Group
+      type: object
+    filename_PageTextBoxTimestamp:
+      properties:
+        time:
+          title: 'Time of the timestamp
+
+            The format of the time is HH:MM:SS.'
+          type: string
+        start_char_index:
+          format: int64
+          title: Start character index for the timestamp relative to the TextBox's text
+          type: integer
+      title: Timestamps information
+      type: object
     filename_v1alpha1CreateContentGroupRequest:
       properties:
         data:
           $ref: '#/components/schemas/filename_v1alpha1ContentGroup'
       type: object
-    filename_v1alpha1ContentGroupContentRequest:
-      properties:
-        data:
-          $ref: '#/components/schemas/filename_v1alpha1ContentGroupContent'
-      type: object
-    filename_v1alpha1ListSubjectsResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
-        items:
-          description: Subjects matching request criteria.
-          items:
-            $ref: '#/components/schemas/filename_v1alpha1GetSubjectResponse'
-          type: array
-        next_page_token:
-          title: For multiple pages; must be specified in each request for two pages per sheet.
-          type: string
-        page_size:
-          description: Same as page size in request.
-          format: int32
-          type: integer
-        order_by:
-          description: Same as order by in request.
-          type: string
-      type: object
-    filename_v1alpha1SummaryItem:
-      properties:
-        text:
-          type: string
-        html:
-          type: string
-      type: object
-    filename_v1alpha1ListContentItem:
-      properties:
-        data:
-          $ref: '#/components/schemas/filename_v1alpha1Content'
-        metadata:
-          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
-      type: object
-    filename_ContentExtractPage:
-      properties:
-        text_boxes:
-          items:
-            $ref: '#/components/schemas/filename_PageTextBox'
-          title: List of TextBoxes on the page
-          type: array
-        page_number:
-          title: Page number
-          type: string
-        page_bbox:
-          title: Bounding box for the page
-          type: string
-        anchor_char_offsets:
-          items:
-            $ref: '#/components/schemas/filename_PageAnchorCharOffset'
-          title: List of anchor character offsets
-          type: array
-      title: Page level information
-      type: object
+    filename_v1alpha1ContentStatus:
+      default: UNKNOWN
+      description: "The Content status will only be updated by the server.\n\n - CONFIGURED: Initial status; content is configured. \n - UNSUPPORTED: Unsupported content found during the listing phase; cannot be ingested.\n - INGESTING: Content is currently being ingested. \n - INGESTED: Ingestion successful; content cannot be transitioned from this state.\n - INGESTION_FAILED: Ingestion failed; retry the ingestion process."
+      type: string
     filename_googlerpcStatus:
       properties:
         code:
@@ -1735,95 +1791,6 @@ components:
             $ref: '#/components/schemas/filename_protobufAny'
           type: array
       type: object
-    filename_v1alpha1CreateContentRequest:
-      properties:
-        data:
-          $ref: '#/components/schemas/filename_v1alpha1Content'
-      type: object
-    filename_v1alpha1DataSourceMetadata:
-      properties:
-        display_field_name:
-          description: The data source metadata category, display_field_name.
-          type: string
-        value:
-          description: The data source metadata value.
-          properties: {}
-          type: object
-        data_type:
-          $ref: '#/components/schemas/filename_v1alpha1DataType'
-      type: object
-    filename_v1alpha1ListRetrievalContentExtractsResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
-        items:
-          items:
-            $ref: '#/components/schemas/filename_v1alpha1ListRetrievalContentExtractsItem'
-          title: Array of retrieval extracts matching the request.
-          type: array
-        next_page_token:
-          title: For multiple pages; must be specified in each request for two pages per sheet.
-          type: string
-        page_size:
-          description: Sme as page size in request.
-          format: int32
-          type: integer
-      type: object
-    filename_v1alpha1GetContentGroupResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/filename_v1alpha1ContentGroup'
-      type: object
-    filename_v1alpha1DataType:
-      default: DATATYPE_UNSPECIFIED
-      description: " - DATATYPE_UNSPECIFIED: Unspecified - indicates that data type is not set. This is not a valid option when creating a metadata field.\n - STRING: Free form text characters.\n - BOOLEAN: A boolean value (true or false).\n - INTEGER: Positive and negative whole numbers, but not decimals.\n - DECIMAL: Any number with decimal places.\n - DATETIME: Datetime string.\n - DATETIME_EPOCH: Datetime in epoch time format."
-      type: string
-    filename_PageAnchorCharOffset:
-      description: 'The location of a hyperlink''s anchor text within the display_text.
-
-        Only avaliable if the content is a HTML.'
-      properties:
-        end:
-          format: int64
-          title: End offset
-          type: integer
-        start:
-          format: int64
-          title: Start offset
-          type: integer
-        text:
-          title: Text at the offset
-          type: string
-        uri:
-          title: URI at the offset
-          type: string
-      type: object
-    filename_v1alpha1GetSummaryResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/filename_v1alpha1SummaryItem'
-      type: object
-    filename_v1alpha1ListContentsResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
-        items:
-          items:
-            $ref: '#/components/schemas/filename_v1alpha1ListContentItem'
-          title: Array of Contents that match the request
-          type: array
-        next_page_token:
-          title: For multiple pages; must be specified in each request for two pages per sheet.
-          type: string
-        page_size:
-          description: Same as page size in request.
-          format: int32
-          type: integer
-      type: object
     filename_v1alpha1ListContentGroupsResponse:
       properties:
         metadata:
@@ -1834,181 +1801,37 @@ components:
           description: Map of content groups that match the request; keyed by content group ID.
           type: object
       type: object
-    filename_v1alpha1ResourceMetadata:
+    filename_v1alpha1SummaryItem:
       properties:
-        uuid:
-          description: Unique identifier for the interaction returned in the resource response; the response ID.
+        text:
           type: string
-        create_time:
-          description: Time of the initial request.
-          format: date-time
+        html:
           type: string
-        update_time:
-          description: Time of the last update; 0 indicates updates have never been made.
-          format: date-time
-          type: string
-        response_time_millis:
-          format: int64
-          description: Response time (in milliseconds).
-          type: integer
       type: object
-    filename_v1alpha1ContentGroupContent:
-      properties:
-        content_id:
-          description: Unique identifier for the content within the matching content groups.
-          type: string
-        content_group_id:
-          description: Unique identifier for the content group.
-          type: string
-      title: Joins Content to a Content Group
-      type: object
-    filename_v1alpha1SubjectEntity:
-      properties:
-        subject_id:
-          title: hash of subject_category_id and term
-          type: string
-        term:
-          description: Natural language term that represents the subject; case-sensitive.
-          type: string
-        subject_category_id:
-          title: Subject category
-          type: string
-        definition:
-          description: Natural language definition of the subject.
-          type: string
-        reference_count:
-          format: uint64
-          title: "!Deprecation Warning!: This field will no longer be kept up to date and must be considered inaccurate. To view subject reference counts \nplease see ListDomainSubjects.\nOptional.  Number of references to the subject found in the content.  This is provided if known and will otherwise be zero.\nReference count at different levels:\nContent - occurrences in content (0 for Prior Knowledge content subjects)\nContent Group - occurrences in all contents in CG\nKnowledge Domain - occurrences in all contents in KD"
-          type: string
-        content_count:
-          format: uint64
-          title: Number of contents that refer to the subject.
-          type: string
-      title: A subject is an unique tuple of term and category
-      type: object
-    filename_v1alpha1GetSubjectResponse:
+    filename_v1alpha1DataType:
+      default: DATATYPE_UNSPECIFIED
+      description: " - DATATYPE_UNSPECIFIED: Unspecified - indicates that data type is not set. This is not a valid option when creating a metadata field.\n - STRING: Free form text characters.\n - BOOLEAN: A boolean value (true or false).\n - INTEGER: Positive and negative whole numbers, but not decimals.\n - DECIMAL: Any number with decimal places.\n - DATETIME: Datetime string.\n - DATETIME_EPOCH: Datetime in epoch time format."
+      type: string
+    filename_v1alpha1ListContentGroupContentsResponse:
       properties:
         metadata:
-          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/filename_v1alpha1SubjectEntity'
-      type: object
-    filename_v1alpha1ListContentGroupItem:
-      properties:
-        data:
-          $ref: '#/components/schemas/filename_v1alpha1ContentGroup'
-        metadata:
-          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
-      type: object
-    filename_v1alpha1CollectionMetadata:
-      properties:
-        uuid:
-          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/filename_v1alpha1ListContentGroupContentItem'
+          title: Map of all ContentGroup Content joins that match the request, keyed off of content_id
+          type: array
+        next_page_token:
+          title: For multiple pages; must be specified in each request for two pages per sheet.
           type: string
-        response_time_millis:
-          description: Response time (in milliseconds).
-          format: int64
+        total_size:
+          format: int32
+          title: Total number of items in the collection across all pages.
           type: integer
-      title: Metadata that will be returned with each collection-level GET
-      type: object
-    filename_v1alpha1ContentGroup:
-      properties:
-        content_group_id:
-          description: Unique identifier for the content group.
-          type: string
-        display_name:
-          description: Name of the collection.
-          type: string
-        description:
-          title: Description of the content group.
-          type: string
-        source_location:
-          description: Unique identifier for the source location of the content group.
-          type: string
-        content_statuses:
-          description: Content status for each item in the content group; index corresponds to the number of contents in each content group with that status.
-          items:
-            format: int32
-            type: integer
-          type: array
-        service_id:
-          description: Third-party service connect; if not specified, the oldest service connect with an authority and type matching the source location is assigned.
-          type: string
-      title: A parent collection of Contents
-      type: object
-    filename_ContentExtractReadPermission:
-      properties:
-        allow_emails:
-          description: A list of emails that have read permission for the content.
-          items:
-            type: string
-          type: array
-        allow_group_ids:
-          description: 'A list of group ids that have read permission for the content. This will
-
-            be different for each remote API. It does not need to follow any preset
-
-            pattern, but should be consistent across the particular remote API.'
-          items:
-            type: string
-          type: array
-        deny_emails:
-          description: A list of emails that do not have read permission for the content.
-          items:
-            type: string
-          type: array
-        deny_group_ids:
-          description: "A list of group ids that have read permission for the content. This will\n // be different for each remote API. It does not need to follow any preset\n // pattern, but should be consistent across the particular remote API."
-          items:
-            type: string
-          type: array
-        any_required_group_ids:
-          description: 'A list of group ids where a user needs to a part of AT LEAST ONE of them in order to access the content.
-
-            Even if a user exists in one of these groups, ''read'' permission could still be restricted.'
-          items:
-            type: string
-          type: array
-        all_required_group_ids:
-          description: 'A list group ids where a user needs to be a part of ALL of them in order to access the object.
-
-            Even if a user exists in all of these groups, ''read'' permission could still be restricted.'
-          items:
-            type: string
-          type: array
-        is_public:
-          description: A flag to indicate if the content is public.
-          type: boolean
-        unrestricted_emails:
-          description: A list of emails that always have read permission for the content.
-          items:
-            type: string
-          type: array
-      title: Permission properties
-      type: object
-    filename_TextBoxTextLine:
-      properties:
-        textline_bbox:
-          title: 'Bounding box for the text line
-
-            The coordinates of the text line in the format: x1,y1,x2,y2.'
-          type: string
-        textline_text_bbox:
-          title: 'The coordinates of the text line in the format: char1_x1,char1_x2,char2_x1,char2_x2,...'
-          type: string
-        textline_text:
-          title: Text within the text line
-          type: string
-      title: Text line level information
-      type: object
-    filename_protobufAny:
-      properties:
-        type_url:
-          type: string
-        value:
-          format: byte
-          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
-          type: string
+        page_size:
+          description: Same as page size in request.
+          format: int32
+          type: integer
       type: object
     filename_v1alpha1ContentExtract:
       properties:
@@ -2065,15 +1888,122 @@ components:
             }'
           type: object
       type: object
+    filename_v1alpha1ListRetrievalContentExtractsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/filename_v1alpha1ListRetrievalContentExtractsItem'
+          title: Array of retrieval extracts matching the request.
+          type: array
+        next_page_token:
+          title: For multiple pages; must be specified in each request for two pages per sheet.
+          type: string
+        page_size:
+          description: Sme as page size in request.
+          format: int32
+          type: integer
+      type: object
+    filename_v1alpha1ResourceMetadata:
+      properties:
+        uuid:
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: Time of the last update; 0 indicates updates have never been made.
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          description: Response time (in milliseconds).
+          type: integer
+      type: object
+    filename_ContentExtractPage:
+      properties:
+        text_boxes:
+          items:
+            $ref: '#/components/schemas/filename_PageTextBox'
+          title: List of TextBoxes on the page
+          type: array
+        page_number:
+          title: Page number
+          type: string
+        page_bbox:
+          title: Bounding box for the page
+          type: string
+        anchor_char_offsets:
+          items:
+            $ref: '#/components/schemas/filename_PageAnchorCharOffset'
+          title: List of anchor character offsets
+          type: array
+      title: Page level information
+      type: object
+    filename_v1alpha1ListRetrievalContentExtractsItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1ContentExtract'
+      type: object
+    filename_v1alpha1GetSubjectResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1SubjectEntity'
+      type: object
+    filename_v1alpha1ContentGroupContentRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1ContentGroupContent'
+      type: object
+    filename_v1alpha1GetContentGroupContentResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1ContentGroupContent'
+      type: object
+    filename_v1alpha1CreateContentRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1Content'
+      type: object
+    filename_v1alpha1GetContentResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1Content'
+      type: object
     filename_v1alpha1ListProcessedContentExtractsItem:
       properties:
         data:
           $ref: '#/components/schemas/filename_v1alpha1ContentExtract'
       type: object
-    filename_v1alpha1ContentStatus:
-      default: UNKNOWN
-      description: "The Content status will only be updated by the server.\n\n - CONFIGURED: Initial status; content is configured. \n - UNSUPPORTED: Unsupported content found during the listing phase; cannot be ingested.\n - INGESTING: Content is currently being ingested. \n - INGESTED: Ingestion successful; content cannot be transitioned from this state.\n - INGESTION_FAILED: Ingestion failed; retry the ingestion process."
-      type: string
+    filename_PageAnchorCharOffset:
+      description: 'The location of a hyperlink''s anchor text within the display_text.
+
+        Only avaliable if the content is a HTML.'
+      properties:
+        end:
+          format: int64
+          title: End offset
+          type: integer
+        start:
+          format: int64
+          title: Start offset
+          type: integer
+        text:
+          title: Text at the offset
+          type: string
+        uri:
+          title: URI at the offset
+          type: string
+      type: object
     filename_v1alpha1Content:
       properties:
         content_id:
@@ -2108,12 +2038,98 @@ components:
           description: Content key/value pair labels that identify characteristics of the content.
           type: object
       type: object
-    filename_v1alpha1GetContentResponse:
+    filename_ContentExtractReadPermission:
       properties:
+        allow_emails:
+          description: A list of emails that have read permission for the content.
+          items:
+            type: string
+          type: array
+        allow_group_ids:
+          description: 'A list of group ids that have read permission for the content. This will
+
+            be different for each remote API. It does not need to follow any preset
+
+            pattern, but should be consistent across the particular remote API.'
+          items:
+            type: string
+          type: array
+        deny_emails:
+          description: A list of emails that do not have read permission for the content.
+          items:
+            type: string
+          type: array
+        deny_group_ids:
+          description: "A list of group ids that have read permission for the content. This will\n // be different for each remote API. It does not need to follow any preset\n // pattern, but should be consistent across the particular remote API."
+          items:
+            type: string
+          type: array
+        any_required_group_ids:
+          description: 'A list of group ids where a user needs to a part of AT LEAST ONE of them in order to access the content.
+
+            Even if a user exists in one of these groups, ''read'' permission could still be restricted.'
+          items:
+            type: string
+          type: array
+        all_required_group_ids:
+          description: 'A list group ids where a user needs to be a part of ALL of them in order to access the object.
+
+            Even if a user exists in all of these groups, ''read'' permission could still be restricted.'
+          items:
+            type: string
+          type: array
+        is_public:
+          description: A flag to indicate if the content is public.
+          type: boolean
+        unrestricted_emails:
+          description: A list of emails that always have read permission for the content.
+          items:
+            type: string
+          type: array
+      title: Permission properties
+      type: object
+    filename_protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      type: object
+    filename_v1alpha1ListContentGroupContentItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/filename_v1alpha1ContentGroupContent'
         metadata:
           $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+      type: object
+    filename_v1alpha1ListContentGroupItem:
+      properties:
         data:
-          $ref: '#/components/schemas/filename_v1alpha1Content'
+          $ref: '#/components/schemas/filename_v1alpha1ContentGroup'
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
+      type: object
+    filename_v1alpha1ListSubjectsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
+        items:
+          description: Subjects matching request criteria.
+          items:
+            $ref: '#/components/schemas/filename_v1alpha1GetSubjectResponse'
+          type: array
+        next_page_token:
+          title: For multiple pages; must be specified in each request for two pages per sheet.
+          type: string
+        page_size:
+          description: Same as page size in request.
+          format: int32
+          type: integer
+        order_by:
+          description: Same as order by in request.
+          type: string
       type: object
     filename_v1alpha1GetContentMetadataResponse:
       properties:
@@ -2124,67 +2140,51 @@ components:
           title: The Raw Data Source Metadata for the Content
           type: object
       type: object
-    filename_v1alpha1ListContentGroupContentItem:
+    filename_v1alpha1ContentGroup:
       properties:
-        data:
-          $ref: '#/components/schemas/filename_v1alpha1ContentGroupContent'
-        metadata:
-          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
-      type: object
-    filename_PageTextBoxTimestamp:
-      properties:
-        time:
-          title: 'Time of the timestamp
-
-            The format of the time is HH:MM:SS.'
+        content_group_id:
+          description: Unique identifier for the content group.
           type: string
-        start_char_index:
-          format: int64
-          title: Start character index for the timestamp relative to the TextBox's text
-          type: integer
-      title: Timestamps information
-      type: object
-    filename_v1alpha1ListRetrievalContentExtractsItem:
-      properties:
-        data:
-          $ref: '#/components/schemas/filename_v1alpha1ContentExtract'
-      type: object
-    filename_v1alpha1ListContentGroupContentsResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
-        items:
+        display_name:
+          description: Name of the collection.
+          type: string
+        description:
+          title: Description of the content group.
+          type: string
+        source_location:
+          description: Unique identifier for the source location of the content group.
+          type: string
+        content_statuses:
+          description: Content status for each item in the content group; index corresponds to the number of contents in each content group with that status.
           items:
-            $ref: '#/components/schemas/filename_v1alpha1ListContentGroupContentItem'
-          title: Map of all ContentGroup Content joins that match the request, keyed off of content_id
+            format: int32
+            type: integer
           type: array
-        next_page_token:
-          title: For multiple pages; must be specified in each request for two pages per sheet.
+        service_id:
+          description: Third-party service connect; if not specified, the oldest service connect with an authority and type matching the source location is assigned.
           type: string
-        total_size:
-          format: int32
-          title: Total number of items in the collection across all pages.
-          type: integer
-        page_size:
-          description: Same as page size in request.
-          format: int32
-          type: integer
+      title: A parent collection of Contents
       type: object
-    filename_v1alpha1GetContentGroupContentResponse:
+    filename_v1alpha1DataSourceMetadata:
       properties:
-        metadata:
-          $ref: '#/components/schemas/filename_v1alpha1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/filename_v1alpha1ContentGroupContent'
+        display_field_name:
+          description: The data source metadata category, display_field_name.
+          type: string
+        value:
+          description: The data source metadata value.
+          properties: {}
+          type: object
+        data_type:
+          $ref: '#/components/schemas/filename_v1alpha1DataType'
       type: object
-    filename_v1alpha1ListProcessedContentExtractsResponse:
+    filename_v1alpha1ListContentsResponse:
       properties:
         metadata:
           $ref: '#/components/schemas/filename_v1alpha1CollectionMetadata'
         items:
           items:
-            $ref: '#/components/schemas/filename_v1alpha1ListProcessedContentExtractsItem'
-          title: Array of process extracts matching the request.
+            $ref: '#/components/schemas/filename_v1alpha1ListContentItem'
+          title: Array of Contents that match the request
           type: array
         next_page_token:
           title: For multiple pages; must be specified in each request for two pages per sheet.
@@ -2194,98 +2194,15 @@ components:
           format: int32
           type: integer
       type: object
-    contentContentGroupContentRequest:
-      properties:
-        data:
-          $ref: '#/components/schemas/contentContentGroupContent'
-      type: object
-    contentCreateContentRequest:
-      properties:
-        data:
-          $ref: '#/components/schemas/contentContent'
-      type: object
-    contentUpdateContentGroupRequest:
-      properties:
-        data:
-          $ref: '#/components/schemas/contentContentGroup'
-        update_mask:
-          items:
-            type: string
-          title: "The data path corresponding to the fields being updated in this request.\nOnly the following fields are updatable:\n data.display_name\n data.description\nNote: if no update_mask is supplied, both the display_name and description will be updated.\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
-          type: array
-      type: object
-    subjectsSubjectEntity:
-      properties:
-        subject_id:
-          title: hash of subject_category_id and term
-          type: string
-        term:
-          description: Required.  A case-insensitive natural language term that represents the subject.
-          type: string
-        subject_category_id:
-          title: Required.  Subject category
-          type: string
-        definition:
-          description: Optional.  Natural language definition of the subject.  This is provided by an expert.
-          type: string
-        reference_count:
-          format: uint64
-          title: "!Deprecation Warning!: This field will no longer be kept up to date and must be considered inaccurate. To view subject reference counts \nplease see ListDomainSubjects.\nOptional.  Number of references to the subject found in the content.  This is provided if known and will otherwise be zero.\nReference count at different levels:\nContent - occurrences in content (0 for Prior Knowledge content subjects)\nContent Group - occurrences in all contents in CG\nKnowledge Domain - occurrences in all contents in KD"
-          type: string
-        content_count:
-          format: uint64
-          title: 'Optional.  The number of contents that refer to the subject.  This is provided if known and will otherwise be zero.
-
-            Content - 1
-
-            Content Group - count of all contents it occurs in, in the CG
-
-            Knowledge Domain - count of all contents it occurs in, in the KD'
-          type: string
-      title: A subject is an unique tuple of term and category
-      type: object
-    contentGetContentResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/v1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/contentContent'
-      type: object
-    subjectsListSubjectsResponse:
+    contentListContentGroupsResponse:
       properties:
         metadata:
           $ref: '#/components/schemas/v1CollectionMetadata'
         items:
-          description: Subjects that match request criteria.
-          items:
-            $ref: '#/components/schemas/subjectsGetSubjectResponse'
-          type: array
-        next_page_token:
-          title: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
-
-            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
-          type: string
-        page_size:
-          description: Returned for convenience and clarity - same as page_size in request.
-          format: int32
-          type: integer
-        order_by:
-          description: Returned for convenience and clarity - same as order_by in request.
-          type: string
-      type: object
-    contentGetSummaryResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/v1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/contentSummaryItem'
-      type: object
-    contentGetContentGroupResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/v1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/contentContentGroup'
+          additionalProperties:
+            $ref: '#/components/schemas/contentListContentGroupItem'
+          description: Map of ContentGroups that match the request, keyed by content_group_id.
+          type: object
       type: object
     contentContent:
       description: A Content object is a single content source and is an element of a Content Group. Source location currently must be a remote file (for example a PDF document, a Google Doc, or the HTML file associated with a single web page). The Content object describes the content, while the actual data is stored in Captures with the Content as its parent.
@@ -2325,180 +2242,6 @@ components:
 
             Labels can be used to identify characteristics of the Content.'
           type: object
-      type: object
-    contentSummaryItem:
-      properties:
-        text:
-          type: string
-        html:
-          type: string
-      type: object
-    contentContentGroupContent:
-      properties:
-        content_id:
-          title: 'Required: ID of the Content'
-          type: string
-        content_group_id:
-          title: 'Required: ID of the ContentGroup'
-          type: string
-      title: A ContentGroupContent joins Content to a ContentGroup
-      type: object
-    contentListContentGroupItem:
-      properties:
-        data:
-          $ref: '#/components/schemas/contentContentGroup'
-        metadata:
-          $ref: '#/components/schemas/v1ResourceMetadata'
-      type: object
-    contentListContentGroupContentItem:
-      properties:
-        data:
-          $ref: '#/components/schemas/contentContentGroupContent'
-        metadata:
-          $ref: '#/components/schemas/v1ResourceMetadata'
-      type: object
-    contentContentStatus:
-      default: UNKNOWN
-      description: "The Content status will only be updated by the server.\n\n - CONFIGURED: CONFIGURED: This is the initial status, indicating the Content is configured. Should be transitioned to INGESTING when the ingestion process starts.\n - UNSUPPORTED: UNSUPPORTED: This Content was found during the listing phase, but we do not support it for ingestion.\n - INGESTING: INGESTING: The Content is currently being ingested. Should be transitioned to INGESTED upon successful ingestion, or INGESTION_FAILED upon ingestion failure.\n - INGESTED: INGESTED: Ingestion for this Content has succeeded. Content cannot be transitioned from this state.\n - INGESTION_FAILED: INGESTION_FAILED: Ingestion for this Content failed. Content can be transitioned to INGESTING upon re-try of the ingestion process."
-      enum:
-      - UNKNOWN
-      - CONFIGURED
-      - UNSUPPORTED
-      - INGESTING
-      - INGESTED
-      - INGESTION_FAILED
-      type: string
-    contentListContentsResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/v1CollectionMetadata'
-        items:
-          items:
-            $ref: '#/components/schemas/contentListContentItem'
-          title: Array of Contents that match the request
-          type: array
-        next_page_token:
-          title: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
-
-            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
-          type: string
-        page_size:
-          description: Returned for convenience and clarity - same as page_size in request.
-          format: int32
-          type: integer
-      type: object
-    contentListContentGroupsResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/v1CollectionMetadata'
-        items:
-          additionalProperties:
-            $ref: '#/components/schemas/contentListContentGroupItem'
-          description: Map of ContentGroups that match the request, keyed by content_group_id.
-          type: object
-      type: object
-    contentGetContentGroupContentResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/v1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/contentContentGroupContent'
-      type: object
-    contentCreateContentGroupRequest:
-      properties:
-        data:
-          $ref: '#/components/schemas/contentContentGroup'
-      type: object
-    v1ResourceMetadata:
-      properties:
-        uuid:
-          description: UUID returned in the resource response, which represents the unique interaction with the API, that is, the response id.
-          type: string
-        create_time:
-          description: Time of the initial request.
-          format: date-time
-          type: string
-        update_time:
-          description: 'Time of the last update.
-
-            A value of 0 indicates it has never been updated.'
-          format: date-time
-          type: string
-        response_time_millis:
-          format: int64
-          title: Time difference in milliseconds between when the request was received and when the response was generated
-          type: integer
-      type: object
-    googlerpcStatus:
-      properties:
-        code:
-          format: int32
-          type: integer
-        message:
-          type: string
-        details:
-          items:
-            $ref: '#/components/schemas/protobufAny'
-          type: array
-      type: object
-    contentListContentGroupContentsResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/v1CollectionMetadata'
-        items:
-          items:
-            $ref: '#/components/schemas/contentListContentGroupContentItem'
-          title: Map of all ContentGroup Content joins that match the request, keyed off of content_id
-          type: array
-        next_page_token:
-          title: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
-
-            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
-          type: string
-        total_size:
-          format: int32
-          title: 'This is the total number of items in the collection across all the pages.  It is returned with every page and may change during page traversal.
-
-            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
-          type: integer
-        page_size:
-          description: Returned for convenience and clarity - same as page_size in request.
-          format: int32
-          type: integer
-      type: object
-    subjectsGetSubjectResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/v1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/subjectsSubjectEntity'
-      type: object
-    contentListContentItem:
-      properties:
-        data:
-          $ref: '#/components/schemas/contentContent'
-        metadata:
-          $ref: '#/components/schemas/v1ResourceMetadata'
-      type: object
-    protobufAny:
-      properties:
-        type_url:
-          type: string
-        value:
-          format: byte
-          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
-          type: string
-      type: object
-    v1CollectionMetadata:
-      properties:
-        uuid:
-          description: Random UUID returned in the resource response to represent the unique interaction with the API.  This can be thought of as a response id.
-          type: string
-        response_time_millis:
-          description: Time difference in milliseconds between when the request was received and when the response was generated, that is, the latency.
-          format: int64
-          type: integer
-      title: Metadata that will be returned with each collection-level GET
       type: object
     contentContentGroup:
       properties:
@@ -2540,6 +2283,263 @@ components:
         It can be joined with many Knowledge Domains
 
         It can be joined with many Contents'
+      type: object
+    contentCreateContentRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/contentContent'
+      type: object
+    googlerpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+      type: object
+    v1CollectionMetadata:
+      properties:
+        uuid:
+          description: Random UUID returned in the resource response to represent the unique interaction with the API.  This can be thought of as a response id.
+          type: string
+        response_time_millis:
+          description: Time difference in milliseconds between when the request was received and when the response was generated, that is, the latency.
+          format: int64
+          type: integer
+      title: Metadata that will be returned with each collection-level GET
+      type: object
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      type: object
+    contentListContentItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/contentContent'
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+      type: object
+    subjectsListSubjectsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          description: Subjects that match request criteria.
+          items:
+            $ref: '#/components/schemas/subjectsGetSubjectResponse'
+          type: array
+        next_page_token:
+          title: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: string
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
+        order_by:
+          description: Returned for convenience and clarity - same as order_by in request.
+          type: string
+      type: object
+    contentGetContentResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/contentContent'
+      type: object
+    contentListContentGroupContentItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/contentContentGroupContent'
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+      type: object
+    subjectsGetSubjectResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/subjectsSubjectEntity'
+      type: object
+    contentListContentsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/contentListContentItem'
+          title: Array of Contents that match the request
+          type: array
+        next_page_token:
+          title: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: string
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
+      type: object
+    contentUpdateContentGroupRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/contentContentGroup'
+        update_mask:
+          items:
+            type: string
+          title: "The data path corresponding to the fields being updated in this request.\nOnly the following fields are updatable:\n data.display_name\n data.description\nNote: if no update_mask is supplied, both the display_name and description will be updated.\nsee https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"
+          type: array
+      type: object
+    v1ResourceMetadata:
+      properties:
+        uuid:
+          description: UUID returned in the resource response, which represents the unique interaction with the API, that is, the response id.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: 'Time of the last update.
+
+            A value of 0 indicates it has never been updated.'
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          title: Time difference in milliseconds between when the request was received and when the response was generated
+          type: integer
+      type: object
+    contentGetContentGroupResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/contentContentGroup'
+      type: object
+    contentGetSummaryResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/contentSummaryItem'
+      type: object
+    contentContentGroupContent:
+      properties:
+        content_id:
+          title: 'Required: ID of the Content'
+          type: string
+        content_group_id:
+          title: 'Required: ID of the ContentGroup'
+          type: string
+      title: A ContentGroupContent joins Content to a ContentGroup
+      type: object
+    contentSummaryItem:
+      properties:
+        text:
+          type: string
+        html:
+          type: string
+      type: object
+    contentCreateContentGroupRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/contentContentGroup'
+      type: object
+    contentContentGroupContentRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/contentContentGroupContent'
+      type: object
+    contentListContentGroupContentsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/contentListContentGroupContentItem'
+          title: Map of all ContentGroup Content joins that match the request, keyed off of content_id
+          type: array
+        next_page_token:
+          title: 'If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.  However, the only reliable way to know if more pages exist is to request the next page when a full page of items is returned.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: string
+        total_size:
+          format: int32
+          title: 'This is the total number of items in the collection across all the pages.  It is returned with every page and may change during page traversal.
+
+            see https://cloud.google.com/apis/design/design_patterns#list_pagination'
+          type: integer
+        page_size:
+          description: Returned for convenience and clarity - same as page_size in request.
+          format: int32
+          type: integer
+      type: object
+    contentListContentGroupItem:
+      properties:
+        data:
+          $ref: '#/components/schemas/contentContentGroup'
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+      type: object
+    subjectsSubjectEntity:
+      properties:
+        subject_id:
+          title: hash of subject_category_id and term
+          type: string
+        term:
+          description: Required.  A case-insensitive natural language term that represents the subject.
+          type: string
+        subject_category_id:
+          title: Required.  Subject category
+          type: string
+        definition:
+          description: Optional.  Natural language definition of the subject.  This is provided by an expert.
+          type: string
+        reference_count:
+          format: uint64
+          title: "!Deprecation Warning!: This field will no longer be kept up to date and must be considered inaccurate. To view subject reference counts \nplease see ListDomainSubjects.\nOptional.  Number of references to the subject found in the content.  This is provided if known and will otherwise be zero.\nReference count at different levels:\nContent - occurrences in content (0 for Prior Knowledge content subjects)\nContent Group - occurrences in all contents in CG\nKnowledge Domain - occurrences in all contents in KD"
+          type: string
+        content_count:
+          format: uint64
+          title: 'Optional.  The number of contents that refer to the subject.  This is provided if known and will otherwise be zero.
+
+            Content - 1
+
+            Content Group - count of all contents it occurs in, in the CG
+
+            Knowledge Domain - count of all contents it occurs in, in the KD'
+          type: string
+      title: A subject is an unique tuple of term and category
+      type: object
+    contentContentStatus:
+      default: UNKNOWN
+      description: "The Content status will only be updated by the server.\n\n - CONFIGURED: CONFIGURED: This is the initial status, indicating the Content is configured. Should be transitioned to INGESTING when the ingestion process starts.\n - UNSUPPORTED: UNSUPPORTED: This Content was found during the listing phase, but we do not support it for ingestion.\n - INGESTING: INGESTING: The Content is currently being ingested. Should be transitioned to INGESTED upon successful ingestion, or INGESTION_FAILED upon ingestion failure.\n - INGESTED: INGESTED: Ingestion for this Content has succeeded. Content cannot be transitioned from this state.\n - INGESTION_FAILED: INGESTION_FAILED: Ingestion for this Content failed. Content can be transitioned to INGESTING upon re-try of the ingestion process."
+      enum:
+      - UNKNOWN
+      - CONFIGURED
+      - UNSUPPORTED
+      - INGESTING
+      - INGESTED
+      - INGESTION_FAILED
+      type: string
+    contentGetContentGroupContentResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/contentContentGroupContent'
       type: object
   securitySchemes:
     oauth2_token:
