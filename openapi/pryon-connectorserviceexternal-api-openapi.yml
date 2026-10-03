@@ -593,32 +593,34 @@ components:
 
         Content-Type: application/octet-stream'
       type: object
-    v1ResourceMetadata:
+    v1ListContentItem:
       properties:
-        uuid:
-          description: UUID returned in the resource response, which represents the unique interaction with the API, that is, the response id.
-          type: string
-        create_time:
-          description: Time of the initial request.
-          format: date-time
-          type: string
-        update_time:
-          description: 'Time of the last update.
-
-            A value of 0 indicates it has never been updated.'
-          format: date-time
-          type: string
-        response_time_millis:
-          format: int64
-          title: Time difference in milliseconds between when the request was received and when the response was generated
-          type: integer
-      type: object
-    v1GetReadPermissionResponse:
-      properties:
+        data:
+          $ref: '#/components/schemas/v1Content'
         metadata:
           $ref: '#/components/schemas/v1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/v1ReadPermission'
+      type: object
+    v1CustomAttributeType:
+      default: UNKNOWN
+      enum:
+      - UNKNOWN
+      - STRING
+      - LONG
+      - DOUBLE
+      - DATETIME
+      - BOOLEAN
+      type: string
+    googlerpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
       type: object
     ContentTaskValue:
       default: UNSPECIFIED
@@ -641,6 +643,13 @@ components:
       - BLOCKED
       - CANCELLED
       type: string
+    v1GetReadPermissionResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/v1ReadPermission'
+      type: object
     v1ReadPermission:
       properties:
         allow_emails:
@@ -690,35 +699,28 @@ components:
             type: string
           type: array
       type: object
-    v1ListContentItem:
+    v1CustomAttribute:
       properties:
-        data:
-          $ref: '#/components/schemas/v1Content'
-        metadata:
-          $ref: '#/components/schemas/v1ResourceMetadata'
-      type: object
-    googlerpcStatus:
-      properties:
-        code:
-          format: int32
-          type: integer
-        message:
+        name:
+          description: The name of the attribute.
           type: string
-        details:
-          items:
-            $ref: '#/components/schemas/protobufAny'
-          type: array
-      type: object
-    v1CollectionMetadata:
-      properties:
-        uuid:
-          description: Random UUID returned in the resource response to represent the unique interaction with the API.  This can be thought of as a response id.
+        value:
+          description: The value of the attribute.
           type: string
-        response_time_millis:
-          description: Time difference in milliseconds between when the request was received and when the response was generated, that is, the latency.
-          format: int64
-          type: integer
-      title: Metadata that will be returned with each collection-level GET
+        value_type:
+          $ref: '#/components/schemas/v1CustomAttributeType'
+      type: object
+    v1GroupPermission:
+      properties:
+        group_id:
+          description: Required. A group id.
+          type: string
+        group_name:
+          description: A group name.
+          type: string
+        group_email:
+          description: A group email.
+          type: string
       type: object
     protobufAny:
       properties:
@@ -727,18 +729,6 @@ components:
         value:
           format: byte
           pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
-          type: string
-      type: object
-    v1Range:
-      properties:
-        range_start:
-          format: int64
-          type: string
-        range_end:
-          format: int64
-          type: string
-        total_size:
-          format: int64
           type: string
       type: object
     v1ListContentsResponse:
@@ -754,58 +744,6 @@ components:
           description: 'An opaque token that the server can interpret to determine the starting point for the next set of results.
 
             If there are multiple pages, this will be returned and must be specified in each request for pages 2-N using the "page_token" query param.'
-          type: string
-      type: object
-    v1CustomAttribute:
-      properties:
-        name:
-          description: The name of the attribute.
-          type: string
-        value:
-          description: The value of the attribute.
-          type: string
-        value_type:
-          $ref: '#/components/schemas/v1CustomAttributeType'
-      type: object
-    v1ContentStatus:
-      default: UNKNOWN
-      description: "The Connector's Content's system status will only be updated by the server.\nDo not set on proxy integrations.\n\n - INITIATED: The content has been identified for processing but has not yet been processed.\nIndicates that the content has been identified and is ready to start the uploading and downloading content data steps.\n - UPLOADING: Indicates that the content is currently being uploaded in parts. This status is useful if you want to track the progress of the upload before all parts are complete.\n - UPLOAD_COMPLETE: Indicates that all parts of the content have been successfully uploaded and the content is ready to be processed.\n - DOWNLOADING: Indicates that the content is currently being downloaded in parts. This status can be used if there's a need to track the progress of the download before all parts are complete.\n - DOWNLOAD_COMPLETE: Indicates that all parts of the content have been successfully downloaded and the content is ready to be processed.\n - PROCESSED: The content has been successfully processed and is ready for ETL and indexing steps.\n - FAILED: There was an error while processing this piece of content. The error could be due to various reasons, such as format issues or communication problems with the source.\n - DELETED: The content has been removed, either because it was deleted from the source and was detected and propagated during the synchronization process."
-      enum:
-      - UNKNOWN
-      - INITIATED
-      - UPLOADING
-      - UPLOAD_COMPLETE
-      - DOWNLOADING
-      - DOWNLOAD_COMPLETE
-      - PROCESSED
-      - FAILED
-      - DELETED
-      type: string
-    v1ListGroupPermissionsResponse:
-      properties:
-        items:
-          additionalProperties:
-            $ref: '#/components/schemas/v1GroupPermission'
-          description: Required. A map of group id to group permission.
-          type: object
-      type: object
-    v1ListGroupPermissionMembersResponse:
-      properties:
-        emails:
-          items:
-            type: string
-          type: array
-      type: object
-    v1GroupPermission:
-      properties:
-        group_id:
-          description: Required. A group id.
-          type: string
-        group_name:
-          description: A group name.
-          type: string
-        group_email:
-          description: A group email.
           type: string
       type: object
     v1Content:
@@ -938,17 +876,67 @@ components:
         system_status_reason:
           type: string
       type: object
-    v1CustomAttributeType:
+    v1ResourceMetadata:
+      properties:
+        uuid:
+          description: UUID returned in the resource response, which represents the unique interaction with the API, that is, the response id.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: 'Time of the last update.
+
+            A value of 0 indicates it has never been updated.'
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          title: Time difference in milliseconds between when the request was received and when the response was generated
+          type: integer
+      type: object
+    v1ListGroupPermissionsResponse:
+      properties:
+        items:
+          additionalProperties:
+            $ref: '#/components/schemas/v1GroupPermission'
+          description: Required. A map of group id to group permission.
+          type: object
+      type: object
+    v1ContentStatus:
       default: UNKNOWN
+      description: "The Connector's Content's system status will only be updated by the server.\nDo not set on proxy integrations.\n\n - INITIATED: The content has been identified for processing but has not yet been processed.\nIndicates that the content has been identified and is ready to start the uploading and downloading content data steps.\n - UPLOADING: Indicates that the content is currently being uploaded in parts. This status is useful if you want to track the progress of the upload before all parts are complete.\n - UPLOAD_COMPLETE: Indicates that all parts of the content have been successfully uploaded and the content is ready to be processed.\n - DOWNLOADING: Indicates that the content is currently being downloaded in parts. This status can be used if there's a need to track the progress of the download before all parts are complete.\n - DOWNLOAD_COMPLETE: Indicates that all parts of the content have been successfully downloaded and the content is ready to be processed.\n - PROCESSED: The content has been successfully processed and is ready for ETL and indexing steps.\n - FAILED: There was an error while processing this piece of content. The error could be due to various reasons, such as format issues or communication problems with the source.\n - DELETED: The content has been removed, either because it was deleted from the source and was detected and propagated during the synchronization process."
       enum:
       - UNKNOWN
-      - STRING
-      - LONG
-      - DOUBLE
-      - DATETIME
-      - BOOLEAN
+      - INITIATED
+      - UPLOADING
+      - UPLOAD_COMPLETE
+      - DOWNLOADING
+      - DOWNLOAD_COMPLETE
+      - PROCESSED
+      - FAILED
+      - DELETED
       type: string
-    v1alpha1Range:
+    v1CollectionMetadata:
+      properties:
+        uuid:
+          description: Random UUID returned in the resource response to represent the unique interaction with the API.  This can be thought of as a response id.
+          type: string
+        response_time_millis:
+          description: Time difference in milliseconds between when the request was received and when the response was generated, that is, the latency.
+          format: int64
+          type: integer
+      title: Metadata that will be returned with each collection-level GET
+      type: object
+    v1ListGroupPermissionMembersResponse:
+      properties:
+        emails:
+          items:
+            type: string
+          type: array
+      type: object
+    v1Range:
       properties:
         range_start:
           format: int64
@@ -960,42 +948,17 @@ components:
           format: int64
           type: string
       type: object
-    v1alpha1CustomAttributeType:
-      default: UNKNOWN
-      enum:
-      - UNKNOWN
-      - STRING
-      - LONG
-      - DOUBLE
-      - DATETIME
-      - BOOLEAN
-      type: string
-    v1alpha1ListGroupPermissionMembersResponse:
+    v1alpha1Range:
       properties:
-        emails:
-          items:
-            description: List of emails and associated content permissions.
-            type: string
-          description: List of emails and associated content permissions.
-          type: array
-      type: object
-    v1alpha1ResourceMetadata:
-      properties:
-        uuid:
-          description: Unique identifier for the interaction returned in the resource response; the response ID.
-          type: string
-        create_time:
-          description: Time of the initial request.
-          format: date-time
-          type: string
-        update_time:
-          description: Time of the last update; 0 indicates updates have never been made.
-          format: date-time
-          type: string
-        response_time_millis:
+        range_start:
           format: int64
-          description: Response time (in milliseconds).
-          type: integer
+          type: string
+        range_end:
+          format: int64
+          type: string
+        total_size:
+          format: int64
+          type: string
       type: object
     v1alpha1Content:
       properties:
@@ -1094,6 +1057,25 @@ components:
           description: Detailed reason for the system status.
           type: string
       type: object
+    v1alpha1ContentDataResponse:
+      description: <bytes-data>
+      properties:
+        content_range_header:
+          $ref: '#/components/schemas/v1alpha1Range'
+        bytes_data:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+      title: 'The response contains the Content-Range header and the content data.
+
+        HTTP/1.1 206 Partial Content
+
+        Content-Range: bytes <range-start>-<range-end>/<total_size>
+
+        Content-Length: <bytes-length>
+
+        Content-Type: application/octet-stream'
+      type: object
     v1alpha1CustomAttribute:
       properties:
         name:
@@ -1105,10 +1087,38 @@ components:
         value_type:
           $ref: '#/components/schemas/v1alpha1CustomAttributeType'
       type: object
+    v1alpha1CustomAttributeType:
+      default: UNKNOWN
+      enum:
+      - UNKNOWN
+      - STRING
+      - LONG
+      - DOUBLE
+      - DATETIME
+      - BOOLEAN
+      type: string
     v1alpha1ContentStatus:
       default: UNKNOWN
       description: "The Connector Content system status is only updated by the server.\nDo not set on proxy integrations.\n\n - INITIATED: The content has been identified for processing but has not yet been processed.\nIndicates that the content has been identified and is ready to start the uploading and downloading content data steps.\n - UPLOADING: Indicates that the content is currently being uploaded in parts. This status is useful if you want to track the progress of the upload before all parts are complete.\n - UPLOAD_COMPLETE: Indicates that all parts of the content have been successfully uploaded and the content is ready to be processed.\n - DOWNLOADING: Indicates that the content is currently being downloaded in parts. This status can be used if there's a need to track the progress of the download before all parts are complete.\n - DOWNLOAD_COMPLETE: Indicates that all parts of the content have been successfully downloaded and the content is ready to be processed.\n - PROCESSED: The content has been successfully processed and is ready for ETL and indexing steps.\n - FAILED: There was an error while processing this piece of content. The error could be due to various reasons, such as format issues or communication problems with the source.\n - DELETED: The content has been removed, either because it was deleted from the source and was detected and propagated during the synchronization process."
       type: string
+    v1alpha1ResourceMetadata:
+      properties:
+        uuid:
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: Time of the last update; 0 indicates updates have never been made.
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          description: Response time (in milliseconds).
+          type: integer
+      type: object
     v1alpha1ListContentsResponse:
       properties:
         metadata:
@@ -1122,6 +1132,21 @@ components:
           description: For multiple pages; must be specified in each request for two pages per sheet.
           type: string
       type: object
+    ContentTaskValue_2:
+      default: UNSPECIFIED
+      description: Optional for Proxy connectors.
+      type: string
+    v1alpha1CollectionMetadata:
+      properties:
+        uuid:
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          type: string
+        response_time_millis:
+          description: Response time (in milliseconds).
+          format: int64
+          type: integer
+      title: Metadata that will be returned with each collection-level GET
+      type: object
     v1alpha1ListContentItem:
       properties:
         data:
@@ -1129,22 +1154,15 @@ components:
         metadata:
           $ref: '#/components/schemas/v1alpha1ResourceMetadata'
       type: object
-    v1alpha1GroupPermission:
+    v1alpha1ListGroupPermissionMembersResponse:
       properties:
-        group_id:
-          description: Unique identifier for a group.
-          type: string
-        group_name:
-          description: The group name.
-          type: string
-        group_email:
-          description: The group email.
-          type: string
+        emails:
+          items:
+            description: List of emails and associated content permissions.
+            type: string
+          description: List of emails and associated content permissions.
+          type: array
       type: object
-    ContentTaskValue_2:
-      default: UNSPECIFIED
-      description: Optional for Proxy connectors.
-      type: string
     v1alpha1GetReadPermissionResponse:
       properties:
         metadata:
@@ -1193,49 +1211,31 @@ components:
             type: string
           type: array
       type: object
-    v1alpha1ListGroupPermissionsResponse:
+    v1alpha1GroupPermission:
       properties:
-        items:
-          additionalProperties:
-            $ref: '#/components/schemas/v1alpha1GroupPermission'
-          description: Maps group IDs to group permissions.
-          type: object
-      type: object
-    v1alpha1CollectionMetadata:
-      properties:
-        uuid:
-          description: Unique identifier for the interaction returned in the resource response; the response ID.
+        group_id:
+          description: Unique identifier for a group.
           type: string
-        response_time_millis:
-          description: Response time (in milliseconds).
-          format: int64
-          type: integer
-      title: Metadata that will be returned with each collection-level GET
-      type: object
-    v1alpha1ContentDataResponse:
-      description: <bytes-data>
-      properties:
-        content_range_header:
-          $ref: '#/components/schemas/v1alpha1Range'
-        bytes_data:
-          format: byte
-          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+        group_name:
+          description: The group name.
           type: string
-      title: 'The response contains the Content-Range header and the content data.
-
-        HTTP/1.1 206 Partial Content
-
-        Content-Range: bytes <range-start>-<range-end>/<total_size>
-
-        Content-Length: <bytes-length>
-
-        Content-Type: application/octet-stream'
+        group_email:
+          description: The group email.
+          type: string
       type: object
     v1alpha1GetMetadataResponse:
       properties:
         data_source_metadata:
           properties: {}
           description: The raw JSON blob of the metadata from the data source or system of record (SOR).
+          type: object
+      type: object
+    v1alpha1ListGroupPermissionsResponse:
+      properties:
+        items:
+          additionalProperties:
+            $ref: '#/components/schemas/v1alpha1GroupPermission'
+          description: Maps group IDs to group permissions.
           type: object
       type: object
 x-refined-from:

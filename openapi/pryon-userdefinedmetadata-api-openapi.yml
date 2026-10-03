@@ -484,6 +484,54 @@ paths:
       - UserDefinedMetadata
 components:
   schemas:
+    GoogleProtobufAny:
+      additionalProperties: true
+      description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
+      properties:
+        '@type':
+          description: The type of the serialized message.
+          type: string
+      type: object
+    UpdateUserDefinedMetadataFieldRequest:
+      properties:
+        data:
+          $ref: '#/components/schemas/UserDefinedMetadataField'
+        update_mask:
+          description: A comma-separated list of fields being updated by the request, that is, data.display_field_name and data.description.
+          format: field-mask
+          type: string
+      type: object
+    CollectionMetadata:
+      description: Metadata that will be returned with each collection-level GET
+      properties:
+        uuid:
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          type: string
+        response_time_millis:
+          description: Response time (in milliseconds).
+          format: uint32
+          type: integer
+      type: object
+    ResourceMetadata:
+      properties:
+        uuid:
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: Time of the last update; 0 indicates updates have never been made.
+          format: date-time
+          type: string
+        response_time_millis:
+          description: Response time (in milliseconds).
+          format: uint32
+          type: integer
+      type: object
+    GoogleProtobufValue:
+      description: Represents a dynamically typed value which can be either null, a number, a string, a boolean, a recursive struct value, or a list of values.
     GetUserDefinedMetadataFieldResponse:
       properties:
         metadata:
@@ -491,14 +539,28 @@ components:
         data:
           $ref: '#/components/schemas/UserDefinedMetadataField'
       type: object
+    ListUserDefinedMetadataFieldsResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/GetUserDefinedMetadataFieldResponse'
+          type: array
+        next_page_token:
+          description: For multiple pages; must be specified in each request for two pages per sheet.
+          type: string
+        page_size:
+          description: Returned for convenience and clarity; same as page_size in request.
+          format: int32
+          type: integer
+      type: object
     CreateUserDefinedMetadataFieldRequest:
       description: "####################################\n ### User-Defined Metadata Fields ###\n ####################################"
       properties:
         data:
           $ref: '#/components/schemas/UserDefinedMetadataField'
       type: object
-    GoogleProtobufValue:
-      description: Represents a dynamically typed value which can be either null, a number, a string, a boolean, a recursive struct value, or a list of values.
     UserDefinedMetadataField:
       properties:
         user_defined_metadata_field_id:
@@ -515,15 +577,6 @@ components:
           type: string
         description:
           description: The description for the user-defined metadata field.
-          type: string
-      type: object
-    UpdateUserDefinedMetadataFieldRequest:
-      properties:
-        data:
-          $ref: '#/components/schemas/UserDefinedMetadataField'
-        update_mask:
-          description: A comma-separated list of fields being updated by the request, that is, data.display_field_name and data.description.
-          format: field-mask
           type: string
       type: object
     CreateUserDefinedMetadataFieldValuesRequest:
@@ -544,31 +597,50 @@ components:
           format: field-mask
           type: string
       type: object
-    ResourceMetadata:
+    ListCollectionsByMetadataFieldResponse:
       properties:
-        uuid:
-          description: Unique identifier for the interaction returned in the resource response; the response ID.
+        metadata:
+          $ref: '#/components/schemas/CollectionMetadata'
+        collection_ids:
+          description: A list of collection IDs associated with the specified metadata field.
+          items:
+            type: string
+          type: array
+        next_page_token:
+          description: For multiple pages; must be specified in each request for two pages per sheet.
           type: string
-        create_time:
-          description: Time of the initial request.
-          format: date-time
-          type: string
-        update_time:
-          description: Time of the last update; 0 indicates updates have never been made.
-          format: date-time
-          type: string
-        response_time_millis:
-          description: Response time (in milliseconds).
-          format: uint32
+        total_size:
+          description: The total number of items in the collection across all the pages.
+          format: int32
+          type: integer
+        page_size:
+          description: Returned for convenience and clarity; same as page_size in request.
+          format: int32
           type: integer
       type: object
-    GoogleProtobufAny:
-      additionalProperties: true
-      description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
+    UserDefinedMetadataFieldValue:
       properties:
-        '@type':
-          description: The type of the serialized message.
+        user_defined_metadata_field_value_id:
+          description: Server generated uuid for the user-defined metadata field value.
           type: string
+        collection_id:
+          description: Unique identifier for the parent collection; autogenerated and not editable.
+          type: string
+        user_defined_metadata_field_id:
+          description: The user-defined metadata field id this value is associated with.
+          type: string
+        canonical_value:
+          allOf:
+          - $ref: '#/components/schemas/GoogleProtobufValue'
+          description: 'The data source metadata canonical value: value type is based on the MetadataField data_type.'
+        canonical_value_display_name:
+          description: The name of the canonical value; for example, display name of "World Health Organization" for the canonical value "WHO".
+          type: string
+        synonyms:
+          description: The synonyms for the canonical value; for example, ["W.H.O", "World Health Organization"] for the canonical value "WHO".
+          items:
+            type: string
+          type: array
       type: object
     ListUserDefinedMetadataFieldValuesResponse:
       properties:
@@ -603,82 +675,10 @@ components:
             $ref: '#/components/schemas/GoogleProtobufAny'
           type: array
       type: object
-    CollectionMetadata:
-      description: Metadata that will be returned with each collection-level GET
-      properties:
-        uuid:
-          description: Unique identifier for the interaction returned in the resource response; the response ID.
-          type: string
-        response_time_millis:
-          description: Response time (in milliseconds).
-          format: uint32
-          type: integer
-      type: object
     GetUserDefinedMetadataFieldValueResponse:
       properties:
         metadata:
           $ref: '#/components/schemas/ResourceMetadata'
         data:
           $ref: '#/components/schemas/UserDefinedMetadataFieldValue'
-      type: object
-    ListCollectionsByMetadataFieldResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/CollectionMetadata'
-        collection_ids:
-          description: A list of collection IDs associated with the specified metadata field.
-          items:
-            type: string
-          type: array
-        next_page_token:
-          description: For multiple pages; must be specified in each request for two pages per sheet.
-          type: string
-        total_size:
-          description: The total number of items in the collection across all the pages.
-          format: int32
-          type: integer
-        page_size:
-          description: Returned for convenience and clarity; same as page_size in request.
-          format: int32
-          type: integer
-      type: object
-    ListUserDefinedMetadataFieldsResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/CollectionMetadata'
-        items:
-          items:
-            $ref: '#/components/schemas/GetUserDefinedMetadataFieldResponse'
-          type: array
-        next_page_token:
-          description: For multiple pages; must be specified in each request for two pages per sheet.
-          type: string
-        page_size:
-          description: Returned for convenience and clarity; same as page_size in request.
-          format: int32
-          type: integer
-      type: object
-    UserDefinedMetadataFieldValue:
-      properties:
-        user_defined_metadata_field_value_id:
-          description: Server generated uuid for the user-defined metadata field value.
-          type: string
-        collection_id:
-          description: Unique identifier for the parent collection; autogenerated and not editable.
-          type: string
-        user_defined_metadata_field_id:
-          description: The user-defined metadata field id this value is associated with.
-          type: string
-        canonical_value:
-          allOf:
-          - $ref: '#/components/schemas/GoogleProtobufValue'
-          description: 'The data source metadata canonical value: value type is based on the MetadataField data_type.'
-        canonical_value_display_name:
-          description: The name of the canonical value; for example, display name of "World Health Organization" for the canonical value "WHO".
-          type: string
-        synonyms:
-          description: The synonyms for the canonical value; for example, ["W.H.O", "World Health Organization"] for the canonical value "WHO".
-          items:
-            type: string
-          type: array
       type: object

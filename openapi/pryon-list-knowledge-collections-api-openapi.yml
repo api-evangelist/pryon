@@ -69,13 +69,17 @@ components:
           type: integer
           description: Same as page size in request.
           format: int32
-    ListCollectionItem:
+    CollectionMetadata:
       type: object
       properties:
-        metadata:
-          $ref: '#/components/schemas/ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/KnowledgeCollection'
+        uuid:
+          type: string
+          description: Unique identifier for the interaction returned in the resource response; the response ID.
+        response_time_millis:
+          type: integer
+          description: Response time (in milliseconds); latency.
+          format: uint32
+      description: Metadata returned with each collection-level GET.
     ResourceMetadata:
       type: object
       properties:
@@ -94,6 +98,29 @@ components:
           type: integer
           description: Response time (in milliseconds).
           format: uint32
+    ListCollectionItem:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/KnowledgeCollection'
+    Status:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: The status code; enum value of google.rpc.Code.
+          format: int32
+        message:
+          type: string
+          description: Developer-facing error message.
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoogleProtobufAny'
+          description: List of messages that carry the error details.
+      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
     KnowledgeCollection:
       type: object
       properties:
@@ -117,33 +144,6 @@ components:
           type: string
           description: Licensed solution for the collection; if not provided, the organizational default solution is automatically assigned.
       description: Versioned collection of documents accessible by authorized users.
-    CollectionMetadata:
-      type: object
-      properties:
-        uuid:
-          type: string
-          description: Unique identifier for the interaction returned in the resource response; the response ID.
-        response_time_millis:
-          type: integer
-          description: Response time (in milliseconds); latency.
-          format: uint32
-      description: Metadata returned with each collection-level GET.
-    Status:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: The status code; enum value of google.rpc.Code.
-          format: int32
-        message:
-          type: string
-          description: Developer-facing error message.
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/GoogleProtobufAny'
-          description: List of messages that carry the error details.
-      description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
     GoogleProtobufAny:
       type: object
       properties:

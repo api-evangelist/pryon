@@ -193,42 +193,12 @@ components:
             MESSAGE_TYPE_NOTIFICATION: collection_display_name, collection_id, knowledge_domain_id, knowledge_domain_status, knowledge_domain_status_reason'
           type: object
       type: object
-    MessageMessageType:
-      default: MESSAGE_TYPE_UNKNOWN
-      description: ' - MESSAGE_TYPE_NOTIFICATION: Messages from Pryon platform.'
-      enum:
-      - MESSAGE_TYPE_UNKNOWN
-      - MESSAGE_TYPE_NOTIFICATION
-      type: string
-    v1ListSystemEventsResponse:
-      description: Ordered by create_time desc (most recent to oldest).
+    v1GetSystemEventResponse:
       properties:
         metadata:
-          $ref: '#/components/schemas/v1CollectionMetadata'
-        items:
-          items:
-            $ref: '#/components/schemas/v1GetSystemEventResponse'
-          type: array
-      type: object
-    v1ResourceMetadata:
-      properties:
-        uuid:
-          description: UUID returned in the resource response, which represents the unique interaction with the API, that is, the response id.
-          type: string
-        create_time:
-          description: Time of the initial request.
-          format: date-time
-          type: string
-        update_time:
-          description: 'Time of the last update.
-
-            A value of 0 indicates it has never been updated.'
-          format: date-time
-          type: string
-        response_time_millis:
-          format: int64
-          title: Time difference in milliseconds between when the request was received and when the response was generated
-          type: integer
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/v1SystemEvent'
       type: object
     v1SystemEvent:
       properties:
@@ -256,6 +226,16 @@ components:
         severity:
           $ref: '#/components/schemas/SystemEventSeverity'
       type: object
+    v1ListSystemEventsResponse:
+      description: Ordered by create_time desc (most recent to oldest).
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1CollectionMetadata'
+        items:
+          items:
+            $ref: '#/components/schemas/v1GetSystemEventResponse'
+          type: array
+      type: object
     SystemEventSeverity:
       default: UNSPECIFIED
       description: " - UNSPECIFIED: UNSPECIFIED: Default value that will never be used by the API.\n - LOW: LOW: A scheduled activity will be occurring that is not expected to affect system usage.\n - MEDIUM: MEDIUM: Minor software updates that will not impact overall system functionality but may have temporary performance impacts.\n - HIGH: HIGH: System impacted and partial administrative and system functionality may be temporarily affected."
@@ -265,31 +245,6 @@ components:
       - MEDIUM
       - HIGH
       type: string
-    v1GetSystemEventResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/v1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/v1SystemEvent'
-      type: object
-    v1GetMessageResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/v1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/v1Message'
-      type: object
-    v1CollectionMetadata:
-      properties:
-        uuid:
-          description: Random UUID returned in the resource response to represent the unique interaction with the API.  This can be thought of as a response id.
-          type: string
-        response_time_millis:
-          description: Time difference in milliseconds between when the request was received and when the response was generated, that is, the latency.
-          format: int64
-          type: integer
-      title: Metadata that will be returned with each collection-level GET
-      type: object
     v1ListMessagesResponse:
       description: Ordered by create_time desc (most recent to oldest).
       properties:
@@ -299,6 +254,22 @@ components:
           items:
             $ref: '#/components/schemas/v1GetMessageResponse'
           type: array
+      type: object
+    MessageMessageType:
+      default: MESSAGE_TYPE_UNKNOWN
+      description: ' - MESSAGE_TYPE_NOTIFICATION: Messages from Pryon platform.'
+      enum:
+      - MESSAGE_TYPE_UNKNOWN
+      - MESSAGE_TYPE_NOTIFICATION
+      type: string
+    protobufAny:
+      properties:
+        type_url:
+          type: string
+        value:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
       type: object
     rpcStatus:
       properties:
@@ -312,14 +283,43 @@ components:
             $ref: '#/components/schemas/protobufAny'
           type: array
       type: object
-    protobufAny:
+    v1CollectionMetadata:
       properties:
-        type_url:
+        uuid:
+          description: Random UUID returned in the resource response to represent the unique interaction with the API.  This can be thought of as a response id.
           type: string
-        value:
-          format: byte
-          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+        response_time_millis:
+          description: Time difference in milliseconds between when the request was received and when the response was generated, that is, the latency.
+          format: int64
+          type: integer
+      title: Metadata that will be returned with each collection-level GET
+      type: object
+    v1ResourceMetadata:
+      properties:
+        uuid:
+          description: UUID returned in the resource response, which represents the unique interaction with the API, that is, the response id.
           type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: 'Time of the last update.
+
+            A value of 0 indicates it has never been updated.'
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          title: Time difference in milliseconds between when the request was received and when the response was generated
+          type: integer
+      type: object
+    v1GetMessageResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/v1Message'
       type: object
 x-original-swagger-version: '2.0'
 x-tagGroups:
