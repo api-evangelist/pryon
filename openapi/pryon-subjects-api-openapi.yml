@@ -359,6 +359,21 @@ paths:
       description: Get subject by subject_id
 components:
   schemas:
+    subjectsSubjectRelationshipTypeEntity:
+      description: Description of subject relationship type.
+      properties:
+        relationship_type_id:
+          description: Required.
+          type: string
+        display_name:
+          description: Required. Short name of the type of subject link/relationship.
+          type: string
+        description:
+          description: Required. Wordy explanation.
+          type: string
+        direction:
+          $ref: '#/components/schemas/SubjectRelationshipTypeEntityDirection'
+      type: object
     subjectsListSubjectRelationshipsResponse:
       properties:
         metadata:
@@ -387,42 +402,14 @@ components:
           description: Returned for convenience and clarity - same as order_by in request.
           type: string
       type: object
-    subjectsSubjectEntity:
+    protobufAny:
       properties:
-        subject_id:
-          title: hash of subject_category_id and term
+        type_url:
           type: string
-        term:
-          description: Required.  A case-insensitive natural language term that represents the subject.
+        value:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
           type: string
-        subject_category_id:
-          title: Required.  Subject category
-          type: string
-        definition:
-          description: Optional.  Natural language definition of the subject.  This is provided by an expert.
-          type: string
-        reference_count:
-          format: uint64
-          title: "!Deprecation Warning!: This field will no longer be kept up to date and must be considered inaccurate. To view subject reference counts \nplease see ListDomainSubjects.\nOptional.  Number of references to the subject found in the content.  This is provided if known and will otherwise be zero.\nReference count at different levels:\nContent - occurrences in content (0 for Prior Knowledge content subjects)\nContent Group - occurrences in all contents in CG\nKnowledge Domain - occurrences in all contents in KD"
-          type: string
-        content_count:
-          format: uint64
-          title: 'Optional.  The number of contents that refer to the subject.  This is provided if known and will otherwise be zero.
-
-            Content - 1
-
-            Content Group - count of all contents it occurs in, in the CG
-
-            Knowledge Domain - count of all contents it occurs in, in the KD'
-          type: string
-      title: A subject is an unique tuple of term and category
-      type: object
-    subjectsGetSubjectCategoryResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/v1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/subjectsSubjectCategoryEntity'
       type: object
     subjectsListSubjectCategoriesResponse:
       properties:
@@ -452,6 +439,21 @@ components:
           description: Returned for convenience and clarity - same as order_by in request.
           type: string
       type: object
+    subjectsGetSubjectResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/subjectsSubjectEntity'
+      type: object
+    SubjectRelationshipTypeEntityDirection:
+      default: UNSPECIFIED
+      description: " - UNSPECIFIED: Unspecified - an important option for filtering use cases when no preference is desired.\nThis is not a valid option when creating a subject relationship type.\n - UNIDIRECTIONAL: Indicates a one-way relationship from the subject specified by the from_subject_id,\nto the subject specified by the to_subject_id.\n - BIDIRECTIONAL: Indicates a two-way relationship between the subject specified by the from_subject_id,\nand the subject specified by the to_subject_id."
+      enum:
+      - UNSPECIFIED
+      - UNIDIRECTIONAL
+      - BIDIRECTIONAL
+      type: string
     subjectsListSubjectsResponse:
       properties:
         metadata:
@@ -501,12 +503,121 @@ components:
       - USER_DEFINED
       - QUERY_ATTRIBUTE
       type: string
-    subjectsGetSubjectResponse:
+    subjectsSubjectEntity:
+      properties:
+        subject_id:
+          title: hash of subject_category_id and term
+          type: string
+        term:
+          description: Required.  A case-insensitive natural language term that represents the subject.
+          type: string
+        subject_category_id:
+          title: Required.  Subject category
+          type: string
+        definition:
+          description: Optional.  Natural language definition of the subject.  This is provided by an expert.
+          type: string
+        reference_count:
+          format: uint64
+          title: "!Deprecation Warning!: This field will no longer be kept up to date and must be considered inaccurate. To view subject reference counts \nplease see ListDomainSubjects.\nOptional.  Number of references to the subject found in the content.  This is provided if known and will otherwise be zero.\nReference count at different levels:\nContent - occurrences in content (0 for Prior Knowledge content subjects)\nContent Group - occurrences in all contents in CG\nKnowledge Domain - occurrences in all contents in KD"
+          type: string
+        content_count:
+          format: uint64
+          title: 'Optional.  The number of contents that refer to the subject.  This is provided if known and will otherwise be zero.
+
+            Content - 1
+
+            Content Group - count of all contents it occurs in, in the CG
+
+            Knowledge Domain - count of all contents it occurs in, in the KD'
+          type: string
+      title: A subject is an unique tuple of term and category
+      type: object
+    subjectsGetSubjectCategoryResponse:
       properties:
         metadata:
           $ref: '#/components/schemas/v1ResourceMetadata'
         data:
-          $ref: '#/components/schemas/subjectsSubjectEntity'
+          $ref: '#/components/schemas/subjectsSubjectCategoryEntity'
+      type: object
+    rpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+      type: object
+    subjectsSubjectRelationshipEntity:
+      description: A directed edge from one subject entity to another subject entity.
+      properties:
+        subject_relationship_id:
+          description: Required.
+          type: string
+        relationship_type_id:
+          description: 'Required. Type of relationship e.g. synonym, acronym, misspelling, parent, child, etc.
+
+            This also determines if relationship is uni- or bi-directional.'
+          type: string
+        from_subject_id:
+          description: Required. Unique ID of the subject which link is being directed from.
+          type: string
+        to_subject_id:
+          description: Required. Unique ID of the subject to which link is being directed.
+          type: string
+        strength:
+          description: Required. The strength of the link - can also be thought of as edge weight.
+          format: float
+          type: number
+      type: object
+    v1ResourceMetadata:
+      properties:
+        uuid:
+          description: UUID returned in the resource response, which represents the unique interaction with the API, that is, the response id.
+          type: string
+        create_time:
+          description: Time of the initial request.
+          format: date-time
+          type: string
+        update_time:
+          description: 'Time of the last update.
+
+            A value of 0 indicates it has never been updated.'
+          format: date-time
+          type: string
+        response_time_millis:
+          format: int64
+          title: Time difference in milliseconds between when the request was received and when the response was generated
+          type: integer
+      type: object
+    subjectsGetSubjectRelationshipResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/subjectsSubjectRelationshipEntity'
+      type: object
+    v1CollectionMetadata:
+      properties:
+        uuid:
+          description: Random UUID returned in the resource response to represent the unique interaction with the API.  This can be thought of as a response id.
+          type: string
+        response_time_millis:
+          description: Time difference in milliseconds between when the request was received and when the response was generated, that is, the latency.
+          format: int64
+          type: integer
+      title: Metadata that will be returned with each collection-level GET
+      type: object
+    subjectsGetSubjectRelationshipTypeResponse:
+      properties:
+        metadata:
+          $ref: '#/components/schemas/v1ResourceMetadata'
+        data:
+          $ref: '#/components/schemas/subjectsSubjectRelationshipTypeEntity'
       type: object
     subjectsListSubjectRelationshipTypesResponse:
       properties:
@@ -535,117 +646,6 @@ components:
         order_by:
           description: Returned for convenience and clarity - same as order_by in request.
           type: string
-      type: object
-    protobufAny:
-      properties:
-        type_url:
-          type: string
-        value:
-          format: byte
-          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
-          type: string
-      type: object
-    subjectsGetSubjectRelationshipTypeResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/v1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/subjectsSubjectRelationshipTypeEntity'
-      type: object
-    subjectsSubjectRelationshipTypeEntity:
-      description: Description of subject relationship type.
-      properties:
-        relationship_type_id:
-          description: Required.
-          type: string
-        display_name:
-          description: Required. Short name of the type of subject link/relationship.
-          type: string
-        description:
-          description: Required. Wordy explanation.
-          type: string
-        direction:
-          $ref: '#/components/schemas/SubjectRelationshipTypeEntityDirection'
-      type: object
-    SubjectRelationshipTypeEntityDirection:
-      default: UNSPECIFIED
-      description: " - UNSPECIFIED: Unspecified - an important option for filtering use cases when no preference is desired.\nThis is not a valid option when creating a subject relationship type.\n - UNIDIRECTIONAL: Indicates a one-way relationship from the subject specified by the from_subject_id,\nto the subject specified by the to_subject_id.\n - BIDIRECTIONAL: Indicates a two-way relationship between the subject specified by the from_subject_id,\nand the subject specified by the to_subject_id."
-      enum:
-      - UNSPECIFIED
-      - UNIDIRECTIONAL
-      - BIDIRECTIONAL
-      type: string
-    subjectsGetSubjectRelationshipResponse:
-      properties:
-        metadata:
-          $ref: '#/components/schemas/v1ResourceMetadata'
-        data:
-          $ref: '#/components/schemas/subjectsSubjectRelationshipEntity'
-      type: object
-    rpcStatus:
-      properties:
-        code:
-          format: int32
-          type: integer
-        message:
-          type: string
-        details:
-          items:
-            $ref: '#/components/schemas/protobufAny'
-          type: array
-      type: object
-    v1CollectionMetadata:
-      properties:
-        uuid:
-          description: Random UUID returned in the resource response to represent the unique interaction with the API.  This can be thought of as a response id.
-          type: string
-        response_time_millis:
-          description: Time difference in milliseconds between when the request was received and when the response was generated, that is, the latency.
-          format: int64
-          type: integer
-      title: Metadata that will be returned with each collection-level GET
-      type: object
-    v1ResourceMetadata:
-      properties:
-        uuid:
-          description: UUID returned in the resource response, which represents the unique interaction with the API, that is, the response id.
-          type: string
-        create_time:
-          description: Time of the initial request.
-          format: date-time
-          type: string
-        update_time:
-          description: 'Time of the last update.
-
-            A value of 0 indicates it has never been updated.'
-          format: date-time
-          type: string
-        response_time_millis:
-          format: int64
-          title: Time difference in milliseconds between when the request was received and when the response was generated
-          type: integer
-      type: object
-    subjectsSubjectRelationshipEntity:
-      description: A directed edge from one subject entity to another subject entity.
-      properties:
-        subject_relationship_id:
-          description: Required.
-          type: string
-        relationship_type_id:
-          description: 'Required. Type of relationship e.g. synonym, acronym, misspelling, parent, child, etc.
-
-            This also determines if relationship is uni- or bi-directional.'
-          type: string
-        from_subject_id:
-          description: Required. Unique ID of the subject which link is being directed from.
-          type: string
-        to_subject_id:
-          description: Required. Unique ID of the subject to which link is being directed.
-          type: string
-        strength:
-          description: Required. The strength of the link - can also be thought of as edge weight.
-          format: float
-          type: number
       type: object
 x-original-swagger-version: '2.0'
 x-tagGroups:
